@@ -23,12 +23,12 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-3 pt-2">
               <a
-                href="https://facebook.com/1127204940483396"
+                href="https://www.facebook.com/profile.php?id=61573335766965"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 text-xs text-blue-400 hover:text-blue-300 font-medium"
               >
-                Official Facebook Page <ExternalLink className="w-3 h-3" />
+                Official Facebook: Jobs in USA <ExternalLink className="w-3 h-3" />
               </a>
             </div>
           </div>

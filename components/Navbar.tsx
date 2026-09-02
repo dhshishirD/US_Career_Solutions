@@ -72,12 +72,12 @@ export default function Navbar() {
           {/* Header Actions */}
           <div className="hidden lg:flex items-center gap-3">
             <a
-              href="https://facebook.com/1127204940483396"
+              href="https://www.facebook.com/profile.php?id=61573335766965"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-xs font-semibold px-3.5 py-2 rounded-lg bg-blue-50 text-blue-700 hover:bg-blue-100 border border-blue-200 transition-colors"
             >
-              Follow Page
+              Follow Jobs in USA
             </a>
             <Link
               href="/jobs"
@@ -145,12 +145,12 @@ export default function Navbar() {
           </Link>
           <div className="pt-2 border-t border-slate-100 flex flex-col gap-2">
             <a
-              href="https://facebook.com/1127204940483396"
+              href="https://www.facebook.com/profile.php?id=61573335766965"
               target="_blank"
               rel="noopener noreferrer"
               className="text-center py-2 text-sm font-semibold rounded-lg bg-blue-50 text-blue-700 border border-blue-200"
             >
-              Follow Official Career Page
+              Follow Jobs in USA on Facebook
             </a>
           </div>
         </div>

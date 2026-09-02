@@ -74,7 +74,7 @@ In your Vercel Project Dashboard (`Settings` -> `Environment Variables`), config
 | :--- | :--- | :--- |
 | `CRON_SECRET` | Secret token to secure the automated cron endpoint | `generate-a-random-32-char-string` |
 | `GEMINI_API_KEY` | *(Optional)* Google Gemini API key for advanced AI resume tailoring | Free key from [aistudio.google.com](https://aistudio.google.com) |
-| `NEXT_PUBLIC_FACEBOOK_PAGE_URL` | Your official Facebook Page or Group link | `https://facebook.com/1127204940483396` |
+| `NEXT_PUBLIC_FACEBOOK_PAGE_URL` | Your official Facebook Page or Group link | `https://www.facebook.com/profile.php?id=61573335766965` |
 | `NEXT_PUBLIC_WHATSAPP_COMMUNITY_URL` | Your WhatsApp community invite link | `https://chat.whatsapp.com/...` |
 
 > [!NOTE]

@@ -39,13 +39,13 @@ export default function CommunityBanner() {
 
         <div className="mt-8 flex flex-wrap items-center gap-4">
           <a
-            href="https://facebook.com/1127204940483396"
+            href="https://www.facebook.com/profile.php?id=61573335766965"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-sm font-bold bg-white text-blue-950 hover:bg-slate-100 px-6 py-3 rounded-xl shadow-lg transition-transform hover:-translate-y-0.5"
           >
             <MessageSquare className="w-4 h-4 text-blue-600" />
-            Join Our Official Facebook Community
+            Join Our "Jobs in USA" Community
             <ArrowRight className="w-4 h-4 text-blue-600" />
           </a>
         </div>
