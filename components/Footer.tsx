@@ -1,0 +1,112 @@
+import React from 'react';
+import Link from 'next/link';
+import { Briefcase, Heart, ExternalLink } from 'lucide-react';
+
+export default function Footer() {
+  return (
+    <footer className="bg-slate-900 text-slate-300 pt-12 pb-8 border-t border-slate-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-8 border-b border-slate-800">
+          
+          {/* Brand Col */}
+          <div className="md:col-span-2 space-y-4">
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white">
+                <Briefcase className="w-4 h-4" />
+              </div>
+              <span className="text-lg font-bold text-white tracking-tight">
+                US<span className="text-blue-400">Career</span>Solutions
+              </span>
+            </div>
+            <p className="text-sm text-slate-400 max-w-md leading-relaxed">
+              Empowering global professionals and international job seekers with everyday verified USA jobs, clear visa sponsorship transparency (H-1B, Cap-Exempt, OPT, Remote), and AI career care tools.
+            </p>
+            <div className="flex items-center gap-3 pt-2">
+              <a
+                href="https://facebook.com/1127204940483396"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs text-blue-400 hover:text-blue-300 font-medium"
+              >
+                Official Facebook Page <ExternalLink className="w-3 h-3" />
+              </a>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-3">
+              Explore Jobs
+            </h4>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="/jobs?sponsorship=H-1B+Sponsor" className="hover:text-white transition-colors">
+                  H-1B Sponsor Jobs
+                </Link>
+              </li>
+              <li>
+                <Link href="/jobs?sponsorship=Cap-Exempt+H-1B" className="hover:text-white transition-colors">
+                  Cap-Exempt H-1B (No Lottery)
+                </Link>
+              </li>
+              <li>
+                <Link href="/jobs?sponsorship=OPT/CPT+Friendly" className="hover:text-white transition-colors">
+                  OPT / CPT Friendly Roles
+                </Link>
+              </li>
+              <li>
+                <Link href="/jobs?remote=true" className="hover:text-white transition-colors">
+                  US Remote (Contractor / W-8BEN)
+                </Link>
+              </li>
+              <li>
+                <Link href="/jobs" className="hover:text-white transition-colors">
+                  All Daily US Postings
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Career Tools */}
+          <div>
+            <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-3">
+              Career Care Tools
+            </h4>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="/tools/ats-scanner" className="hover:text-white transition-colors">
+                  AI ATS Resume Tailorer
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools/visa-checker" className="hover:text-white transition-colors">
+                  Company Visa Sponsor Radar
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools/outreach-gen" className="hover:text-white transition-colors">
+                  Recruiter Outreach Generator
+                </Link>
+              </li>
+              <li>
+                <Link href="/tracker" className="hover:text-white transition-colors">
+                  Application Tracker (CRM)
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Disclaimer & Copyright */}
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+          <p>
+            © {new Date().getFullYear()} US Career Solutions. Independent public jobs aggregator and career accelerator. Not an immigration law firm.
+          </p>
+          <div className="flex items-center gap-1 text-slate-400">
+            Built with <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500 mx-1" /> for your followers & community.
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
