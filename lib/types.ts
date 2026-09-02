@@ -7,12 +7,19 @@ export type VisaSponsorshipType =
 
 export type JobCategory = 
   | 'Software & Tech' 
-  | 'Data & AI' 
+  | 'Customer Support & Helpdesk'
+  | 'Data, AI Training & Annotation' 
+  | 'Virtual Assistant & Admin'
   | 'Healthcare & Nursing' 
   | 'Business & Finance' 
   | 'Engineering' 
   | 'Marketing & Sales' 
   | 'Operations & Other';
+
+export type ExperienceLevel = 
+  | 'Entry Level / Junior' 
+  | 'Mid Level' 
+  | 'Senior / Lead';
 
 export interface JobPosting {
   id: string;
@@ -23,6 +30,7 @@ export interface JobPosting {
   state?: string;
   isRemote: boolean;
   category: JobCategory;
+  experienceLevel?: ExperienceLevel;
   salaryMin?: number;
   salaryMax?: number;
   salaryCurrency: string;

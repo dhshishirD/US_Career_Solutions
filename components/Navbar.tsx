@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Briefcase, ShieldCheck, Sparkles, Send, CheckSquare, Search, Menu, X } from 'lucide-react';
+import { Briefcase, ShieldCheck, Sparkles, Send, CheckSquare, Search, Menu, X, GraduationCap } from 'lucide-react';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -27,13 +27,21 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-5">
             <Link 
               href="/jobs" 
               className="text-sm font-medium text-slate-700 hover:text-blue-600 flex items-center gap-1.5 transition-colors"
             >
               <Search className="w-4 h-4 text-blue-500" />
               Daily US Jobs
+            </Link>
+
+            <Link 
+              href="/scholarships" 
+              className="text-sm font-semibold text-indigo-700 hover:text-indigo-900 bg-indigo-50/80 px-2.5 py-1 rounded-lg border border-indigo-200/80 flex items-center gap-1.5 transition-colors"
+            >
+              <GraduationCap className="w-4 h-4 text-indigo-600" />
+              USA Scholarships
             </Link>
 
             <Link 
@@ -127,6 +135,14 @@ export default function Navbar() {
           >
             <Search className="w-5 h-5 text-blue-500" />
             Daily US Jobs
+          </Link>
+          <Link
+            href="/scholarships"
+            onClick={() => setMobileMenuOpen(false)}
+            className="flex items-center gap-3 px-3 py-2 rounded-lg text-indigo-700 bg-indigo-50 font-bold"
+          >
+            <GraduationCap className="w-5 h-5 text-indigo-600" />
+            USA Uni Scholarships & Assistantships
           </Link>
           <Link
             href="/tools/visa-checker"

@@ -14,7 +14,8 @@ import {
   Globe2,
   TrendingUp,
   Zap,
-  Building
+  Building,
+  GraduationCap
 } from 'lucide-react';
 import JobCard from '@/components/JobCard';
 import CommunityBanner from '@/components/CommunityBanner';
@@ -211,6 +212,35 @@ export default function HomePage() {
             <div className="mt-5 pt-4 border-t border-slate-100 flex items-center text-xs font-bold text-blue-600 gap-1">
               Open Dashboard <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </div>
+          </Link>
+        </div>
+      </section>
+
+      {/* University Scholarships & Assistantships Spotlight Banner */}
+      <section className="my-10 bg-gradient-to-r from-indigo-900 via-purple-900 to-slate-900 rounded-3xl p-6 sm:p-8 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="flex items-center gap-4">
+          <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center shrink-0 border border-white/20">
+            <GraduationCap className="w-7 h-7 text-indigo-300" />
+          </div>
+          <div>
+            <span className="text-[11px] font-extrabold uppercase tracking-wider text-indigo-300 bg-indigo-500/20 px-2.5 py-0.5 rounded-full border border-indigo-400/30">
+              100% Fully Funded
+            </span>
+            <h3 className="text-xl sm:text-2xl font-black text-white mt-1">
+              Top USA University Scholarships & Assistantships (GRA/GTA)
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-xl">
+              Study in the US with 100% full tuition waivers plus monthly living salaries ($24,000 – $45,000/year). Verified programs at Stanford, Purdue, MIT, Georgia Tech, and Fulbright.
+            </p>
+          </div>
+        </div>
+
+        <div className="shrink-0">
+          <Link
+            href="/scholarships"
+            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold bg-white text-indigo-950 hover:bg-slate-100 px-6 py-3 rounded-xl shadow-lg transition-transform hover:-translate-y-0.5 whitespace-nowrap"
+          >
+            Explore USA Scholarships <ArrowRight className="w-4 h-4 text-indigo-600" />
           </Link>
         </div>
       </section>

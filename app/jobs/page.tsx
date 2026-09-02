@@ -196,9 +196,11 @@ function JobsContent() {
                 className="w-full text-xs bg-slate-50 border border-slate-200 rounded-lg p-2.5 text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="all">All Job Categories</option>
+                <option value="Customer Support & Helpdesk">Customer Support & Helpdesk (Entry Level)</option>
+                <option value="Data, AI Training & Annotation">Data, AI Training & Annotation (Remote)</option>
+                <option value="Virtual Assistant & Admin">Virtual Assistant & Admin</option>
+                <option value="Healthcare & Nursing">Healthcare & Nursing (Sponsorship)</option>
                 <option value="Software & Tech">Software & Tech</option>
-                <option value="Data & AI">Data & AI</option>
-                <option value="Healthcare & Nursing">Healthcare & Nursing</option>
                 <option value="Business & Finance">Business & Finance</option>
                 <option value="Engineering">Engineering</option>
                 <option value="Marketing & Sales">Marketing & Sales</option>

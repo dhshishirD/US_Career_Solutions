@@ -80,11 +80,20 @@ export async function fetchLiveRemoteAndUSJobs(): Promise<JobPosting[]> {
 
         let category: JobPosting['category'] = 'Software & Tech';
         const catLower = (item.category || item.title).toLowerCase();
-        if (catLower.includes('data') || catLower.includes('ai') || catLower.includes('machine learning')) category = 'Data & AI';
+        if (catLower.includes('customer') || catLower.includes('support') || catLower.includes('helpdesk')) category = 'Customer Support & Helpdesk';
+        else if (catLower.includes('virtual') || catLower.includes('assistant') || catLower.includes('admin')) category = 'Virtual Assistant & Admin';
+        else if (catLower.includes('data') || catLower.includes('ai') || catLower.includes('machine learning') || catLower.includes('annotation')) category = 'Data, AI Training & Annotation';
         else if (catLower.includes('health') || catLower.includes('nurse') || catLower.includes('medical')) category = 'Healthcare & Nursing';
         else if (catLower.includes('finance') || catLower.includes('business') || catLower.includes('analyst')) category = 'Business & Finance';
         else if (catLower.includes('engineer') && !catLower.includes('software')) category = 'Engineering';
         else if (catLower.includes('marketing') || catLower.includes('sales')) category = 'Marketing & Sales';
+
+        const isEntry = item.title.toLowerCase().includes('junior') || 
+                        item.title.toLowerCase().includes('entry') || 
+                        item.title.toLowerCase().includes('associate') || 
+                        item.title.toLowerCase().includes('intern') ||
+                        item.title.toLowerCase().includes('assistant');
+        const experienceLevel = isEntry ? 'Entry Level / Junior' : undefined;
 
         newlyFetched.push({
           id: `ext-${item.id || Math.random().toString(36).substring(2, 9)}`,
@@ -93,6 +102,7 @@ export async function fetchLiveRemoteAndUSJobs(): Promise<JobPosting[]> {
           location: loc,
           isRemote: true,
           category,
+          experienceLevel,
           salaryCurrency: 'USD',
           visaSponsorship: visaType,
           sponsorshipConfidence: confidence,

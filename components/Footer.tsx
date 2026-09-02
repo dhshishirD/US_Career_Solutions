@@ -69,6 +69,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/scholarships" className="text-indigo-400 font-bold hover:text-indigo-300 transition-colors">
+                  🎓 USA Uni Scholarships & Fellowships
+                </Link>
+              </li>
+              <li>
                 <Link href="/jobs" className="hover:text-white transition-colors">
                   All Daily US Postings
                 </Link>
