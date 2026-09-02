@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { MessageSquare, Bell, ArrowRight, CheckCircle } from 'lucide-react';
 
 export default function CommunityBanner() {
@@ -37,17 +38,33 @@ export default function CommunityBanner() {
           </div>
         </div>
 
-        <div className="mt-8 flex flex-wrap items-center gap-4">
+        <div className="mt-8 flex flex-wrap items-center gap-3">
+          <a
+            href="https://wa.me/8801981505761?text=Hi%20Jobs%20in%20USA%2C%20I%20want%20to%20join%20the%20community%20and%20get%20job%20updates"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm font-bold bg-emerald-500 hover:bg-emerald-400 text-white px-5 py-3 rounded-xl shadow-lg transition-transform hover:-translate-y-0.5"
+          >
+            <MessageSquare className="w-4 h-4 text-white" />
+            WhatsApp: +880 1981-505761
+          </a>
+
           <a
             href="https://www.facebook.com/profile.php?id=61573335766965"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm font-bold bg-white text-blue-950 hover:bg-slate-100 px-6 py-3 rounded-xl shadow-lg transition-transform hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 text-sm font-bold bg-white text-blue-950 hover:bg-slate-100 px-5 py-3 rounded-xl shadow-lg transition-transform hover:-translate-y-0.5"
           >
-            <MessageSquare className="w-4 h-4 text-blue-600" />
-            Join Our "Jobs in USA" Community
+            Facebook Community
             <ArrowRight className="w-4 h-4 text-blue-600" />
           </a>
+
+          <Link
+            href="/services"
+            className="inline-flex items-center gap-2 text-sm font-bold bg-blue-600/60 hover:bg-blue-600 border border-blue-400/40 text-white px-5 py-3 rounded-xl shadow transition-all"
+          >
+            1-on-1 Resume & Career Help
+          </Link>
         </div>
       </div>
     </section>

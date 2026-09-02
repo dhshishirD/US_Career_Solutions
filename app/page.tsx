@@ -334,6 +334,39 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* 1-on-1 Consultation Callout */}
+      <section className="my-14 bg-gradient-to-r from-emerald-900 to-teal-900 rounded-3xl p-6 sm:p-10 text-white shadow-xl relative overflow-hidden">
+        <div className="max-w-3xl relative z-10">
+          <span className="text-xs font-bold uppercase tracking-wider text-emerald-300 bg-emerald-800/60 border border-emerald-400/30 px-3 py-1 rounded-full">
+            ★ Dedicated 1-on-1 Care
+          </span>
+          <h2 className="text-2xl sm:text-4xl font-extrabold text-white mt-3 tracking-tight leading-tight">
+            Need Expert Help Crafting Your US Resume & Strategy?
+          </h2>
+          <p className="mt-3 text-sm sm:text-base text-emerald-100 leading-relaxed">
+            Work directly with our career specialists to transform your CV into a US executive 1-page standard, map your exact visa pathway, and prepare for interviews.
+          </p>
+
+          <div className="mt-6 flex flex-wrap items-center gap-3">
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-2 text-sm font-bold bg-white text-emerald-950 hover:bg-emerald-50 px-6 py-3 rounded-xl shadow-lg transition-transform hover:-translate-y-0.5"
+            >
+              View Packages & Book Call
+              <ArrowRight className="w-4 h-4 text-emerald-700" />
+            </Link>
+            <a
+              href="https://wa.me/8801981505761?text=Hi%20Jobs%20in%20USA%2C%20I%20would%20like%20to%20discuss%201-on-1%20Career%20Guidance"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-bold bg-emerald-700 hover:bg-emerald-600 border border-emerald-500/50 text-white px-6 py-3 rounded-xl transition-colors"
+            >
+              Chat on WhatsApp (+880 1981-505761)
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Community Banner */}
       <CommunityBanner />
 

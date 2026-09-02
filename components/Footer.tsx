@@ -21,7 +21,16 @@ export default function Footer() {
             <p className="text-sm text-slate-400 max-w-md leading-relaxed">
               Empowering global professionals and international job seekers with everyday verified USA jobs, clear visa sponsorship transparency (H-1B, Cap-Exempt, OPT, Remote), and AI career care tools.
             </p>
-            <div className="flex items-center gap-3 pt-2">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3 pt-2">
+              <a
+                href="https://wa.me/8801981505761?text=Hi%20Jobs%20in%20USA%2C%20I%20need%20help%20with%20my%20US%20job%20search"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs text-emerald-400 hover:text-emerald-300 font-semibold"
+              >
+                WhatsApp: +880 1981-505761 <ExternalLink className="w-3 h-3" />
+              </a>
+              <span className="hidden sm:inline text-slate-600">•</span>
               <a
                 href="https://www.facebook.com/profile.php?id=61573335766965"
                 target="_blank"
@@ -73,6 +82,11 @@ export default function Footer() {
               Career Care Tools
             </h4>
             <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="/services" className="text-emerald-400 font-bold hover:text-emerald-300 transition-colors">
+                  ★ 1-on-1 Career Consultation
+                </Link>
+              </li>
               <li>
                 <Link href="/tools/ats-scanner" className="hover:text-white transition-colors">
                   AI ATS Resume Tailorer

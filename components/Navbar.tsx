@@ -61,6 +61,14 @@ export default function Navbar() {
             </Link>
 
             <Link 
+              href="/services" 
+              className="text-sm font-bold text-emerald-700 hover:text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-2.5 py-1 rounded-lg flex items-center gap-1.5 transition-all"
+            >
+              <Sparkles className="w-4 h-4 text-emerald-600" />
+              1-on-1 Consultation
+            </Link>
+
+            <Link 
               href="/tracker" 
               className="text-sm font-medium text-slate-700 hover:text-blue-600 flex items-center gap-1.5 transition-colors"
             >
@@ -72,18 +80,27 @@ export default function Navbar() {
           {/* Header Actions */}
           <div className="hidden lg:flex items-center gap-3">
             <a
+              href="https://wa.me/8801981505761?text=Hi%20Jobs%20in%20USA%2C%20I%20need%20help%20with%20my%20US%20job%20search"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs font-bold px-3.5 py-2 rounded-lg bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-300 transition-colors"
+              title="Chat on WhatsApp (+880 1981-505761)"
+            >
+              WhatsApp Us
+            </a>
+            <a
               href="https://www.facebook.com/profile.php?id=61573335766965"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-xs font-semibold px-3.5 py-2 rounded-lg bg-blue-50 text-blue-700 hover:bg-blue-100 border border-blue-200 transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-2 rounded-lg bg-blue-50 text-blue-700 hover:bg-blue-100 border border-blue-200 transition-colors"
             >
-              Follow Jobs in USA
+              Follow Page
             </a>
             <Link
-              href="/jobs"
-              className="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 shadow-sm transition-all"
+              href="/services"
+              className="inline-flex items-center gap-2 text-xs font-bold px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 shadow-sm transition-all"
             >
-              Browse 100% US Jobs
+              Book 1-on-1 Help
             </Link>
           </div>
 
@@ -136,6 +153,14 @@ export default function Navbar() {
             Recruiter Outreach Generator
           </Link>
           <Link
+            href="/services"
+            onClick={() => setMobileMenuOpen(false)}
+            className="flex items-center gap-3 px-3 py-2 rounded-lg text-emerald-700 bg-emerald-50 font-bold"
+          >
+            <Sparkles className="w-5 h-5 text-emerald-600" />
+            1-on-1 Career Consultation
+          </Link>
+          <Link
             href="/tracker"
             onClick={() => setMobileMenuOpen(false)}
             className="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100 font-medium"
@@ -144,6 +169,14 @@ export default function Navbar() {
             My Application Tracker
           </Link>
           <div className="pt-2 border-t border-slate-100 flex flex-col gap-2">
+            <a
+              href="https://wa.me/8801981505761?text=Hi%20Jobs%20in%20USA%2C%20I%20need%20help%20with%20my%20US%20job%20search"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-center py-2 text-sm font-bold rounded-lg bg-emerald-600 text-white shadow-sm"
+            >
+              Chat on WhatsApp (+880 1981-505761)
+            </a>
             <a
               href="https://www.facebook.com/profile.php?id=61573335766965"
               target="_blank"
