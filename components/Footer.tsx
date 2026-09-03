@@ -118,9 +118,17 @@ export default function Footer() {
 
         {/* Disclaimer & Copyright */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-          <p>
-            © {new Date().getFullYear()} US Career Solutions. Independent public jobs aggregator and career accelerator. Not an immigration law firm.
-          </p>
+          <div className="flex items-center gap-4 flex-wrap">
+            <p>
+              © {new Date().getFullYear()} US Career Solutions. Independent public jobs aggregator.
+            </p>
+            <Link href="/privacy" className="text-slate-400 hover:text-white underline transition-colors">
+              Privacy Policy
+            </Link>
+            <Link href="/terms" className="text-slate-400 hover:text-white underline transition-colors">
+              Terms of Service
+            </Link>
+          </div>
           <div className="flex items-center gap-1 text-slate-400">
             Built with <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500 mx-1" /> for your followers & community.
           </div>
