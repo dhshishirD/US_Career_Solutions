@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import Script from "next/script";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -23,28 +23,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full">
-      <head>
-        {/* Google tag (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-NF718Z8KTR"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-NF718Z8KTR', {
-                page_path: window.location.pathname,
-              });
-            `,
-          }}
-        />
-      </head>
       <body className="flex flex-col min-h-screen bg-slate-50 text-slate-900 antialiased">
         <Navbar />
         <main className="flex-grow">
           {children}
         </main>
         <Footer />
+        <GoogleAnalytics gaId="G-NF718Z8KTR" />
       </body>
     </html>
   );
