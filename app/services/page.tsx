@@ -3,19 +3,18 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { 
-  Sparkles, 
-  CheckCircle2, 
+  FileText, 
+  Video, 
+  Compass, 
+  Award, 
   MessageCircle, 
   Send, 
-  ShieldCheck, 
+  CheckCircle2, 
+  Sparkles, 
   Clock, 
-  HelpCircle, 
   ArrowRight,
-  UserCheck,
-  Award,
-  CreditCard,
-  PhoneCall,
-  Briefcase
+  ShieldCheck,
+  Zap
 } from 'lucide-react';
 
 interface ServicePackage {
@@ -23,7 +22,6 @@ interface ServicePackage {
   title: string;
   tagline: string;
   priceUSD: number;
-  priceLocalApprox: string;
   isPopular?: boolean;
   deliveryTime: string;
   features: string[];
@@ -35,7 +33,6 @@ const SERVICES: ServicePackage[] = [
     title: 'US ATS Resume & Cover Letter Transformation',
     tagline: 'Turn your international CV into a high-converting 1-page US executive standard.',
     priceUSD: 29,
-    priceLocalApprox: '≈ 3,500 BDT',
     isPopular: true,
     deliveryTime: '48 Hours Delivery',
     features: [
@@ -51,7 +48,6 @@ const SERVICES: ServicePackage[] = [
     title: '1-on-1 US Career & Visa Strategy Call (40 Min)',
     tagline: 'Private 1-on-1 consultation to evaluate your background and map your exact US pathway.',
     priceUSD: 45,
-    priceLocalApprox: '≈ 5,400 BDT',
     isPopular: false,
     deliveryTime: 'Scheduled via Zoom / Google Meet / WhatsApp',
     features: [
@@ -67,7 +63,6 @@ const SERVICES: ServicePackage[] = [
     title: 'VIP Complete US Job Search Mastery Bundle',
     tagline: 'Our all-in-one comprehensive solution for candidates serious about securing a US role.',
     priceUSD: 79,
-    priceLocalApprox: '≈ 9,500 BDT',
     isPopular: false,
     deliveryTime: 'Full 14-Day Mentorship',
     features: [
@@ -83,9 +78,8 @@ const SERVICES: ServicePackage[] = [
     title: 'Curated VIP US Jobs & Recruiter Circle',
     tagline: 'Get weekly verified sponsor job drops matched to your profile delivered straight to your WhatsApp.',
     priceUSD: 15,
-    priceLocalApprox: '≈ 1,800 BDT / month',
     isPopular: false,
-    deliveryTime: 'Weekly WhatsApp Delivery',
+    deliveryTime: 'Monthly WhatsApp VIP Circle',
     features: [
       'Curated weekly batch of verified H-1B & Cap-Exempt openings',
       'Direct LinkedIn profiles of the hiring managers and recruiters',
@@ -109,7 +103,7 @@ export default function ServicesPage() {
 
   const buildWhatsAppUrl = () => {
     const text = encodeURIComponent(
-      `Hi Jobs in USA / US Career Solutions! I would like to book the "${selectedPkg.title}" ($${selectedPkg.priceUSD}).\n\nName: ${fullName || 'Interested Candidate'}\nTarget Role: ${targetRole || 'Not specified'}\nCountry: ${currentCountry || 'Not specified'}\nNotes: ${notes || 'None'}`
+      `Hi Jobs in USA / US Career Solutions! I would like to book the "${selectedPkg.title}" ($${selectedPkg.priceUSD} USD).\n\nName: ${fullName || 'Interested Candidate'}\nTarget Role: ${targetRole || 'Not specified'}\nCountry: ${currentCountry || 'Not specified'}\nNotes: ${notes || 'None'}`
     );
     return `https://wa.me/8801981505761?text=${text}`;
   };
@@ -141,111 +135,97 @@ export default function ServicesPage() {
         </p>
       </div>
 
-      {/* Ethical Guarantee & Transparency Callout */}
-      <div className="mb-12 bg-white rounded-2xl border border-blue-200 p-6 shadow-sm flex flex-col md:flex-row items-start md:items-center gap-5">
-        <div className="w-12 h-12 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center shrink-0">
-          <ShieldCheck className="w-6 h-6" />
-        </div>
-        <div className="flex-grow">
-          <h3 className="text-base font-bold text-slate-900">
-            Our 100% Ethical & Transparent Commitment
-          </h3>
-          <p className="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
-            We are dedicated professional career coaches, ATS engineers, and resume specialists. <strong>We do not sell visas, and we never make false job guarantees.</strong> What we guarantee is a world-class US application package, rigorous interview preparation, and honest, realistic guidance that maximizes your real interview callback rate.
-          </p>
-        </div>
-      </div>
+      {/* Pricing Cards Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        {SERVICES.map((pkg) => (
+          <div
+            key={pkg.id}
+            onClick={() => setSelectedService(pkg.id)}
+            className={`cursor-pointer rounded-2xl p-6 transition-all duration-200 relative flex flex-col justify-between border ${
+              selectedService === pkg.id
+                ? 'border-blue-600 bg-white ring-2 ring-blue-600 shadow-xl scale-[1.02]'
+                : 'border-slate-200 bg-white hover:border-slate-300 hover:shadow-md'
+            }`}
+          >
+            {pkg.isPopular && (
+              <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-md">
+                ★ Most Popular
+              </span>
+            )}
 
-      {/* Pricing & Services Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-14">
-        {SERVICES.map((pkg) => {
-          const isCurrent = selectedService === pkg.id;
-          return (
-            <div
-              key={pkg.id}
-              onClick={() => setSelectedService(pkg.id)}
-              className={`rounded-2xl p-6 cursor-pointer transition-all duration-200 flex flex-col justify-between relative bg-white border ${
-                isCurrent 
-                  ? 'border-blue-600 ring-2 ring-blue-600/20 shadow-xl' 
-                  : 'border-slate-200 hover:border-blue-300 hover:shadow-md'
-              }`}
-            >
-              {pkg.isPopular && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">
-                  Most Popular
-                </span>
-              )}
+            <div>
+              {/* Icon & Title */}
+              <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4">
+                {pkg.id === 'resume-makeover' && <FileText className="w-6 h-6" />}
+                {pkg.id === 'strategy-call' && <Video className="w-6 h-6" />}
+                {pkg.id === 'complete-career-bundle' && <Sparkles className="w-6 h-6" />}
+                {pkg.id === 'vip-alerts' && <Zap className="w-6 h-6" />}
+              </div>
 
-              <div>
-                <h3 className="text-base font-bold text-slate-900 leading-snug">
-                  {pkg.title}
-                </h3>
-                <p className="text-xs text-slate-500 mt-2 leading-relaxed">
-                  {pkg.tagline}
-                </p>
+              <h2 className="text-lg font-bold text-slate-900 leading-snug">
+                {pkg.title}
+              </h2>
+              <p className="text-xs text-slate-500 mt-2 leading-relaxed">
+                {pkg.tagline}
+              </p>
 
-                <div className="my-5 pt-4 border-t border-slate-100">
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-3xl font-black text-slate-900">${pkg.priceUSD}</span>
-                    <span className="text-xs text-slate-400 font-semibold">USD</span>
-                  </div>
-                  <div className="text-xs font-semibold text-emerald-600 mt-0.5">
-                    {pkg.priceLocalApprox}
-                  </div>
-                  <div className="text-[11px] text-slate-400 flex items-center gap-1 mt-2">
-                    <Clock className="w-3 h-3 text-slate-400" />
-                    {pkg.deliveryTime}
-                  </div>
+              {/* Pricing Display in USD */}
+              <div className="mt-5 pb-5 border-b border-slate-100">
+                <div className="flex items-baseline gap-1">
+                  <span className="text-3xl font-black text-slate-900">${pkg.priceUSD}</span>
+                  <span className="text-xs font-semibold text-slate-500 uppercase">USD</span>
                 </div>
-
-                <ul className="space-y-2.5 text-xs text-slate-600 pt-2 border-t border-slate-100">
-                  {pkg.features.map((feat, idx) => (
-                    <li key={idx} className="flex items-start gap-2">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
-                      <span>{feat}</span>
-                    </li>
-                  ))}
-                </ul>
+                <div className="flex items-center gap-1.5 text-[11px] text-slate-500 mt-1 font-medium">
+                  <Clock className="w-3.5 h-3.5 text-slate-400" />
+                  {pkg.deliveryTime}
+                </div>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-slate-100">
-                <button
-                  type="button"
-                  onClick={() => setSelectedService(pkg.id)}
-                  className={`w-full py-2.5 rounded-xl text-xs font-bold transition-all ${
-                    isCurrent 
-                      ? 'bg-blue-600 text-white shadow-md' 
-                      : 'bg-slate-100 hover:bg-slate-200 text-slate-800'
-                  }`}
-                >
-                  {isCurrent ? 'Selected Package' : 'Select Package'}
-                </button>
-              </div>
+              {/* Feature List */}
+              <ul className="mt-5 space-y-2.5">
+                {pkg.features.map((feat, i) => (
+                  <li key={i} className="flex items-start gap-2 text-xs text-slate-700 leading-normal">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                    <span>{feat}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-          );
-        })}
+
+            {/* Select Button */}
+            <div className="mt-6 pt-4 border-t border-slate-100">
+              <button
+                type="button"
+                className={`w-full py-2.5 px-4 rounded-xl text-xs font-bold transition-all ${
+                  selectedService === pkg.id
+                    ? 'bg-blue-600 text-white shadow-md'
+                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                }`}
+              >
+                {selectedService === pkg.id ? 'Selected' : 'Select Package'}
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
 
-      {/* Booking Form & Immediate Direct Contact */}
-      <div className="bg-slate-900 text-white rounded-3xl p-6 sm:p-12 shadow-2xl relative overflow-hidden mb-12">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
-        
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 relative z-10">
+      {/* Booking & Instant Contact Hub */}
+      <div className="bg-gradient-to-tr from-slate-900 via-slate-800 to-indigo-950 rounded-3xl p-6 sm:p-10 text-white shadow-2xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           
-          {/* Left info */}
+          {/* Left Info */}
           <div className="space-y-6">
-            <div className="inline-flex items-center gap-2 bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-xs font-semibold">
-              <PhoneCall className="w-3.5 h-3.5" />
-              Direct Personal Care
+            <div>
+              <span className="text-xs font-bold uppercase tracking-wider text-emerald-400 bg-emerald-950/60 border border-emerald-800/80 px-3 py-1 rounded-full">
+                Guaranteed Quality & Care
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-3">
+                Ready to Start? Talk to Us Instantly
+              </h2>
+              <p className="text-sm text-slate-300 mt-2 leading-relaxed">
+                You will be connected directly with our lead US career specialist. We provide complete transparent guidance with zero false promises.
+              </p>
             </div>
-
-            <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
-              Ready to Upgrade Your Career? Talk with Us Right Now
-            </h2>
-
-            <p className="text-sm text-slate-300 leading-relaxed">
-              Have questions or want to discuss your background before making any payment? Message us directly on our official WhatsApp or Facebook Messenger. We respond promptly.
-            </p>
 
             {/* Direct Quick Action Buttons */}
             <div className="space-y-3 pt-2">
@@ -282,17 +262,16 @@ export default function ServicesPage() {
               </a>
             </div>
 
-            {/* Flexible Payment Badges */}
+            {/* Flexible Global Payment Badges */}
             <div className="pt-4 border-t border-slate-800">
               <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider block mb-2">
-                Accepted Payment Methods (Domestic & International)
+                Accepted Payment Methods (100% Secure in USD)
               </span>
               <div className="flex items-center gap-2 flex-wrap text-xs text-slate-300">
-                <span className="bg-slate-800 border border-slate-700 px-2.5 py-1 rounded-md">bKash / Nagad / Rocket</span>
-                <span className="bg-slate-800 border border-slate-700 px-2.5 py-1 rounded-md">Bank Transfer</span>
-                <span className="bg-slate-800 border border-slate-700 px-2.5 py-1 rounded-md">Wise / Remitly</span>
-                <span className="bg-slate-800 border border-slate-700 px-2.5 py-1 rounded-md">Debit / Credit Cards</span>
+                <span className="bg-slate-800 border border-slate-700 px-2.5 py-1 rounded-md">International Credit / Debit Cards</span>
+                <span className="bg-slate-800 border border-slate-700 px-2.5 py-1 rounded-md">Wise / Wire Transfer</span>
                 <span className="bg-slate-800 border border-slate-700 px-2.5 py-1 rounded-md">PayPal</span>
+                <span className="bg-slate-800 border border-slate-700 px-2.5 py-1 rounded-md">Payoneer / Direct Transfer</span>
               </div>
             </div>
           </div>
@@ -303,7 +282,7 @@ export default function ServicesPage() {
               Book Your Consultation
             </h3>
             <p className="text-xs text-slate-500 mb-5">
-              Selected: <strong className="text-blue-600">{selectedPkg.title}</strong> (${selectedPkg.priceUSD})
+              Selected: <strong className="text-blue-600">{selectedPkg.title}</strong> (${selectedPkg.priceUSD} USD)
             </p>
 
             <form onSubmit={handleSubmitInquiry} className="space-y-4">
@@ -331,7 +310,7 @@ export default function ServicesPage() {
                     required
                     value={whatsapp}
                     onChange={(e) => setWhatsapp(e.target.value)}
-                    placeholder="+880..."
+                    placeholder="+123..."
                     className="w-full text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
@@ -366,6 +345,7 @@ export default function ServicesPage() {
                     <option value="Healthcare & Nursing">Healthcare & Nursing</option>
                     <option value="Business & Finance">Business & Finance</option>
                     <option value="Engineering">Engineering</option>
+                    <option value="Customer Support / VA">Customer Support / Virtual Assistant</option>
                     <option value="Remote / Other">General Remote / Other</option>
                   </select>
                 </div>
@@ -378,7 +358,7 @@ export default function ServicesPage() {
                     type="text"
                     value={currentCountry}
                     onChange={(e) => setCurrentCountry(e.target.value)}
-                    placeholder="e.g. Bangladesh, India, UK..."
+                    placeholder="e.g. India, Philippines, UK, Nigeria..."
                     className="w-full text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
@@ -392,21 +372,21 @@ export default function ServicesPage() {
                   rows={3}
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
-                  placeholder="e.g. I need my resume tailored for US software roles and guidance on Cap-Exempt jobs..."
-                  className="w-full text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Share details about your target job, years of experience, or current questions..."
+                  className="w-full text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full py-3.5 text-sm font-bold bg-blue-600 hover:bg-blue-700 text-white rounded-xl shadow-md transition-all flex items-center justify-center gap-2"
+                className="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold text-sm shadow-lg transition-all flex items-center justify-center gap-2"
               >
-                <MessageCircle className="w-4 h-4" />
-                Submit & Open WhatsApp Discussion
+                <span>Continue on WhatsApp (${selectedPkg.priceUSD} USD)</span>
+                <ArrowRight className="w-4 h-4" />
               </button>
 
-              <p className="text-[11px] text-slate-400 text-center">
-                🔒 Your personal information is kept strictly confidential.
+              <p className="text-[11px] text-center text-slate-400">
+                🔒 100% confidential. No spam. You will talk directly to our lead career specialist.
               </p>
             </form>
           </div>
