@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -22,6 +23,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full">
+      <head>
+        {/* Google Analytics 4 (GA4) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-NF718Z8KTR"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-NF718Z8KTR');
+          `}
+        </Script>
+      </head>
       <body className="flex flex-col min-h-screen bg-slate-50 text-slate-900 antialiased">
         <Navbar />
         <main className="flex-grow">
