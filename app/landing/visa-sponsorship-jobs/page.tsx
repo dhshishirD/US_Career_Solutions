@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 };
 
 export default function VisaSponsorshipJobsLandingPage() {
-  const visaJobs = INITIAL_JOBS.filter(j => j.visaSponsorship !== 'None');
+  const visaJobs = INITIAL_JOBS.filter(j => j.visaSponsorship === 'H-1B Sponsor' || j.visaSponsorship === 'Cap-Exempt H-1B' || j.visaSponsorship === 'OPT/CPT Friendly');
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
