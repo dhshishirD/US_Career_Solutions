@@ -54,6 +54,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.uscareersolutions.online",
   },
+  verification: {
+    google: "3K6llDWiEFsE-NW3c8pYbydTDIcnIw74WfKJ88pU4Sg",
+  },
 };
 
 export const viewport: Viewport = {
