@@ -1,6 +1,5 @@
-import { JobPosting } from './types';
-import { ScholarshipProgram, SCHOLARSHIPS_DATA } from './scholarships-data';
-import { SAMPLE_JOBS } from './jobs-data';
+import { INITIAL_JOBS } from './jobs-data';
+import { USA_SCHOLARSHIPS } from './scholarships-data';
 
 export interface SocialSlot {
   slotId: string;
@@ -13,9 +12,9 @@ export interface SocialSlot {
 }
 
 export function generateDailySocialSlots(): SocialSlot[] {
-  const job1 = SAMPLE_JOBS[0]; // Customer Support
-  const job2 = SAMPLE_JOBS[1]; // AI Annotator
-  const scholarship = SCHOLARSHIPS_DATA[0]; // Stanford / Purdue
+  const job1 = INITIAL_JOBS[0]; // Customer Support
+  const job2 = INITIAL_JOBS[1]; // AI Annotator
+  const scholarship = USA_SCHOLARSHIPS[0]; // Stanford
 
   return [
     {
@@ -46,22 +45,21 @@ Looking for an international work-from-home job paid in USD? Top US company ${jo
       slotId: 'slot-midday',
       timeLabel: '☀️ Midday Spotlight (02:00 PM)',
       theme: 'Midday Scholarship Spotlight',
-      title: `${scholarship.university} — ${scholarship.programName}`,
+      title: `${scholarship.university} — ${scholarship.name}`,
       copyText: `🎓 STUDY IN THE USA — 100% FULLY FUNDED SCHOLARSHIP SPOTLIGHT! 🇺🇸✨
 
 Did you know US universities provide full tuition waivers plus a monthly living salary for international Master's & PhD students?
 
 🏛️ University: ${scholarship.university}
-🏆 Program: ${scholarship.programName}
+🏆 Program: ${scholarship.name}
 💰 Funding Breakdown:
 • 100% Full Tuition Waiver ($0 Tuition!)
-• ${scholarship.stipendMonthlyUSD} Monthly Living Paycheck (${scholarship.stipendAnnualUSD}/year)
+• ${scholarship.stipendAmount || '$30,000 - $45,000 / year'} Living Stipend
 • Comprehensive Health Insurance Included
 
 📋 Requirements & Deadlines:
 • Degree Level: ${scholarship.degreeLevel}
-• Minimum GPA: ${scholarship.minGPA} | IELTS/TOEFL Accepted
-• Deadline: ${scholarship.deadlineText}
+• Deadline: ${scholarship.deadline}
 
 👉 View Full Details & Professor Outreach Guidelines:
 🔗 https://www.uscareersolutions.online/scholarships
