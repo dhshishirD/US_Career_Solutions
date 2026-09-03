@@ -24,19 +24,20 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <head>
-        {/* Google Analytics 4 (GA4) */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-NF718Z8KTR"
-          strategy="afterInteractive"
+        {/* Google tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-NF718Z8KTR"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-NF718Z8KTR', {
+                page_path: window.location.pathname,
+              });
+            `,
+          }}
         />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-NF718Z8KTR');
-          `}
-        </Script>
       </head>
       <body className="flex flex-col min-h-screen bg-slate-50 text-slate-900 antialiased">
         <Navbar />
