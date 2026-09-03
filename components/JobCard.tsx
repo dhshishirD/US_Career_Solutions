@@ -17,8 +17,10 @@ import {
   ChevronDown,
   ChevronUp,
   Lightbulb,
-  Send,
-  ShieldAlert
+  Share2,
+  Copy,
+  Check,
+  X
 } from 'lucide-react';
 import { JobPosting, VisaSponsorshipType } from '@/lib/types';
 
@@ -31,6 +33,8 @@ interface JobCardProps {
 export default function JobCard({ job, onSaveToggle, isInitiallySaved = false }: JobCardProps) {
   const [saved, setSaved] = useState(isInitiallySaved);
   const [showPlaybook, setShowPlaybook] = useState(false);
+  const [showShareModal, setShowShareModal] = useState(false);
+  const [copiedLink, setCopiedLink] = useState(false);
 
   const toggleSave = () => {
     const nextState = !saved;
@@ -47,7 +51,7 @@ export default function JobCard({ job, onSaveToggle, isInitiallySaved = false }:
             jobTitle: job.title,
             company: job.company,
             status: 'Saved',
-            salary: job.salaryMin ? `$${job.salaryMin.toLocaleString()} - $${job.salaryMax?.toLocaleString()}` : 'Competitive USD',
+            salary: job.salaryMin ? `$${job.salaryMin.toLocaleString()} - $${job.salaryMax?.toLocaleString()} USD/yr` : 'Competitive USD',
             notes: `Source: ${job.location}`,
             updatedAt: new Date().toISOString()
           });
@@ -112,10 +116,19 @@ export default function JobCard({ job, onSaveToggle, isInitiallySaved = false }:
     return `${days}d ago`;
   };
 
+  const shareUrl = `https://www.uscareersolutions.online/jobs`;
+  const shareText = `🔥 Check out this US Job: ${job.title} at ${job.company} (${job.salaryMin ? `$${job.salaryMin.toLocaleString()}/yr` : 'Competitive USD'}) — Apply on US Career Solutions:`;
+
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(`${shareText} ${shareUrl}`);
+    setCopiedLink(true);
+    setTimeout(() => setCopiedLink(false), 2000);
+  };
+
   return (
-    <div className="bg-white rounded-2xl border border-slate-200 p-5 hover:border-blue-400 hover:shadow-lg transition-all duration-200 flex flex-col justify-between">
+    <div className="bg-white rounded-2xl border border-slate-200 p-5 hover:border-blue-400 hover:shadow-lg transition-all duration-200 flex flex-col justify-between relative">
       <div>
-        {/* Top bar: Category + Time + Bookmark */}
+        {/* Top bar: Category + Time + Share + Bookmark */}
         <div className="flex items-center justify-between gap-2 mb-3">
           <div className="flex items-center gap-2 flex-wrap">
             <span className="text-xs font-semibold bg-slate-100 text-slate-700 px-2.5 py-0.5 rounded-md">
@@ -128,11 +141,23 @@ export default function JobCard({ job, onSaveToggle, isInitiallySaved = false }:
               </span>
             )}
           </div>
-          <div className="flex items-center gap-2">
-            <span className="text-xs text-slate-400 flex items-center gap-1">
+
+          <div className="flex items-center gap-1.5">
+            <span className="text-xs text-slate-400 flex items-center gap-1 mr-1">
               <Clock className="w-3 h-3" />
               {timeAgo(job.postedDate)}
             </span>
+
+            {/* Share Button */}
+            <button
+              onClick={() => setShowShareModal(!showShareModal)}
+              className="p-1.5 rounded-lg text-slate-400 hover:text-blue-600 hover:bg-blue-50 transition-colors"
+              title="Share job on social media"
+            >
+              <Share2 className="w-4 h-4" />
+            </button>
+
+            {/* Bookmark Tracker Button */}
             <button
               onClick={toggleSave}
               className="p-1.5 rounded-lg text-slate-400 hover:text-blue-600 hover:bg-slate-50 transition-colors"
@@ -146,6 +171,49 @@ export default function JobCard({ job, onSaveToggle, isInitiallySaved = false }:
             </button>
           </div>
         </div>
+
+        {/* Share Dropdown Box */}
+        {showShareModal && (
+          <div className="mb-3 p-3 bg-slate-900 text-white rounded-xl shadow-xl flex items-center justify-between gap-3 text-xs animate-in fade-in duration-200">
+            <span className="font-bold text-slate-300">Share Job:</span>
+            <div className="flex items-center gap-2">
+              <a
+                href={`https://api.whatsapp.com/send?text=${encodeURIComponent(`${shareText} ${shareUrl}`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-2.5 py-1 rounded bg-emerald-600 hover:bg-emerald-500 font-bold text-white transition-colors"
+              >
+                WhatsApp
+              </a>
+              <a
+                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-2.5 py-1 rounded bg-blue-600 hover:bg-blue-500 font-bold text-white transition-colors"
+              >
+                Facebook
+              </a>
+              <a
+                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-2.5 py-1 rounded bg-sky-700 hover:bg-sky-600 font-bold text-white transition-colors"
+              >
+                LinkedIn
+              </a>
+              <button
+                onClick={handleCopyLink}
+                className="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 font-bold text-slate-200 flex items-center gap-1 border border-slate-700"
+              >
+                {copiedLink ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+                <span>{copiedLink ? 'Copied!' : 'Copy'}</span>
+              </button>
+            </div>
+            <button onClick={() => setShowShareModal(false)} className="text-slate-400 hover:text-white">
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+        )}
 
         {/* Title and Company */}
         <h3 className="text-base sm:text-lg font-bold text-slate-900 leading-snug hover:text-blue-600 transition-colors">
