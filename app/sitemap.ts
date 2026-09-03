@@ -15,6 +15,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/jobs`,
       lastModified: currentDate,
       changeFrequency: 'daily',
+      priority: 0.95,
+    },
+    {
+      url: `${baseUrl}/landing/us-remote-jobs-w8ben`,
+      lastModified: currentDate,
+      changeFrequency: 'daily',
+      priority: 0.95,
+    },
+    {
+      url: `${baseUrl}/landing/visa-sponsorship-jobs`,
+      lastModified: currentDate,
+      changeFrequency: 'daily',
+      priority: 0.95,
+    },
+    {
+      url: `${baseUrl}/compare/jobscan-alternative`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
@@ -51,7 +69,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/tools/ats-scanner`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.85,
     },
     {
       url: `${baseUrl}/tools/visa-checker`,
