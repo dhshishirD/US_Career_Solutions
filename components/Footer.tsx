@@ -123,6 +123,9 @@ export default function Footer() {
             <Link href="/terms" className="text-slate-400 hover:text-white underline transition-colors">
               Terms of Service
             </Link>
+            <Link href="/admin" className="text-slate-500 hover:text-slate-300 transition-colors">
+              🔒 Admin Access
+            </Link>
           </div>
           <div className="flex items-center gap-1 text-slate-400">
             Built with <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500 mx-1" /> for your followers & community.

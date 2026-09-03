@@ -101,13 +101,20 @@ export default function Navbar() {
 
           {/* Header Actions */}
           <div className="hidden lg:flex items-center gap-2.5">
+            <Link
+              href="/account"
+              className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 transition-colors"
+            >
+              <Users className="w-3.5 h-3.5 text-blue-600" />
+              My Account
+            </Link>
             <a
               href="https://wa.me/8801981505761?text=Hi%20Jobs%20in%20USA%2C%20I%20need%20help%20with%20my%20US%20career"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-300 transition-colors"
             >
-              WhatsApp Us
+              WhatsApp
             </a>
             <Link
               href="/talent"
