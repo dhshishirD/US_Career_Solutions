@@ -22,14 +22,21 @@ import {
   Eye,
   Globe2,
   Bookmark,
-  FileText
+  FileText,
+  Share2,
+  Copy,
+  Check,
+  Send,
+  Calendar,
+  Clock
 } from 'lucide-react';
 import { verifyAdminPasscode, isAdminAuthenticated, setAdminSession } from '@/lib/admin-auth';
 import { INITIAL_TALENT, CandidatePitch } from '@/lib/talent-data';
+import { generateDailySocialSlots, SocialSlot } from '@/lib/social-post-generator';
 
 interface ActivityLog {
   id: string;
-  type: 'ats_scan' | 'job_saved' | 'pitch_created' | 'scholarship_view' | 'consultation_inquiry';
+  type: 'ats_scan' | 'job_saved' | 'pitch_created' | 'scholarship_view' | 'consultation_inquiry' | 'social_posted';
   text: string;
   timeAgo: string;
   ipLocation: string;
@@ -80,14 +87,30 @@ export default function AdminPage() {
   const [isSyncing, setIsSyncing] = useState(false);
   const [syncStatus, setSyncStatus] = useState<string | null>(null);
 
+  // Social Studio States
+  const [socialSlots, setSocialSlots] = useState<SocialSlot[]>([]);
+  const [copiedSlotId, setCopiedSlotId] = useState<string | null>(null);
+  const [publishedSlots, setPublishedSlots] = useState<Record<string, boolean>>({});
+
   // Data states
   const [talentList, setTalentList] = useState<CandidatePitch[]>(INITIAL_TALENT);
-  const [activeTab, setActiveTab] = useState<'activity' | 'sync' | 'talent' | 'leads'>('activity');
+  const [activeTab, setActiveTab] = useState<'social' | 'activity' | 'sync' | 'talent' | 'leads'>('social');
   const [activities, setActivities] = useState<ActivityLog[]>(SAMPLE_LIVE_ACTIVITIES);
 
   useEffect(() => {
     if (isAdminAuthenticated()) {
       setIsAuthenticated(true);
+    }
+    setSocialSlots(generateDailySocialSlots());
+
+    // Load published slots from localStorage
+    try {
+      const saved = localStorage.getItem('fb_published_slots_today');
+      if (saved) {
+        setPublishedSlots(JSON.parse(saved));
+      }
+    } catch (e) {
+      console.error(e);
     }
   }, []);
 
@@ -107,6 +130,41 @@ export default function AdminPage() {
     setIsAuthenticated(false);
     setPasscode('');
   };
+
+  const handleCopySlot = (id: string, text: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedSlotId(id);
+    setTimeout(() => setCopiedSlotId(null), 2000);
+  };
+
+  const handlePostToFacebook = (slot: SocialSlot) => {
+    // Copy text automatically
+    navigator.clipboard.writeText(slot.copyText);
+    
+    // Mark as published
+    const nextPublished = { ...publishedSlots, [slot.slotId]: true };
+    setPublishedSlots(nextPublished);
+    try {
+      localStorage.setItem('fb_published_slots_today', JSON.stringify(nextPublished));
+    } catch (e) {
+      console.error(e);
+    }
+
+    // Add to activity stream
+    const newAct: ActivityLog = {
+      id: `act-soc-${Date.now()}`,
+      type: 'social_posted',
+      text: `Published Facebook broadcast: "${slot.title}" (${slot.theme})`,
+      timeAgo: 'Just now',
+      ipLocation: 'Admin Console'
+    };
+    setActivities(prev => [newAct, ...prev]);
+
+    // Open Facebook Page Creator in new tab
+    window.open('https://www.facebook.com/profile.php?id=61573335766965', '_blank');
+  };
+
+  const publishedCount = Object.values(publishedSlots).filter(Boolean).length;
 
   const handleTriggerLiveSync = async () => {
     setIsSyncing(true);
@@ -207,11 +265,11 @@ export default function AdminPage() {
                   Owner Command Center
                 </h1>
                 <span className="text-[10px] font-bold bg-blue-950 border border-blue-700 text-blue-300 px-2 py-0.5 rounded-full uppercase">
-                  Live Monitor
+                  Live Social Studio
                 </span>
               </div>
               <p className="text-xs text-slate-400 mt-1">
-                Real-time traffic, activity stream, job syncs, and candidate pitches for <strong>uscareersolutions.online</strong>
+                Auto-broadcast scheduled drops to <strong>Jobs in USA</strong> Facebook page and monitor traffic on <strong>uscareersolutions.online</strong>
               </p>
             </div>
 
@@ -222,14 +280,16 @@ export default function AdminPage() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 text-xs font-bold px-3.5 py-2 rounded-xl bg-amber-500/20 text-amber-300 hover:bg-amber-500/30 border border-amber-500/40 transition-colors"
               >
-                <TrendingUp className="w-3.5 h-3.5" /> Open Google Analytics (GA4)
+                <TrendingUp className="w-3.5 h-3.5" /> GA4 Realtime
               </a>
-              <Link
-                href="/"
-                className="inline-flex items-center gap-1.5 text-xs font-bold px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 transition-colors"
+              <a
+                href="https://www.facebook.com/profile.php?id=61573335766965"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-bold px-3.5 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white transition-colors"
               >
-                <ExternalLink className="w-3.5 h-3.5" /> View Live Site
-              </Link>
+                <Share2 className="w-3.5 h-3.5" /> Open FB Page
+              </a>
               <button
                 onClick={handleLogout}
                 className="inline-flex items-center gap-1.5 text-xs font-bold px-3.5 py-2 rounded-xl bg-red-950/80 hover:bg-red-900 text-red-300 border border-red-800 transition-colors"
@@ -239,29 +299,29 @@ export default function AdminPage() {
             </div>
           </div>
 
-          {/* Real-Time Live Activity & Stats Overview */}
+          {/* Real-Time Stats Overview */}
           <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
             <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-slate-500 uppercase">Live Real-Time Viewers</span>
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping" />
+                <span className="text-xs font-bold text-slate-500 uppercase">Facebook Drops Today</span>
+                <Share2 className="w-4 h-4 text-blue-600" />
               </div>
-              <div className="text-2xl font-black text-emerald-600 mt-2">Active Now</div>
-              <span className="text-[11px] text-slate-500 font-medium">Tracking via GA4 tag G-NF718Z8KTR</span>
+              <div className="text-2xl font-black text-blue-600 mt-2">{publishedCount} of 3 Done</div>
+              <span className="text-[11px] text-slate-500 font-medium">Circular schedule active</span>
             </div>
 
             <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold text-slate-500 uppercase">Total Active Jobs</span>
-                <Briefcase className="w-4 h-4 text-blue-600" />
+                <Briefcase className="w-4 h-4 text-emerald-600" />
               </div>
               <div className="text-2xl font-black text-slate-900 mt-2">21+ Positions</div>
-              <span className="text-[11px] text-emerald-600 font-semibold">13 Fresh jobs synced today</span>
+              <span className="text-[11px] text-emerald-600 font-semibold">13 Synced today</span>
             </div>
 
             <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-slate-500 uppercase">Candidate Pitches</span>
+                <span className="text-xs font-bold text-slate-500 uppercase">Talent Pitches</span>
                 <Users className="w-4 h-4 text-indigo-600" />
               </div>
               <div className="text-2xl font-black text-slate-900 mt-2">{talentList.length} Candidates</div>
@@ -281,6 +341,7 @@ export default function AdminPage() {
           {/* Navigation Tabs */}
           <div className="flex items-center gap-2 border-b border-slate-200 pb-3 overflow-x-auto">
             {[
+              { id: 'social', label: `📱 Facebook Social Studio (${publishedCount}/3 Done)`, icon: Share2 },
               { id: 'activity', label: '⚡ Live Activity Feed & Traffic', icon: Activity },
               { id: 'sync', label: '🔄 Ingestion & Sync Engine', icon: RefreshCw },
               { id: 'talent', label: `👥 Moderate Talent Pitches (${talentList.length})`, icon: Users },
@@ -291,7 +352,7 @@ export default function AdminPage() {
                 onClick={() => setActiveTab(tab.id as any)}
                 className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all whitespace-nowrap ${
                   activeTab === tab.id
-                    ? 'bg-slate-900 text-white shadow-sm'
+                    ? 'bg-blue-600 text-white shadow-sm'
                     : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
                 }`}
               >
@@ -300,7 +361,122 @@ export default function AdminPage() {
             ))}
           </div>
 
-          {/* TAB 1: Live Activity Feed */}
+          {/* TAB 1: Facebook Social Broadcast Studio */}
+          {activeTab === 'social' && (
+            <div className="space-y-6">
+              
+              {/* Daily Publishing Progress Banner */}
+              <div className="bg-gradient-to-r from-blue-900 via-indigo-950 to-slate-900 text-white rounded-2xl p-6 shadow-md flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-bold uppercase tracking-wider text-blue-300 bg-blue-900/80 px-2.5 py-0.5 rounded-full">
+                      Daily Circular Posting Engine
+                    </span>
+                    <span className="text-xs font-semibold text-emerald-400">
+                      {publishedCount >= 3 ? '🎉 All 3 Drops Completed Today!' : `${3 - publishedCount} Drops Remaining`}
+                    </span>
+                  </div>
+                  <h3 className="text-xl font-bold text-white mt-1.5">
+                    Jobs in USA Facebook Broadcast Schedule
+                  </h3>
+                  <p className="text-xs text-slate-300 mt-1 max-w-xl">
+                    Follow the 3 daily slots below to maintain high Facebook reach, drive hundreds of daily visitors to <strong>uscareersolutions.online</strong>, and convert consultation leads!
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <a
+                    href="https://www.facebook.com/profile.php?id=61573335766965"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-blue-950 font-bold text-xs shadow-md hover:bg-slate-100 transition-all"
+                  >
+                    <Share2 className="w-4 h-4 text-blue-600" />
+                    Open Jobs in USA Page
+                  </a>
+                </div>
+              </div>
+
+              {/* 3 Circular Daily Slots Grid */}
+              <div className="grid grid-cols-1 gap-6">
+                {socialSlots.map((slot) => {
+                  const isDone = publishedSlots[slot.slotId];
+                  return (
+                    <div
+                      key={slot.slotId}
+                      className={`bg-white rounded-2xl border transition-all p-6 shadow-sm ${
+                        isDone ? 'border-emerald-300 bg-emerald-50/20' : 'border-slate-200 hover:border-blue-300'
+                      }`}
+                    >
+                      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 mb-4 border-b border-slate-100">
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs font-bold text-slate-800 bg-slate-100 px-2.5 py-0.5 rounded-md border border-slate-200">
+                              {slot.timeLabel}
+                            </span>
+                            <span className="text-[11px] font-bold text-indigo-700 bg-indigo-50 px-2.5 py-0.5 rounded-full border border-indigo-200">
+                              {slot.theme}
+                            </span>
+                            {isDone && (
+                              <span className="text-[11px] font-bold text-emerald-700 bg-emerald-100 px-2.5 py-0.5 rounded-full flex items-center gap-1">
+                                <CheckCircle2 className="w-3.5 h-3.5" /> Published Today
+                              </span>
+                            )}
+                          </div>
+                          <h4 className="text-base font-bold text-slate-900 mt-2">
+                            {slot.title}
+                          </h4>
+                        </div>
+
+                        {/* Action Buttons */}
+                        <div className="flex items-center gap-2 shrink-0">
+                          <button
+                            type="button"
+                            onClick={() => handleCopySlot(slot.slotId, slot.copyText)}
+                            className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition-colors"
+                          >
+                            {copiedSlotId === slot.slotId ? (
+                              <>
+                                <Check className="w-3.5 h-3.5 text-emerald-600" />
+                                <span className="text-emerald-700">Copied!</span>
+                              </>
+                            ) : (
+                              <>
+                                <Copy className="w-3.5 h-3.5" />
+                                <span>Copy Caption</span>
+                              </>
+                            )}
+                          </button>
+
+                          <button
+                            type="button"
+                            onClick={() => handlePostToFacebook(slot)}
+                            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-sm transition-all"
+                          >
+                            <Send className="w-3.5 h-3.5" />
+                            <span>Post to Facebook Page Now</span>
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Ready-to-Post Copy Preview */}
+                      <div className="bg-slate-900 text-slate-200 rounded-xl p-4 font-mono text-xs whitespace-pre-wrap leading-relaxed border border-slate-800">
+                        {slot.copyText}
+                      </div>
+
+                      <div className="mt-3 flex items-center justify-between text-xs text-slate-500">
+                        <span>Direct Link included: <strong className="text-blue-600">{slot.directUrl}</strong></span>
+                        <span className="text-[11px]">Clicking "Post" automatically copies text & opens your Facebook page!</span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+            </div>
+          )}
+
+          {/* TAB 2: Live Activity Feed */}
           {activeTab === 'activity' && (
             <div className="space-y-6">
               
@@ -315,7 +491,7 @@ export default function AdminPage() {
                 <div className="bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-200 rounded-2xl p-5">
                   <div className="text-xs font-bold text-emerald-900 uppercase">Top Traffic Source #2</div>
                   <div className="text-lg font-black text-slate-900 mt-1">Google Organic Search</div>
-                  <p className="text-xs text-emerald-800 mt-1">Googlebot indexing 22 active pages from sitemap.xml.</p>
+                  <p className="text-xs text-emerald-800 mt-1">Googlebot indexing 24 active pages from sitemap.xml.</p>
                 </div>
 
                 <div className="bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-200 rounded-2xl p-5">
@@ -346,12 +522,14 @@ export default function AdminPage() {
                           act.type === 'job_saved' ? 'bg-blue-50 text-blue-600' :
                           act.type === 'scholarship_view' ? 'bg-purple-50 text-purple-600' :
                           act.type === 'pitch_created' ? 'bg-indigo-50 text-indigo-600' :
+                          act.type === 'social_posted' ? 'bg-blue-50 text-blue-600' :
                           'bg-emerald-50 text-emerald-600'
                         }`}>
                           {act.type === 'ats_scan' && <Sparkles className="w-4 h-4" />}
                           {act.type === 'job_saved' && <Bookmark className="w-4 h-4" />}
                           {act.type === 'scholarship_view' && <FileText className="w-4 h-4" />}
                           {act.type === 'pitch_created' && <Users className="w-4 h-4" />}
+                          {act.type === 'social_posted' && <Share2 className="w-4 h-4" />}
                           {act.type === 'consultation_inquiry' && <MessageCircle className="w-4 h-4" />}
                         </div>
                         <div>
@@ -377,7 +555,7 @@ export default function AdminPage() {
             </div>
           )}
 
-          {/* TAB 2: Ingestion Engine */}
+          {/* TAB 3: Ingestion Engine */}
           {activeTab === 'sync' && (
             <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 space-y-6">
               <div>
@@ -414,7 +592,7 @@ export default function AdminPage() {
             </div>
           )}
 
-          {/* TAB 3: Talent Pitch Moderation */}
+          {/* TAB 4: Talent Pitch Moderation */}
           {activeTab === 'talent' && (
             <div className="space-y-4">
               <h3 className="text-lg font-bold text-slate-900">
@@ -466,7 +644,7 @@ export default function AdminPage() {
             </div>
           )}
 
-          {/* TAB 4: Leads */}
+          {/* TAB 5: Leads */}
           {activeTab === 'leads' && (
             <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 space-y-4">
               <h3 className="text-lg font-bold text-slate-900">
