@@ -13,7 +13,12 @@ import {
   BookmarkCheck,
   CheckCircle2,
   ShieldCheck,
-  Globe2
+  Globe2,
+  ChevronDown,
+  ChevronUp,
+  Lightbulb,
+  Send,
+  ShieldAlert
 } from 'lucide-react';
 import { JobPosting, VisaSponsorshipType } from '@/lib/types';
 
@@ -25,6 +30,7 @@ interface JobCardProps {
 
 export default function JobCard({ job, onSaveToggle, isInitiallySaved = false }: JobCardProps) {
   const [saved, setSaved] = useState(isInitiallySaved);
+  const [showPlaybook, setShowPlaybook] = useState(false);
 
   const toggleSave = () => {
     const nextState = !saved;
@@ -41,7 +47,7 @@ export default function JobCard({ job, onSaveToggle, isInitiallySaved = false }:
             jobTitle: job.title,
             company: job.company,
             status: 'Saved',
-            salary: job.salaryMin ? `$${job.salaryMin.toLocaleString()} - $${job.salaryMax?.toLocaleString()}` : 'Competitive',
+            salary: job.salaryMin ? `$${job.salaryMin.toLocaleString()} - $${job.salaryMax?.toLocaleString()}` : 'Competitive USD',
             notes: `Source: ${job.location}`,
             updatedAt: new Date().toISOString()
           });
@@ -107,18 +113,18 @@ export default function JobCard({ job, onSaveToggle, isInitiallySaved = false }:
   };
 
   return (
-    <div className="bg-white rounded-xl border border-slate-200 p-5 hover:border-blue-400 hover:shadow-md transition-all duration-200 flex flex-col justify-between">
+    <div className="bg-white rounded-2xl border border-slate-200 p-5 hover:border-blue-400 hover:shadow-lg transition-all duration-200 flex flex-col justify-between">
       <div>
         {/* Top bar: Category + Time + Bookmark */}
         <div className="flex items-center justify-between gap-2 mb-3">
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="text-xs font-medium bg-slate-100 text-slate-700 px-2.5 py-0.5 rounded-md">
+            <span className="text-xs font-semibold bg-slate-100 text-slate-700 px-2.5 py-0.5 rounded-md">
               {job.category}
             </span>
             {getSponsorshipBadge(job.visaSponsorship)}
             {job.isRemote && (
-              <span className="text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded-md">
-                Remote
+              <span className="text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded-md">
+                100% Remote
               </span>
             )}
           </div>
@@ -158,7 +164,7 @@ export default function JobCard({ job, onSaveToggle, isInitiallySaved = false }:
           {job.salaryMin && (
             <span className="flex items-center gap-0.5 text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded">
               <DollarSign className="w-3.5 h-3.5" />
-              {job.salaryMin.toLocaleString()} - ${job.salaryMax?.toLocaleString()} /yr
+              ${job.salaryMin.toLocaleString()} - ${job.salaryMax?.toLocaleString()} USD/yr
             </span>
           )}
         </div>
@@ -186,6 +192,44 @@ export default function JobCard({ job, onSaveToggle, isInitiallySaved = false }:
             )}
           </div>
         )}
+
+        {/* Expandable How-to-Apply Playbook */}
+        <div className="mt-4 pt-3 border-t border-slate-100">
+          <button
+            type="button"
+            onClick={() => setShowPlaybook(!showPlaybook)}
+            className="flex items-center justify-between w-full text-xs font-bold text-slate-700 hover:text-blue-600 py-1"
+          >
+            <span className="flex items-center gap-1.5">
+              <Lightbulb className="w-3.5 h-3.5 text-amber-500" />
+              How to Apply & Win This Job (Success Checklist)
+            </span>
+            {showPlaybook ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+          </button>
+
+          {showPlaybook && (
+            <div className="mt-2.5 p-3.5 bg-slate-50 rounded-xl border border-slate-200 text-xs space-y-2.5">
+              <div className="flex items-start gap-2">
+                <span className="w-5 h-5 rounded-full bg-blue-100 text-blue-800 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">1</span>
+                <div>
+                  <strong>ATS Resume Match:</strong> Inject keywords: <span className="text-blue-600 font-semibold">{job.skills.slice(0, 3).join(', ')}</span>. Use our free AI scanner below.
+                </div>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="w-5 h-5 rounded-full bg-indigo-100 text-indigo-800 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">2</span>
+                <div>
+                  <strong>Cover Letter Tip:</strong> Highlight your experience in asynchronous communication and handling high-impact tasks independently.
+                </div>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">3</span>
+                <div>
+                  <strong>Direct Recruiter Reachout:</strong> Send a 3-line note to {job.company}'s hiring manager on LinkedIn immediately after submitting.
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Action footer */}
@@ -195,7 +239,7 @@ export default function JobCard({ job, onSaveToggle, isInitiallySaved = false }:
           className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 px-3 py-2 rounded-lg transition-colors"
         >
           <Sparkles className="w-3.5 h-3.5 text-indigo-600" />
-          Tailor Resume For This
+          Tailor Resume (Free)
         </Link>
 
         <a

@@ -86,7 +86,21 @@ export default function Footer() {
             <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-3">
               Career Care Tools
             </h4>
-            <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="/talent" className="text-blue-400 font-bold hover:text-blue-300 transition-colors">
+                  👥 Talent Showcase Board
+                </Link>
+              </li>
+              <li>
+                <Link href="/learn" className="text-indigo-400 font-bold hover:text-indigo-300 transition-colors">
+                  🎯 Interview Prep Academy (STAR)
+                </Link>
+              </li>
+              <li>
+                <Link href="/recruiters" className="text-slate-300 hover:text-white transition-colors">
+                  🏢 For Employers & Recruiters
+                </Link>
+              </li>
               <li>
                 <Link href="/services" className="text-emerald-400 font-bold hover:text-emerald-300 transition-colors">
                   ★ 1-on-1 Career Consultation
