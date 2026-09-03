@@ -7,22 +7,30 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.uscareersolutions.online"),
   title: {
-    default: "US Career Solutions | Everyday Verified USA Jobs & Visa Radar",
+    default: "Jobs in USA with Visa Sponsorship & US Remote Jobs | US Career Solutions",
     template: "%s | US Career Solutions",
   },
-  description: "Find everyday verified USA jobs with visa sponsorship (H-1B, Cap-Exempt, OPT/CPT, US Remote Contractor), top fully-funded USA university scholarships, AI ATS resume scanner, and 1-on-1 career care.",
+  description: "Explore daily verified jobs in USA with visa sponsorship (H-1B, Cap-Exempt, EB-3), US remote jobs for foreigners (W-8BEN), top 100% fully-funded USA university scholarships, and free AI ATS resume tools.",
   keywords: [
-    "USA Jobs",
-    "Jobs in USA",
-    "USA University Scholarships",
-    "Full Tuition Waiver USA",
-    "Graduate Assistantship GRA GTA",
-    "H1B Visa Sponsor Jobs",
-    "Cap Exempt H1B Jobs",
-    "US Remote Jobs Worldwide",
-    "ATS Resume Tailorer",
-    "OPT CPT Jobs",
-    "US Career Solutions"
+    "jobs in usa with visa sponsorship",
+    "usa jobs with visa sponsorship",
+    "jobs in usa for foreigners",
+    "remote jobs usa",
+    "work from home jobs in usa for foreigners",
+    "online jobs in usa for foreigners",
+    "us remote jobs for foreigners",
+    "h1b visa sponsorship jobs in usa",
+    "eb3 visa sponsorship jobs usa",
+    "data entry jobs in usa",
+    "nursing jobs in usa for foreigners",
+    "caregiver jobs in usa with visa sponsorship",
+    "entry level jobs in usa for foreigners",
+    "free job posting sites in usa",
+    "recruitment agencies in usa for foreigners",
+    "usa university scholarships",
+    "fully funded scholarships in usa",
+    "graduate assistantship usa full tuition waiver",
+    "us career solutions"
   ],
   authors: [{ name: "US Career Solutions", url: "https://www.uscareersolutions.online" }],
   creator: "US Career Solutions",
@@ -43,13 +51,13 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://www.uscareersolutions.online",
     siteName: "US Career Solutions",
-    title: "US Career Solutions | Everyday Verified USA Jobs & Visa Radar",
-    description: "Search daily verified USA jobs, top 100% funded university scholarships, and AI career tools for international candidates.",
+    title: "Jobs in USA with Visa Sponsorship & US Remote Jobs | US Career Solutions",
+    description: "Search daily verified jobs in USA with visa sponsorship, global remote roles, 100% funded USA scholarships, and AI career care tools for international applicants.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "US Career Solutions | Everyday Verified USA Jobs & Visa Radar",
-    description: "Search daily verified USA jobs, top 100% funded university scholarships, and AI career tools for international candidates.",
+    title: "Jobs in USA with Visa Sponsorship & US Remote Jobs | US Career Solutions",
+    description: "Search daily verified jobs in USA with visa sponsorship, global remote roles, 100% funded USA scholarships, and AI career care tools for international applicants.",
   },
   alternates: {
     canonical: "https://www.uscareersolutions.online",
@@ -71,15 +79,37 @@ export default function RootLayout({
 }>) {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "US Career Solutions",
-    "url": "https://www.uscareersolutions.online",
-    "description": "Everyday verified USA jobs, visa sponsorship radar, top US university scholarships, and AI ATS resume tailor care.",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://www.uscareersolutions.online/jobs?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://www.uscareersolutions.online/#website",
+        "url": "https://www.uscareersolutions.online",
+        "name": "US Career Solutions",
+        "description": "Everyday verified jobs in USA with visa sponsorship, US remote jobs for foreigners, top USA university scholarships, and AI ATS resume tailor care.",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://www.uscareersolutions.online/jobs?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://www.uscareersolutions.online/#organization",
+        "name": "US Career Solutions",
+        "url": "https://www.uscareersolutions.online",
+        "logo": "https://www.uscareersolutions.online/favicon.ico",
+        "sameAs": [
+          "https://www.facebook.com/profile.php?id=61573335766965"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+8801981505761",
+          "contactType": "Customer Support & Career Guidance",
+          "areaServed": "Worldwide",
+          "availableLanguage": ["English", "Bengali", "Hindi"]
+        }
+      }
+    ]
   };
 
   return (
