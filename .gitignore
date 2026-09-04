@@ -33,3 +33,23 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local media scripts & secrets
+media/*.json
+media/*.txt
+media/*.wav
+media/*.mp3
+media/*.mp4
+media/old/
+media/pinterest_*.py
+media/test_*.py
+media/setup_*.py
+media/schedule_*.py
+media/facebook_*.py
+media/check_*.py
+media/exchange_*.py
+media/fix_*.py
+media/render_*.py
+media/process_*.py
+media/create_*.py
+media/apply_*.py
