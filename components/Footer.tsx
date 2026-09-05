@@ -59,6 +59,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/guides" className="text-amber-400 font-bold hover:text-amber-300 transition-colors">
+                  📖 Career & Visa Guides (New)
+                </Link>
+              </li>
+              <li>
                 <Link href="/talent" className="text-blue-400 font-bold hover:text-blue-300 transition-colors">
                   👥 Talent Showcase Board
                 </Link>

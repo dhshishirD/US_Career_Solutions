@@ -83,6 +83,14 @@ export default function Navbar() {
             </Link>
 
             <Link 
+              href="/guides" 
+              className="text-xs font-bold text-slate-700 hover:text-blue-600 flex items-center gap-1.5 transition-colors"
+            >
+              <BookOpen className="w-3.5 h-3.5 text-blue-500" />
+              Career Guides
+            </Link>
+
+            <Link 
               href="/tools/ats-scanner" 
               className="text-xs font-bold text-slate-700 hover:text-blue-600 flex items-center gap-1.5 transition-colors"
             >
@@ -180,6 +188,14 @@ export default function Navbar() {
           >
             <Building2 className="w-4 h-4 text-slate-500" />
             For Employers & Recruiters
+          </Link>
+          <Link
+            href="/guides"
+            onClick={() => setMobileMenuOpen(false)}
+            className="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-50 font-medium text-sm"
+          >
+            <BookOpen className="w-4 h-4 text-blue-500" />
+            Career & Visa Intelligence Guides
           </Link>
           <Link
             href="/tools/ats-scanner"
