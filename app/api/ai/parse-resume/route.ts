@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import mammoth from 'mammoth';
+import { extractText as extractPdfText } from 'unpdf';
 
 export async function POST(request: NextRequest) {
   try {
@@ -21,30 +22,45 @@ export async function POST(request: NextRequest) {
         const result = await mammoth.extractRawText({ buffer: fileBuffer });
         extractedText = result.value || '';
       } catch (err) {
-        console.warn('Mammoth docx parse fallback:', err);
-        extractedText = fileBuffer.toString('utf-8').replace(/[^\x20-\x7E\n\r\t]/g, ' ');
+        console.warn('Mammoth docx parse error:', err);
       }
     } else if (lowerName.endsWith('.pdf')) {
       try {
-        // Fallback or lightweight pdf extraction
-        const pdfParse = require('pdf-parse');
-        const data = await pdfParse(fileBuffer);
-        extractedText = data.text || '';
+        // High-precision modern PDF text extraction via unpdf (PDF.js engine)
+        const pdfResult = await extractPdfText(new Uint8Array(fileBuffer));
+        if (pdfResult && pdfResult.text) {
+          if (Array.isArray(pdfResult.text)) {
+            extractedText = pdfResult.text.join('\n');
+          } else {
+            extractedText = String(pdfResult.text);
+          }
+        }
       } catch (err) {
-        console.warn('PDF parse fallback:', err);
-        extractedText = fileBuffer.toString('utf-8').replace(/[^\x20-\x7E\n\r\t]/g, ' ');
+        console.warn('unpdf extraction fallback:', err);
+        try {
+          const pdfParse = require('pdf-parse/lib/pdf-parse.js');
+          const data = await pdfParse(fileBuffer);
+          extractedText = data.text || '';
+        } catch (err2) {
+          console.error('All PDF parsers failed:', err2);
+        }
       }
     } else {
       // Plain text, markdown, rtf
       extractedText = fileBuffer.toString('utf-8');
     }
 
-    // Clean up excessive whitespace
-    extractedText = extractedText.replace(/\r\n/g, '\n').replace(/[ \t]+/g, ' ').trim();
+    // Clean up extracted text: normalize line breaks, remove null bytes and binary artifacts
+    extractedText = extractedText
+      .replace(/\0/g, '')
+      .replace(/\r\n/g, '\n')
+      .replace(/[ \t]+/g, ' ')
+      .trim();
 
-    if (!extractedText || extractedText.length < 10) {
+    // Check if result is empty or contaminated with raw PDF binary headers
+    if (!extractedText || extractedText.length < 15 || extractedText.startsWith('%PDF-')) {
       return NextResponse.json({ 
-        error: 'Unable to extract text from this document. Please ensure the file is not password-protected or copy-paste the text directly.' 
+        error: 'Unable to extract text from this PDF. The PDF may be a scanned image or protected. Please upload a text-based PDF or a .docx file.' 
       }, { status: 422 });
     }
 
