@@ -133,7 +133,7 @@ export default async function GuideDetailPage({ params }: Props) {
 
           {/* Article HTML Content */}
           <div 
-            className="prose prose-slate max-w-none prose-headings:font-black prose-headings:text-slate-900 prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-4 prose-p:text-slate-700 prose-p:leading-relaxed prose-li:text-slate-700"
+            className="guide-article-content max-w-none"
             dangerouslySetInnerHTML={{ __html: guide.contentHtml }}
           />
 

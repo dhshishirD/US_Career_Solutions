@@ -38,3 +38,127 @@ body {
   color: #6b21a8;
   border: 1px solid #e9d5ff;
 }
+
+/* High-Contrast Editorial Guide Article Styling */
+.guide-article-content {
+  color: #1e293b;
+  font-size: 1.0625rem;
+  line-height: 1.8;
+}
+
+.guide-article-content h2 {
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: #0f172a !important;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e2e8f0;
+  scroll-margin-top: 5rem;
+}
+
+.guide-article-content h3 {
+  font-size: 1.3rem;
+  font-weight: 750;
+  color: #1e293b !important;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.guide-article-content p {
+  color: #334155 !important;
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+}
+
+.guide-article-content strong {
+  color: #0f172a !important;
+  font-weight: 700;
+}
+
+.guide-article-content ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #334155;
+}
+
+.guide-article-content ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #334155;
+}
+
+.guide-article-content li {
+  margin-bottom: 0.6rem;
+  line-height: 1.75;
+  color: #334155;
+}
+
+.guide-article-content table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 1.75rem 0;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.06);
+}
+
+.guide-article-content thead tr {
+  background-color: #0f172a !important;
+}
+
+.guide-article-content th {
+  background-color: #0f172a !important;
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.85rem 1rem;
+  text-align: left;
+  border-bottom: 2px solid #334155;
+}
+
+.guide-article-content td {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid #e2e8f0;
+  color: #1e293b !important;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.guide-article-content tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.guide-article-content tbody tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+.guide-article-content blockquote {
+  background-color: #f1f5f9;
+  border-left: 4px solid #2563eb;
+  padding: 1rem 1.25rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+  color: #0f172a !important;
+  font-style: italic;
+  font-size: 1.05rem;
+  margin: 1.5rem 0;
+}
+
+.guide-article-content a {
+  color: #2563eb;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 600;
+}
+
+.guide-article-content a:hover {
+  color: #1d4ed8;
+}

@@ -64,8 +64,8 @@ export const MASTER_GUIDES: GuideArticle[] = [
         <li><strong>Semantic Keyword Matching:</strong> The extracted tokens are compared against the employer's Job Description requirements using TF-IDF and vector similarity algorithms.</li>
       </ul>
 
-      <div style="margin: 24px 0; padding: 20px; background: rgba(16, 185, 129, 0.08); border-left: 4px solid #10b981; border-radius: 8px;">
-        <h4 style="margin-top: 0; color: #10b981;">💡 Core ATS Rule</h4>
+      <div style="margin: 24px 0; padding: 20px; background: #f0fdf4; border: 1px solid #bbf7d0; border-left: 4px solid #10b981; border-radius: 8px;">
+        <h4 style="margin-top: 0; color: #047857; font-weight: 700;">💡 Core ATS Rule</h4>
         <p style="margin-bottom: 0;">If your resume uses double columns, graphics in the header, or custom font icons, the text parser will scramble the reading order, resulting in an immediate 0% match score.</p>
       </div>
 
@@ -82,17 +82,17 @@ export const MASTER_GUIDES: GuideArticle[] = [
         </thead>
         <tbody>
           <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-            <td style="padding: 12px; font-weight: bold; color: #38bdf8;">Workday</td>
+            <td style="padding: 12px; font-weight: bold; color: #0369a1; font-weight: 700;">Workday</td>
             <td style="padding: 12px;">Fortune 500, Healthcare Systems, Large Banks</td>
             <td style="padding: 12px;">Extremely strict. Prefers single-column standard .docx or clean text PDFs. Rejects graphic tables.</td>
           </tr>
           <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-            <td style="padding: 12px; font-weight: bold; color: #10b981;">Greenhouse</td>
+            <td style="padding: 12px; font-weight: bold; color: #047857; font-weight: 700;">Greenhouse</td>
             <td style="padding: 12px;">High-Growth Tech Startups, Unicorns, Remote SaaS</td>
             <td style="padding: 12px;">Modern NLP parser. Focuses heavily on exact skill matches and recent experience titles.</td>
           </tr>
           <tr>
-            <td style="padding: 12px; font-weight: bold; color: #f59e0b;">Lever</td>
+            <td style="padding: 12px; font-weight: bold; color: #b45309; font-weight: 700;">Lever</td>
             <td style="padding: 12px;">Mid-Market Tech, Engineering Consultancies</td>
             <td style="padding: 12px;">Fast resume viewer with automated boolean keyword highlight filters for human recruiters.</td>
           </tr>
@@ -101,7 +101,7 @@ export const MASTER_GUIDES: GuideArticle[] = [
 
       <h2 id="the-xyz-formula">3. The Google XYZ Formula for High-Impact Bullets</h2>
       <p>To pass both automated scoring and human recruiter reviews, every bullet point under your work history must follow Google's proven executive formulation:</p>
-      <blockquote style="font-size: 18px; font-style: italic; color: #38bdf8; border-left: 3px solid #38bdf8; padding-left: 16px; margin: 20px 0;">
+      <blockquote style="font-size: 18px; font-style: italic; color: #0369a1; font-weight: 700; border-left: 3px solid #38bdf8; padding-left: 16px; margin: 20px 0;">
         "Accomplished [X], as measured by [Y], by doing [Z]."
       </blockquote>
 
@@ -175,8 +175,8 @@ export const MASTER_GUIDES: GuideArticle[] = [
       <h2 id="visascreen-requirements">3. VisaScreen Certificate & CGFNS Credentialing</h2>
       <p>Before an immigrant visa or Green Card can be issued, Section 343 of the Illegal Immigration Reform and Immigrant Responsibility Act requires all foreign healthcare professionals to possess a valid <strong>VisaScreen Certificate</strong>.</p>
       
-      <div style="margin: 20px 0; padding: 20px; background: rgba(56, 189, 248, 0.08); border-left: 4px solid #38bdf8; border-radius: 8px;">
-        <h4 style="margin-top: 0; color: #38bdf8;">📋 English Proficiency Minimums</h4>
+      <div style="margin: 20px 0; padding: 20px; background: #f0f9ff; border: 1px solid #bae6fd; border-left: 4px solid #38bdf8; border-radius: 8px;">
+        <h4 style="margin-top: 0; color: #0369a1; font-weight: 700;">📋 English Proficiency Minimums</h4>
         <ul style="margin-bottom: 0;">
           <li><strong>IELTS Academic:</strong> Overall 6.5 with a minimum of 7.0 in Speaking.</li>
           <li><strong>OET (Occupational English Test):</strong> Minimum grade of B in all 4 sub-tests.</li>
@@ -293,8 +293,8 @@ export const MASTER_GUIDES: GuideArticle[] = [
         <li>Your services are physically performed <strong>outside the territorial borders of the United States</strong>.</li>
       </ul>
 
-      <div style="margin: 24px 0; padding: 20px; background: rgba(16, 185, 129, 0.08); border-left: 4px solid #10b981; border-radius: 8px;">
-        <h4 style="margin-top: 0; color: #10b981;">💵 Zero U.S. Withholding Tax</h4>
+      <div style="margin: 24px 0; padding: 20px; background: #f0fdf4; border: 1px solid #bbf7d0; border-left: 4px solid #10b981; border-radius: 8px;">
+        <h4 style="margin-top: 0; color: #047857; font-weight: 700;">💵 Zero U.S. Withholding Tax</h4>
         <p style="margin-bottom: 0;">Under Section 861 and 862 of the Internal Revenue Code, compensation for personal labor or services performed outside the U.S. is considered <strong>foreign-source income</strong>. Because it is foreign-source, U.S. companies do <strong>not</strong> withhold the standard 30% nonresident tax from your invoices.</p>
       </div>
 
@@ -316,27 +316,27 @@ export const MASTER_GUIDES: GuideArticle[] = [
         </thead>
         <tbody>
           <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-            <td style="padding: 12px; font-weight: bold; color: #38bdf8;">Line 1</td>
+            <td style="padding: 12px; font-weight: bold; color: #0369a1; font-weight: 700;">Line 1</td>
             <td style="padding: 12px;">Name of Individual</td>
             <td style="padding: 12px;">Your exact legal name as shown on your passport or national ID.</td>
           </tr>
           <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-            <td style="padding: 12px; font-weight: bold; color: #38bdf8;">Line 2</td>
+            <td style="padding: 12px; font-weight: bold; color: #0369a1; font-weight: 700;">Line 2</td>
             <td style="padding: 12px;">Country of Citizenship</td>
             <td style="padding: 12px;">Your official nationality (e.g. Bangladesh, Pakistan, Canada).</td>
           </tr>
           <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-            <td style="padding: 12px; font-weight: bold; color: #38bdf8;">Line 3</td>
+            <td style="padding: 12px; font-weight: bold; color: #0369a1; font-weight: 700;">Line 3</td>
             <td style="padding: 12px;">Permanent Residence Address</td>
             <td style="padding: 12px;">Your physical street address in your home country (cannot be a P.O. Box).</td>
           </tr>
           <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-            <td style="padding: 12px; font-weight: bold; color: #10b981;">Line 6a</td>
+            <td style="padding: 12px; font-weight: bold; color: #047857; font-weight: 700;">Line 6a</td>
             <td style="padding: 12px;">Foreign Tax Identifying Number (TIN)</td>
             <td style="padding: 12px;">Your national tax ID number (e.g., NID, PAN, SIN, or e-TIN in your home country).</td>
           </tr>
           <tr>
-            <td style="padding: 12px; font-weight: bold; color: #f59e0b;">Part III</td>
+            <td style="padding: 12px; font-weight: bold; color: #b45309; font-weight: 700;">Part III</td>
             <td style="padding: 12px;">Certification & Signature</td>
             <td style="padding: 12px;">Digital signature certifying that all statements are true under penalty of perjury.</td>
           </tr>
@@ -396,8 +396,8 @@ export const MASTER_GUIDES: GuideArticle[] = [
 
       <p>This means if a qualifying institution offers you a specialty occupation role, they can file your Form I-129 petition with USCIS <strong>at any time during the year</strong>. There is no March lottery registration, no randomized selection gamble, and you can start working as soon as your petition is approved (with 15-day Premium Processing available).</p>
 
-      <div style="margin: 24px 0; padding: 20px; background: rgba(56, 189, 248, 0.08); border-left: 4px solid #38bdf8; border-radius: 8px;">
-        <h4 style="margin-top: 0; color: #38bdf8;">⚡ Key Benefits of Cap-Exempt H-1B</h4>
+      <div style="margin: 24px 0; padding: 20px; background: #f0f9ff; border: 1px solid #bae6fd; border-left: 4px solid #38bdf8; border-radius: 8px;">
+        <h4 style="margin-top: 0; color: #0369a1; font-weight: 700;">⚡ Key Benefits of Cap-Exempt H-1B</h4>
         <ul style="margin-bottom: 0;">
           <li><strong>Zero Lottery Risk:</strong> 100% filing eligibility without lottery dependence.</li>
           <li><strong>Year-Round Filing:</strong> Petitions can be submitted 365 days a year.</li>
@@ -429,37 +429,37 @@ export const MASTER_GUIDES: GuideArticle[] = [
         </thead>
         <tbody>
           <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-            <td style="padding: 12px; font-weight: bold; color: #38bdf8;">University of Michigan</td>
+            <td style="padding: 12px; font-weight: bold; color: #0369a1; font-weight: 700;">University of Michigan</td>
             <td style="padding: 12px;">Public Research University</td>
             <td style="padding: 12px;">Software Engineers, Postdoc Researchers, Data Scientists, Faculty</td>
           </tr>
           <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-            <td style="padding: 12px; font-weight: bold; color: #38bdf8;">Johns Hopkins University & Medicine</td>
+            <td style="padding: 12px; font-weight: bold; color: #0369a1; font-weight: 700;">Johns Hopkins University & Medicine</td>
             <td style="padding: 12px;">University & Affiliated Hospital</td>
             <td style="padding: 12px;">Biomedical Engineers, Clinical Specialists, IT Analysts, Bioinformaticians</td>
           </tr>
           <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-            <td style="padding: 12px; font-weight: bold; color: #38bdf8;">University of Texas System</td>
+            <td style="padding: 12px; font-weight: bold; color: #0369a1; font-weight: 700;">University of Texas System</td>
             <td style="padding: 12px;">State University System</td>
             <td style="padding: 12px;">AI Researchers, Cloud Architects, Systems Engineers, Instructors</td>
           </tr>
           <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-            <td style="padding: 12px; font-weight: bold; color: #10b981;">Mayo Clinic</td>
+            <td style="padding: 12px; font-weight: bold; color: #047857; font-weight: 700;">Mayo Clinic</td>
             <td style="padding: 12px;">Non-Profit Medical Research</td>
             <td style="padding: 12px;">Physicians, Clinical Researchers, Healthcare Data Engineers</td>
           </tr>
           <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-            <td style="padding: 12px; font-weight: bold; color: #10b981;">Broad Institute of MIT and Harvard</td>
+            <td style="padding: 12px; font-weight: bold; color: #047857; font-weight: 700;">Broad Institute of MIT and Harvard</td>
             <td style="padding: 12px;">Nonprofit Research Institute</td>
             <td style="padding: 12px;">Computational Biologists, Genomics Software Developers, Machine Learning Engineers</td>
           </tr>
           <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-            <td style="padding: 12px; font-weight: bold; color: #f59e0b;">Oak Ridge National Laboratory</td>
+            <td style="padding: 12px; font-weight: bold; color: #b45309; font-weight: 700;">Oak Ridge National Laboratory</td>
             <td style="padding: 12px;">Government Research Facility</td>
             <td style="padding: 12px;">Nuclear Engineers, High-Performance Computing Analysts, Physicists</td>
           </tr>
           <tr>
-            <td style="padding: 12px; font-weight: bold; color: #38bdf8;">Stanford University & Stanford Health</td>
+            <td style="padding: 12px; font-weight: bold; color: #0369a1; font-weight: 700;">Stanford University & Stanford Health</td>
             <td style="padding: 12px;">Private Higher Education</td>
             <td style="padding: 12px;">Staff Scientists, Machine Learning Researchers, Postdoctoral Fellows</td>
           </tr>
