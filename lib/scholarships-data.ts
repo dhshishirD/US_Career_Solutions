@@ -46,7 +46,7 @@ export const USA_SCHOLARSHIPS: USAScholarship[] = [
     stipendAmount: 'Full living allowance + airfare + health insurance',
     deadline: 'May - September (varies by home country embassy)',
     requirements: [
-      'Citizenship of participating country (Bangladesh, Pakistan, India, Nigeria, etc.)',
+      'Citizenship of participating country (Bangladesh, Pakistan, India, Nigeria, Ghana, etc.)',
       'Four-year Bachelor’s degree with strong academic record',
       'English proficiency (IELTS minimum 6.5 or TOEFL 80+)',
       'Commitment to return to home country upon program completion (J-1 Visa)'
@@ -91,7 +91,7 @@ export const USA_SCHOLARSHIPS: USAScholarship[] = [
       'Three letters of academic recommendation',
       'Proficiency in programming and core STEM fundamentals'
     ],
-    officialUrl: 'https://grad.gatech.edu/pay-for-grad-school',
+    officialUrl: 'https://grad.gatech.edu/',
     description: 'Georgia Tech provides full tuition waivers and competitive stipends for graduate research assistants working in AI, robotics, wireless systems, and advanced computing laboratories.',
     isFeatured: true
   },
@@ -100,120 +100,113 @@ export const USA_SCHOLARSHIPS: USAScholarship[] = [
     name: 'MIT Presidential & Departmental Graduate Fellowships',
     university: 'Massachusetts Institute of Technology (MIT)',
     location: 'Cambridge, Massachusetts',
-    degreeLevel: 'PhD Only',
-    field: 'Science, Architecture, Engineering, Economics, Artificial Intelligence',
+    degreeLevel: 'Masters & PhD',
+    field: 'Architecture, Engineering, Science, Management, Humanities',
     fundingCoverage: '100% Full Tuition + Monthly Stipend',
-    stipendAmount: '$42,000+ / year + full tuition & comprehensive medical',
-    deadline: 'December 15 (Annual)',
+    stipendAmount: '$44,000 - $52,000 / year + 100% tuition waiver',
+    deadline: 'December 15 - January 5',
     requirements: [
-      'Outstanding academic records and rigorous analytical research background',
-      'Statement of objectives demonstrating independent scientific thought',
-      'Letters of evaluation from academic research mentors'
+      'Outstanding academic record in undergraduate studies',
+      'Strong research portfolio or publications',
+      '3 letters of recommendation from research mentors'
     ],
     officialUrl: 'https://gradadmissions.mit.edu/costs-funding',
-    description: 'MIT guarantees full financial support (tuition, individual health insurance, and 12-month living stipend) for all doctoral candidates in good academic standing.',
+    description: 'All admitted PhD students at MIT are guaranteed 100% full financial support covering full tuition, individual health insurance, and a substantial living stipend for the normal duration of their program.',
     isFeatured: true
   },
   {
     id: 'sch-006',
-    name: 'Hubert H. Humphrey Fellowship Program',
-    university: 'Participating US Universities (Penn State, Syracuse, UC Davis, etc.)',
-    location: 'United States (Nationwide Placement)',
-    degreeLevel: 'Undergraduate / General',
-    field: 'Public Health, Education, Economic Development, Climate Change, Law',
+    name: 'Harvard University Graduate School of Arts and Sciences Fellowships',
+    university: 'Harvard University',
+    location: 'Cambridge, Massachusetts',
+    degreeLevel: 'PhD Only',
+    field: 'Life Sciences, Physical Sciences, Humanities, Social Sciences, Engineering',
     fundingCoverage: '100% Full Tuition + Monthly Stipend',
-    stipendAmount: 'Full maintenance stipend + professional development grant + travel',
-    deadline: 'June - August (Annual)',
+    stipendAmount: '$46,000 / year stipend + full tuition & healthcare',
+    deadline: 'December 1 - January 5',
     requirements: [
-      'Undergraduate degree with 5+ years of professional experience',
-      'Demonstrated commitment to public service',
-      'English language ability',
-      'Leadership potential in public or non-profit sector'
+      'Undergraduate degree with high academic honors',
+      'Compelling Statement of Purpose and research writing sample',
+      'Three academic letters of recommendation'
     ],
-    officialUrl: 'https://www.humphreyfellowship.org',
-    description: 'Brings mid-career professionals from developing countries to the US for a 10-month non-degree academic study and substantive professional affiliation at top American universities.',
-    isFeatured: false
+    officialUrl: 'https://gsas.harvard.edu/financial-support',
+    description: 'Harvard GSAS provides guaranteed multi-year funding packages to all doctoral students including full tuition, health fees, and generous living stipends throughout the 5-year PhD trajectory.',
+    isFeatured: true
   },
   {
     id: 'sch-007',
-    name: 'Rotary Peace Fellowship (Duke University & UNC Chapel Hill)',
-    university: 'Duke University / UNC Chapel Hill',
-    location: 'Durham & Chapel Hill, North Carolina',
-    degreeLevel: 'Masters Only',
-    field: 'International Development, Conflict Resolution, Public Policy, Peace Studies',
+    name: 'Yale University Fully-Funded Doctoral Fellowships',
+    university: 'Yale University',
+    location: 'New Haven, Connecticut',
+    degreeLevel: 'PhD Only',
+    field: 'All PhD Programs across Sciences, Engineering, Humanities & Social Sciences',
     fundingCoverage: '100% Full Tuition + Monthly Stipend',
-    stipendAmount: '100% Tuition, room & board, roundtrip transportation, internship funding',
-    deadline: 'May 15 (Annual)',
+    stipendAmount: '$48,000 / year stipend + 100% tuition fellowship',
+    deadline: 'December 15 - January 2',
     requirements: [
-      'Proficiency in English with minimum 3 years of relevant work experience',
-      'Bachelor’s degree with strong academic record',
-      'Demonstrated commitment to international peace and community service',
-      'Endorsement by local Rotary District'
+      'Bachelor’s or Master’s degree with strong research credentials',
+      'TOEFL / IELTS for non-native English speakers',
+      'Statement of Purpose and faculty alignment'
     ],
-    officialUrl: 'https://www.rotary.org/en/our-programs/peace-fellowships',
-    description: 'Fully funded master’s program in international relations and peace studies covering tuition, fees, room and board, round-trip transportation, and all internship/field-study expenses.',
+    officialUrl: 'https://gsas.yale.edu/funding-aid',
+    description: 'Every admitted PhD candidate at Yale receives a comprehensive financial award that covers full tuition, comprehensive health insurance, and a living stipend for up to five full years.',
     isFeatured: true
   },
   {
     id: 'sch-008',
-    name: 'AAUW International Fellowships for Women',
-    university: 'Accredited US Universities Nationwide',
-    location: 'United States (Any Accredited Institution)',
+    name: 'Rackham International Merit Fellowship',
+    university: 'University of Michigan - Ann Arbor',
+    location: 'Ann Arbor, Michigan',
     degreeLevel: 'Masters & PhD',
-    field: 'All Academic Disciplines (STEM, Humanities, Medicine, Business)',
+    field: 'All Graduate Disciplines',
     fundingCoverage: '100% Full Tuition + Monthly Stipend',
-    stipendAmount: '$20,000 (Master’s) to $30,000 (Doctoral) / year stipend',
-    deadline: 'November 15 (Annual)',
+    stipendAmount: '$36,000 / year stipend + full tuition waiver',
+    deadline: 'January 15 (Annual Intake)',
     requirements: [
-      'Open to women holding citizenship in a country other than the U.S.',
-      'Hold academic degree equivalent to U.S. bachelor’s degree',
-      'Intention to return to home country to pursue a professional career',
-      'English language proficiency'
+      'Nomination by U-M academic department upon admission',
+      'Outstanding academic record and potential to contribute to field',
+      'GRE / English proficiency as required by department'
     ],
-    officialUrl: 'https://www.aauw.org/resources/programs/fellowships-grants/current-opportunities/international/',
-    description: 'Supports international women pursuing full-time graduate or postdoctoral study in the United States. Recipients are selected for academic achievement and demonstrated commitment to women and girls.',
-    isFeatured: true
+    officialUrl: 'https://rackham.umich.edu/funding/',
+    description: 'Supports outstanding international graduate students studying at the University of Michigan with full tuition, monthly stipend, and health insurance.',
+    isFeatured: false
   },
   {
     id: 'sch-009',
-    name: 'Yale Fox International Fellowship',
-    university: 'Yale University',
-    location: 'New Haven, Connecticut',
-    degreeLevel: 'Masters & PhD',
-    field: 'Social Sciences, Economics, Law, Political Science, International Affairs',
+    name: 'Hubert H. Humphrey Fellowship Program (US Dept of State)',
+    university: 'Selected Top US Universities',
+    location: 'United States (Nationwide)',
+    degreeLevel: 'Masters Only',
+    field: 'Public Policy, Climate Change, Public Health, Education, Economic Development',
     fundingCoverage: '100% Full Tuition + Monthly Stipend',
-    stipendAmount: 'Full living expense stipend + health insurance + travel grant',
-    deadline: 'January 15 (Annual)',
+    stipendAmount: 'Full living allowance + airfare + professional development fund',
+    deadline: 'May - August (Varies by US Embassy)',
     requirements: [
-      'Graduate student enrolled in partner international university',
-      'Demonstrated research capability on world peace and global policy',
-      'Strong letters of academic recommendation'
+      'Undergraduate degree and minimum 5 years of professional work experience',
+      'Demonstrated leadership qualities and public service record',
+      'English language proficiency'
     ],
-    officialUrl: 'https://foxfellowship.yale.edu',
-    description: 'A prestigious graduate research fellowship at Yale University designed to enhance mutual understanding between the United States and global academic partners.',
+    officialUrl: 'https://www.humphreyfellowship.org',
+    description: 'A 10-month non-degree fellowship for mid-career professionals that combines academic coursework with practical work affiliations with US organizations, fully funded by the US Department of State.',
     isFeatured: false
   },
   {
     id: 'sch-010',
-    name: 'Texas A&M University Graduate Merit & Assistantship Funding',
-    university: 'Texas A&M University',
-    location: 'College Station, Texas',
-    degreeLevel: 'Masters & PhD',
-    field: 'Petroleum, Mechanical & Aerospace Engineering, Data Science, Agriculture',
-    fundingCoverage: '100% Full Tuition + Monthly Stipend',
-    stipendAmount: '$26,000 - $32,000 / year + in-state tuition waiver',
-    deadline: 'January 1 (Fall Intake)',
+    name: 'Clark University Global Scholars Program',
+    university: 'Clark University',
+    location: 'Worcester, Massachusetts',
+    degreeLevel: 'Undergraduate / General',
+    field: 'All Undergraduate Majors',
+    fundingCoverage: 'Partial / Merit-Based',
+    stipendAmount: '$15,000 - $25,000 per year renewable for 4 years',
+    deadline: 'February 1 (Fall Semester)',
     requirements: [
-      'Bachelor’s in STEM with strong quantitative GPA',
-      'TOEFL 80+ / IELTS 6.5+',
-      'Direct faculty advisor matching via research proposal'
+      'High school senior with outstanding GPA and leadership record',
+      'International applicant demonstrating global citizenship',
+      'Common Application with Clark supplemental essay'
     ],
-    officialUrl: 'https://grad.tamu.edu/funding-your-education',
-    description: 'Texas A&M awards non-resident tuition waivers and graduate research/teaching assistantships to over 70% of enrolled international doctoral and master’s students in technical colleges.',
-    isFeatured: true
+    officialUrl: 'https://www.clarku.edu',
+    description: 'Designed for international first-year undergraduate students who demonstrate outstanding academic performance and leadership potential in their communities.',
+    isFeatured: false
   }
 ];
-
-export function getScholarshipsList(): USAScholarship[] {
-  return USA_SCHOLARSHIPS;
-}
