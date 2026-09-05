@@ -36,14 +36,7 @@ export async function POST(request: NextRequest) {
           }
         }
       } catch (err) {
-        console.warn('unpdf extraction fallback:', err);
-        try {
-          const pdfParse = require('pdf-parse/lib/pdf-parse.js');
-          const data = await pdfParse(fileBuffer);
-          extractedText = data.text || '';
-        } catch (err2) {
-          console.error('All PDF parsers failed:', err2);
-        }
+        console.warn('PDF extraction error:', err);
       }
     } else {
       // Plain text, markdown, rtf
