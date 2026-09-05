@@ -1,88 +1,38 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { ATSAnalysisResult } from '@/lib/types';
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { resumeText, jobDescription, targetRole } = body;
+    const { resumeText, jobDescription, targetRole, fileName } = body;
 
     if (!resumeText || !jobDescription) {
       return NextResponse.json({ error: 'Resume text and Job description are required.' }, { status: 400 });
     }
 
-    const geminiKey = process.env.GEMINI_API_KEY;
+    const normResume = resumeText.toLowerCase();
+    const normJob = jobDescription.toLowerCase();
 
-    if (geminiKey) {
-      try {
-        const prompt = `You are a certified US Executive Career Coach and Applicant Tracking System (ATS) auditor.
-Analyze the following candidate resume against the US job description.
-Return a STRICT JSON object (no markdown, no backticks, just raw JSON) matching this TypeScript interface:
-{
-  "matchScore": number (0 to 100),
-  "summary": string (2-3 concise sentences assessing fit),
-  "matchedKeywords": string[] (5-8 top matched technical and functional skills),
-  "missingKeywords": string[] (4-7 critical keywords mentioned in job description but missing in resume),
-  "formattingScore": number (0 to 100),
-  "strengthPoints": string[] (3 specific strong points),
-  "weaknessPoints": string[] (3 actionable gaps),
-  "rewrittenBullets": [
-    {
-      "original": string (weak bullet from candidate resume or representative phrase),
-      "improved": string (rewritten using standard US power action verbs, quantifiable metrics, and business impact),
-      "reason": string (why this version passes US ATS scanners and impresses hiring managers)
-    }
-  ]
-}
-
-TARGET ROLE: ${targetRole || 'US Position'}
-
-JOB DESCRIPTION:
-${jobDescription.slice(0, 3000)}
-
-CANDIDATE RESUME:
-${resumeText.slice(0, 3000)}`;
-
-        const aiRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${geminiKey}`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            contents: [{ parts: [{ text: prompt }] }],
-            generationConfig: { responseMimeType: "application/json" }
-          })
-        });
-
-        if (aiRes.ok) {
-          const aiData = await aiRes.json();
-          const jsonText = aiData.candidates?.[0]?.content?.parts?.[0]?.text;
-          if (jsonText) {
-            const parsed: ATSAnalysisResult = JSON.parse(jsonText);
-            return NextResponse.json(parsed);
-          }
-        }
-      } catch (geminiError) {
-        console.warn('Gemini API call failed, falling back to heuristic engine:', geminiError);
-      }
-    }
-
-    // Heuristic analysis engine (works instantly without any external API keys)
-    const normalizedResume = resumeText.toLowerCase();
-    const normalizedJob = jobDescription.toLowerCase();
-
-    // Extract common tech/business keywords
-    const commonKeywords = [
+    // 1. Keyword Extraction & Density
+    const techAndIndustryKeywords = [
       'typescript', 'javascript', 'python', 'react', 'next.js', 'node.js', 'aws', 'azure', 
-      'cloud', 'docker', 'kubernetes', 'sql', 'nosql', 'graphql', 'rest api', 'ci/cd',
-      'git', 'system design', 'agile', 'scrum', 'data analysis', 'machine learning',
+      'cloud', 'docker', 'kubernetes', 'sql', 'postgresql', 'mongodb', 'graphql', 'rest api', 'ci/cd',
+      'git', 'system design', 'agile', 'scrum', 'data analysis', 'machine learning', 'pytorch',
       'project management', 'communication', 'leadership', 'cross-functional', 'optimization',
-      'clinical', 'patient care', 'compliance', 'budget', 'roi', 'stakeholders'
+      'nclex-rn', 'clinical', 'patient care', 'hipaa', 'epic emr', 'bedside care', 'critical care',
+      'budget', 'roi', 'stakeholders', 'analytics', 'zendesk', 'customer support', 'troubleshooting',
+      'automation', 'microservices', 'devops', 'linux', 'security', 'compliance'
     ];
 
     const matchedKeywords: string[] = [];
     const missingKeywords: string[] = [];
 
-    for (const kw of commonKeywords) {
-      if (normalizedJob.includes(kw)) {
-        if (normalizedResume.includes(kw)) {
+    // Extract dynamic words from job description (>4 chars)
+    const jobWords = Array.from(new Set(normJob.match(/[a-z]{4,}/g) || []));
+    const resumeWords = new Set(normResume.match(/[a-z]{4,}/g) || []);
+
+    for (const kw of techAndIndustryKeywords) {
+      if (normJob.includes(kw)) {
+        if (normResume.includes(kw)) {
           matchedKeywords.push(kw.toUpperCase());
         } else {
           missingKeywords.push(kw.toUpperCase());
@@ -90,37 +40,72 @@ ${resumeText.slice(0, 3000)}`;
       }
     }
 
-    const keywordRatio = matchedKeywords.length / (Math.max(matchedKeywords.length + missingKeywords.length, 1));
-    const calculatedScore = Math.min(Math.max(Math.round(keywordRatio * 75 + 20), 35), 94);
+    // 2. Metrics & Quantifiable Impact Analysis
+    const numbersMatch = resumeText.match(/(\d+[\d,]*%?|\$\d+[\d,]*|\b\d+\b)/g) || [];
+    const metricCount = numbersMatch.length;
+    const hasStrongMetrics = metricCount >= 4;
+    const metricsScore = Math.min(Math.round((metricCount / 6) * 100), 98);
 
-    const result: ATSAnalysisResult = {
-      matchScore: calculatedScore,
-      summary: `Your profile demonstrates foundational alignment with key requirements, matching ${matchedKeywords.length} core competencies. Adding missing US industry terminology will significantly improve your ATS pass rate.`,
-      matchedKeywords: matchedKeywords.slice(0, 7),
-      missingKeywords: missingKeywords.length > 0 ? missingKeywords.slice(0, 6) : ['SYSTEM DESIGN', 'METRICS & ROI', 'CROSS-FUNCTIONAL COLLABORATION'],
-      formattingScore: 85,
-      strengthPoints: [
-        'Clear demonstration of technical foundations and core responsibilities.',
-        'Relevant project experience aligning with the target domain.',
-        'Strong contextual terminology matching the primary job track.'
+    // 3. Action Verb & Language Strength Analysis
+    const weakVerbs = ['responsible for', 'worked on', 'assisted with', 'helped', 'handled', 'duties included'];
+    const weakVerbsFound = weakVerbs.filter(v => normResume.includes(v));
+
+    const strongVerbs = ['spearheaded', 'architected', 'accelerated', 'engineered', 'optimized', 'delivered', 'decreased', 'boosted', 'orchestrated', 'negotiated'];
+    const strongVerbsFound = strongVerbs.filter(v => normResume.includes(v));
+
+    // 4. Multi-Factor Scoring
+    const keywordRatio = matchedKeywords.length / (Math.max(matchedKeywords.length + missingKeywords.length, 1));
+    const keywordScore = Math.min(Math.max(Math.round(keywordRatio * 80 + 15), 30), 95);
+    const formattingScore = normResume.includes('summary') && normResume.includes('experience') && normResume.includes('skills') ? 92 : 78;
+    const overallScore = Math.round(keywordScore * 0.45 + metricsScore * 0.25 + formattingScore * 0.20 + (strongVerbsFound.length > 0 ? 10 : 0));
+
+    // 5. Positive Findings
+    const positives: string[] = [];
+    if (matchedKeywords.length > 0) positives.push(`Matches ${matchedKeywords.length} core technical & domain keywords explicitly listed in the job specification.`);
+    if (metricCount > 2) positives.push(`Contains ${metricCount} numerical metrics demonstrating tangible accomplishments.`);
+    if (strongVerbsFound.length > 0) positives.push(`Uses active executive verbs (${strongVerbsFound.slice(0, 3).join(', ')}) demonstrating leadership.`);
+    if (formattingScore > 80) positives.push(`Standard ATS section hierarchy (Summary, Experience, Skills) is properly structured.`);
+    if (positives.length < 3) positives.push(`Clear chronological career trajectory with consistent role titles.`);
+
+    // 6. Critical Red Flags / Negatives
+    const negatives: string[] = [];
+    if (missingKeywords.length > 0) negatives.push(`Missing ${missingKeywords.length} essential job requirement keywords (${missingKeywords.slice(0, 3).join(', ')}).`);
+    if (weakVerbsFound.length > 0) negatives.push(`Contains passive phrasing ("${weakVerbsFound[0]}") which weakens resume authority.`);
+    if (metricCount < 3) negatives.push(`Low quantifiable data density: Only ${metricCount} numerical metrics found. US hiring managers look for numbers, % growth, or $ saved.`);
+    if (!normResume.includes(targetRole.toLowerCase().slice(0, 8))) negatives.push(`Target role title ("${targetRole}") is not explicitly repeated in your professional summary headline.`);
+
+    // 7. Rewritten Power Bullets
+    const rewrittenBullets = [
+      {
+        original: weakVerbsFound.length > 0 ? `Responsible for ${matchedKeywords[0] || 'software systems'} and handling team updates.` : 'Worked on daily tasks and collaborated with team members.',
+        improved: `Spearheaded ${matchedKeywords[0] || 'core engineering'} initiatives, accelerating project deployment velocity by 35% and ensuring 99.9% uptime.`,
+        reason: 'Replaces passive responsibility with measurable outcome and a leadership action verb.'
+      },
+      {
+        original: 'Assisted with data management and helped resolve customer or system issues.',
+        improved: `Engineered automated monitoring and data pipelines, resolving 50+ critical operational bottlenecks and saving 12 hours weekly.`,
+        reason: 'Quantifies efficiency gains and demonstrates end-to-end accountability.'
+      }
+    ];
+
+    const result = {
+      overallScore: Math.min(Math.max(overallScore, 42), 96),
+      keywordScore,
+      metricsScore,
+      formattingScore,
+      matchedKeywords: matchedKeywords.length > 0 ? matchedKeywords : ['TEAMWORK', 'COMMUNICATION', 'PROBLEM SOLVING'],
+      missingKeywords: missingKeywords.length > 0 ? missingKeywords : ['SYSTEM ARCHITECTURE', 'PERFORMANCE OPTIMIZATION', 'CROSS-FUNCTIONAL DELIVERY'],
+      positives,
+      negatives,
+      recommendations: [
+        `Integrate missing target keywords (${missingKeywords.slice(0, 3).join(', ') || 'Domain skills'}) into the first 3 bullet points of your most recent experience.`,
+        `Quantify at least 3 bullet points using the standard US formula: [Action Verb] + [Specific Task] + [Measurable Result (% or $)].`,
+        `Add your target job title ("${targetRole}") directly under your name as an executive headline.`,
+        `Ensure all dates follow standard US format (e.g. "Jan 2022 - Present") without complex graphics or multi-column tables.`
       ],
-      weaknessPoints: [
-        'Lacks quantifiable metrics (e.g., "% latency reduction", "$ cost savings", "X users served").',
-        'Some bullet points start with passive duties rather than strong US action verbs (e.g., "Assisted with" instead of "Spearheaded").',
-        'Critical keywords from the job description are not repeated in the top third of the resume.'
-      ],
-      rewrittenBullets: [
-        {
-          original: 'Worked on web applications and fixed bugs for the engineering team.',
-          improved: 'Architected and deployed responsive full-stack features, decreasing page load times by 38% and resolving 40+ high-priority production defects.',
-          reason: 'US recruiters scan for measurable impact and strong leadership action verbs.'
-        },
-        {
-          original: 'Responsible for database management and system updates.',
-          improved: 'Optimized high-throughput relational databases and automated CI/CD deployment workflows, achieving 99.9% application uptime.',
-          reason: 'Demonstrates accountability, scale, and modern DevOps standards.'
-        }
-      ]
+      rewrittenBullets,
+      fileName: fileName || 'Uploaded_Resume.txt',
+      analyzedAt: new Date().toISOString()
     };
 
     return NextResponse.json(result);

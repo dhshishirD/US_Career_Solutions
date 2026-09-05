@@ -9,30 +9,35 @@ import {
   AlertCircle, 
   TrendingUp, 
   HelpCircle,
-  ExternalLink
+  ExternalLink,
+  GraduationCap,
+  HeartPulse,
+  Globe2,
+  Cpu,
+  FileCheck,
+  Briefcase
 } from 'lucide-react';
 import { CompanySponsorshipRecord } from '@/lib/types';
-import { TOP_SPONSOR_COMPANIES } from '@/lib/sponsorship-db';
+import { TOP_SPONSOR_COMPANIES, searchCompanies, lookupCompanySponsorship } from '@/lib/sponsorship-db';
 
 export default function VisaCheckerPage() {
   const [searchTerm, setSearchTerm] = useState('');
+  const [activeTab, setActiveTab] = useState<'all' | 'cap-exempt' | 'healthcare' | 'tech' | 'remote'>('all');
   const [selectedCompany, setSelectedCompany] = useState<CompanySponsorshipRecord | null>(null);
   const [hasSearched, setHasSearched] = useState(false);
+
+  const filteredCompanies = searchCompanies(searchTerm, activeTab);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (!searchTerm.trim()) return;
 
     setHasSearched(true);
-    const query = searchTerm.toLowerCase().trim();
-    const match = TOP_SPONSOR_COMPANIES.find(c => 
-      c.companyName.toLowerCase().includes(query) || 
-      query.includes(c.companyName.toLowerCase())
-    );
-    setSelectedCompany(match || null);
+    const found = lookupCompanySponsorship(searchTerm);
+    setSelectedCompany(found);
   };
 
-  const selectPredefined = (company: CompanySponsorshipRecord) => {
+  const selectCompany = (company: CompanySponsorshipRecord) => {
     setSearchTerm(company.companyName);
     setSelectedCompany(company);
     setHasSearched(true);
@@ -45,26 +50,32 @@ export default function VisaCheckerPage() {
       <div className="max-w-3xl mb-8">
         <div className="inline-flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 text-emerald-800 px-3 py-1 rounded-full text-xs font-semibold mb-3">
           <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-          USCIS & DOL LCA Intelligence
+          USCIS & DOL LCA Intelligence Radar
         </div>
         <h1 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
           USA Company Visa Sponsor Radar
         </h1>
         <p className="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed">
-          Verify whether an employer actually sponsors foreign talent before investing hours into applications. Cross-referenced against US Department of Labor LCA disclosure records and Cap-Exempt listings.
+          Verify whether an employer sponsors foreign talent, issues Cap-Exempt (no-lottery) H-1Bs, or hires worldwide via W-8BEN contractor agreements before investing hours into applications.
         </p>
       </div>
 
       {/* Search Box */}
-      <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm max-w-3xl mb-10">
-        <form onSubmit={handleSearch} className="flex gap-2">
+      <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm max-w-4xl mb-8">
+        <form onSubmit={handleSearch} className="flex flex-col sm:flex-row gap-3">
           <div className="relative flex-grow">
             <Search className="w-5 h-5 text-slate-400 absolute left-4 top-3.5" />
             <input
               type="text"
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Enter US employer name (e.g., Microsoft, Mayo Clinic, Stanford, Amazon)..."
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+                if (!e.target.value) {
+                  setSelectedCompany(null);
+                  setHasSearched(false);
+                }
+              }}
+              placeholder="Search any US employer (e.g. Microsoft, Stanford, Mayo Clinic, Amazon, Automattic)..."
               className="w-full text-sm sm:text-base bg-slate-50 border border-slate-200 rounded-xl pl-12 pr-4 py-3 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
             />
           </div>
@@ -76,144 +87,188 @@ export default function VisaCheckerPage() {
           </button>
         </form>
 
-        {/* Quick Quicklinks */}
-        <div className="mt-4 flex items-center gap-2 text-xs text-slate-500 flex-wrap">
-          <span>Popular searches:</span>
-          {['Microsoft', 'Amazon', 'Stanford University', 'Mayo Clinic', 'Tesla', 'Stripe'].map(name => (
-            <button
-              key={name}
-              onClick={() => {
-                const found = TOP_SPONSOR_COMPANIES.find(c => c.companyName === name);
-                if (found) selectPredefined(found);
-              }}
-              className="px-2.5 py-1 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium transition-colors"
-            >
-              {name}
-            </button>
-          ))}
+        {/* Category Filter Tabs */}
+        <div className="mt-5 pt-4 border-t border-slate-100 flex items-center gap-2 flex-wrap text-xs">
+          <span className="font-semibold text-slate-500 mr-1">Filter Directory:</span>
+          <button
+            onClick={() => setActiveTab('all')}
+            className={`px-3 py-1.5 rounded-lg font-medium transition-colors ${activeTab === 'all' ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'}`}
+          >
+            All Verified ({TOP_SPONSOR_COMPANIES.length})
+          </button>
+          <button
+            onClick={() => setActiveTab('cap-exempt')}
+            className={`px-3 py-1.5 rounded-lg font-medium transition-colors flex items-center gap-1 ${activeTab === 'cap-exempt' ? 'bg-amber-600 text-white' : 'bg-amber-50 text-amber-800 hover:bg-amber-100'}`}
+          >
+            <GraduationCap className="w-3.5 h-3.5" />
+            Cap-Exempt (No Lottery)
+          </button>
+          <button
+            onClick={() => setActiveTab('healthcare')}
+            className={`px-3 py-1.5 rounded-lg font-medium transition-colors flex items-center gap-1 ${activeTab === 'healthcare' ? 'bg-rose-600 text-white' : 'bg-rose-50 text-rose-800 hover:bg-rose-100'}`}
+          >
+            <HeartPulse className="w-3.5 h-3.5" />
+            Healthcare / Schedule A
+          </button>
+          <button
+            onClick={() => setActiveTab('tech')}
+            className={`px-3 py-1.5 rounded-lg font-medium transition-colors flex items-center gap-1 ${activeTab === 'tech' ? 'bg-blue-600 text-white' : 'bg-blue-50 text-blue-800 hover:bg-blue-100'}`}
+          >
+            <Cpu className="w-3.5 h-3.5" />
+            Big Tech & Scaleups
+          </button>
+          <button
+            onClick={() => setActiveTab('remote')}
+            className={`px-3 py-1.5 rounded-lg font-medium transition-colors flex items-center gap-1 ${activeTab === 'remote' ? 'bg-emerald-600 text-white' : 'bg-emerald-50 text-emerald-800 hover:bg-emerald-100'}`}
+          >
+            <Globe2 className="w-3.5 h-3.5" />
+            Global Remote (W-8BEN)
+          </button>
         </div>
       </div>
 
-      {/* Search Result Display */}
+      {/* Direct Search Single Match Spotlight */}
       {hasSearched && (
-        <div className="max-w-3xl mb-12 animate-in fade-in duration-300">
+        <div className="max-w-4xl mb-10">
           {selectedCompany ? (
-            <div className="bg-white rounded-2xl border border-emerald-200 p-6 sm:p-8 shadow-lg relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-50 rounded-full blur-2xl pointer-events-none" />
-
+            <div className="bg-white rounded-2xl border-2 border-emerald-500 p-6 sm:p-8 shadow-md">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-100">
-                <div>
-                  <div className="flex items-center gap-2">
-                    <h2 className="text-2xl font-black text-slate-900">
-                      {selectedCompany.companyName}
-                    </h2>
-                    {selectedCompany.capExempt && (
-                      <span className="badge-capexempt text-xs font-bold px-2.5 py-0.5 rounded-full">
-                        Cap-Exempt (No Lottery!)
-                      </span>
-                    )}
+                <div className="flex items-center gap-4">
+                  <div className="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 font-black text-xl">
+                    {selectedCompany.companyName.charAt(0)}
                   </div>
-                  {selectedCompany.domain && (
-                    <span className="text-xs text-slate-400">
-                      Domain: {selectedCompany.domain}
-                    </span>
-                  )}
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <h2 className="text-2xl font-black text-slate-900">{selectedCompany.companyName}</h2>
+                      {selectedCompany.capExempt && (
+                        <span className="bg-amber-100 text-amber-800 text-xs px-2.5 py-0.5 rounded-full font-bold">
+                          Cap-Exempt (No Lottery)
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-xs text-slate-500 mt-0.5">{selectedCompany.domain}</p>
+                  </div>
                 </div>
 
-                <div className="text-left sm:text-right">
-                  <div className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                    Confirmed US Sponsor
-                  </div>
+                <div className="flex items-center gap-2">
+                  <a
+                    href={`https://h1bdata.info/index.php?em=${encodeURIComponent(selectedCompany.companyName)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 px-3.5 py-2 rounded-xl transition-colors"
+                  >
+                    <FileCheck className="w-3.5 h-3.5 text-blue-600" />
+                    View DOL LCA Filings
+                    <ExternalLink className="w-3 h-3 ml-0.5 text-slate-400" />
+                  </a>
                 </div>
               </div>
 
-              {/* Key Metrics */}
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 my-6">
-                <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                  <span className="text-xs text-slate-500 font-medium">Annual H-1B Filings</span>
-                  <div className="text-xl font-black text-slate-900 mt-1">
-                    {selectedCompany.totalH1BFiled.toLocaleString()}+
-                  </div>
+                <div className="p-4 rounded-xl bg-slate-50 border border-slate-100">
+                  <span className="text-xs text-slate-500 font-medium">Annual H-1B Petitions</span>
+                  <p className="text-xl font-black text-slate-900 mt-1">{selectedCompany.totalH1BFiled}+</p>
                 </div>
-
-                <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                  <span className="text-xs text-slate-500 font-medium">LCA Approval Rate</span>
-                  <div className="text-xl font-black text-emerald-600 mt-1">
-                    {selectedCompany.approvalRate}%
-                  </div>
+                <div className="p-4 rounded-xl bg-slate-50 border border-slate-100">
+                  <span className="text-xs text-slate-500 font-medium">USCIS Approval Rate</span>
+                  <p className="text-xl font-black text-emerald-600 mt-1">{selectedCompany.approvalRate}%</p>
                 </div>
-
-                <div className="bg-slate-50 p-4 rounded-xl border border-slate-100 col-span-2 sm:col-span-1">
-                  <span className="text-xs text-slate-500 font-medium">H-1B Lottery Status</span>
-                  <div className="text-sm font-bold text-slate-900 mt-1">
-                    {selectedCompany.capExempt ? 'Exempt (Year-Round)' : 'Subject to Annual Cap'}
-                  </div>
+                <div className="p-4 rounded-xl bg-slate-50 border border-slate-100 col-span-2 sm:col-span-1">
+                  <span className="text-xs text-slate-500 font-medium">Sponsorship Policy</span>
+                  <p className="text-sm font-bold text-slate-800 mt-1">
+                    {selectedCompany.capExempt ? 'Lottery Exempt' : 'Direct Employer Sponsor'}
+                  </p>
                 </div>
               </div>
 
-              {/* Sponsor Advice & Top Occupations */}
-              <div className="space-y-4">
-                <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">
-                    Top Sponsored Occupations
-                  </h4>
-                  <div className="flex flex-wrap gap-1.5">
-                    {selectedCompany.topOccupations.map((role, idx) => (
-                      <span key={idx} className="text-xs bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md font-medium">
-                        {role}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {selectedCompany.notes && (
-                  <div className="bg-emerald-50/50 border border-emerald-100 p-4 rounded-xl text-xs sm:text-sm text-slate-700">
-                    <strong className="text-emerald-900">Immigration Intelligence: </strong>
-                    {selectedCompany.notes}
-                  </div>
-                )}
+              <div className="bg-emerald-50/60 border border-emerald-200 rounded-xl p-4 text-xs text-emerald-950 mb-4">
+                <p className="font-bold text-emerald-900 mb-1 flex items-center gap-1.5">
+                  <ShieldCheck className="w-4 h-4 text-emerald-700" />
+                  Official Radar Assessment:
+                </p>
+                {selectedCompany.notes}
               </div>
 
+              <div>
+                <span className="text-xs font-bold text-slate-700 uppercase tracking-wider block mb-2">
+                  Top Sponsored Occupations:
+                </span>
+                <div className="flex flex-wrap gap-1.5">
+                  {selectedCompany.topOccupations.map(occ => (
+                    <span key={occ} className="bg-slate-100 text-slate-800 text-xs px-2.5 py-1 rounded-lg font-medium">
+                      {occ}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           ) : (
-            <div className="bg-white rounded-2xl border border-slate-200 p-8 text-center">
-              <AlertCircle className="w-10 h-10 text-amber-500 mx-auto mb-2" />
-              <h3 className="text-base font-bold text-slate-900">
-                No direct indexed filings found for "{searchTerm}"
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-500 mt-1 max-w-md mx-auto">
-                This employer may be a startup, private boutique agency, or hires via international contractor agreements. You can still reach out to their talent team or ask about STEM OPT extensions.
+            <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 text-center">
+              <AlertCircle className="w-10 h-10 text-amber-500 mx-auto mb-3" />
+              <h3 className="text-lg font-bold text-slate-900">Custom Employer Search: &quot;{searchTerm}&quot;</h3>
+              <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto mt-1 mb-4">
+                This specific employer is not in our top pre-indexed verified database, but you can inspect their real-time Department of Labor disclosures immediately.
               </p>
+              <a
+                href={`https://h1bdata.info/index.php?em=${encodeURIComponent(searchTerm)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-bold bg-slate-900 hover:bg-slate-800 text-white px-5 py-2.5 rounded-xl shadow transition-colors"
+              >
+                Inspect Official US DOL LCA Filings for &quot;{searchTerm}&quot;
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
             </div>
           )}
         </div>
       )}
 
-      {/* Directory of Featured Top Sponsors */}
-      <div className="mt-8">
-        <h3 className="text-xl font-extrabold text-slate-900 tracking-tight mb-4">
-          Major US Sponsors Quick Directory
-        </h3>
+      {/* Directory Grid */}
+      <div>
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-lg font-bold text-slate-900">
+            Verified Sponsoring Employers Directory ({filteredCompanies.length})
+          </h2>
+          <span className="text-xs text-slate-500">Click any card to inspect full immigration filing details</span>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {TOP_SPONSOR_COMPANIES.slice(0, 9).map((comp, i) => (
+          {filteredCompanies.map((comp) => (
             <div
-              key={i}
-              onClick={() => selectPredefined(comp)}
-              className="bg-white rounded-xl border border-slate-200 p-4 hover:border-emerald-400 hover:shadow-sm cursor-pointer transition-all flex items-center justify-between"
+              key={comp.companyName}
+              onClick={() => selectCompany(comp)}
+              className="bg-white rounded-2xl border border-slate-200 p-5 hover:border-emerald-400 hover:shadow-md transition-all cursor-pointer group flex flex-col justify-between"
             >
               <div>
-                <h4 className="text-sm font-bold text-slate-900">{comp.companyName}</h4>
-                <span className="text-xs text-slate-500">
-                  {comp.totalH1BFiled}+ filings • {comp.approvalRate}% approval
+                <div className="flex items-start justify-between gap-2 mb-3">
+                  <div>
+                    <h3 className="text-base font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
+                      {comp.companyName}
+                    </h3>
+                    <span className="text-xs text-slate-400">{comp.domain}</span>
+                  </div>
+                  {comp.capExempt ? (
+                    <span className="bg-amber-100 text-amber-800 text-[10px] font-extrabold px-2 py-0.5 rounded-md whitespace-nowrap">
+                      Cap-Exempt
+                    </span>
+                  ) : (
+                    <span className="bg-emerald-50 text-emerald-700 text-[10px] font-extrabold px-2 py-0.5 rounded-md whitespace-nowrap">
+                      {comp.approvalRate}% Approval
+                    </span>
+                  )}
+                </div>
+
+                <p className="text-xs text-slate-600 line-clamp-2 mb-3">
+                  {comp.notes}
+                </p>
+              </div>
+
+              <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                <span>{comp.totalH1BFiled}+ annual filings</span>
+                <span className="font-bold text-emerald-600 group-hover:translate-x-1 transition-transform inline-flex items-center gap-0.5">
+                  View Data &rarr;
                 </span>
               </div>
-              {comp.capExempt && (
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full badge-capexempt">
-                  Cap-Exempt
-                </span>
-              )}
             </div>
           ))}
         </div>
