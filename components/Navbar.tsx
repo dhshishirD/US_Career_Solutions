@@ -27,8 +27,8 @@ export default function Navbar() {
           
           {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-2.5">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-700 to-indigo-600 flex items-center justify-center text-white shadow-md">
-              <Briefcase className="w-5 h-5" />
+            <div className="w-10 h-10 rounded-xl overflow-hidden shadow-md border border-slate-700/20 flex-shrink-0">
+              <img src="/icon.svg" alt="US Career Solutions Icon" className="w-full h-full object-cover" />
             </div>
             <div>
               <span className="text-xl font-black tracking-tight text-slate-900">

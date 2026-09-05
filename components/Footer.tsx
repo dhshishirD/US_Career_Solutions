@@ -11,8 +11,8 @@ export default function Footer() {
           {/* Brand Info */}
           <div className="md:col-span-2 space-y-4">
             <Link href="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold">
-                <Briefcase className="w-4 h-4" />
+              <div className="w-8 h-8 rounded-lg overflow-hidden shadow border border-slate-700/50 flex-shrink-0">
+                <img src="/icon.svg" alt="US Career Solutions Icon" className="w-full h-full object-cover" />
               </div>
               <span className="text-lg font-bold text-white tracking-tight">
                 US<span className="text-blue-500">Career</span>Solutions

@@ -63,6 +63,11 @@ export const metadata: Metadata = {
     title: "Jobs in USA with Visa Sponsorship & US Remote Jobs | US Career Solutions",
     description: "Search daily verified jobs in USA with visa sponsorship, global remote roles, 100% funded USA scholarships, and AI career care tools for international applicants.",
   },
+  icons: {
+    icon: [{ url: '/icon.svg', type: 'image/svg+xml' }],
+    shortcut: '/icon.svg',
+    apple: '/icon.svg',
+  },
   twitter: {
     card: "summary_large_image",
     title: "Jobs in USA with Visa Sponsorship & US Remote Jobs | US Career Solutions",
