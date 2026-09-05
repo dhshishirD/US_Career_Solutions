@@ -25,8 +25,13 @@ import {
   ListOrdered,
   BookOpen,
   Award,
-  ChevronRight
+  ChevronRight,
+  Download,
+  FileDown,
+  Printer,
+  CheckCircle
 } from 'lucide-react';
+import { generateATSResumeDocx } from '@/lib/export-ats-resume';
 
 const SAMPLE_PRESETS = [
   {
@@ -40,44 +45,53 @@ Key Responsibilities:
 - Spearhead CI/CD automation pipelines, unit testing, and Docker containerization.
 - Collaborate with product managers and mentor junior developers.`,
     resume: `ALEX RAHMAN
-Full Stack Software Engineer | alex@email.com | LinkedIn: /in/alex-dev
+Full Stack Software Engineer | alex@email.com | LinkedIn: /in/alex-dev | Tel: +1 (555) 019-2834
 
-SUMMARY:
-Results-driven software engineer with 4+ years of experience building web applications using React, TypeScript, Python, and Node.js. Experienced in developing REST APIs, microservices, and working with SQL databases.
+PROFESSIONAL SUMMARY:
+Results-driven software engineer with 4+ years of experience building web applications using React, TypeScript, Python, and Node.js. Experienced in developing scalable microservices, REST APIs, and high-performance SQL databases.
+
+CORE COMPETENCIES & KEYWORDS:
+React.js • TypeScript • Next.js • Python • REST APIs • Docker • PostgreSQL • CI/CD Pipelines • AWS Cloud
 
 PROFESSIONAL EXPERIENCE:
-Software Engineer | Global Tech Solutions (2022 - Present)
-- Worked on web applications and fixed bugs for the engineering team.
-- Developed frontend UI components using React and styled them with CSS.
-- Responsible for database management and system updates with PostgreSQL.
-- Assisted with team code reviews and participated in sprint meetings.
+Senior Software Engineer | Global Tech Solutions (2022 - Present)
+- Architected and deployed scalable containerized web applications using React, Next.js, and Python, improving site speed by 45%.
+- Implemented robust REST and GraphQL API microservices handling over 1.2M monthly transactions.
+- Automated CI/CD deployment workflows with Docker and GitHub Actions, reducing production deployment errors by 60%.
+- Conducted regular code reviews and mentored 4 junior developers across distributed engineering teams.
 
-Junior Developer | Innovate Web Systems (2020 - 2022)
-- Built internal dashboard tools using JavaScript and Python scripts.
-- Maintained RESTful APIs and performed unit testing for new features.`
+Software Developer | Innovate Web Systems (2020 - 2022)
+- Built internal analytics dashboards and automated reporting tools using JavaScript, Python, and PostgreSQL.
+- Optimized database query performance and index structures, cutting average response time from 420ms to 110ms.`
   },
   {
     role: 'Registered Nurse',
     title: 'Registered Nurse - Acute Care / ICU (EB-3 Schedule A)',
     jobDesc: `Registered Nurse - Critical Care / ICU
-Hospital healthcare system sponsoring international nurses for permanent US residency.
+Hospital healthcare system sponsoring international nurses for permanent US residency (EB-3 Schedule A).
 Responsibilities:
 - Provide comprehensive bedside patient care and monitoring in acute critical care settings.
 - Administer IV medications, manage ventilators, and document clinical parameters via Epic EMR.
 - Collaborate with multidisciplinary medical teams to ensure patient safety and positive clinical outcomes.
 - Maintain strict adherence to HIPAA guidelines and hospital patient care protocols.`,
     resume: `FATIMA KHAN, BSN, RN
-Registered Nurse | fatima.rn@email.com | NCLEX-RN Certified
+Registered Nurse | fatima.rn@email.com | NCLEX-RN Certified | Tel: +1 (555) 842-1982
 
-SUMMARY:
-Compassionate and detail-oriented Registered Nurse with 3 years of acute bedside hospital experience. Certified in NCLEX-RN and BLS/ACLS.
+PROFESSIONAL SUMMARY:
+Dedicated and detail-oriented Registered Nurse with 4 years of acute critical care and ICU hospital experience. Certified in NCLEX-RN, BLS, and ACLS. Recognized for exceptional bedside patient advocacy and rigorous clinical documentation.
+
+CORE COMPETENCIES & CLINICAL SKILLS:
+Critical Care (ICU) • NCLEX-RN Certified • Patient Assessment • Epic EMR • Ventilator Management • ACLS/BLS • Medication Administration • HIPAA Compliance
 
 CLINICAL EXPERIENCE:
-Staff Nurse | City General Hospital (2022 - Present)
-- Provided daily nursing care to 15+ acute care patients.
-- Administered medications and assisted doctors with bedside procedures.
-- Documented patient vitals and treatment plans.
-- Communicated with patient families regarding recovery status.`
+Critical Care Staff Nurse | City General Hospital (2022 - Present)
+- Provided comprehensive acute critical care and hemodynamic monitoring for 15+ ICU patients per shift.
+- Managed mechanical ventilators, arterial lines, and titrated high-alert IV medications adhering to clinical safety protocols.
+- Documented clinical patient assessments and multidisciplinary care plans in Epic EMR with 100% regulatory compliance.
+- Collaborated with attending physicians and intensivists to optimize patient recovery and discharge trajectories.
+
+Acute Care Staff Nurse | Metro Health Center (2020 - 2022)
+- Monitored post-surgical and telemetry patients, administering treatments and educating patient families on post-discharge care.`
   },
   {
     role: 'Remote Customer Care',
@@ -90,17 +104,22 @@ Responsibilities:
 - Write clear customer-facing documentation and help center articles.
 - Collaborate asynchronously with distributed support engineers.`,
     resume: `MARCUS CHEN
-Customer Support & Operations Specialist | marcus@email.com
+Customer Operations & Support Specialist | marcus@email.com | Tel: +1 (555) 773-9021
 
-SUMMARY:
-Customer support specialist with 3 years of experience handling chat, email, and ticketing for SaaS platforms. Strong written communication and technical troubleshooting.
+PROFESSIONAL SUMMARY:
+Customer support and technical operations specialist with 4+ years experience delivering tier-1 and tier-2 support for high-growth SaaS platforms. Expert in Zendesk, Intercom, and asynchronous distributed team workflows.
 
-EXPERIENCE:
-Customer Support Rep | CloudApp Systems (2022 - 2024)
-- Answered customer tickets via Zendesk and Intercom.
-- Helped users with password resets and account settings.
-- Reported bugs to development team.
-- Maintained 95% customer satisfaction score.`
+CORE COMPETENCIES:
+Customer Support • Zendesk • Intercom • Technical Troubleshooting • Help Center Documentation • Client Escalation • SLA Management • SaaS Operations
+
+PROFESSIONAL EXPERIENCE:
+Customer Happiness Specialist | CloudApp Systems (2022 - Present)
+- Resolved over 120 customer support tickets weekly via Zendesk and live chat with a 98.4% Customer Satisfaction (CSAT) score.
+- Authored 28 technical knowledge base articles, reducing repeat billing and setup inquiries by 32%.
+- Identified software bugs and collaborated with product engineers in Jira to expedite customer issue resolution.
+
+Client Support Associate | Global SaaS Hub (2020 - 2022)
+- Managed email inquiries, onboarding walkthroughs, and password reset requests with an average first-response time of 8 minutes.`
   }
 ];
 
@@ -120,6 +139,8 @@ function ATSScannerContent() {
   const [analysis, setAnalysis] = useState<any | null>(null);
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
   const [inputMode, setInputMode] = useState<'upload' | 'paste'>('upload');
+  const [isDownloadingDocx, setIsDownloadingDocx] = useState(false);
+  const [downloadSuccess, setDownloadSuccess] = useState(false);
 
   useEffect(() => {
     if (!resumeText && !jobDescription) {
@@ -209,20 +230,66 @@ function ATSScannerContent() {
     setTimeout(() => setCopiedIndex(null), 2000);
   };
 
+  // 1-Click ATS-Proof .docx Export
+  const handleDownloadDocx = async () => {
+    setIsDownloadingDocx(true);
+    try {
+      // Extract candidate name from first line
+      const lines = resumeText.split('\n');
+      const firstLine = lines[0]?.trim() || 'Candidate Resume';
+      const secondLine = lines[1]?.trim() || '';
+
+      const keywordsToInclude = analysis?.missingKeywords?.slice(0, 10) || [
+        'ATS Optimization', 'Cross-Functional Teamwork', 'Quantified Results', 'Project Execution'
+      ];
+
+      const blob = await generateATSResumeDocx({
+        fullName: firstLine,
+        contactInfo: secondLine,
+        targetRole: jobTitle || 'Target Position',
+        professionalSummary: `Results-driven professional targeting ${jobTitle || 'career advancement'} with demonstrated track record of technical competence, quantified business ROI, and proactive cross-functional collaboration.`,
+        coreCompetencies: keywordsToInclude,
+        resumeBody: resumeText
+      });
+
+      // Trigger download
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      const cleanRole = (jobTitle || 'ATS_Friendly_Resume').replace(/[^a-zA-Z0-9]/g, '_');
+      a.download = `${cleanRole}_ATS_Optimized_Template.docx`;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+
+      setDownloadSuccess(true);
+      setTimeout(() => setDownloadSuccess(false), 4000);
+    } catch (err) {
+      console.error('Docx generation error:', err);
+    } finally {
+      setIsDownloadingDocx(false);
+    }
+  };
+
+  const handlePrintPdf = () => {
+    window.print();
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
       
-      {/* Header with High Volume Keywords */}
+      {/* Header with High-Volume SEO Keywords ($4 - $18 CPC) */}
       <div className="max-w-3xl mb-8">
         <div className="inline-flex items-center gap-1.5 bg-blue-50 border border-blue-200 text-blue-800 px-3 py-1 rounded-full text-xs font-semibold mb-3">
           <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-          100% Free ATS Resume Checker & Score Calculator
+          Free ATS Friendly Resume Builder & Score Checker
         </div>
         <h1 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
-          Free ATS Resume Checker & Score Scanner
+          Free ATS Resume Builder & Checker
         </h1>
         <p className="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed">
-          The best free ATS resume checker and CV score auditor. Scan your resume against US job descriptions to discover missing keywords, eliminate ATS parsing red flags, and get an instant ATS-friendly resume makeover.
+          Create, check, and download 100% free ATS friendly resume templates that pass Workday, Greenhouse, and Lever scanners. Check if your resume is ATS friendly in seconds, inject missing keywords, and export parser-safe .docx files instantly.
         </p>
       </div>
 
@@ -230,12 +297,13 @@ function ATSScannerContent() {
       <div className="bg-slate-100/90 rounded-2xl p-4 mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
         <div className="flex items-center gap-2">
           <Lightbulb className="w-4 h-4 text-amber-600 flex-shrink-0" />
-          <span className="font-bold text-slate-800">Test Instantly with Sample Job & CV:</span>
+          <span className="font-bold text-slate-800">Test ATS Templates with Real Job & CV Data:</span>
         </div>
         <div className="flex items-center gap-2 flex-wrap">
           {SAMPLE_PRESETS.map((p) => (
             <button
               key={p.role}
+              type="button"
               onClick={() => loadPreset(p)}
               className="px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-700 font-semibold hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700 transition-all shadow-sm"
             >
@@ -254,9 +322,9 @@ function ATSScannerContent() {
             <div className="flex items-center justify-between mb-3">
               <label className="text-sm font-bold text-slate-900 flex items-center gap-2">
                 <Target className="w-4 h-4 text-blue-600" />
-                1. Target US Job Description
+                1. Target Job Description (ATS Keyword Source)
               </label>
-              <span className="text-xs text-slate-400">Paste full job requirements</span>
+              <span className="text-xs text-slate-400">Paste requirements</span>
             </div>
             
             <input
@@ -271,7 +339,7 @@ function ATSScannerContent() {
               value={jobDescription}
               onChange={(e) => setJobDescription(e.target.value)}
               rows={12}
-              placeholder="Paste the US job description, requirements, responsibilities, and required qualifications here..."
+              placeholder="Paste the US or international job description, requirements, responsibilities, and required qualifications here..."
               className="w-full flex-grow text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-xl p-4 text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono"
             />
           </div>
@@ -281,7 +349,7 @@ function ATSScannerContent() {
             <div className="flex items-center justify-between mb-3">
               <label className="text-sm font-bold text-slate-900 flex items-center gap-2">
                 <FileText className="w-4 h-4 text-emerald-600" />
-                2. Attach Your CV / Resume File
+                2. Your Current Resume / CV
               </label>
 
               {/* Mode Toggle */}
@@ -304,292 +372,258 @@ function ATSScannerContent() {
             </div>
 
             {inputMode === 'upload' ? (
-              <div className="flex flex-col flex-grow">
-                {/* Drag and Drop Box */}
-                <label className="border-2 border-dashed border-slate-300 hover:border-emerald-500 rounded-2xl p-6 text-center cursor-pointer transition-colors bg-slate-50/60 hover:bg-emerald-50/30 flex flex-col items-center justify-center mb-3 flex-grow min-h-[150px]">
-                  {isParsingFile ? (
-                    <div className="flex flex-col items-center">
-                      <RotateCw className="w-8 h-8 text-blue-600 animate-spin mb-2" />
-                      <span className="text-xs font-bold text-slate-700">Extracting text from document...</span>
-                    </div>
-                  ) : (
-                    <>
-                      <UploadCloud className="w-10 h-10 text-emerald-600 mb-2" />
-                      <span className="text-sm font-bold text-slate-800">
-                        Click to browse or drag & drop your CV / Resume
-                      </span>
-                      <span className="text-xs text-slate-400 mt-1">
-                        Supports PDF, DOCX, DOC, TXT, RTF files
-                      </span>
-                    </>
-                  )}
-                  <input
-                    type="file"
-                    accept=".pdf,.docx,.doc,.txt,.rtf"
-                    onChange={handleFileUpload}
-                    className="hidden"
-                  />
-                </label>
-
-                {/* Attached File Indicator */}
-                {attachedFileName && (
-                  <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-3 flex items-center justify-between mb-3 text-xs">
-                    <div className="flex items-center gap-2 text-emerald-900 font-bold truncate">
-                      <FileCheck2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                      <span className="truncate">{attachedFileName}</span>
-                      <span className="text-emerald-600 font-normal text-[11px]">({attachedFileSize})</span>
-                    </div>
-                    <button
-                      type="button"
-                      onClick={removeAttachedFile}
-                      className="text-rose-600 hover:text-rose-800 font-bold ml-2"
-                    >
-                      <XCircle className="w-4 h-4" />
-                    </button>
+              <div className="flex-grow flex flex-col">
+                {!attachedFileName ? (
+                  <div className="border-2 border-dashed border-slate-200 rounded-xl p-6 text-center hover:border-blue-400 bg-slate-50/50 hover:bg-blue-50/30 transition-all flex flex-col items-center justify-center flex-grow">
+                    <UploadCloud className="w-10 h-10 text-blue-600 mb-3" />
+                    <p className="text-xs sm:text-sm font-bold text-slate-800 mb-1">
+                      Upload your Resume (.docx, .doc, .pdf, or .txt)
+                    </p>
+                    <p className="text-xs text-slate-500 mb-4">
+                      Direct server-side extraction parses your CV with 100% text fidelity
+                    </p>
+                    <label className="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow-md transition-all">
+                      Choose File
+                      <input 
+                        type="file" 
+                        accept=".docx,.doc,.pdf,.txt" 
+                        onChange={handleFileUpload} 
+                        className="hidden" 
+                      />
+                    </label>
                   </div>
+                ) : (
+                  <div className="bg-blue-50/60 border border-blue-200 rounded-xl p-4 flex flex-col flex-grow">
+                    <div className="flex items-center justify-between pb-3 border-b border-blue-200 mb-3">
+                      <div className="flex items-center gap-2">
+                        <FileCheck2 className="w-5 h-5 text-blue-600" />
+                        <div>
+                          <p className="text-xs font-bold text-slate-900 truncate max-w-[200px] sm:max-w-xs">{attachedFileName}</p>
+                          <p className="text-[11px] text-slate-500">{attachedFileSize}</p>
+                        </div>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={removeAttachedFile}
+                        className="text-xs text-red-600 hover:text-red-700 font-bold"
+                      >
+                        Change File
+                      </button>
+                    </div>
+
+                    <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-2">
+                      Extracted Resume Text (Editable):
+                    </p>
+                    <textarea
+                      value={resumeText}
+                      onChange={(e) => setResumeText(e.target.value)}
+                      rows={8}
+                      className="w-full flex-grow text-xs bg-white border border-blue-200 rounded-lg p-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono"
+                    />
+                  </div>
+                )}
+
+                {isParsingFile && (
+                  <p className="text-xs text-blue-600 font-semibold mt-2 flex items-center gap-1.5 animate-pulse">
+                    <RotateCw className="w-3.5 h-3.5 animate-spin" />
+                    Parsing document and tokenizing skills...
+                  </p>
                 )}
 
                 {parseError && (
-                  <div className="p-3 mb-3 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900 flex items-center gap-2">
-                    <AlertTriangle className="w-4 h-4 text-amber-600 flex-shrink-0" />
-                    <span>{parseError}</span>
-                  </div>
+                  <p className="text-xs text-red-600 font-semibold mt-2 flex items-center gap-1.5">
+                    <XCircle className="w-4 h-4" />
+                    {parseError}
+                  </p>
                 )}
-
-                <textarea
-                  value={resumeText}
-                  onChange={(e) => setResumeText(e.target.value)}
-                  rows={6}
-                  placeholder="Extracted resume text appears here..."
-                  className="w-full text-xs bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-700 font-mono"
-                />
               </div>
             ) : (
               <textarea
                 value={resumeText}
                 onChange={(e) => setResumeText(e.target.value)}
                 rows={14}
-                placeholder="Paste your resume content (Summary, Experience, Skills, Education)..."
-                className="w-full flex-grow text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-xl p-4 text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 font-mono"
+                placeholder="Paste your resume text here (Summary, Work History, Education, Skills)..."
+                className="w-full flex-grow text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-xl p-4 text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono"
               />
             )}
           </div>
-
         </div>
 
-        <div className="text-center">
+        {/* Action Button Bar */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
+          <div className="flex items-center gap-3 text-xs text-slate-500">
+            <span className="flex items-center gap-1">
+              <ShieldCheck className="w-4 h-4 text-emerald-600" />
+              100% Private & Client Encrypted
+            </span>
+            <span>•</span>
+            <span>Workday, Greenhouse & Lever Parsing Rules</span>
+          </div>
+
           <button
             type="submit"
-            disabled={isAnalyzing || !resumeText || !jobDescription}
-            className={`px-8 py-4 text-base font-extrabold text-white rounded-2xl shadow-lg transition-all inline-flex items-center gap-2 ${
-              isAnalyzing || !resumeText || !jobDescription
-                ? 'bg-slate-300 cursor-not-allowed'
-                : 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-blue-500/25 hover:shadow-blue-500/40 hover:-translate-y-0.5'
-            }`}
+            disabled={isAnalyzing || isParsingFile || !resumeText.trim() || !jobDescription.trim()}
+            className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-black text-sm px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all disabled:opacity-50 flex items-center justify-center gap-2"
           >
             {isAnalyzing ? (
               <>
-                <RotateCw className="w-5 h-5 animate-spin" />
-                Auditing Keywords, Metrics & ATS Match...
+                <RotateCw className="w-4 h-4 animate-spin" />
+                Auditing ATS Match & Keywords...
               </>
             ) : (
               <>
-                <Zap className="w-5 h-5" />
-                Calculate Free ATS Resume Score
+                <Zap className="w-4 h-4 text-amber-300" />
+                Scan Resume for Free (Calculate Match Score)
               </>
             )}
           </button>
         </div>
       </form>
 
-      {/* Analysis Results Display */}
+      {/* ANALYSIS RESULTS & 1-CLICK EXPORT CARD */}
       {analysis && (
-        <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-10 shadow-xl space-y-8 mb-16 animate-in fade-in duration-300">
+        <div className="space-y-8 animate-fadeIn mb-16">
           
-          {/* Top Score Banner */}
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-8 border-b border-slate-100">
-            <div>
-              <span className="text-xs font-extrabold text-blue-600 uppercase tracking-wider block mb-1">
-                Official ATS Audit Dossier
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-black text-slate-900">
-                Target ATS Match Score: {analysis.overallScore}%
-              </h2>
-              <p className="text-sm text-slate-600 mt-2 max-w-2xl leading-relaxed">
-                Audited against: <strong className="text-slate-900">{jobTitle || 'Target Position'}</strong>. {analysis.overallScore >= 75 ? 'Your resume is in the top tier of applicant profiles.' : 'Optimization is required to pass automated ATS filter thresholds.'}
-              </p>
-            </div>
-
-            {/* Visual Gauges */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              <div className="text-center p-3 rounded-2xl bg-slate-50 border border-slate-100 min-w-[100px]">
-                <span className="text-[11px] text-slate-500 font-bold block">Overall Fit</span>
-                <span className={`text-2xl font-black ${analysis.overallScore >= 75 ? 'text-emerald-600' : analysis.overallScore >= 50 ? 'text-amber-600' : 'text-rose-600'}`}>
-                  {analysis.overallScore}%
-                </span>
-              </div>
-
-              <div className="text-center p-3 rounded-2xl bg-slate-50 border border-slate-100 min-w-[100px]">
-                <span className="text-[11px] text-slate-500 font-bold block">Keywords</span>
-                <span className="text-2xl font-black text-blue-600">
-                  {analysis.keywordScore}%
-                </span>
-              </div>
-
-              <div className="text-center p-3 rounded-2xl bg-slate-50 border border-slate-100 min-w-[100px]">
-                <span className="text-[11px] text-slate-500 font-bold block">Metrics & ROI</span>
-                <span className="text-2xl font-black text-purple-600">
-                  {analysis.metricsScore}%
-                </span>
-              </div>
-
-              <div className="text-center p-3 rounded-2xl bg-slate-50 border border-slate-100 min-w-[100px]">
-                <span className="text-[11px] text-slate-500 font-bold block">Formatting</span>
-                <span className="text-2xl font-black text-emerald-600">
-                  {analysis.formattingScore}%
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Positives vs Critical Red Flags */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Overall Score Header Card with 1-Click .docx Download */}
+          <div className="bg-slate-900 rounded-3xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden border border-slate-800">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none" />
             
-            {/* Positives */}
-            <div className="p-6 rounded-2xl bg-emerald-50/60 border border-emerald-200">
-              <h3 className="text-sm font-bold text-emerald-950 flex items-center gap-2 mb-3">
-                <ShieldCheck className="w-5 h-5 text-emerald-600" />
-                Positives & Verified Strengths ({analysis.positives?.length || 0})
-              </h3>
-              <ul className="space-y-2 text-xs sm:text-sm text-emerald-900">
-                {analysis.positives?.map((pos: string, idx: number) => (
-                  <li key={idx} className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" />
-                    <span>{pos}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Critical Red Flags */}
-            <div className="p-6 rounded-2xl bg-rose-50/60 border border-rose-200">
-              <h3 className="text-sm font-bold text-rose-950 flex items-center gap-2 mb-3">
-                <ShieldAlert className="w-5 h-5 text-rose-600" />
-                Critical Red Flags & Gaps ({analysis.negatives?.length || 0})
-              </h3>
-              <ul className="space-y-2 text-xs sm:text-sm text-rose-900">
-                {analysis.negatives?.map((neg: string, idx: number) => (
-                  <li key={idx} className="flex items-start gap-2">
-                    <AlertTriangle className="w-4 h-4 text-rose-600 flex-shrink-0 mt-0.5" />
-                    <span>{neg}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-          </div>
-
-          {/* Keywords Breakdown */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            
-            {/* Matched Keywords */}
-            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200">
-              <h3 className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-3">
-                Matched Core Competencies:
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {analysis.matchedKeywords?.map((kw: string) => (
-                  <span key={kw} className="bg-emerald-100 text-emerald-900 text-xs px-2.5 py-1 rounded-lg font-bold">
-                    ✓ {kw}
-                  </span>
-                ))}
+            <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+              <div>
+                <span className="inline-block bg-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-3 border border-blue-500/30">
+                  ATS Audit Verdict
+                </span>
+                <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+                  {analysis.matchScore >= 80 ? '🎉 Excellent ATS Readiness!' : analysis.matchScore >= 60 ? '⚡ Good Baseline, Needs Keyword Optimization' : '⚠️ High Risk of ATS Filter Rejection'}
+                </h2>
+                <p className="text-xs sm:text-sm text-slate-300 mt-2 max-w-xl leading-relaxed">
+                  {analysis.overallVerdict || 'Your resume was scored based on exact keyword density, formatting compliance, and metric impact against the job description.'}
+                </p>
               </div>
-            </div>
 
-            {/* Missing Keywords */}
-            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200">
-              <h3 className="text-xs font-bold text-rose-700 uppercase tracking-wider mb-3">
-                Missing High-Priority Keywords (Insert These):
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {analysis.missingKeywords?.map((kw: string) => (
-                  <span key={kw} className="bg-rose-100 text-rose-900 text-xs px-2.5 py-1 rounded-lg font-bold">
-                    + {kw}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-          </div>
-
-          {/* Prioritized Recommendations */}
-          <div className="p-6 rounded-2xl bg-indigo-50/50 border border-indigo-200">
-            <h3 className="text-sm font-bold text-indigo-950 flex items-center gap-2 mb-3">
-              <ListOrdered className="w-4 h-4 text-indigo-600" />
-              Prioritized Action Plan to Reach 90%+ Score:
-            </h3>
-            <div className="space-y-2 text-xs sm:text-sm text-indigo-900">
-              {analysis.recommendations?.map((rec: string, idx: number) => (
-                <div key={idx} className="flex items-start gap-2 bg-white/80 p-3 rounded-xl border border-indigo-100">
-                  <span className="w-5 h-5 rounded-full bg-indigo-600 text-white font-black text-xs flex items-center justify-center flex-shrink-0">
-                    {idx + 1}
-                  </span>
-                  <span>{rec}</span>
+              <div className="flex flex-col sm:flex-row items-center gap-6">
+                {/* Score Dial */}
+                <div className="flex items-center gap-3 bg-slate-800/80 p-4 rounded-2xl border border-slate-700">
+                  <div className={`text-4xl sm:text-5xl font-black ${analysis.matchScore >= 80 ? 'text-emerald-400' : analysis.matchScore >= 60 ? 'text-amber-400' : 'text-rose-400'}`}>
+                    {analysis.matchScore}%
+                  </div>
+                  <div className="text-left">
+                    <p className="text-xs font-bold text-slate-200">Overall Match</p>
+                    <p className="text-[11px] text-slate-400">Workday / Greenhouse</p>
+                  </div>
                 </div>
-              ))}
+
+                {/* 1-CLICK DOCX DOWNLOAD BUTTON */}
+                <div className="flex flex-col gap-2 w-full sm:w-auto">
+                  <button
+                    type="button"
+                    onClick={handleDownloadDocx}
+                    disabled={isDownloadingDocx}
+                    className="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black text-xs sm:text-sm px-6 py-3.5 rounded-xl shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2 w-full"
+                  >
+                    {isDownloadingDocx ? (
+                      <>
+                        <RotateCw className="w-4 h-4 animate-spin" />
+                        Generating ATS .docx...
+                      </>
+                    ) : (
+                      <>
+                        <Download className="w-4 h-4" />
+                        Download ATS-Optimized (.docx)
+                      </>
+                    )}
+                  </button>
+
+                  {downloadSuccess && (
+                    <p className="text-[11px] text-emerald-400 font-bold text-center flex items-center justify-center gap-1">
+                      <CheckCircle className="w-3.5 h-3.5" />
+                      Downloaded ATS-Proof Microsoft Word File!
+                    </p>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* AI Rewritten Power Bullets */}
-          {analysis.rewrittenBullets && analysis.rewrittenBullets.length > 0 && (
-            <div className="pt-6 border-t border-slate-100">
-              <div className="flex items-center gap-2 mb-4">
-                <Sparkles className="w-5 h-5 text-indigo-600" />
-                <h3 className="text-lg font-black text-slate-900">
-                  AI Power Bullet Point Makeover (US Hiring Standard)
-                </h3>
-              </div>
-              <p className="text-xs text-slate-600 mb-6">
-                Replace passive duty statements with quantifiable business impact and leadership action verbs:
+          {/* Missing Keywords & Suggestions */}
+          {analysis.missingKeywords && analysis.missingKeywords.length > 0 && (
+            <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+              <h3 className="text-base font-bold text-slate-900 mb-2 flex items-center gap-2">
+                <Target className="w-4 h-4 text-rose-600" />
+                Missing Critical Keywords (Required by ATS Parsers)
+              </h3>
+              <p className="text-xs text-slate-500 mb-4">
+                These keywords appear prominently in the job description but were missing or weak in your CV:
               </p>
+              <div className="flex flex-wrap gap-2">
+                {analysis.missingKeywords.map((kw: string, i: number) => (
+                  <span
+                    key={i}
+                    className="inline-flex items-center gap-1.5 bg-rose-50 border border-rose-200 text-rose-800 text-xs font-semibold px-3 py-1.5 rounded-lg"
+                  >
+                    <AlertTriangle className="w-3 h-3 text-rose-500" />
+                    {kw}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* High-Impact Bullet Makeover (Google XYZ Formula) */}
+          {analysis.bulletMakeovers && analysis.bulletMakeovers.length > 0 && (
+            <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-blue-600" />
+                    High-Impact Bullet Point Makeovers (Google XYZ Formula)
+                  </h3>
+                  <p className="text-xs text-slate-500 mt-1">
+                    Transformed from passive duty descriptions into high-scoring quantified achievements:
+                  </p>
+                </div>
+              </div>
 
               <div className="space-y-4">
-                {analysis.rewrittenBullets.map((bullet: any, idx: number) => (
-                  <div key={idx} className="bg-slate-50 border border-slate-200 rounded-2xl p-5 space-y-3">
-                    <div className="text-xs text-slate-500">
-                      <span className="font-bold text-rose-700">Original (Weak): </span>
-                      <span className="line-through">{bullet.original}</span>
-                    </div>
-
-                    <div className="bg-white border border-emerald-200 rounded-xl p-4 relative group">
-                      <div className="text-xs font-bold text-emerald-800 mb-1 flex items-center justify-between">
-                        <span>High-Impact ATS Version:</span>
-                        <button
-                          type="button"
-                          onClick={() => copyBullet(bullet.improved, idx)}
-                          className="inline-flex items-center gap-1 text-[11px] font-bold text-slate-700 bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 px-2.5 py-1 rounded-md transition-colors"
-                        >
-                          {copiedIndex === idx ? (
-                            <>
-                              <Check className="w-3 h-3 text-emerald-600" />
-                              Copied!
-                            </>
-                          ) : (
-                            <>
-                              <Copy className="w-3 h-3" />
-                              Copy Bullet
-                            </>
-                          )}
-                        </button>
-                      </div>
-                      <p className="text-xs sm:text-sm font-semibold text-slate-900 leading-relaxed">
-                        {bullet.improved}
+                {analysis.bulletMakeovers.map((b: any, i: number) => (
+                  <div key={i} className="bg-slate-50 border border-slate-200 rounded-xl p-4">
+                    <div className="mb-2">
+                      <span className="text-[11px] font-bold text-rose-600 uppercase tracking-wider block mb-1">
+                        ❌ Weak Original Bullet:
+                      </span>
+                      <p className="text-xs text-slate-600 italic pl-3 border-l-2 border-rose-300">
+                        "{b.original}"
                       </p>
                     </div>
 
-                    <p className="text-[11px] text-slate-500 italic">
-                      Why this wins: {bullet.reason}
-                    </p>
+                    <div className="mt-3 pt-3 border-t border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                      <div>
+                        <span className="text-[11px] font-bold text-emerald-600 uppercase tracking-wider block mb-1">
+                          ✅ ATS-Optimized Google XYZ Makeover:
+                        </span>
+                        <p className="text-xs sm:text-sm font-semibold text-slate-900 pl-3 border-l-2 border-emerald-500">
+                          "{b.enhanced}"
+                        </p>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() => copyBullet(b.enhanced, i)}
+                        className="self-end sm:self-center px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:bg-blue-50 hover:border-blue-300 text-slate-700 hover:text-blue-700 text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm flex-shrink-0"
+                      >
+                        {copiedIndex === i ? (
+                          <>
+                            <Check className="w-3.5 h-3.5 text-emerald-600" />
+                            Copied!
+                          </>
+                        ) : (
+                          <>
+                            <Copy className="w-3.5 h-3.5 text-slate-500" />
+                            Copy Bullet
+                          </>
+                        )}
+                      </button>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -599,91 +633,52 @@ function ATSScannerContent() {
         </div>
       )}
 
-      {/* High-SEO Educational Content Section (High Volume Target Keywords) */}
-      <div className="border-t border-slate-200 pt-12 mt-12 space-y-12">
-        <div>
-          <h2 className="text-2xl font-black text-slate-900 tracking-tight mb-4">
-            How Does This Free ATS Resume Checker Work?
-          </h2>
-          <p className="text-sm text-slate-600 leading-relaxed max-w-4xl">
-            An <strong>Applicant Tracking System (ATS)</strong> is automated software utilized by over 98% of Fortune 500 companies, US hospital networks, and tech scaleups (including Workday, Greenhouse, Lever, Taleo, and iCIMS) to filter, score, and rank incoming CVs before a human recruiter ever sees them.
-          </p>
-        </div>
+      {/* SEO & Educational Guide Section with Top Keywords ($4 - $18 CPC) */}
+      <div className="mt-16 pt-12 border-t border-slate-200">
+        <h2 className="text-2xl font-black text-slate-900 mb-3">
+          How to Create an ATS Friendly Resume That Passes Any Scanner
+        </h2>
+        <p className="text-sm text-slate-600 mb-8 leading-relaxed max-w-4xl">
+          An <strong>ATS friendly resume template</strong> is designed to be easily read, parsed, and scored by automated Applicant Tracking Systems like Workday, Greenhouse, Taleo, and Lever. Follow these essential rules to ensure your CV passes automated screening:
+        </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
-            <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold mb-3">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+            <div className="w-8 h-8 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600 font-bold mb-3">
               1
             </div>
-            <h3 className="text-base font-bold text-slate-900 mb-2">
-              ATS Keyword Match Ratio
+            <h3 className="text-sm font-bold text-slate-900 mb-2">
+              Use Single-Column ATS Format
             </h3>
             <p className="text-xs text-slate-600 leading-relaxed">
-              Our <strong>ats score checker</strong> scans your document against exact required skills, frameworks, and job titles to verify that your keyword density aligns with applicant tracking algorithms.
+              Multi-column layouts and text boxes cause parsers to scramble your job titles and dates. Use clean, single-column vertical hierarchy.
             </p>
           </div>
 
-          <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
-            <div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center font-bold mb-3">
+          <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+            <div className="w-8 h-8 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-600 font-bold mb-3">
               2
             </div>
-            <h3 className="text-base font-bold text-slate-900 mb-2">
-              Quantifiable Metrics & ROI
+            <h3 className="text-sm font-bold text-slate-900 mb-2">
+              Exact Keyword Taxonomy
             </h3>
             <p className="text-xs text-slate-600 leading-relaxed">
-              US recruiters look for measurable impact. Our <strong>ats cv checker</strong> audits your experience bullets for metrics, percentage growth, revenue numbers, and leadership action verbs.
+              Match the exact hard skill names from the job description (e.g. <em>TypeScript</em> instead of just <em>Coding</em>; <em>Epic EMR</em> instead of <em>Hospital Software</em>).
             </p>
           </div>
 
-          <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
-            <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold mb-3">
+          <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+            <div className="w-8 h-8 rounded-xl bg-purple-100 flex items-center justify-center text-purple-600 font-bold mb-3">
               3
             </div>
-            <h3 className="text-base font-bold text-slate-900 mb-2">
-              ATS-Friendly Formatting
+            <h3 className="text-sm font-bold text-slate-900 mb-2">
+              Google XYZ Action Bullets
             </h3>
             <p className="text-xs text-slate-600 leading-relaxed">
-              Multi-column tables, graphics, and unreadable fonts can corrupt ATS parsers. Our <strong>ats friendly resume checker</strong> verifies clean hierarchy, standard section headers, and machine readability.
+              Structure accomplishments with strong action verbs and quantified metrics (e.g., <em>"cut API latency by 42% and saved $18,400 monthly"</em>).
             </p>
           </div>
         </div>
-
-        {/* FAQ Accordion Section */}
-        <div className="bg-slate-50 rounded-3xl p-6 sm:p-10 border border-slate-200">
-          <h3 className="text-xl font-black text-slate-900 mb-6">
-            Frequently Asked Questions: ATS Resume Checker Free
-          </h3>
-
-          <div className="space-y-4 text-xs sm:text-sm">
-            <div className="bg-white p-5 rounded-2xl border border-slate-200">
-              <h4 className="font-bold text-slate-900 mb-1">
-                What is a good ATS resume score for US jobs?
-              </h4>
-              <p className="text-slate-600">
-                A score of <strong>75% or higher</strong> typically passes automated ATS filter thresholds and places your application in the candidate shortlist for human review. Scores below 50% risk immediate automated rejection.
-              </p>
-            </div>
-
-            <div className="bg-white p-5 rounded-2xl border border-slate-200">
-              <h4 className="font-bold text-slate-900 mb-1">
-                Is this ATS resume checker completely free?
-              </h4>
-              <p className="text-slate-600">
-                Yes! Our <strong>free ats resume checker online</strong> is 100% free with unlimited scans, file attachments (.docx, .pdf, .txt), and AI bullet point makeovers to support international job seekers.
-              </p>
-            </div>
-
-            <div className="bg-white p-5 rounded-2xl border border-slate-200">
-              <h4 className="font-bold text-slate-900 mb-1">
-                Which file format is best for ATS scanners?
-              </h4>
-              <p className="text-slate-600">
-                Standard single-column <strong>.docx</strong> or text-based <strong>.pdf</strong> files without complex tables, text boxes, or embedded images are the most compatible with all US Applicant Tracking Systems.
-              </p>
-            </div>
-          </div>
-        </div>
-
       </div>
 
     </div>
@@ -692,7 +687,7 @@ function ATSScannerContent() {
 
 export default function ATSScannerPage() {
   return (
-    <Suspense fallback={<div className="max-w-7xl mx-auto p-12 text-center text-slate-500">Loading Free ATS Resume Checker...</div>}>
+    <Suspense fallback={<div className="max-w-7xl mx-auto px-4 py-16 text-center text-slate-400">Loading ATS Resume Builder...</div>}>
       <ATSScannerContent />
     </Suspense>
   );
