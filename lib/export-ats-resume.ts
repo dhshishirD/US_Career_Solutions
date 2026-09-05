@@ -1,4 +1,4 @@
-import { Document, Paragraph, TextRun, HeadingLevel, AlignmentType, Packer } from 'docx';
+import { Document, Paragraph, TextRun, HeadingLevel, AlignmentType, Packer, BorderStyle } from 'docx';
 import { parseResumeIntelligently } from './resume-intelligence';
 
 export interface ResumeExportData {
@@ -27,7 +27,7 @@ export async function generateATSResumeDocx(data: ResumeExportData): Promise<Blo
 
   const contactLine = contactParts.length > 0 
     ? contactParts.join('  |  ') 
-    : (data.contactInfo || 'Email: contact@candidate.com  |  Available for Global & US Roles');
+    : (data.contactInfo || 'Available for Local & International Opportunities');
 
   const paragraphs: Paragraph[] = [];
 
@@ -67,11 +67,19 @@ export async function generateATSResumeDocx(data: ResumeExportData): Promise<Blo
     );
   }
 
-  // 3. Contact Info Line (9.5pt)
+  // 3. Contact Info Line with 100% Full-Width Bottom Border
   paragraphs.push(
     new Paragraph({
       alignment: AlignmentType.CENTER,
-      spacing: { after: 140 },
+      spacing: { after: 180 },
+      border: {
+        bottom: {
+          color: 'CBD5E1',
+          space: 8,
+          style: BorderStyle.SINGLE,
+          size: 6,
+        },
+      },
       children: [
         new TextRun({
           text: contactLine,
@@ -83,22 +91,8 @@ export async function generateATSResumeDocx(data: ResumeExportData): Promise<Blo
     })
   );
 
-  // Divider Line
-  paragraphs.push(
-    new Paragraph({
-      spacing: { after: 140 },
-      children: [
-        new TextRun({
-          text: '_________________________________________________________________________________',
-          color: 'CBD5E1',
-          size: 14,
-        }),
-      ],
-    })
-  );
-
-  // 4. Professional Summary
-  const summaryToUse = data.professionalSummary || parsed.summary;
+  // 4. Professional Summary (Use candidate's authentic summary if available)
+  const summaryToUse = parsed.summary || data.professionalSummary;
   if (summaryToUse && summaryToUse.trim()) {
     paragraphs.push(
       new Paragraph({
@@ -213,7 +207,7 @@ export async function generateATSResumeDocx(data: ResumeExportData): Promise<Blo
         })
       );
 
-      // Tight, sleek executive bullet points
+      // Clean, single compact bullets
       for (const bullet of exp.bullets) {
         if (!bullet.trim()) continue;
         paragraphs.push(
@@ -234,7 +228,7 @@ export async function generateATSResumeDocx(data: ResumeExportData): Promise<Blo
     }
   }
 
-  // 7. Education & Academic Qualifications
+  // 7. Education & Academic Credentials
   if (parsed.education && parsed.education.length > 0) {
     paragraphs.push(
       new Paragraph({
@@ -282,7 +276,7 @@ export async function generateATSResumeDocx(data: ResumeExportData): Promise<Blo
     }
   }
 
-  // 8. Other Sections (Leadership, Extracurricular, Certifications)
+  // 8. Other Sections (Leadership, Certifications, Extracurricular)
   if (parsed.otherSections && parsed.otherSections.length > 0) {
     for (const sec of parsed.otherSections) {
       paragraphs.push(
@@ -303,16 +297,13 @@ export async function generateATSResumeDocx(data: ResumeExportData): Promise<Blo
 
       for (const line of sec.lines) {
         if (!line.trim()) continue;
-        const isBullet = line.startsWith('-') || line.startsWith('•') || line.startsWith('*');
-        const clean = isBullet ? line.replace(/^[-•*]\s*/, '') : line;
-
         paragraphs.push(
           new Paragraph({
-            bullet: isBullet ? { level: 0 } : undefined,
+            bullet: { level: 0 },
             spacing: { before: 15, after: 25, line: 240 },
             children: [
               new TextRun({
-                text: clean,
+                text: line.trim(),
                 size: 20,
                 font: 'Calibri',
                 color: '334155',

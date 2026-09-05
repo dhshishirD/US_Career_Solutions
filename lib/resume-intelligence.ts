@@ -40,11 +40,11 @@ export function parseResumeIntelligently(rawText: string, targetRole: string = '
   const linkedIn = linkedInMatch ? linkedInMatch[0] : undefined;
 
   // 4. Extract Location
-  const locationMatch = rawText.match(/(?:Address[:\s]*)?([A-Za-z\s]+,\s*(?:Dhaka|Chittagong|Sylhet|Rajshahi|Feni|Bangladesh|USA|CA|NY|TX|UK|India|Pakistan|Canada|Germany|Remote)[A-Za-z\s,]*)/i);
+  const locationMatch = rawText.match(/(?:Address[:\s]*)?([A-Za-z\s]+,\s*(?:Dhaka|Chittagong|Sylhet|Rajshahi|Feni|Banani|Gulshan|Bangladesh|USA|CA|NY|TX|UK|India|Pakistan|Canada|Germany|Remote)[A-Za-z0-9\s,.-]*)/i);
   let location = locationMatch ? locationMatch[1].replace(/^Address[:\s]*/i, '').trim() : undefined;
   if (location && location.length > 50) location = location.slice(0, 50);
 
-  // 5. Extract Full Name (Ignore header labels like "MY CONTACT", "CURRICULUM VITAE", "RESUME")
+  // 5. Extract Full Name
   let fullName = '';
   for (let i = 0; i < Math.min(lines.length, 6); i++) {
     const l = lines[i];
@@ -62,7 +62,7 @@ export function parseResumeIntelligently(rawText: string, targetRole: string = '
       continue;
     }
     const cleaned = l.replace(/^(Name|Full Name|Candidate Name)[:\s-]*/i, '').trim();
-    if (cleaned.length >= 2 && cleaned.length <= 40 && !cleaned.includes(':') && !cleaned.includes('|')) {
+    if (cleaned.length >= 2 && cleaned.length <= 45 && !cleaned.includes(':') && !cleaned.includes('|')) {
       fullName = cleaned;
       break;
     }
@@ -99,7 +99,9 @@ export function parseResumeIntelligently(rawText: string, targetRole: string = '
     'TRAININGS': 'other',
     'VOLUNTEER WORK': 'other',
     'AWARDS': 'other',
-    'PUBLICATIONS': 'other'
+    'PUBLICATIONS': 'other',
+    'MEMBERSHIPS': 'other',
+    'AFFILIATIONS': 'other'
   };
 
   let currentSectionType: 'summary' | 'experience' | 'education' | 'skills' | 'other' | 'none' = 'none';
@@ -116,14 +118,15 @@ export function parseResumeIntelligently(rawText: string, targetRole: string = '
   let currentOtherBlock: { title: string; lines: string[] } | null = null;
 
   for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
-    const upperLine = line.toUpperCase().replace(/[:\-_#]/g, '').trim();
+    const rawLine = lines[i];
+    const upperLine = rawLine.toUpperCase().replace(/[:\-_#]/g, '').trim();
 
+    // Check if line is a section header
     let matchedSection: 'summary' | 'experience' | 'education' | 'skills' | 'other' | null = null;
     for (const [secKey, secVal] of Object.entries(sectionKeywords)) {
       if (upperLine === secKey || upperLine.startsWith(secKey + ' ') || upperLine.endsWith(' ' + secKey)) {
         matchedSection = secVal;
-        currentSectionTitle = line;
+        currentSectionTitle = rawLine;
         break;
       }
     }
@@ -147,48 +150,66 @@ export function parseResumeIntelligently(rawText: string, targetRole: string = '
     }
 
     if (currentSectionType === 'summary') {
-      summaryText += (summaryText ? ' ' : '') + line;
+      summaryText += (summaryText ? ' ' : '') + rawLine;
     } else if (currentSectionType === 'skills') {
-      const splitSkills = line.split(/[•,|;·\n]/).map(s => s.trim()).filter(s => s.length > 1 && s.length < 40);
+      const splitSkills = rawLine.split(/[•,|;·\n]/).map(s => s.replace(/^[-*•·▪▫\s]+/, '').trim()).filter(s => s.length > 1 && s.length < 40);
       splitSkills.forEach(s => {
         if (!skillsList.includes(s)) skillsList.push(s);
       });
     } else if (currentSectionType === 'experience') {
-      const isBullet = line.startsWith('-') || line.startsWith('•') || line.startsWith('*') || line.startsWith('–');
-      const isHeaderLine = !isBullet && (line.includes('|') || line.includes('–') || line.includes('- 20') || line.includes('20') || line.length < 70);
+      // Clean leading bullet marks and asterisks
+      const isExplicitBullet = /^[-•*–▪▫·	]+\s*/.test(rawLine) || rawLine.startsWith('* ');
+      const cleanLine = rawLine.replace(/^[-•*–▪▫·	\s*]+/, '').trim();
+
+      // Check if line is lone date word like "Present" or "Jan 2024"
+      const isLoneDate = /^(Present|Ongoing|Current|\d{4}|\w+\s+\d{4}|\w+\s+\d{4}\s*[-–]\s*(Present|Ongoing|\d{4}))$/i.test(cleanLine);
+      if (isLoneDate && currentExpBlock) {
+        currentExpBlock.dateRange = (currentExpBlock.dateRange ? currentExpBlock.dateRange + ' - ' : '') + cleanLine;
+        continue;
+      }
+
+      const isHeaderLine = !isExplicitBullet && (rawLine.includes('|') || rawLine.includes('–') || (rawLine.length < 75 && (rawLine.includes('Hospital') || rawLine.includes('Ltd') || rawLine.includes('Inc') || rawLine.includes('Navy') || rawLine.includes('Officer') || rawLine.includes('Director') || rawLine.includes('Center') || rawLine.includes('Manager'))));
 
       if (isHeaderLine && (!currentExpBlock || currentExpBlock.bullets.length > 0)) {
         if (currentExpBlock) experienceBlocks.push(currentExpBlock);
         
-        const parts = line.split(/[|–-]/).map(p => p.trim());
+        const parts = cleanLine.split(/[|–]/).map(p => p.trim());
         currentExpBlock = {
-          roleTitle: parts[0] || line,
+          roleTitle: parts[0] || cleanLine,
           organization: parts[1] || undefined,
           dateRange: parts[2] || (parts.length > 1 && parts[parts.length - 1].match(/\d{4}/) ? parts[parts.length - 1] : undefined),
           bullets: []
         };
       } else {
         if (!currentExpBlock) {
-          currentExpBlock = { roleTitle: 'Experience', bullets: [] };
+          currentExpBlock = { roleTitle: 'Key Professional Experience', bullets: [] };
         }
-        const cleanBullet = isBullet ? line.replace(/^[-•*–]\s*/, '') : line;
-        currentExpBlock.bullets.push(cleanBullet);
+
+        // If this line does NOT start with a bullet and is short or continuation, merge with previous bullet
+        if (!isExplicitBullet && currentExpBlock.bullets.length > 0 && (cleanLine.length < 60 || !cleanLine.match(/^[A-Z][a-z]+/))) {
+          const lastIdx = currentExpBlock.bullets.length - 1;
+          currentExpBlock.bullets[lastIdx] = currentExpBlock.bullets[lastIdx] + ' ' + cleanLine;
+        } else {
+          currentExpBlock.bullets.push(cleanLine);
+        }
       }
     } else if (currentSectionType === 'education') {
+      const cleanEdu = rawLine.replace(/^[-•*–▪▫·	\s]+/, '').trim();
       if (!currentEduBlock) {
-        currentEduBlock = { degree: line };
+        currentEduBlock = { degree: cleanEdu };
       } else if (!currentEduBlock.institution) {
-        currentEduBlock.institution = line;
+        currentEduBlock.institution = cleanEdu;
       } else {
-        currentEduBlock.yearOrCgpa = (currentEduBlock.yearOrCgpa ? currentEduBlock.yearOrCgpa + ' | ' : '') + line;
+        currentEduBlock.yearOrCgpa = (currentEduBlock.yearOrCgpa ? currentEduBlock.yearOrCgpa + ' | ' : '') + cleanEdu;
         educationBlocks.push(currentEduBlock);
         currentEduBlock = null;
       }
     } else if (currentSectionType === 'other') {
       if (!currentOtherBlock) {
-        currentOtherBlock = { title: currentSectionTitle || 'Additional Details', lines: [] };
+        currentOtherBlock = { title: currentSectionTitle || 'Additional Credentials', lines: [] };
       }
-      currentOtherBlock.lines.push(line);
+      const cleanOther = rawLine.replace(/^[-•*–▪▫·	\s]+/, '').trim();
+      if (cleanOther) currentOtherBlock.lines.push(cleanOther);
     }
   }
 
@@ -196,12 +217,11 @@ export function parseResumeIntelligently(rawText: string, targetRole: string = '
   if (currentEduBlock) educationBlocks.push(currentEduBlock);
   if (currentOtherBlock) otherSections.push(currentOtherBlock);
 
-  // If experience is empty, try to parse lines gracefully
   if (experienceBlocks.length === 0) {
-    const defaultExp: { roleTitle: string; bullets: string[] } = { roleTitle: 'Key Professional Experience', bullets: [] };
+    const defaultExp = { roleTitle: 'Key Professional Experience', bullets: [] as string[] };
     for (const l of lines) {
-      if (l.length > 25 && !l.includes('@') && !l.includes('http')) {
-        defaultExp.bullets.push(l.replace(/^[-•*–]\s*/, ''));
+      if (l.length > 20 && !l.includes('@') && !l.includes('http')) {
+        defaultExp.bullets.push(l.replace(/^[-•*–▪▫·	\s]+/, ''));
       }
     }
     if (defaultExp.bullets.length > 0) experienceBlocks.push(defaultExp);
@@ -213,7 +233,7 @@ export function parseResumeIntelligently(rawText: string, targetRole: string = '
     phone,
     location,
     linkedIn,
-    summary: summaryText || `Results-driven professional with proven expertise in executing high-impact initiatives, stakeholder collaboration, and operational excellence.`,
+    summary: summaryText,
     skills: skillsList,
     experience: experienceBlocks,
     education: educationBlocks,
