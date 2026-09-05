@@ -22,7 +22,10 @@ import {
   ShieldAlert,
   ShieldCheck,
   Percent,
-  ListOrdered
+  ListOrdered,
+  BookOpen,
+  Award,
+  ChevronRight
 } from 'lucide-react';
 
 const SAMPLE_PRESETS = [
@@ -111,6 +114,8 @@ function ATSScannerContent() {
   const [resumeText, setResumeText] = useState('');
   const [attachedFileName, setAttachedFileName] = useState<string | null>(null);
   const [attachedFileSize, setAttachedFileSize] = useState<string | null>(null);
+  const [isParsingFile, setIsParsingFile] = useState(false);
+  const [parseError, setParseError] = useState<string | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [analysis, setAnalysis] = useState<any | null>(null);
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
@@ -128,30 +133,46 @@ function ATSScannerContent() {
     setResumeText(preset.resume);
     setAttachedFileName(null);
     setAttachedFileSize(null);
+    setParseError(null);
     setAnalysis(null);
   };
 
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
     setAttachedFileName(file.name);
     setAttachedFileSize(`${(file.size / 1024).toFixed(1)} KB`);
+    setIsParsingFile(true);
+    setParseError(null);
 
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      const text = event.target?.result as string;
-      if (text) {
-        setResumeText(text);
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try {
+      const res = await fetch('/api/ai/parse-resume', {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = await res.json();
+      if (res.ok && data.text) {
+        setResumeText(data.text);
+      } else {
+        setParseError(data.error || 'Failed to parse document text. You can copy-paste text directly.');
       }
-    };
-    reader.readAsText(file);
+    } catch (err: any) {
+      setParseError('Error uploading file. Please paste text directly into the box.');
+    } finally {
+      setIsParsingFile(false);
+    }
   };
 
   const removeAttachedFile = () => {
     setAttachedFileName(null);
     setAttachedFileSize(null);
     setResumeText('');
+    setParseError(null);
   };
 
   const handleAnalyze = async (e: React.FormEvent) => {
@@ -191,17 +212,17 @@ function ATSScannerContent() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
       
-      {/* Header */}
+      {/* Header with High Volume Keywords */}
       <div className="max-w-3xl mb-8">
         <div className="inline-flex items-center gap-1.5 bg-blue-50 border border-blue-200 text-blue-800 px-3 py-1 rounded-full text-xs font-semibold mb-3">
           <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-          Enterprise ATS Resume Auditor & File Scanner
+          100% Free ATS Resume Checker & Score Calculator
         </div>
         <h1 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
-          Applicant Tracking System (ATS) Scanner
+          Free ATS Resume Checker & Score Scanner
         </h1>
         <p className="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed">
-          Attach your CV / Resume file to run an instant deep ATS compatibility audit against US job requirements. Uncover missing industry keywords, detect critical red flags, and get 1-click high-impact bullet point rewrites.
+          The best free ATS resume checker and CV score auditor. Scan your resume against US job descriptions to discover missing keywords, eliminate ATS parsing red flags, and get an instant ATS-friendly resume makeover.
         </p>
       </div>
 
@@ -242,7 +263,7 @@ function ATSScannerContent() {
               type="text"
               value={jobTitle}
               onChange={(e) => setJobTitle(e.target.value)}
-              placeholder="Target Job Title (e.g. Senior Full Stack Engineer)..."
+              placeholder="Target Job Title (e.g. Senior Full Stack Engineer, Registered Nurse)..."
               className="w-full text-xs font-semibold bg-slate-50 border border-slate-200 rounded-xl p-3 mb-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
 
@@ -260,7 +281,7 @@ function ATSScannerContent() {
             <div className="flex items-center justify-between mb-3">
               <label className="text-sm font-bold text-slate-900 flex items-center gap-2">
                 <FileText className="w-4 h-4 text-emerald-600" />
-                2. Attach Your CV / Resume
+                2. Attach Your CV / Resume File
               </label>
 
               {/* Mode Toggle */}
@@ -285,14 +306,23 @@ function ATSScannerContent() {
             {inputMode === 'upload' ? (
               <div className="flex flex-col flex-grow">
                 {/* Drag and Drop Box */}
-                <label className="border-2 border-dashed border-slate-300 hover:border-emerald-500 rounded-2xl p-6 text-center cursor-pointer transition-colors bg-slate-50/60 hover:bg-emerald-50/30 flex flex-col items-center justify-center mb-3 flex-grow min-h-[160px]">
-                  <UploadCloud className="w-10 h-10 text-emerald-600 mb-2" />
-                  <span className="text-sm font-bold text-slate-800">
-                    Click to browse or drag & drop your CV / Resume
-                  </span>
-                  <span className="text-xs text-slate-400 mt-1">
-                    Supports PDF, DOCX, DOC, TXT, RTF files
-                  </span>
+                <label className="border-2 border-dashed border-slate-300 hover:border-emerald-500 rounded-2xl p-6 text-center cursor-pointer transition-colors bg-slate-50/60 hover:bg-emerald-50/30 flex flex-col items-center justify-center mb-3 flex-grow min-h-[150px]">
+                  {isParsingFile ? (
+                    <div className="flex flex-col items-center">
+                      <RotateCw className="w-8 h-8 text-blue-600 animate-spin mb-2" />
+                      <span className="text-xs font-bold text-slate-700">Extracting text from document...</span>
+                    </div>
+                  ) : (
+                    <>
+                      <UploadCloud className="w-10 h-10 text-emerald-600 mb-2" />
+                      <span className="text-sm font-bold text-slate-800">
+                        Click to browse or drag & drop your CV / Resume
+                      </span>
+                      <span className="text-xs text-slate-400 mt-1">
+                        Supports PDF, DOCX, DOC, TXT, RTF files
+                      </span>
+                    </>
+                  )}
                   <input
                     type="file"
                     accept=".pdf,.docx,.doc,.txt,.rtf"
@@ -316,6 +346,13 @@ function ATSScannerContent() {
                     >
                       <XCircle className="w-4 h-4" />
                     </button>
+                  </div>
+                )}
+
+                {parseError && (
+                  <div className="p-3 mb-3 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900 flex items-center gap-2">
+                    <AlertTriangle className="w-4 h-4 text-amber-600 flex-shrink-0" />
+                    <span>{parseError}</span>
                   </div>
                 )}
 
@@ -358,7 +395,7 @@ function ATSScannerContent() {
             ) : (
               <>
                 <Zap className="w-5 h-5" />
-                Run Comprehensive ATS Compatibility Audit
+                Calculate Free ATS Resume Score
               </>
             )}
           </button>
@@ -367,7 +404,7 @@ function ATSScannerContent() {
 
       {/* Analysis Results Display */}
       {analysis && (
-        <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-10 shadow-xl space-y-8 animate-in fade-in duration-300">
+        <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-10 shadow-xl space-y-8 mb-16 animate-in fade-in duration-300">
           
           {/* Top Score Banner */}
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-8 border-b border-slate-100">
@@ -376,17 +413,17 @@ function ATSScannerContent() {
                 Official ATS Audit Dossier
               </span>
               <h2 className="text-2xl sm:text-3xl font-black text-slate-900">
-                Target ATS Match: {analysis.overallScore}%
+                Target ATS Match Score: {analysis.overallScore}%
               </h2>
               <p className="text-sm text-slate-600 mt-2 max-w-2xl leading-relaxed">
-                Analysis completed for target role: <strong className="text-slate-900">{jobTitle || 'Target Position'}</strong>.
+                Audited against: <strong className="text-slate-900">{jobTitle || 'Target Position'}</strong>. {analysis.overallScore >= 75 ? 'Your resume is in the top tier of applicant profiles.' : 'Optimization is required to pass automated ATS filter thresholds.'}
               </p>
             </div>
 
             {/* Visual Gauges */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               <div className="text-center p-3 rounded-2xl bg-slate-50 border border-slate-100 min-w-[100px]">
-                <span className="text-[11px] text-slate-500 font-bold block">Overall Match</span>
+                <span className="text-[11px] text-slate-500 font-bold block">Overall Fit</span>
                 <span className={`text-2xl font-black ${analysis.overallScore >= 75 ? 'text-emerald-600' : analysis.overallScore >= 50 ? 'text-amber-600' : 'text-rose-600'}`}>
                   {analysis.overallScore}%
                 </span>
@@ -422,7 +459,7 @@ function ATSScannerContent() {
             <div className="p-6 rounded-2xl bg-emerald-50/60 border border-emerald-200">
               <h3 className="text-sm font-bold text-emerald-950 flex items-center gap-2 mb-3">
                 <ShieldCheck className="w-5 h-5 text-emerald-600" />
-                Positives & Strong Elements ({analysis.positives?.length || 0})
+                Positives & Verified Strengths ({analysis.positives?.length || 0})
               </h3>
               <ul className="space-y-2 text-xs sm:text-sm text-emerald-900">
                 {analysis.positives?.map((pos: string, idx: number) => (
@@ -562,13 +599,100 @@ function ATSScannerContent() {
         </div>
       )}
 
+      {/* High-SEO Educational Content Section (High Volume Target Keywords) */}
+      <div className="border-t border-slate-200 pt-12 mt-12 space-y-12">
+        <div>
+          <h2 className="text-2xl font-black text-slate-900 tracking-tight mb-4">
+            How Does This Free ATS Resume Checker Work?
+          </h2>
+          <p className="text-sm text-slate-600 leading-relaxed max-w-4xl">
+            An <strong>Applicant Tracking System (ATS)</strong> is automated software utilized by over 98% of Fortune 500 companies, US hospital networks, and tech scaleups (including Workday, Greenhouse, Lever, Taleo, and iCIMS) to filter, score, and rank incoming CVs before a human recruiter ever sees them.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
+            <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold mb-3">
+              1
+            </div>
+            <h3 className="text-base font-bold text-slate-900 mb-2">
+              ATS Keyword Match Ratio
+            </h3>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              Our <strong>ats score checker</strong> scans your document against exact required skills, frameworks, and job titles to verify that your keyword density aligns with applicant tracking algorithms.
+            </p>
+          </div>
+
+          <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
+            <div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center font-bold mb-3">
+              2
+            </div>
+            <h3 className="text-base font-bold text-slate-900 mb-2">
+              Quantifiable Metrics & ROI
+            </h3>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              US recruiters look for measurable impact. Our <strong>ats cv checker</strong> audits your experience bullets for metrics, percentage growth, revenue numbers, and leadership action verbs.
+            </p>
+          </div>
+
+          <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
+            <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold mb-3">
+              3
+            </div>
+            <h3 className="text-base font-bold text-slate-900 mb-2">
+              ATS-Friendly Formatting
+            </h3>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              Multi-column tables, graphics, and unreadable fonts can corrupt ATS parsers. Our <strong>ats friendly resume checker</strong> verifies clean hierarchy, standard section headers, and machine readability.
+            </p>
+          </div>
+        </div>
+
+        {/* FAQ Accordion Section */}
+        <div className="bg-slate-50 rounded-3xl p-6 sm:p-10 border border-slate-200">
+          <h3 className="text-xl font-black text-slate-900 mb-6">
+            Frequently Asked Questions: ATS Resume Checker Free
+          </h3>
+
+          <div className="space-y-4 text-xs sm:text-sm">
+            <div className="bg-white p-5 rounded-2xl border border-slate-200">
+              <h4 className="font-bold text-slate-900 mb-1">
+                What is a good ATS resume score for US jobs?
+              </h4>
+              <p className="text-slate-600">
+                A score of <strong>75% or higher</strong> typically passes automated ATS filter thresholds and places your application in the candidate shortlist for human review. Scores below 50% risk immediate automated rejection.
+              </p>
+            </div>
+
+            <div className="bg-white p-5 rounded-2xl border border-slate-200">
+              <h4 className="font-bold text-slate-900 mb-1">
+                Is this ATS resume checker completely free?
+              </h4>
+              <p className="text-slate-600">
+                Yes! Our <strong>free ats resume checker online</strong> is 100% free with unlimited scans, file attachments (.docx, .pdf, .txt), and AI bullet point makeovers to support international job seekers.
+              </p>
+            </div>
+
+            <div className="bg-white p-5 rounded-2xl border border-slate-200">
+              <h4 className="font-bold text-slate-900 mb-1">
+                Which file format is best for ATS scanners?
+              </h4>
+              <p className="text-slate-600">
+                Standard single-column <strong>.docx</strong> or text-based <strong>.pdf</strong> files without complex tables, text boxes, or embedded images are the most compatible with all US Applicant Tracking Systems.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
     </div>
   );
 }
 
 export default function ATSScannerPage() {
   return (
-    <Suspense fallback={<div className="max-w-7xl mx-auto p-12 text-center text-slate-500">Loading ATS Scanner...</div>}>
+    <Suspense fallback={<div className="max-w-7xl mx-auto p-12 text-center text-slate-500">Loading Free ATS Resume Checker...</div>}>
       <ATSScannerContent />
     </Suspense>
   );
