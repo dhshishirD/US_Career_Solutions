@@ -153,3 +153,85 @@ Best regards,
 [Portfolio / LinkedIn URL]`
   }
 ];
+
+
+export interface SalaryBenchmark {
+  id: string;
+  role: string;
+  category: string;
+  usAverageSalary: string;
+  dolPrevailingWageLevel2: string;
+  globalRemoteW8BenRate: string;
+  topPayingStates: string;
+  h1bSponsorDemand: 'Extremely High' | 'High' | 'Moderate';
+  description: string;
+}
+
+export const US_SALARY_BENCHMARKS: SalaryBenchmark[] = [
+  {
+    id: 'sal-01',
+    role: 'Software Development Engineer / Cloud Architect',
+    category: 'Software & Tech',
+    usAverageSalary: '$125,000 – $175,000 / year',
+    dolPrevailingWageLevel2: '$112,000 / year',
+    globalRemoteW8BenRate: '$45 – $85 / hour ($85,000 – $155,000/yr)',
+    topPayingStates: 'California, Washington, New York, Texas',
+    h1bSponsorDemand: 'Extremely High',
+    description: 'Under US DOL prevailing wage regulations, US tech sponsors (Microsoft, Amazon, Google) must pay international H-1B engineers at or above the certified prevailing wage to prevent wage suppression.'
+  },
+  {
+    id: 'sal-02',
+    role: 'Critical Care ICU / Medical-Surgical Registered Nurse',
+    category: 'Healthcare & Nursing',
+    usAverageSalary: '$82,000 – $118,000 / year',
+    dolPrevailingWageLevel2: '$78,500 / year',
+    globalRemoteW8BenRate: 'N/A (Direct US Bedside Employment)',
+    topPayingStates: 'California, Texas, New York, Ohio, Florida',
+    h1bSponsorDemand: 'Extremely High',
+    description: 'Under US Department of Labor Schedule A rules, hospitals sponsoring foreign RNs for EB-3 Green Cards must guarantee prevailing wage parity with domestic nurses, plus shift differentials and relocation packages.'
+  },
+  {
+    id: 'sal-03',
+    role: 'AI Data Annotation & Prompt Evaluation Specialist',
+    category: 'Data & AI',
+    usAverageSalary: '$65,000 – $92,000 / year',
+    dolPrevailingWageLevel2: '$58,000 / year',
+    globalRemoteW8BenRate: '$20 – $55 / hour ($38,000 – $85,000/yr)',
+    topPayingStates: 'Remote (Worldwide - Form W-8BEN)',
+    h1bSponsorDemand: 'Moderate',
+    description: 'Contractors working remotely for US AI labs (Scale AI, Outlier, DataAnnotation) receive direct USD payments with 0% US tax withholding under standard double-taxation international treaties.'
+  },
+  {
+    id: 'sal-04',
+    role: 'Executive Virtual Assistant & Operations Coordinator',
+    category: 'Virtual Operations',
+    usAverageSalary: '$55,000 – $82,000 / year',
+    dolPrevailingWageLevel2: '$48,000 / year',
+    globalRemoteW8BenRate: '$18 – $38 / hour ($35,000 – $70,000/yr)',
+    topPayingStates: 'Remote (Worldwide - Form W-8BEN)',
+    h1bSponsorDemand: 'Moderate',
+    description: 'US founders and venture capital executives hire international virtual operations specialists on USD retainers for calendar management, research, and asynchronous project coordination.'
+  },
+  {
+    id: 'sal-05',
+    role: 'Clinical Research Associate & Bioinformatics Specialist',
+    category: 'Research & Cap-Exempt',
+    usAverageSalary: '$78,000 – $115,000 / year',
+    dolPrevailingWageLevel2: '$72,000 / year',
+    globalRemoteW8BenRate: '$35 – $65 / hour ($65,000 – $110,000/yr)',
+    topPayingStates: 'Massachusetts, Maryland, California, Pennsylvania',
+    h1bSponsorDemand: 'Extremely High',
+    description: 'Cap-Exempt university medical centers (Johns Hopkins, Stanford, Broad Institute) sponsor international researchers year-round with no lottery caps and guaranteed university salary bands.'
+  },
+  {
+    id: 'sal-06',
+    role: 'Graduate Research & Teaching Assistant (GRA / GTA)',
+    category: 'University Funding',
+    usAverageSalary: '$28,000 – $45,000 / year living stipend + 100% Tuition Waiver',
+    dolPrevailingWageLevel2: 'Full Tuition Remission ($45k–$60k/yr value)',
+    globalRemoteW8BenRate: 'On-Campus 20 hrs/week F-1 Appointment',
+    topPayingStates: 'Michigan, Indiana, Georgia, Illinois, California',
+    h1bSponsorDemand: 'Extremely High',
+    description: 'US graduate assistantships provide full out-of-state tuition remission plus a bi-weekly living paycheck, making STEM Masters and PhD degrees 100% free for international scholars.'
+  }
+];
