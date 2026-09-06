@@ -1,10 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
 import { Briefcase, Heart, MessageCircle, Send, ExternalLink, ShieldCheck } from 'lucide-react';
+import GlassdoorDirectory from './GlassdoorDirectory';
 
 export default function Footer() {
   return (
     <footer className="bg-slate-900 text-slate-400 border-t border-slate-800 mt-auto">
+      {/* Glassdoor-Style Trending Mega Directory */}
+      <GlassdoorDirectory />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
           
@@ -70,7 +74,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/learn" className="text-indigo-400 font-bold hover:text-indigo-300 transition-colors">
-                  🎯 Interview Prep Academy (STAR)
+                  🎯 Interview & Salary Intelligence
                 </Link>
               </li>
               <li>
@@ -120,7 +124,7 @@ export default function Footer() {
         <div className="pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
           <div className="flex items-center gap-4 flex-wrap">
             <p>
-              © {new Date().getFullYear()} US Career Solutions. Independent public jobs aggregator.
+              © {new Date().getFullYear()} US Career Solutions. Independent public jobs & scholarship intelligence platform.
             </p>
             <Link href="/privacy" className="text-slate-400 hover:text-white underline transition-colors">
               Privacy Policy
@@ -130,7 +134,7 @@ export default function Footer() {
             </Link>
           </div>
           <div className="flex items-center gap-1 text-slate-400">
-            Built with <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500 mx-1" /> for your followers & community.
+            Built with <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500 mx-1" /> for the global international talent community.
           </div>
         </div>
       </div>

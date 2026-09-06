@@ -483,7 +483,106 @@ export const MASTER_GUIDES: GuideArticle[] = [
       link: '/tools/visa-checker',
       buttonText: 'Search Cap-Exempt Sponsors'
     }
-  }
+  },
+  {
+    slug: 'study-in-usa-f1-part-time-cpt-opt-work-guide',
+    title: 'The International Student\'s US Work Blueprint: F-1 On-Campus Jobs, Day-1 CPT, GTA/GRA Stipends & 3-Year STEM OPT',
+    subtitle: 'A complete institutional guide on how F-1 international students legally earn USD, obtain full tuition waivers, and secure 3 years of post-graduation US employment authorization.',
+    excerpt: 'Studying in the USA does not mean depleting your savings. Discover the legal frameworks that allow international students to earn \$15–\$65/hr through on-campus jobs, fully-funded assistantships, Day-1 CPT work-study programs, and 36-month STEM OPT extensions.',
+    category: 'Scholarships & Education',
+    readTime: '10 min read',
+    publishedDate: '2026-09-06T00:00:00.000Z',
+    updatedDate: '2026-09-06T00:00:00.000Z',
+    author: {
+      name: 'US Career Solutions International Student Bureau',
+      role: 'F-1 Visa, CPT/OPT & Academic Funding Specialists',
+      avatar: '/favicon.ico'
+    },
+    keywords: [
+      'f1 visa on campus jobs',
+      'f1 part time job rules usa',
+      'day 1 cpt universities in usa',
+      'stem opt 3 year extension',
+      'graduate assistantship stipend tuition waiver',
+      'cpt vs opt international students',
+      'how international students earn money in usa'
+    ],
+    tableOfContents: [
+      { id: 'f1-work-overview', title: '1. Overview of Legal Work Authorization for F-1 Students' },
+      { id: 'on-campus-jobs', title: '2. On-Campus Employment: 20 Hours/Week Rules & Pay Rates' },
+      { id: 'graduate-assistantships', title: '3. Graduate Assistantships (GTA/GRA): Zero Tuition + Monthly Salary' },
+      { id: 'day-1-cpt', title: '4. Day-1 CPT Programs: Full-Time / Part-Time Off-Campus Work' },
+      { id: 'stem-opt-extension', title: '5. STEM OPT 36-Month Authorization: Pathway to H-1B & Green Card' },
+      { id: 'compliance-rules', title: '6. Strict USCIS Compliance Rules to Protect Your Legal Status' }
+    ],
+    contentHtml: `
+      <h2 id="f1-work-overview">1. Overview of Legal Work Authorization for F-1 Students</h2>
+      <p>A common misconception among aspiring international applicants is that international students on an <strong>F-1 Academic Student Visa</strong> cannot work in the United States. Under U.S. Citizenship and Immigration Services (USCIS) and Student and Exchange Visitor Program (SEVP) regulations, international students have multiple legitimate, high-paying pathways to work and earn USD while maintaining 100% legal status.</p>
+      
+      <p>These legal work authorizations fall into four primary categories:</p>
+      <ul>
+        <li><strong>On-Campus Employment:</strong> Part-time work (up to 20 hours/week) during active academic terms and full-time (up to 40 hours/week) during university holidays and summer breaks.</li>
+        <li><strong>Graduate Assistantships (GTA / GRA / GA):</strong> Institutional university employment providing a 100% full tuition waiver plus a monthly living stipend of \$2,000 to \$3,800/month.</li>
+        <li><strong>Curricular Practical Training (CPT):</strong> Off-campus employment authorization directly related to your major or curriculum (including Day-1 CPT programs).</li>
+        <li><strong>Optional Practical Training (OPT & STEM OPT):</strong> 12 to 36 months of full-time post-graduation work authorization across any US employer without needing an H-1B lottery visa.</li>
+      </ul>
+
+      <h2 id="on-campus-jobs">2. On-Campus Employment: 20 Hours/Week Rules & Pay Rates</h2>
+      <p>All enrolled F-1 students in good academic standing are immediately authorized to work on campus from their very first day of classes. <strong>No USCIS approval or Employment Authorization Document (EAD) card is required</strong>; you only need verification from your university Designated School Official (DSO) and an assigned Social Security Number (SSN).</p>
+      
+      <h3>Top High-Paying On-Campus Job Categories:</h3>
+      <ul>
+        <li><strong>IT Helpdesk & Computer Lab Assistants:</strong> \$16.00 – \$22.00 / hr (Managing university servers, networking hardware, and campus software).</li>
+        <li><strong>Departmental Teaching / Grader Assistants:</strong> \$18.00 – \$25.00 / hr (Grading undergraduate quizzes, holding office hours).</li>
+        <li><strong>University Library & Media Center Staff:</strong> \$14.00 – \$18.00 / hr (Catalog management, circulation desks, quiet study monitoring).</li>
+        <li><strong>Campus Dining, Bookstore & Recreation Facilities:</strong> \$13.00 – \$17.00 / hr (Customer service, inventory, campus gym management).</li>
+        <li><strong>International Admissions Student Ambassadors:</strong> \$15.00 – \$20.00 / hr (Campus tours, applicant inquiries, webinar moderation).</li>
+      </ul>
+
+      <div style="background-color: rgba(59, 130, 246, 0.08); border-left: 4px solid #2563eb; padding: 16px; border-radius: 8px; margin: 20px 0;">
+        <strong style="color: #1d4ed8;">Pro Tip:</strong> Working 20 hours/week at an average of \$18/hr yields approximately <strong>\$1,440/month in take-home USD</strong>, which comfortably covers rent, groceries, and personal expenses in most US college towns!
+      </div>
+
+      <h2 id="graduate-assistantships">3. Graduate Assistantships (GTA/GRA): Zero Tuition + Monthly Salary</h2>
+      <p>For Master's and PhD candidates, Graduate Assistantships represent the ultimate financial hack for studying in the United States:</p>
+      <ul>
+        <li><strong>Graduate Research Assistantship (GRA):</strong> You work 20 hours/week directly in a faculty research lab on funded grants (e.g., NSF, NIH, DOE). In exchange, the university pays <strong>100% of your tuition fees</strong> and deposits a monthly stipend (\$2,200 – \$3,600/month) directly into your bank account.</li>
+        <li><strong>Graduate Teaching Assistantship (GTA):</strong> You teach lab sections, lead discussion groups, or grade exams for undergraduate classes. You receive full tuition coverage, health insurance, and standard living stipends.</li>
+      </ul>
+
+      <h2 id="day-1-cpt">4. Day-1 CPT Programs: Full-Time / Part-Time Off-Campus Work</h2>
+      <p>For international professionals who already possess an undergraduate or master's degree and want to work legally in corporate US roles while taking classes, <strong>Day-1 CPT (Curricular Practical Training)</strong> institutions offer specialized hybrid degree programs (e.g., Executive MBA, MS in Information Technology, MS in Project Management).</p>
+      <p>Key requirements for legal Day-1 CPT compliance:</p>
+      <ul>
+        <li>The university must be regionally accredited by an approved US Department of Education accreditor.</li>
+        <li>Practical training must be an integral, mandatory component of the program's degree curriculum.</li>
+        <li>Your employer must sign a CPT Cooperative Agreement with your university DSO.</li>
+        <li>You must attend required in-person weekend residencies (typically once per month or semester) to maintain F-1 physical presence compliance.</li>
+      </ul>
+
+      <h2 id="stem-opt-extension">5. STEM OPT 36-Month Authorization: Pathway to H-1B & Green Card</h2>
+      <p>Graduates of qualifying <strong>STEM (Science, Technology, Engineering, and Mathematics)</strong> degree programs are entitled to:</p>
+      <ol>
+        <li><strong>Initial Post-Completion OPT:</strong> 12 months of full-time work authorization in your field of study.</li>
+        <li><strong>STEM OPT 24-Month Extension:</strong> An additional 24 months of authorization for working with an E-Verify registered employer.</li>
+      </ol>
+      <p>This gives international graduates a total of <strong>3 full years (36 months)</strong> to work in high-paying US roles, earn \$85k–\$160k+ salaries, and enter the annual H-1B lottery up to 3 to 4 times or transition directly to an employer-sponsored EB-2 / EB-3 Green Card.</p>
+
+      <h2 id="compliance-rules">6. Strict USCIS Compliance Rules to Protect Your Legal Status</h2>
+      <ul>
+        <li><strong>Never work off-campus without DSO / USCIS CPT/OPT authorization:</strong> Unauthorized off-campus work (even cash-in-hand) is an automatic violation of F-1 status and can result in visa revocation.</li>
+        <li><strong>Do not exceed 20 hours/week during active semesters:</strong> On-campus timecard systems track hours rigorously. Exceeding 20 hours during term time triggers status audits.</li>
+        <li><strong>Maintain Full-Time Academic Enrollment:</strong> Undergraduate students must register for at least 12 credit hours per semester; graduate students must register for at least 9 credit hours (or as defined by the graduate school).</li>
+        <li><strong>Report Address & Employer Changes within 10 Days:</strong> SEVIS requires immediate updates whenever your residence or employment location changes.</li>
+      </ul>
+    `,
+    relatedTool: {
+      name: 'USA Scholarships & Assistantships Radar',
+      description: 'Explore 22+ verified 100% fully-funded US university programs with full tuition waivers.',
+      link: '/scholarships',
+      buttonText: 'Explore Fully Funded Programs'
+    }
+  },
 ];
 
 export function getGuideBySlug(slug: string): GuideArticle | undefined {
