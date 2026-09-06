@@ -604,6 +604,56 @@ export default function VisaSimulatorPage() {
 
       </div>
 
+      {/* Authoritative US Immigration & Green Card Pathways Guide (Natural SEO) */}
+      <div className="mt-16 bg-white rounded-2xl border border-slate-200 p-6 sm:p-10 shadow-sm space-y-8">
+        <div>
+          <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+            Understanding US Employment-Based Green Card & Visa Pathways (2026)
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
+            Transitioning from an F-1 student visa, H-1B, or direct foreign hiring to a <strong>permanent resident green card</strong> requires navigating specific USCIS preference categories. Our <strong>US visa eligibility simulator</strong> evaluates your qualifications across major employment-based (EB) immigrant and non-immigrant pathways.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t border-slate-100 text-xs">
+          <div className="space-y-2">
+            <h3 className="font-bold text-blue-700 uppercase tracking-wider">
+              EB-1A & EB-1B Extraordinary Ability
+            </h3>
+            <p className="text-slate-600 leading-relaxed">
+              The <strong>EB-1 green card</strong> category is reserved for individuals with sustained national or international acclaim, outstanding researchers, and multinational executives. EB-1A allows <strong>self-sponsored green card</strong> petitions with no employer requirement and current priority dates.
+            </p>
+          </div>
+
+          <div className="space-y-2">
+            <h3 className="font-bold text-purple-700 uppercase tracking-wider">
+              EB-2 National Interest Waiver (NIW)
+            </h3>
+            <p className="text-slate-600 leading-relaxed">
+              The <strong>EB-2 NIW green card</strong> allows professionals holding advanced degrees (Master\'s, PhD) or exceptional ability in STEM, healthcare, or AI to waive the permanent job offer and PERM labor certification if their endeavor has substantial merit and national importance to the United States.
+            </p>
+          </div>
+
+          <div className="space-y-2">
+            <h3 className="font-bold text-emerald-700 uppercase tracking-wider">
+              Schedule A Nurse & EB-3 Professional
+            </h3>
+            <p className="text-slate-600 leading-relaxed">
+              Under Department of Labor Schedule A designation, Registered Nurses (RNs) and physical therapists are pre-certified for <strong>employment-based green cards</strong>, allowing hospitals to sponsor permanent residency directly without lengthy labor market testing.
+            </p>
+          </div>
+        </div>
+
+        <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+          <p>
+            USCIS regulations, Form I-140 filing criteria, and visa bulletin priority dates are updated periodically by the US Department of State.
+          </p>
+          <Link href="/guides" className="text-blue-600 font-bold hover:underline shrink-0">
+            Read Complete Visa Blueprints &rarr;
+          </Link>
+        </div>
+      </div>
+
     </div>
   );
 }

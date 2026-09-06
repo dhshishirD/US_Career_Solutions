@@ -425,6 +425,47 @@ Best regards,
         </div>
       )}
 
+      {/* Authoritative Graduate Funding & Assistantship Guide (Natural High-Value SEO) */}
+      <div className="mt-16 bg-white rounded-2xl border border-slate-200 p-6 sm:p-10 shadow-sm space-y-8">
+        <div>
+          <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+            How to Secure Fully Funded Master\'s & PhD Graduate Scholarships in the USA
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
+            Studying in the United States does not require personal loans. Thousands of <strong>graduate student scholarships</strong>, <strong>fully funded master\'s programs</strong>, and <strong>doctoral scholarships</strong> are awarded annually by US research universities through institutional Graduate Research (GRA) and Teaching Assistantships (GTA).
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t border-slate-100 text-xs">
+          <div className="space-y-2">
+            <h3 className="font-bold text-purple-700 uppercase tracking-wider">
+              1. 100% Tuition Waivers via GRA/GTA
+            </h3>
+            <p className="text-slate-600 leading-relaxed">
+              When appointed as a Graduate Assistant, US universities waive 100% of out-of-state tuition fees and pay a bi-weekly living salary (\$2,200 to \$3,800/month), fully funding your graduate degree and living expenses.
+            </p>
+          </div>
+
+          <div className="space-y-2">
+            <h3 className="font-bold text-blue-700 uppercase tracking-wider">
+              2. Fully Funded PhD Programs
+            </h3>
+            <p className="text-slate-600 leading-relaxed">
+              Almost all accredited US PhD programs in STEM, Nursing, and Social Sciences are 100% fully funded for 4 to 5 years, guaranteeing full tuition remission, comprehensive health insurance, and annual fellowships.
+            </p>
+          </div>
+
+          <div className="space-y-2">
+            <h3 className="font-bold text-emerald-700 uppercase tracking-wider">
+              3. Professor Cold Outreach Protocol
+            </h3>
+            <p className="text-slate-600 leading-relaxed">
+              Direct faculty sponsorship is the primary gateway to research grant funding. Reaching out with targeted, concise emails that connect your background to a professor\'s recent publications yields significantly higher response rates.
+            </p>
+          </div>
+        </div>
+      </div>
+
     </div>
   );
 }
