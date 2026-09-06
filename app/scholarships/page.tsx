@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { 
   GraduationCap, 
@@ -23,14 +24,26 @@ import {
 } from 'lucide-react';
 import { USA_SCHOLARSHIPS, USAScholarship } from '@/lib/scholarships-data';
 
-export default function ScholarshipsPage() {
-  const [selectedDegree, setSelectedDegree] = useState<string>('all');
-  const [searchQuery, setSearchQuery] = useState<string>('');
+function ScholarshipsContent() {
+  const searchParams = useSearchParams();
+  const initialSearch = searchParams.get('search') || searchParams.get('q') || '';
+  const initialDegree = searchParams.get('degree') || 'all';
+
+  const [selectedDegree, setSelectedDegree] = useState<string>(initialDegree);
+  const [searchQuery, setSearchQuery] = useState<string>(initialSearch);
   const [scholarships, setScholarships] = useState<USAScholarship[]>(USA_SCHOLARSHIPS);
   const [activeShareId, setActiveShareId] = useState<string | null>(null);
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [isSyncing, setIsSyncing] = useState<boolean>(false);
   const [syncMessage, setSyncMessage] = useState<string | null>(null);
+
+  // Sync state whenever URL query params change (e.g. from Trending Directory links)
+  useEffect(() => {
+    const q = searchParams.get('search') || searchParams.get('q') || '';
+    const deg = searchParams.get('degree') || 'all';
+    if (q) setSearchQuery(q);
+    if (deg) setSelectedDegree(deg);
+  }, [searchParams]);
 
   const handleManualSync = async () => {
     setIsSyncing(true);
@@ -364,5 +377,18 @@ export default function ScholarshipsPage() {
       </div>
 
     </div>
+  );
+}
+
+
+export default function ScholarshipsPage() {
+  return (
+    <Suspense fallback={
+      <div className="max-w-7xl mx-auto px-4 py-16 text-center text-slate-500">
+        Loading verified scholarships and funding programs...
+      </div>
+    }>
+      <ScholarshipsContent />
+    </Suspense>
   );
 }

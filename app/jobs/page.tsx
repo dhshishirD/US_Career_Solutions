@@ -32,15 +32,28 @@ function JobsContent() {
   const [isLoading, setIsLoading] = useState(false);
   const [syncMessage, setSyncMessage] = useState<string | null>(null);
 
-  const fetchJobs = async () => {
+  // Sync state whenever URL query params change (e.g. from Trending Directory links)
+  useEffect(() => {
+    const qParam = searchParams.get('q') || '';
+    const sponsorParam = searchParams.get('sponsorship') || 'all';
+    const remoteParam = searchParams.get('remote') === 'true';
+    const catParam = searchParams.get('category') || 'all';
+
+    setSearchQuery(qParam);
+    setSelectedSponsorship(sponsorParam);
+    setRemoteOnly(remoteParam);
+    setSelectedCategory(catParam);
+  }, [searchParams]);
+
+  const fetchJobs = async (query = searchQuery, sponsor = selectedSponsorship, cat = selectedCategory, remote = remoteOnly, salary = minSalary) => {
     setIsLoading(true);
     try {
       const params = new URLSearchParams();
-      if (searchQuery) params.set('q', searchQuery);
-      if (selectedSponsorship !== 'all') params.set('sponsorship', selectedSponsorship);
-      if (selectedCategory !== 'all') params.set('category', selectedCategory);
-      if (remoteOnly) params.set('remote', 'true');
-      if (minSalary > 0) params.set('minSalary', minSalary.toString());
+      if (query) params.set('q', query);
+      if (sponsor !== 'all') params.set('sponsorship', sponsor);
+      if (cat !== 'all') params.set('category', cat);
+      if (remote) params.set('remote', 'true');
+      if (salary > 0) params.set('minSalary', salary.toString());
 
       const res = await fetch(`/api/jobs?${params.toString()}`);
       if (res.ok) {
@@ -55,8 +68,8 @@ function JobsContent() {
   };
 
   useEffect(() => {
-    fetchJobs();
-  }, [selectedSponsorship, selectedCategory, remoteOnly, minSalary]);
+    fetchJobs(searchQuery, selectedSponsorship, selectedCategory, remoteOnly, minSalary);
+  }, [searchQuery, selectedSponsorship, selectedCategory, remoteOnly, minSalary]);
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
