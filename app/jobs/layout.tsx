@@ -1,22 +1,23 @@
-import type { Metadata } from 'next';
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Jobs in USA with Visa Sponsorship & US Remote Jobs for Foreigners",
-  description: "Browse everyday verified jobs in USA with visa sponsorship (H-1B, Cap-Exempt, EB-3), US remote contractor roles for international applicants (W-8BEN), healthcare nursing, and data entry.",
-  keywords: [
-    "jobs in usa with visa sponsorship",
-    "usa jobs with visa sponsorship",
-    "jobs in usa for foreigners",
-    "remote jobs usa",
-    "work from home jobs in usa for foreigners",
-    "online jobs in usa for foreigners",
-    "us remote jobs for foreigners",
-    "h1b visa sponsorship jobs in usa",
-    "data entry jobs in usa",
-    "nursing jobs in usa for foreigners"
-  ]
+  title: 'Daily Verified Jobs in USA with Visa Sponsorship & US Remote Jobs',
+  description: 'Explore verified everyday jobs in the USA offering direct H-1B sponsorship, Cap-Exempt university roles, Schedule A nursing green cards, and global remote USD contracts (Form W-8BEN).',
+  keywords: ['jobs in usa with visa sponsorship', 'usa jobs with visa sponsorship', 'h1b visa sponsorship jobs', 'remote jobs usa paid in usd', 'cap-exempt h1b jobs', 'schedule a nurse green card jobs', 'work from home jobs usa for foreigners'],
+  openGraph: {
+    title: 'Daily Verified Jobs in USA with Visa Sponsorship & US Remote Jobs',
+    description: 'Explore verified everyday jobs in the USA offering direct H-1B sponsorship, Cap-Exempt university roles, Schedule A nursing green cards, and global remote USD contracts (Form W-8BEN).',
+    url: 'https://www.uscareersolutions.online',
+    siteName: 'US Career Solutions',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Daily Verified Jobs in USA with Visa Sponsorship & US Remote Jobs',
+    description: 'Explore verified everyday jobs in the USA offering direct H-1B sponsorship, Cap-Exempt university roles, Schedule A nursing green cards, and global remote USD contracts (Form W-8BEN).',
+  },
 };
 
-export default function JobsLayout({ children }: { children: React.ReactNode }) {
-  return children;
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return <>{children}</>;
 }

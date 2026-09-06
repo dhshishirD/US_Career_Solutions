@@ -1,17 +1,23 @@
-import type { Metadata } from 'next';
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Community Talent Showcase & Candidate Pitches | Hire Global Remote Talent",
-  description: "Browse verified international candidate briefs and pitches for US Remote roles (W-8BEN), Customer Happiness, AI Data Annotation, and Virtual Assistance.",
-  keywords: [
-    "entry level jobs in usa for foreigners",
-    "hire foreign remote workers",
-    "no experience jobs in usa for foreigners",
-    "us companies hiring international contractors",
-    "talent showcase"
-  ]
+  title: 'Verified Global Candidate Showcase & Talent Board',
+  description: 'Browse pre-screened international software engineers, clinical nurses, data scientists, and AI prompt evaluators actively seeking US visa sponsorship and remote USD contracts.',
+  keywords: ['hire international talent usa', 'sponsor h1b candidates', 'global remote developers w8ben', 'international nurse talent showcase', 'us career solutions talent board'],
+  openGraph: {
+    title: 'Verified Global Candidate Showcase & Talent Board',
+    description: 'Browse pre-screened international software engineers, clinical nurses, data scientists, and AI prompt evaluators actively seeking US visa sponsorship and remote USD contracts.',
+    url: 'https://www.uscareersolutions.online',
+    siteName: 'US Career Solutions',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Verified Global Candidate Showcase & Talent Board',
+    description: 'Browse pre-screened international software engineers, clinical nurses, data scientists, and AI prompt evaluators actively seeking US visa sponsorship and remote USD contracts.',
+  },
 };
 
-export default function TalentLayout({ children }: { children: React.ReactNode }) {
-  return children;
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return <>{children}</>;
 }

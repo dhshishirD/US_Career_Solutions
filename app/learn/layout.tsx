@@ -1,17 +1,23 @@
-import type { Metadata } from 'next';
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "US Career & Interview Preparation Academy | STAR Method Q&A & Visa Glossary",
-  description: "Master behavioral job interviews with US hiring managers, practice STAR method Q&A simulations, and learn plain-English visa pathways (H-1B, Cap-Exempt, EB-3, W-8BEN).",
-  keywords: [
-    "us job interview preparation",
-    "behavioral interview star method",
-    "cap exempt h1b visa explained",
-    "w8ben contractor agreement guide",
-    "how to email us professors for scholarships"
-  ]
+  title: 'US Career Academy: STAR Interview Frameworks & DOL Prevailing Wage Hub',
+  description: 'Master behavioral STAR interview techniques for Fortune 500 tech companies, access certified Department of Labor Level 2 prevailing wages, and study executive cold outreach scripts.',
+  keywords: ['star interview method', 'amazon leadership principles star', 'dol prevailing wage tier 2', 'h1b prevailing wage minimums', 'us visa glossary', 'how to negotiate salary usd'],
+  openGraph: {
+    title: 'US Career Academy: STAR Interview Frameworks & DOL Prevailing Wage Hub',
+    description: 'Master behavioral STAR interview techniques for Fortune 500 tech companies, access certified Department of Labor Level 2 prevailing wages, and study executive cold outreach scripts.',
+    url: 'https://www.uscareersolutions.online',
+    siteName: 'US Career Solutions',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'US Career Academy: STAR Interview Frameworks & DOL Prevailing Wage Hub',
+    description: 'Master behavioral STAR interview techniques for Fortune 500 tech companies, access certified Department of Labor Level 2 prevailing wages, and study executive cold outreach scripts.',
+  },
 };
 
-export default function LearnLayout({ children }: { children: React.ReactNode }) {
-  return children;
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return <>{children}</>;
 }

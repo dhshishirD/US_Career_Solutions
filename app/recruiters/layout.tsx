@@ -1,17 +1,23 @@
-import type { Metadata } from 'next';
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Free Job Posting Sites in USA & Global Remote Talent Scouting | Employers Portal",
-  description: "Post verified US job openings for free, hire pre-screened global remote contractors (W-8BEN), and reach 100,000+ international candidates.",
-  keywords: [
-    "free job posting sites in usa",
-    "usa job posting sites",
-    "it staffing companies in usa",
-    "recruitment agencies in usa for foreigners",
-    "post a job in usa"
-  ]
+  title: 'For Employers & Recruiters: Post a US Role & Hire Global Talent',
+  description: 'Post your open US positions with visa sponsorship or global remote USD contractor roles. Reach over 50,000+ ambitious international professionals.',
+  keywords: ['post a job in usa', 'hire h1b candidates', 'recruit international nurses', 'post remote usd contractor jobs', 'us job posting site'],
+  openGraph: {
+    title: 'For Employers & Recruiters: Post a US Role & Hire Global Talent',
+    description: 'Post your open US positions with visa sponsorship or global remote USD contractor roles. Reach over 50,000+ ambitious international professionals.',
+    url: 'https://www.uscareersolutions.online',
+    siteName: 'US Career Solutions',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'For Employers & Recruiters: Post a US Role & Hire Global Talent',
+    description: 'Post your open US positions with visa sponsorship or global remote USD contractor roles. Reach over 50,000+ ambitious international professionals.',
+  },
 };
 
-export default function RecruitersLayout({ children }: { children: React.ReactNode }) {
-  return children;
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return <>{children}</>;
 }
