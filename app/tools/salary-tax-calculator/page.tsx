@@ -393,18 +393,35 @@ export default function SalaryTaxCalculatorPage() {
             </div>
           </div>
 
-          {/* CTA Box */}
-          <div className="bg-blue-50 rounded-2xl border border-blue-200 p-5 flex items-center justify-between gap-4">
-            <div>
-              <p className="text-xs font-bold text-blue-950">Ready to negotiate your US compensation?</p>
-              <p className="text-[11px] text-blue-700 mt-0.5">Explore certified Department of Labor Level 2 Prevailing Wages.</p>
+          {/* Viral WhatsApp Share & CTA Box */}
+          <div className="bg-emerald-50 rounded-2xl border border-emerald-200 p-5 space-y-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-xs font-black text-emerald-950 flex items-center gap-1.5">
+                  <span className="text-base">📱</span> Share Your Paycheck Breakdown
+                </p>
+                <p className="text-[11px] text-emerald-700 mt-0.5">Send your net take-home calculation to WhatsApp friends or study groups.</p>
+              </div>
+              <button
+                onClick={() => {
+                  const msg = `💰 *My US Paycheck & Net Take-Home Pay Breakdown:*\n• Mode: ${calcMode.toUpperCase()}\n• Gross: $${Math.round(calculations.grossMonthly).toLocaleString()}/mo ($${Math.round(calculations.grossAnnual).toLocaleString()}/yr)\n• Net Take-Home Cash: *$${Math.round(calculations.netMonthly).toLocaleString()}/month* ($${Math.round(calculations.netAnnual).toLocaleString()}/yr)\n• Effective Tax: ${calculations.effectiveTaxRate.toFixed(1)}%\n\nCalculate your US salary after tax for free: https://www.uscareersolutions.online/tools/salary-tax-calculator`;
+                  window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`, '_blank');
+                }}
+                className="bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs px-4 py-2.5 rounded-xl shadow-md transition-all flex items-center gap-1.5 shrink-0"
+              >
+                Share on WhatsApp &rarr;
+              </button>
             </div>
-            <Link
-              href="/learn?tab=salaries"
-              className="bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs px-4 py-2 rounded-xl shrink-0 shadow transition-all"
-            >
-              Wage Hub &rarr;
-            </Link>
+
+            <div className="pt-3 border-t border-emerald-200/60 flex items-center justify-between">
+              <span className="text-[11px] font-semibold text-emerald-800">Check DOL Level 2 Prevailing Wages:</span>
+              <Link
+                href="/learn?tab=salaries"
+                className="text-xs font-bold text-blue-700 hover:underline"
+              >
+                View Salary Hub &rarr;
+              </Link>
+            </div>
           </div>
 
         </div>

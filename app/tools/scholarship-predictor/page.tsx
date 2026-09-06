@@ -320,12 +320,22 @@ Best regards,
                 ))}
               </div>
 
-              <div className="pt-2">
+              <div className="pt-2 space-y-2">
                 <button
                   onClick={() => setActiveTab('pitch-gen')}
                   className="w-full py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs shadow transition-all flex items-center justify-center gap-1.5"
                 >
                   Generate Cold Emails to US Professors &rarr;
+                </button>
+
+                <button
+                  onClick={() => {
+                    const msg = `🎓 *My USA University Full Funding Probability Report:*\n• 100% Tuition Waiver Match: *${fundingScore}%*\n• Target Degree: ${degreeLevel.toUpperCase()} (GPA: ${gpa.toFixed(2)}/4.0)\n• Assistantship Coverage: Full Out-of-State Waiver + $2,200-$3,500/mo Living Stipend\n• Top Matches: Purdue, Georgia Tech, U-Michigan, Stanford\n\nCalculate your US university full funding probability here: https://www.uscareersolutions.online/tools/scholarship-predictor`;
+                    window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`, '_blank');
+                  }}
+                  className="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow transition-all flex items-center justify-center gap-1.5"
+                >
+                  <span>📱</span> Share Funding Match on WhatsApp
                 </button>
               </div>
             </div>

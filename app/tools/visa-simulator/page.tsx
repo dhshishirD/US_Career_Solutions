@@ -581,20 +581,29 @@ export default function VisaSimulatorPage() {
               >
                 <RotateCcw className="w-3.5 h-3.5" /> Retake Analysis
               </button>
-              <div className="flex items-center gap-3">
+              <div className="flex flex-wrap items-center gap-2.5">
+                <button
+                  onClick={() => {
+                    const msg = `⚡ *My US Visa & Green Card Pathway Scorecard:*\n• Cap-Exempt H-1B Match: ${results.capExempt}% (No Lottery)\n• Schedule A Nurse EB-3: ${results.scheduleANurse}% (Direct Green Card)\n• EB-2 NIW Match: ${results.eb2Niw}% (Self-Petitioned)\n• Remote USD (W-8BEN): ${results.remoteW8ben}%\n\nTest your US visa & green card eligibility here: https://www.uscareersolutions.online/tools/visa-simulator`;
+                    window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`, '_blank');
+                  }}
+                  className="inline-flex items-center gap-1.5 text-xs font-extrabold px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white shadow-md transition-all"
+                >
+                  <span>📱</span> Share on WhatsApp
+                </button>
                 <button
                   onClick={handleShare}
-                  className="inline-flex items-center gap-1.5 text-xs font-bold px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 transition-all"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 transition-all"
                 >
                   <Share2 className="w-3.5 h-3.5" />
-                  {copied ? 'Link Copied!' : 'Share Results'}
+                  {copied ? 'Copied!' : 'Copy Link'}
                 </button>
                 <Link
                   href="/services"
-                  className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold px-6 py-2.5 rounded-xl text-xs shadow-md transition-all"
+                  className="inline-flex items-center gap-1.5 bg-blue-600 hover:bg-blue-500 text-white font-extrabold px-4 py-2 rounded-xl text-xs shadow-md transition-all"
                 >
-                  <Sparkles className="w-4 h-4 text-amber-300" />
-                  Book 1-on-1 Visa Strategy ($29 USD)
+                  <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+                  VIP Advice ($29)
                 </Link>
               </div>
             </div>
