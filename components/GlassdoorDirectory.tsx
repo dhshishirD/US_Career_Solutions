@@ -213,6 +213,16 @@ export default function GlassdoorDirectory() {
                   </Link>
                 </li>
                 <li>
+                  <Link href="/tools/visa-simulator" className="hover:text-amber-400 font-semibold text-amber-300 transition-colors">
+                    ⚡ AI US Visa & Green Card Simulator
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/tools/salary-tax-calculator" className="hover:text-amber-400 font-semibold text-emerald-400 transition-colors">
+                    💰 US Take-Home & W-8BEN Tax Calculator
+                  </Link>
+                </li>
+                <li>
                   <Link href="/tools/ats-scanner" className="hover:text-amber-400 transition-colors">
                     Free AI ATS Score Checker
                   </Link>
@@ -242,6 +252,11 @@ export default function GlassdoorDirectory() {
                 USA Scholarships & Aid
               </h4>
               <ul className="space-y-2 text-slate-400">
+                <li>
+                  <Link href="/tools/scholarship-predictor" className="hover:text-purple-400 font-semibold text-purple-300 transition-colors">
+                    🎓 100% Tuition Waiver Predictor & Pitch AI
+                  </Link>
+                </li>
                 <li>
                   <Link href="/scholarships?search=Stanford" className="hover:text-purple-400 transition-colors">
                     Stanford Knight-Hennessy (100%)
