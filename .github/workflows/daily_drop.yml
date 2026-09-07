@@ -1,0 +1,33 @@
+name: Automated Daily Drop to Telegram
+
+on:
+  schedule:
+    # Runs every day at 03:00 UTC (9:00 AM Bangladesh Time / 11:00 PM EST)
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+    # Allows manual 1-click trigger from GitHub Actions tab
+
+jobs:
+  publish-daily-drop:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Check out repository code
+        uses: actions/checkout@v4
+
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 📦 Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      - name: 🚀 Publish Daily Drop to Telegram
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN || '8927165425:AAGeqnha6UkgpxYPzPGk--jdq-qE7QqjoFY' }}
+          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID || '@uscareersolutions' }}
+        run: |
+          python scripts/daily_drop_publisher.py --now

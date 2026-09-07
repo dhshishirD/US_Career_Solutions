@@ -1,0 +1,157 @@
+[
+  {
+    "id": "drop_01",
+    "theme": "Cap-Exempt H-1B & Healthcare Sponsorship",
+    "roles": [
+      {
+        "type": "Cap-Exempt H-1B",
+        "title": "Cloud Solutions & Data Systems Specialist",
+        "employer": "University of Michigan (Research & IT Institute)",
+        "location": "Ann Arbor, MI (Hybrid Eligible)",
+        "visa_perks": "Cap-Exempt H-1B (0% Lottery Quota • Year-Round Filing)",
+        "salary": "$94,000 – $122,000 / year + 401(a) 2:1 Match"
+      },
+      {
+        "type": "Healthcare Green Card",
+        "title": "Registered Nurse — Critical Care (ICU / Step-Down)",
+        "employer": "Cleveland Clinic Health System",
+        "location": "Cleveland, OH",
+        "visa_perks": "Schedule A Direct EB-3 Green Card (PERM Bypassed)",
+        "salary": "$44.50 – $58.00 / hour + $10,000 Relocation Grant"
+      }
+    ],
+    "scholarship": {
+      "title": "Fully Funded PhD in AI & Health Informatics",
+      "institution": "Purdue University (NSF & NIH Funded Lab)",
+      "package": "100% Tuition Waiver + $2,500/Mo GRA Living Stipend"
+    },
+    "tool_spotlight": {
+      "name": "US Paycheck & Net Take-Home Tax Calculator",
+      "url": "https://www.uscareersolutions.online/tools/salary-tax-calculator"
+    }
+  },
+  {
+    "id": "drop_02",
+    "theme": "STEM Master's/PhD Assistantships & Tech Sponsorship",
+    "roles": [
+      {
+        "type": "Cap-Exempt H-1B",
+        "title": "Senior Machine Learning Research Associate",
+        "employer": "Broad Institute of MIT & Harvard",
+        "location": "Cambridge, MA",
+        "visa_perks": "Cap-Exempt H-1B • Self-Petition EB-2 NIW Supported",
+        "salary": "$115,000 – $145,000 / year + Comprehensive Healthcare"
+      },
+      {
+        "type": "Remote USD Contract",
+        "title": "Full-Stack React & Node.js Contractor",
+        "employer": "US FinTech Enterprise (Remote Global)",
+        "location": "100% Remote (Form W-8BEN Compliant)",
+        "visa_perks": "0% US Federal Withholding with Bilateral Tax Treaty",
+        "salary": "$4,500 – $7,000 / month (Direct USD Wire via Wise/Payoneer)"
+      }
+    ],
+    "scholarship": {
+      "title": "Fully Funded MS/PhD in Computer Science & Robotics",
+      "institution": "Georgia Institute of Technology (Georgia Tech)",
+      "package": "Full Out-of-State Tuition Waiver + $2,400/Mo GTA Stipend"
+    },
+    "tool_spotlight": {
+      "name": "USA University 100% Scholarship Predictor",
+      "url": "https://www.uscareersolutions.online/tools/scholarship-predictor"
+    }
+  },
+  {
+    "id": "drop_03",
+    "theme": "Engineering, Non-Profit R&D & Direct Green Card",
+    "roles": [
+      {
+        "type": "Cap-Exempt H-1B",
+        "title": "Bioinformatics Scientist / Genomic Data Analyst",
+        "employer": "St. Jude Children's Research Hospital",
+        "location": "Memphis, TN",
+        "visa_perks": "Cap-Exempt H-1B • EB-1B / EB-2 Sponsorship Track",
+        "salary": "$98,000 – $130,000 / year + Relocation Allowance"
+      },
+      {
+        "type": "Healthcare Green Card",
+        "title": "Medical Laboratory Technologist (MLS / MLT)",
+        "employer": "Mayo Clinic Health Network",
+        "location": "Rochester, MN",
+        "visa_perks": "Direct Visa Sponsorship • Premium USCIS Processing",
+        "salary": "$36.00 – $48.50 / hour + Night Shift Differential"
+      }
+    ],
+    "scholarship": {
+      "title": "Fully Funded PhD in Renewable Energy & Materials",
+      "institution": "University of Texas at Austin (UT Austin)",
+      "package": "100% Tuition Waiver + $2,600/Mo Fellowship Stipend"
+    },
+    "tool_spotlight": {
+      "name": "2026 AI US Visa & Green Card Simulator",
+      "url": "https://www.uscareersolutions.online/tools/visa-simulator"
+    }
+  },
+  {
+    "id": "drop_04",
+    "theme": "Remote USD Contracts & Higher-Ed Faculty Openings",
+    "roles": [
+      {
+        "type": "Cap-Exempt H-1B",
+        "title": "Assistant Professor / Instructional Postdoc",
+        "employer": "University of Wisconsin-Madison",
+        "location": "Madison, WI",
+        "visa_perks": "Cap-Exempt H-1B • Fast-Track Permanent Residence Support",
+        "salary": "$88,000 – $110,000 / 9-Month Academic Contract"
+      },
+      {
+        "type": "Remote USD Contract",
+        "title": "Senior Python & DevOps Specialist",
+        "employer": "US Cloud Infrastructure Firm",
+        "location": "100% Remote Global (W-8BEN)",
+        "visa_perks": "Cross-Border USD Payments • Flexible Eastern Time Hours",
+        "salary": "$5,000 – $8,200 / month"
+      }
+    ],
+    "scholarship": {
+      "title": "Fully Funded MS/PhD in Civil & Environmental Engineering",
+      "institution": "University of Illinois Urbana-Champaign (UIUC)",
+      "package": "100% Tuition Waiver + $2,350/Mo RA Support"
+    },
+    "tool_spotlight": {
+      "name": "ATS Resume Keyword & Formatting Scanner",
+      "url": "https://www.uscareersolutions.online/tools/ats-scanner"
+    }
+  },
+  {
+    "id": "drop_05",
+    "theme": "Biomedical, Nursing & Direct Permanent Residency",
+    "roles": [
+      {
+        "type": "Healthcare Green Card",
+        "title": "Emergency Room & Acute Care Registered Nurse",
+        "employer": "Johns Hopkins Medicine",
+        "location": "Baltimore, MD",
+        "visa_perks": "Schedule A Direct EB-3 Immigrant Visa (Permanent Resident)",
+        "salary": "$46.00 – $62.00 / hour + Premium Shift Differentials"
+      },
+      {
+        "type": "Cap-Exempt H-1B",
+        "title": "Database Administrator & Data Governance Officer",
+        "employer": "Northwestern University IT",
+        "location": "Evanston / Chicago, IL",
+        "visa_perks": "Cap-Exempt H-1B (Zero Lottery Dependency)",
+        "salary": "$95,000 – $125,000 / year + Educational Tuition Benefits"
+      }
+    ],
+    "scholarship": {
+      "title": "Fully Funded PhD in Cybersecurity & Software Systems",
+      "institution": "Carnegie Mellon University (CMU - Cylab)",
+      "package": "Full Fellowship + $2,800/Mo Stipend + Laptop Grant"
+    },
+    "tool_spotlight": {
+      "name": "US Paycheck & Net Take-Home Tax Calculator",
+      "url": "https://www.uscareersolutions.online/tools/salary-tax-calculator"
+    }
+  }
+]
