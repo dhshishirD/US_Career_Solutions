@@ -26,9 +26,10 @@ export interface GuideArticle {
 export const MASTER_GUIDES: GuideArticle[] = [
   {
     slug: 'pass-workday-greenhouse-ats-resume-2026',
-    title: 'The 2026 ATS Resume Blueprint: How to Pass Workday, Greenhouse & Lever Scanners',
+    title: 'How to Pass Workday & Greenhouse ATS Resumes [2026 Guide] | Google XYZ Formula',
     subtitle: 'A complete reverse-engineered guide on how Fortune 500 Applicant Tracking Systems parse, score, and rank incoming CVs.',
-    excerpt: 'Over 75% of resumes submitted for US positions are automatically filtered out before a recruiter sees them. Learn the exact keyword densities, formatting rules, and power metrics needed to score 90%+ on modern ATS scanners.',
+    excerpt: 'Over 75% of resumes for US jobs are rejected by automated filters. Learn the exact formatting rules, keyword densities, and Google XYZ formulas to score 90%+ on Workday and Greenhouse.',
+
     category: 'ATS & Resumes',
     readTime: '8 min read',
     publishedDate: '2026-09-05T00:00:00.000Z',
@@ -130,9 +131,9 @@ export const MASTER_GUIDES: GuideArticle[] = [
   },
   {
     slug: 'international-nurse-schedule-a-greencard-guide',
-    title: 'Schedule A Green Card for International Nurses: The Direct Permanent Residency Roadmap',
+    title: 'International Nurse Schedule A Green Card Guide [2026] | Direct Residency (No PERM)',
     subtitle: 'How foreign Registered Nurses can secure a U.S. Green Card without waiting for the 2-year PERM Labor Certification.',
-    excerpt: 'The United States faces a nationwide shortage of licensed healthcare workers. Discover how Schedule A designation allows international RNs with NCLEX certification to fast-track direct EB-3 immigrant visas.',
+    excerpt: 'The United States has a nationwide healthcare shortage. Learn how Schedule A allows licensed international RNs with NCLEX to fast-track direct EB-3 permanent residency with zero PERM delays.',
     category: 'Visa & Green Cards',
     readTime: '10 min read',
     publishedDate: '2026-09-05T00:00:00.000Z',
@@ -144,6 +145,7 @@ export const MASTER_GUIDES: GuideArticle[] = [
     },
     keywords: [
       'schedule a green card nurse',
+      'green card for nurses in usa',
       'international nurse visa sponsorship usa',
       'eb3 nurse green card',
       'nclex rn visa sponsorship',
@@ -196,9 +198,10 @@ export const MASTER_GUIDES: GuideArticle[] = [
   },
   {
     slug: 'study-usa-zero-tuition-graduate-assistantship',
-    title: 'Study in the USA for Free: How Graduate Assistantships (GRA/GTA) Cover 100% Tuition + Salary',
+    title: 'How to Study in USA for Free: 100% Tuition Waiver & $2,500/Mo Assistantships (GRA/TA) [2026]',
     subtitle: 'The insider academic strategy international students use to earn Master’s and PhD degrees in America with zero debt.',
-    excerpt: 'American research universities allocate billions annually to fully fund international graduate scholars. Learn how to identify funded research labs, cold-pitch faculty directors, and secure a 100% tuition waiver with a $2,000-$2,800 monthly living stipend.',
+    excerpt: 'US research universities allocate billions to fund international graduate scholars. Discover how to identify funded labs, cold-pitch faculty directors, and secure a 100% tuition waiver + monthly stipend.',
+
     category: 'Scholarships & Education',
     readTime: '9 min read',
     publishedDate: '2026-09-05T00:00:00.000Z',
@@ -255,9 +258,9 @@ export const MASTER_GUIDES: GuideArticle[] = [
   },
   {
     slug: 'w8ben-international-contractor-tax-guide-2026',
-    title: 'Form W-8BEN Explained: How International Freelancers Work for US Companies with 0% US Tax',
+    title: 'Form W-8BEN International Contractor Tax Guide [2026] | 0% US Withholding & Wise Payouts',
     subtitle: 'The definitive legal, tax, and invoicing guide for non-US independent contractors earning in USD from global tech startups.',
-    excerpt: 'You do not need a Green Card or US work visa to earn a full American salary. Learn how IRS Form W-8BEN certifies your foreign status, prevents 30% US withholding tax, and enables direct USD payouts via Wise and Deel.',
+    excerpt: 'You do not need a Green Card or US work visa to earn a full American salary. Learn how Form W-8BEN prevents 30% US tax withholding and enables direct USD payouts via Wise, Payoneer, and Deel.',
     category: 'Remote USD Careers',
     readTime: '9 min read',
     publishedDate: '2026-09-05T00:00:00.000Z',
@@ -269,6 +272,7 @@ export const MASTER_GUIDES: GuideArticle[] = [
     },
     keywords: [
       'form w8ben remote work',
+      'certification of no us activities',
       'work for us companies abroad w8ben',
       'w8ben tax withholding foreign contractor',
       'how to fill form w8ben freelancer',
@@ -363,9 +367,9 @@ export const MASTER_GUIDES: GuideArticle[] = [
   },
   {
     slug: 'top-cap-exempt-h1b-sponsors-list-2026',
-    title: 'Top 50 Cap-Exempt H-1B Employers List 2026: Get a US Work Visa with ZERO Lottery',
+    title: 'Top Cap-Exempt H-1B Sponsors List (2026) [0% Lottery Quota] | Universities & Hospitals',
     subtitle: 'The comprehensive database and tactical guide to securing non-lottery H-1B visa sponsorship through universities, research non-profits, and hospitals.',
-    excerpt: 'The standard H-1B visa lottery has an acceptance rate below 25%. Cap-Exempt employers are legally exempt from the annual 85,000 lottery limit, allowing year-round filing, unlimited transfers, and fast-track premium processing.',
+    excerpt: 'The standard H-1B lottery acceptance rate is under 25%. Cap-Exempt employers are legally exempt from the 85,000 cap, allowing year-round filing and 15-day premium processing.',
     category: 'Visa & Green Cards',
     readTime: '11 min read',
     publishedDate: '2026-09-05T00:00:00.000Z',
@@ -377,12 +381,15 @@ export const MASTER_GUIDES: GuideArticle[] = [
     },
     keywords: [
       'cap exempt h1b employers list 2026',
+      'h1b cap exempt organizations list',
+      'companies hiring h-1b 2026',
       'h1b visa without lottery',
       'university h1b sponsorship',
       'non profit h1b sponsors',
       'cap exempt visa jobs',
       'concurrent h1b cap exempt'
     ],
+
     tableOfContents: [
       { id: 'what-is-cap-exempt', title: '1. What Qualifies an Employer as Cap-Exempt?' },
       { id: 'the-4-categories', title: '2. The 4 Categories of Non-Lottery Sponsors' },
@@ -486,9 +493,9 @@ export const MASTER_GUIDES: GuideArticle[] = [
   },
   {
     slug: 'study-in-usa-f1-part-time-cpt-opt-work-guide',
-    title: 'The International Student\'s US Work Blueprint: F-1 On-Campus Jobs, Day-1 CPT, GTA/GRA Stipends & 3-Year STEM OPT',
+    title: 'F-1 Student Visa Work Guide [2026]: CPT, OPT, STEM Extension & 7.65% FICA Tax Savings',
     subtitle: 'A complete institutional guide on how F-1 international students legally earn USD, obtain full tuition waivers, and secure 3 years of post-graduation US employment authorization.',
-    excerpt: 'Studying in the USA does not mean depleting your savings. Discover the legal frameworks that allow international students to earn \$15–\$65/hr through on-campus jobs, fully-funded assistantships, Day-1 CPT work-study programs, and 36-month STEM OPT extensions.',
+    excerpt: 'Studying in the USA does not mean depleting your savings. Learn how international students legally earn $15–$65/hr through on-campus jobs, GRA/TA stipends, Day-1 CPT, and 36-month STEM OPT with 0% FICA taxes.',
     category: 'Scholarships & Education',
     readTime: '10 min read',
     publishedDate: '2026-09-06T00:00:00.000Z',
@@ -501,12 +508,14 @@ export const MASTER_GUIDES: GuideArticle[] = [
     keywords: [
       'f1 visa on campus jobs',
       'f1 part time job rules usa',
+      'f1 opt fica tax exemption calculator',
       'day 1 cpt universities in usa',
       'stem opt 3 year extension',
       'graduate assistantship stipend tuition waiver',
       'cpt vs opt international students',
       'how international students earn money in usa'
     ],
+
     tableOfContents: [
       { id: 'f1-work-overview', title: '1. Overview of Legal Work Authorization for F-1 Students' },
       { id: 'on-campus-jobs', title: '2. On-Campus Employment: 20 Hours/Week Rules & Pay Rates' },

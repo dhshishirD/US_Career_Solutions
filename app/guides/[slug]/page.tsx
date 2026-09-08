@@ -58,13 +58,14 @@ export default async function GuideDetailPage({ params }: Props) {
     notFound();
   }
 
-  const jsonLd = {
+  const articleJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
     'headline': guide.title,
     'description': guide.excerpt,
     'datePublished': guide.publishedDate,
     'dateModified': guide.updatedDate,
+    'keywords': guide.keywords.join(', '),
     'author': {
       '@type': 'Organization',
       'name': guide.author.name,
@@ -76,20 +77,50 @@ export default async function GuideDetailPage({ params }: Props) {
       'url': 'https://www.uscareersolutions.online',
       'logo': {
         '@type': 'ImageObject',
-        'url': 'https://www.uscareersolutions.online/favicon.ico'
+        'url': 'https://www.uscareersolutions.online/icon.svg'
       }
     },
     'mainEntityOfPage': `https://www.uscareersolutions.online/guides/${guide.slug}`
   };
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      {
+        '@type': 'ListItem',
+        'position': 1,
+        'name': 'Home',
+        'item': 'https://www.uscareersolutions.online'
+      },
+      {
+        '@type': 'ListItem',
+        'position': 2,
+        'name': 'Guides & Intelligence',
+        'item': 'https://www.uscareersolutions.online/guides'
+      },
+      {
+        '@type': 'ListItem',
+        'position': 3,
+        'name': guide.title,
+        'item': `https://www.uscareersolutions.online/guides/${guide.slug}`
+      }
+    ]
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
       
-      {/* Schema.org Article JSON-LD */}
+      {/* Schema.org JSON-LD */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+
 
       {/* Back Link */}
       <div className="mb-6">
