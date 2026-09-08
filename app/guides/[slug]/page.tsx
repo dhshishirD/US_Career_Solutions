@@ -4,17 +4,15 @@ import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { 
   Clock, 
-  Calendar, 
-  User, 
   ArrowLeft, 
-  Share2, 
-  Bookmark, 
-  Sparkles, 
   CheckCircle2, 
+  ShieldCheck, 
+  Sparkles,
   Zap,
   ArrowRight
 } from 'lucide-react';
 import { MASTER_GUIDES, getGuideBySlug } from '@/lib/guides-data';
+import GuideInteractiveFeatures from './GuideInteractiveFeatures';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -108,6 +106,19 @@ export default async function GuideDetailPage({ params }: Props) {
     ]
   };
 
+  const faqJsonLd = guide.faqs && guide.faqs.length > 0 ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    'mainEntity': guide.faqs.map(faq => ({
+      '@type': 'Question',
+      'name': faq.question,
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': faq.answer
+      }
+    }))
+  } : null;
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
       
@@ -120,7 +131,12 @@ export default async function GuideDetailPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
 
       {/* Back Link */}
       <div className="mb-6">
@@ -139,9 +155,16 @@ export default async function GuideDetailPage({ params }: Props) {
         <div className="lg:col-span-8">
           
           <div className="mb-8">
-            <span className="inline-block bg-blue-50 text-blue-800 text-xs font-bold uppercase px-3 py-1 rounded-md mb-3 border border-blue-200">
-              {guide.category}
-            </span>
+            <div className="flex items-center gap-2 mb-3">
+              <span className="inline-block bg-blue-50 text-blue-800 text-xs font-bold uppercase px-3 py-1 rounded-md border border-blue-200">
+                {guide.category}
+              </span>
+              <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200">
+                <ShieldCheck className="w-3 h-3 text-emerald-600" />
+                Fact-Checked & Verified
+              </span>
+            </div>
+
             <h1 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight leading-tight mb-4">
               {guide.title}
             </h1>
@@ -190,22 +213,30 @@ export default async function GuideDetailPage({ params }: Props) {
             </Link>
           </div>
 
+          {/* Interactive Share, FAQ Accordion & Community Features */}
+          <GuideInteractiveFeatures 
+            guideTitle={guide.title}
+            guideSlug={guide.slug}
+            faqs={guide.faqs}
+          />
+
         </div>
 
         {/* Sidebar (4 cols) */}
         <div className="lg:col-span-4 space-y-6">
           
           {/* Table of Contents Sticky Card */}
-          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 sticky top-24">
-            <h3 className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-4">
-              Table of Contents:
+          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 sticky top-24 shadow-sm">
+            <h3 className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-4 flex items-center justify-between">
+              <span>Table of Contents</span>
+              <span className="text-[10px] bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-bold">Jump</span>
             </h3>
             <ul className="space-y-2 text-xs">
               {guide.tableOfContents.map((item) => (
                 <li key={item.id}>
                   <a 
                     href={`#${item.id}`}
-                    className="text-slate-600 hover:text-blue-600 font-medium transition-colors block py-0.5"
+                    className="text-slate-600 hover:text-blue-600 font-medium transition-colors block py-0.5 hover:translate-x-0.5 transform duration-150"
                   >
                     {item.title}
                   </a>
@@ -215,7 +246,7 @@ export default async function GuideDetailPage({ params }: Props) {
 
             <div className="mt-6 pt-6 border-t border-slate-200">
               <h4 className="text-xs font-bold text-slate-900 mb-2">Need Direct 1-on-1 Guidance?</h4>
-              <p className="text-[11px] text-slate-600 mb-3">
+              <p className="text-[11px] text-slate-600 mb-3 leading-relaxed">
                 Book a personalized strategy session with our US career concierge on WhatsApp.
               </p>
               <a
