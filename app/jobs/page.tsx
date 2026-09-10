@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
+import Link from 'next/link';
 import { 
   Search, 
   Filter, 
@@ -11,7 +12,9 @@ import {
   ShieldCheck, 
   Globe2, 
   X,
-  AlertCircle
+  AlertCircle,
+  MapPin,
+  Compass
 } from 'lucide-react';
 import JobCard from '@/components/JobCard';
 import { JobPosting, VisaSponsorshipType, JobCategory } from '@/lib/types';
@@ -140,6 +143,42 @@ function JobsContent() {
           {syncMessage}
         </div>
       )}
+
+      {/* Explore by US State Banner */}
+      <div className="mt-6 p-5 rounded-2xl bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white border border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-md">
+        <div className="flex items-center gap-3.5">
+          <div className="p-2.5 rounded-xl bg-blue-500/20 text-blue-400 border border-blue-500/30 flex-shrink-0">
+            <Compass className="w-5 h-5" />
+          </div>
+          <div>
+            <div className="text-xs font-bold text-blue-400 uppercase tracking-wider">Geographic Career Intelligence</div>
+            <h2 className="text-base font-bold text-white">Explore Jobs by Top US States (Salaries, State Tax & Top H-1B Sponsors)</h2>
+          </div>
+        </div>
+        <div className="flex flex-wrap items-center gap-2">
+          {[
+            { name: 'California', slug: 'california', code: 'CA' },
+            { name: 'Texas', slug: 'texas', code: 'TX' },
+            { name: 'New York', slug: 'new-york', code: 'NY' },
+            { name: 'Washington', slug: 'washington', code: 'WA' },
+            { name: 'Massachusetts', slug: 'massachusetts', code: 'MA' },
+          ].map(st => (
+            <Link
+              key={st.slug}
+              href={`/jobs/states/${st.slug}`}
+              className="text-xs font-bold px-3 py-1.5 rounded-lg bg-slate-800/90 hover:bg-blue-600 border border-slate-700 hover:border-blue-500 text-slate-200 hover:text-white transition-all shadow-sm"
+            >
+              {st.code} ({st.name})
+            </Link>
+          ))}
+          <Link
+            href="/jobs/states"
+            className="text-xs font-bold px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition-colors shadow-sm"
+          >
+            All 10 States →
+          </Link>
+        </div>
+      </div>
 
       {/* Main Layout: Filters Sidebar + Job Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 mt-8">

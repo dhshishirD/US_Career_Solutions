@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { MASTER_GUIDES } from '@/lib/guides-data';
+import { US_STATES_DATA } from '@/lib/states-data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.uscareersolutions.online';
@@ -14,6 +15,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/jobs`,
+      lastModified: currentDate,
+      changeFrequency: 'daily',
+      priority: 0.95,
+    },
+    {
+      url: `${baseUrl}/jobs/states`,
       lastModified: currentDate,
       changeFrequency: 'daily',
       priority: 0.95,
@@ -123,5 +130,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
-  return [...staticRoutes, ...guideRoutes];
+  const stateRoutes: MetadataRoute.Sitemap = Object.values(US_STATES_DATA).map(state => ({
+    url: `${baseUrl}/jobs/states/${state.slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'daily',
+    priority: 0.9,
+  }));
+
+  return [...staticRoutes, ...guideRoutes, ...stateRoutes];
 }
