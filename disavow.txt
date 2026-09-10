@@ -1,0 +1,44 @@
+# Google Search Console Disavow File for https://www.uscareersolutions.online/
+# Generated on: 2026-09-10
+# Purpose: Neutralize low-quality automated scraper link networks and PBN domains
+
+# Generic Scraper & PBN TLDs
+domain:fiverr-seo-for-small-businesses.site
+domain:fiverr-cost-effective-seo.site
+domain:backlinkshop.site
+domain:backlink-seo.site
+domain:best-seo-service.site
+domain:cheapbacklinks.site
+domain:freeseotools.site
+domain:linkbuildingpro.site
+domain:rankbooster.site
+domain:trafficgenerator.site
+domain:seo-audit-checker.site
+domain:fast-indexing-bot.site
+domain:domain-whois-scraper.site
+domain:web-scraper-online.site
+domain:auto-directory-submit.site
+
+# Automated Domain Scraper & Registration Indexers
+domain:siteadvisor-check.store
+domain:domain-pricing-matrix.store
+domain:whois-lookup-free.store
+domain:web-analytics-scraper.store
+domain:keyword-ranking-check.store
+domain:backlink-tracker-pro.store
+domain:rank-tracker-live.store
+domain:domain-authority-checker.store
+domain:seo-backlink-indexer.store
+domain:traffic-stats-monitor.store
+
+# Low-Quality Free Subdomain Web 2.0 Scrapers
+domain:site-overview-tools.top
+domain:domain-age-checker.top
+domain:alexa-rank-checker.top
+domain:dns-record-lookup.top
+domain:ip-address-finder.top
+domain:website-traffic-estimator.top
+domain:ping-speed-test.top
+domain:free-backlink-finder.top
+domain:instant-indexing-service.top
+domain:search-engine-submitter.top
