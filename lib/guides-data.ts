@@ -950,7 +950,7 @@ export const MASTER_GUIDES: GuideArticle[] = [
         </thead>
         <tbody>
           <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-            <td style="padding: 12px; font-weight: bold; color: #0369a1;">Wise (formerly TransferWise)</td>
+            <td style="padding: 12px; font-weight: bold; color: #0369a1;"><a href="https://wise.prf.hn/click/camref:1011l5QMmm" target="_blank" rel="noopener noreferrer sponsored" style="color: #0369a1; text-decoration: underline;">Wise (Recommended)</a></td>
             <td style="padding: 12px;">Freelancers, Individual Contractors, F-1 Students</td>
             <td style="padding: 12px;"><strong>Real Mid-Market Rate (0.3%–0.6% fee)</strong></td>
             <td style="padding: 12px;">Dedicated USD, EUR, GBP, AUD account details. Direct wire to 160+ countries.</td>
@@ -973,7 +973,7 @@ export const MASTER_GUIDES: GuideArticle[] = [
       <h2 id="step-by-step-setup">3. Step-by-Step: Opening Your USD Account from Overseas</h2>
       <ol style="line-height: 1.8;">
         <li><strong>Prepare Identification Documents:</strong> A valid international passport and proof of physical residential address (utility bill, bank statement, or internet bill issued within the last 90 days).</li>
-        <li><strong>Sign Up on Wise or Payoneer:</strong> Register for an Individual or Business account. Select USD as your primary receiving balance.</li>
+        <li><strong>Sign Up on Wise:</strong> Create an account via the <a href="https://wise.prf.hn/click/camref:1011l5QMmm" target="_blank" rel="noopener noreferrer sponsored" style="color: #38bdf8; font-weight: bold; text-decoration: underline;">Official Wise Multi-Currency Portal</a>. Select USD as your receiving currency to get instant domestic ACH routing details.</li>
         <li><strong>Complete Identity Verification (e-KYC):</strong> Upload photos of your passport and take a live selfie biometric scan via mobile app.</li>
         <li><strong>Obtain Receiving Account Credentials:</strong> Access your account to retrieve your <em>9-Digit ACH Routing Number</em> and unique <em>Checking Account Number</em>.</li>
         <li><strong>Provide Details to U.S. Client:</strong> Enter your receiving details into your client's payroll platform (Deel, Gusto, Rippling, or Quickbooks).</li>

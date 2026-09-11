@@ -318,6 +318,12 @@ export default function SalaryTaxCalculatorPage() {
               </strong>
               <p className="text-[11px] text-blue-700 leading-relaxed">
                 {calculations.treatyNotes}
+                <div className="mt-2 pt-2 border-t border-blue-200 flex items-center justify-between">
+                  <span className="text-[11px] font-bold text-blue-950">Need a US Bank Routing Number to receive USD?</span>
+                  <a href="https://wise.prf.hn/click/camref:1011l5QMmm" target="_blank" rel="noopener noreferrer sponsored" className="inline-flex items-center gap-1 text-[11px] font-extrabold text-blue-700 hover:text-blue-900 underline">
+                    <span>Open Free Wise USD Account &rarr;</span>
+                  </a>
+                </div>
               </p>
             </div>
           )}

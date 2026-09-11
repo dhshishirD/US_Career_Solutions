@@ -50,7 +50,7 @@ export default function USRemoteJobsLandingPage() {
         <div className="flex-grow">
           <h3 className="text-lg font-bold text-slate-900">How Does Working for US Companies Remotely Work Legally?</h3>
           <p className="text-xs sm:text-sm text-slate-600 mt-1.5 leading-relaxed">
-            Under US IRS tax rules, non-US citizens working outside the United States submit a simple 1-page form called **W-8BEN**. The US employer does not pay US payroll taxes or require visa sponsorship. You receive 100% of your gross USD earnings via Wise, Wire Transfer, or Payoneer.
+            Under US IRS tax rules, non-US citizens working outside the United States submit a simple 1-page form called **W-8BEN**. The US employer does not pay US payroll taxes or require visa sponsorship. You receive 100% of your gross USD earnings via direct ACH into your <a href="https://wise.prf.hn/click/camref:1011l5QMmm" target="_blank" rel="noopener noreferrer sponsored" className="text-blue-600 font-bold underline hover:text-blue-800">Wise Multi-Currency USD Account</a> with zero local bank wire cuts.
           </p>
         </div>
         <div className="shrink-0">
