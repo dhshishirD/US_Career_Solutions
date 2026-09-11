@@ -483,6 +483,59 @@ export default function LcaSalarySearchPage() {
             </div>
           </div>
         </section>
+
+        {/* Official Government Data Attribution & E-E-A-T Compliance Box */}
+        <section className="mt-8 bg-slate-950/80 border border-slate-800/80 rounded-3xl p-6 sm:p-8 text-xs text-slate-400">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+            <div className="flex items-center gap-3">
+              <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                <ShieldCheck className="w-5 h-5" />
+              </div>
+              <div>
+                <h4 className="text-sm font-bold text-white">Official Government Data Sources & Verification</h4>
+                <p className="text-slate-400 text-xs">Public Disclosure Program under U.S. Department of Labor (DOL) ETA-9035 regulations</p>
+              </div>
+            </div>
+            <div className="flex flex-wrap items-center gap-2">
+              <a 
+                href="https://www.dol.gov/agencies/eta/foreign-labor/performance" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-slate-300 hover:text-white transition-colors"
+              >
+                <span>DOL OFLC Portal</span>
+                <ExternalLink className="w-3 h-3 text-slate-500" />
+              </a>
+              <a 
+                href="https://flag.dol.gov" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-slate-300 hover:text-white transition-colors"
+              >
+                <span>FLAG Prevailing Wage</span>
+                <ExternalLink className="w-3 h-3 text-slate-500" />
+              </a>
+              <a 
+                href="https://www.bls.gov/oes/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-slate-300 hover:text-white transition-colors"
+              >
+                <span>BLS OEWS Database</span>
+                <ExternalLink className="w-3 h-3 text-slate-500" />
+              </a>
+            </div>
+          </div>
+
+          <div className="pt-6 space-y-3 leading-relaxed text-slate-400">
+            <p>
+              <strong className="text-slate-300">Data Methodology:</strong> All compensation records and wage levels displayed are compiled from certified Form ETA-9035 / ETA-9035E public disclosure data released quarterly by the Office of Foreign Labor Certification (OFLC) and prevailing wage benchmarks administered by the Bureau of Labor Statistics (BLS).
+            </p>
+            <p>
+              <strong className="text-slate-300">Legal Disclaimer:</strong> US Career Solutions is an independent educational and career intelligence research platform. We are not a law firm, not affiliated with the U.S. Department of Labor (DOL), USCIS, or any governmental authority. Information provided herein is for informational and educational benchmarking purposes only and should not be construed as legal advice. For formal visa petition filings or immigration counsel, please consult a licensed immigration attorney registered with the American Immigration Lawyers Association (AILA).
+            </p>
+          </div>
+        </section>
       </div>
     </div>
   );
