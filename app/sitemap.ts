@@ -86,6 +86,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.95,
     },
     {
+      url: `${baseUrl}/tools/lca-salary-search`,
+      lastModified: currentDate,
+      changeFrequency: 'daily',
+      priority: 0.95,
+    },
+    {
       url: `${baseUrl}/tools/visa-checker`,
       lastModified: currentDate,
       changeFrequency: 'weekly',
