@@ -106,6 +106,19 @@ function ScholarshipsContent() {
         <p className="mt-4 text-sm sm:text-base text-slate-600 leading-relaxed">
           The most legitimate, tuition-free gateway to enter the United States. US universities fund thousands of international students every year with <strong>100% full tuition waivers plus monthly living salaries ($2,000 – $3,800/mo)</strong>.
         </p>
+
+        {/* New Fall 2026 Fee Waiver Spotlight Banner */}
+        <div className="mt-6 inline-flex items-center gap-3 p-2 pl-4 pr-3 rounded-2xl bg-emerald-50 border border-emerald-300 text-emerald-950 text-xs sm:text-sm font-semibold shadow-sm hover:border-emerald-400 transition-all">
+          <Sparkles className="w-4 h-4 text-emerald-600 shrink-0" />
+          <span>Applying for Fall 2026 / Spring 2027? Get $0 Application Fee Waiver Codes & GRE Exemptions:</span>
+          <Link
+            href="/scholarships/fee-waiver-directory"
+            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition-colors shrink-0"
+          >
+            <span>Explore Fee Waivers</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
       </div>
 
       {/* Educational Explainer Box: How GRA/GTA Works */}
