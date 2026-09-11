@@ -992,6 +992,191 @@ export const MASTER_GUIDES: GuideArticle[] = [
       buttonText: 'Calculate Remote Earnings'
     }
   }
+  ,
+  {
+    slug: 'uscis-form-i-912-fee-waiver-green-card-citizenship-guide-2026',
+    title: 'USCIS Form I-912 Fee Waiver Guide [2026] | How to Waive Citizenship (N-400), Green Card & Work Permit Fees',
+    subtitle: 'A comprehensive legal guide on how eligible applicants can legally eliminate hundreds of dollars in USCIS immigration filing fees using Form I-912.',
+    excerpt: 'USCIS filing fees can exceed $1,000 per application. Learn the 3 legal eligibility pathways, 2026 Federal Poverty Guidelines (150% threshold), eligible forms (N-400, I-90, I-765), and avoid common rejection traps.',
+    category: 'Visa & Green Cards',
+    readTime: '12 min read',
+    publishedDate: '2026-09-11T00:00:00.000Z',
+    updatedDate: '2026-09-11T00:00:00.000Z',
+    author: {
+      name: 'US Career Solutions Legal & Immigration Intelligence',
+      role: 'USCIS Regulatory & Visa Policy Research Group',
+      avatar: '/favicon.ico'
+    },
+    keywords: [
+      'fee waiver uscis',
+      'i912 form',
+      'form i 912 request for fee waiver',
+      'uscis citizenship fee waiver',
+      'fee waiver for green card renewal',
+      'i-765 fee waiver',
+      'i912 fee waiver form',
+      'green card renewal fee waiver',
+      'n400 fee waiver',
+      'uscis fee waiver eligibility'
+    ],
+    tableOfContents: [
+      { id: 'what-is-form-i912', title: '1. What is USCIS Form I-912 (Request for Fee Waiver)?' },
+      { id: 'three-eligibility-pathways', title: '2. The 3 Legal Pathways to Qualify for a Full Fee Waiver' },
+      { id: 'poverty-guidelines-table', title: '3. 2026 Federal Poverty Guidelines (150% Income Thresholds)' },
+      { id: 'eligible-forms-list', title: '4. Eligible vs. Ineligible USCIS Application Forms' },
+      { id: 'step-by-step-filing', title: '5. Step-by-Step Filing Checklist & Required Evidence' },
+      { id: 'common-rejection-mistakes', title: '6. Critical Mistakes That Cause Instant Fee Waiver Rejection' }
+    ],
+    contentHtml: `
+      <p>Immigration application costs in the United States can impose a severe financial burden on foreign nationals, lawful permanent residents, and prospective citizens. With standard filing fees reaching <strong>$710 for Form N-400 (Naturalization)</strong>, <strong>$465 for Form I-90 (Green Card Renewal)</strong>, and <strong>$520 for Form I-765 (Employment Authorization)</strong>, a single family can easily face thousands of dollars in government fees.</p>
+
+      <p>Under federal immigration regulations (<strong>8 CFR § 103.7(c)</strong>), U.S. Citizenship and Immigration Services (USCIS) provides a legally binding mechanism—<strong>Form I-912 (Request for Fee Waiver)</strong>—allowing low-income applicants, public benefit recipients, and those experiencing extreme financial hardship to submit applications with <strong>$0 out-of-pocket filing fees</strong>.</p>
+
+      <h2 id="what-is-form-i912">1. What is USCIS Form I-912 (Request for Fee Waiver)?</h2>
+      <p>Form I-912 is an official USCIS petition submitted concurrently with your primary immigration application. If approved, USCIS waives <strong>100% of both the filing fee and the mandatory biometric service fee</strong>.</p>
+
+      <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 16px; padding: 20px; margin: 24px 0;">
+        <h4 style="color: #10b981; margin-top: 0; font-size: 16px;">💡 Critical Golden Rule for Form I-912 Submissions</h4>
+        <p style="margin-bottom: 0; font-size: 14px; color: #cbd5e1;">You must file Form I-912 <strong>at the exact same time</strong> as your primary benefit form in paper format. You cannot file Form I-912 online, nor can you submit it after USCIS has already accepted your fee.</p>
+      </div>
+
+      <h2 id="three-eligibility-pathways">2. The 3 Legal Pathways to Qualify for a Full Fee Waiver</h2>
+      <p>To qualify for a fee waiver, you must establish eligibility under at least <strong>one of the following three statutory criteria</strong>:</p>
+
+      <ol style="line-height: 1.8;">
+        <li>
+          <strong>Pathway A: You or a Household Member Receives a Means-Tested Benefit (Easiest Approval):</strong><br />
+          A means-tested benefit is a public assistance program where eligibility and benefit amounts are determined by household income. Qualifying federal/state benefits include:
+          <ul>
+            <li><strong>Medicaid</strong> (excluding emergency Medicaid)</li>
+            <li><strong>SNAP (Supplemental Nutrition Assistance Program / Food Stamps)</strong></li>
+            <li><strong>SSI (Supplemental Security Income)</strong></li>
+            <li><strong>TANF (Temporary Assistance for Needy Families)</strong></li>
+          </ul>
+          <em>Required Evidence:</em> An official letter or notice from the administering state agency (issued within the last 12 months) showing your name, agency name, benefit type, and active status.
+        </li>
+        <li>
+          <strong>Pathway B: Household Income at or Below 150% of the Federal Poverty Guidelines:</strong><br />
+          Your total annual household income (from all earning household members) is at or below <strong>150% of the U.S. Department of Health and Human Services (HHS) Poverty Guidelines</strong> at the time of filing.
+          <em>Required Evidence:</em> Copy of your most recent IRS Form 1040 (Federal Income Tax Return), W-2s, or consecutive pay stubs covering the last 30 days.
+        </li>
+        <li>
+          <strong>Pathway C: Severe Financial Hardship:</strong><br />
+          You demonstrate extraordinary financial difficulties, such as catastrophic medical emergencies, uninsured loss of housing due to natural disasters, eviction, or sudden unemployment.
+          <em>Required Evidence:</em> Itemized hospital bills, eviction notices, bankruptcy documentation, or proof of loss of income accompanied by an itemized sworn affidavit.
+        </li>
+      </ol>
+
+      <h2 id="poverty-guidelines-table">3. 2026 Federal Poverty Guidelines (150% Income Thresholds)</h2>
+      <p>If applying under Pathway B, your total gross annual household income must not exceed the following statutory thresholds (48 Contiguous States & D.C.):</p>
+
+      <table style="width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; text-align: left;">
+        <thead>
+          <tr style="background: rgba(30, 41, 59, 0.8); border-bottom: 2px solid #334155;">
+            <th style="padding: 12px; color: #fff;">Household Size</th>
+            <th style="padding: 12px; color: #fff;">100% Federal Poverty Baseline</th>
+            <th style="padding: 12px; color: #10b981;">150% Poverty Threshold (Max Income for I-912)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+            <td style="padding: 12px; font-weight: bold;">1 Person (Single Individual)</td>
+            <td style="padding: 12px;">$15,650</td>
+            <td style="padding: 12px; font-weight: bold; color: #10b981;">$23,475 / year</td>
+          </tr>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+            <td style="padding: 12px; font-weight: bold;">2 Persons</td>
+            <td style="padding: 12px;">$21,150</td>
+            <td style="padding: 12px; font-weight: bold; color: #10b981;">$31,725 / year</td>
+          </tr>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+            <td style="padding: 12px; font-weight: bold;">3 Persons</td>
+            <td style="padding: 12px;">$26,650</td>
+            <td style="padding: 12px; font-weight: bold; color: #10b981;">$39,975 / year</td>
+          </tr>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+            <td style="padding: 12px; font-weight: bold;">4 Persons (Family of Four)</td>
+            <td style="padding: 12px;">$32,150</td>
+            <td style="padding: 12px; font-weight: bold; color: #10b981;">$48,225 / year</td>
+          </tr>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+            <td style="padding: 12px; font-weight: bold;">5 Persons</td>
+            <td style="padding: 12px;">$37,650</td>
+            <td style="padding: 12px; font-weight: bold; color: #10b981;">$56,475 / year</td>
+          </tr>
+          <tr>
+            <td style="padding: 12px; font-weight: bold;">Each Additional Person Add</td>
+            <td style="padding: 12px;">+$5,500</td>
+            <td style="padding: 12px; font-weight: bold; color: #10b981;">+$8,250 / year</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="eligible-forms-list">4. Eligible vs. Ineligible USCIS Application Forms</h2>
+      <p>Not every USCIS petition qualifies for fee waiver requests. USCIS strictly limits fee waivers to humanitarian, family integration, naturalization, and certain status renewal categories:</p>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0;">
+        <div style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 16px; padding: 20px;">
+          <h4 style="color: #10b981; margin-top: 0;">✅ Fully Eligible for Form I-912 Waiver</h4>
+          <ul style="font-size: 13px; line-height: 1.8; color: #cbd5e1; padding-left: 20px;">
+            <li><strong>Form N-400:</strong> Application for Naturalization (U.S. Citizenship)</li>
+            <li><strong>Form I-90:</strong> Application to Replace Permanent Resident Card (Green Card)</li>
+            <li><strong>Form I-765:</strong> Application for Employment Authorization (EAD / Work Permit for qualifying categories)</li>
+            <li><strong>Form N-600 / N-600K:</strong> Application for Certificate of Citizenship</li>
+            <li><strong>Form I-485:</strong> Adjustment of Status (Asylum, U/T Visa, SIJ, Violence Against Women Act / VAWA only)</li>
+            <li><strong>Form I-131:</strong> Application for Travel Document (Refugees / Humanitarian)</li>
+            <li><strong>Form I-290B:</strong> Notice of Appeal or Motion (for fee-waived underlying petitions)</li>
+            <li><strong>Form I-601:</strong> Application for Waiver of Grounds of Inadmissibility (Humanitarian / Special Immigrant)</li>
+          </ul>
+        </div>
+
+        <div style="background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: 16px; padding: 20px;">
+          <h4 style="color: #ef4444; margin-top: 0;">❌ NOT Eligible for Form I-912 Waiver</h4>
+          <ul style="font-size: 13px; line-height: 1.8; color: #cbd5e1; padding-left: 20px;">
+            <li><strong>Form I-130:</strong> Petition for Alien Relative (Standard Family Sponsorship)</li>
+            <li><strong>Form I-140:</strong> Immigrant Petition for Alien Worker (EB-1, EB-2, EB-3)</li>
+            <li><strong>Form I-129:</strong> Petition for a Nonimmigrant Worker (H-1B, L-1, O-1)</li>
+            <li><strong>Form I-485 (Commercial):</strong> Employment-based Green Card Adjustments</li>
+            <li><strong>Form I-526 / I-829:</strong> Immigrant Investor Petitions</li>
+            <li><strong>Form I-907:</strong> Premium Processing Service</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 id="step-by-step-filing">5. Step-by-Step Filing Checklist & Required Evidence</h2>
+      <ol style="line-height: 1.8;">
+        <li><strong>Download the Current Form I-912:</strong> Always verify the edition date at the bottom of the form on <a href="https://www.uscis.gov/i-912" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; text-decoration: underline;">uscis.gov/i-912</a>. Submitting an expired edition results in automatic rejection.</li>
+        <li><strong>Select Your Qualifying Basis:</strong> Check the appropriate box in Part 1 (Means-tested benefit, income under 150% poverty line, or financial hardship).</li>
+        <li><strong>Assemble Supporting Exhibits:</strong>
+          <ul>
+            <li>Benefit award letters with active dates and agency letterhead.</li>
+            <li>Federal tax returns (Form 1040) with all schedules.</li>
+            <li>Certified English translations for any foreign-language documents.</li>
+          </ul>
+        </li>
+        <li><strong>Sign in Black Ink:</strong> USCIS requires original signatures on all paper forms. Digital/typed font signatures are rejected.</li>
+        <li><strong>Mail Concurrently:</strong> Place Form I-912 on the very top of your application packet and mail to the designated USCIS Lockbox for your primary form.</li>
+      </ol>
+
+      <h2 id="common-rejection-mistakes">6. Critical Mistakes That Cause Instant Fee Waiver Rejection</h2>
+      <ul>
+        <li><strong>Including a Payment Check "Just in Case":</strong> If you attach a check or credit card authorization (Form G-1450) with Form I-912, USCIS will immediately cash the payment and discard your fee waiver request without reviewing it.</li>
+        <li><strong>Missing Proof of Household Size:</strong> If you claim dependents on Form I-912 but fail to provide birth certificates, marriage certificates, or tax returns matching the claimed household size, USCIS will deny the request.</li>
+        <li><strong>Expired Means-Tested Benefit Documentation:</strong> Submitting a Medicaid card with no active benefit verification letter causes immediate rejection.</li>
+      </ul>
+
+      <div style="background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 20px; margin-top: 32px; font-size: 12px; color: #94a3b8;">
+        <strong style="color: #e2e8f0;">Official Legal Disclaimer:</strong> This guide is for educational and informational benchmarking purposes only. US Career Solutions is not affiliated with USCIS or the Department of Homeland Security (DHS). Immigration laws and poverty thresholds update annually. For legal advice regarding your specific immigration case, consult a licensed immigration attorney registered with the American Immigration Lawyers Association (AILA).
+      </div>
+    `,
+    relatedTool: {
+      name: 'US Visa & Green Card Eligibility Checker',
+      description: 'Check your eligibility criteria, USCIS filing fees, and Day 1 Green Card sponsorship odds across top US employers.',
+      link: '/tools/visa-checker',
+      buttonText: 'Check Visa Eligibility'
+    }
+  }
+
 ];
 
 export function getGuideBySlug(slug: string): GuideArticle | undefined {
