@@ -136,7 +136,7 @@ export const MASTER_GUIDES: GuideArticle[] = [
   },
   {
     slug: 'international-nurse-schedule-a-greencard-guide',
-    title: 'International Nurse Schedule A Green Card Guide [2026] | Direct Residency (No PERM)',
+    title: 'Green Card for Nurses in USA [2026 Schedule A Direct Sponsorship - No PERM]',
     subtitle: 'How foreign Registered Nurses can secure a U.S. Green Card without waiting for the 2-year PERM Labor Certification.',
     excerpt: 'The United States has a nationwide healthcare shortage. Learn how Schedule A allows licensed international RNs with NCLEX to fast-track direct EB-3 permanent residency with zero PERM delays.',
     category: 'Visa & Green Cards',
@@ -795,7 +795,7 @@ export const MASTER_GUIDES: GuideArticle[] = [
   },
   {
     slug: 'top-50-h1b-visa-sponsors-companies-list-2026',
-    title: 'Top 50 US Companies Actively Sponsoring H-1B Visas [2026 Database] | Tech, Finance & Engineering',
+    title: 'Companies Hiring H-1B in 2026 [Verified Salaries & Day 1 Green Card List]',
     subtitle: 'The verified employer list, prevailing salary benchmarks, and department hiring volumes for foreign tech talent in the United States.',
     excerpt: 'Looking for companies that actually sponsor H-1B visas? Explore the top 50 corporate and tech sponsors, including average base salaries, approval rates, and hiring departments.',
     category: 'Visa & Green Cards',

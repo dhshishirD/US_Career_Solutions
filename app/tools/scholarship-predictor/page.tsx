@@ -134,6 +134,10 @@ Best regards,
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+      <head>
+        <title>USA Scholarship Predictor 2026 [100% Full-Ride & Assistantship Calculator] | US Career Solutions</title>
+        <meta name="description" content="Calculate your odds of winning a 100% full-ride tuition waiver and Graduate Assistantship (GRA/GTA) stipend ($2,500/mo) at top US universities for Fall 2026." />
+      </head>
       
       {/* Header */}
       <div className="text-center max-w-3xl mx-auto mb-10">
