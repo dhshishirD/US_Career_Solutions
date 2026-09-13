@@ -2,6 +2,9 @@ export type VisaSponsorshipType =
   | 'H-1B Sponsor' 
   | 'Cap-Exempt H-1B' 
   | 'Schedule A EB-3 Nurse'
+  | 'H-2A Agricultural Visa'
+  | 'H-2B Seasonal Visa'
+  | 'J-1 Summer Work / Hospitality'
   | 'OPT/CPT Friendly' 
   | 'US Remote (Contractor/W-8BEN)'
   | 'Requires US Auth';
@@ -12,6 +15,8 @@ export type JobCategory =
   | 'Data, AI Training & Annotation' 
   | 'Virtual Assistant & Admin'
   | 'Healthcare & Nursing' 
+  | 'Agricultural & Farming'
+  | 'Hospitality, Resorts & Seasonal'
   | 'Business & Finance' 
   | 'Engineering' 
   | 'Marketing & Sales' 

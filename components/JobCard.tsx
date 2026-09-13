@@ -106,6 +106,27 @@ export default function JobCard({ job, onSaveToggle, isInitiallySaved = false }:
             Schedule A EB-3 (Direct Green Card)
           </span>
         );
+      case 'H-2A Agricultural Visa':
+        return (
+          <span className="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full bg-lime-100 text-lime-900 border border-lime-300">
+            <CheckCircle2 className="w-3.5 h-3.5 text-lime-700" />
+            H-2A Agricultural (Free Housing & Transport)
+          </span>
+        );
+      case 'H-2B Seasonal Visa':
+        return (
+          <span className="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full bg-teal-100 text-teal-900 border border-teal-300">
+            <CheckCircle2 className="w-3.5 h-3.5 text-teal-700" />
+            H-2B Seasonal Non-Ag (Resort/Hospitality)
+          </span>
+        );
+      case 'J-1 Summer Work / Hospitality':
+        return (
+          <span className="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full bg-amber-100 text-amber-900 border border-amber-300">
+            <Globe2 className="w-3.5 h-3.5 text-amber-700" />
+            J-1 Summer Work / Exchange
+          </span>
+        );
       default:
         return (
           <span className="inline-flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 border border-slate-200">

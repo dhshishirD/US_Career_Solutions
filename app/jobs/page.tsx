@@ -212,6 +212,10 @@ function JobsContent() {
                   { value: 'all', label: 'All Eligibility Types' },
                   { value: 'H-1B Sponsor', label: 'H-1B Visa Sponsor' },
                   { value: 'Cap-Exempt H-1B', label: 'Cap-Exempt H-1B (No Lottery)' },
+                  { value: 'Schedule A EB-3 Nurse', label: 'Schedule A EB-3 Nurse (Green Card)' },
+                  { value: 'H-2A Agricultural Visa', label: 'H-2A Agricultural Visa (Free Housing)' },
+                  { value: 'H-2B Seasonal Visa', label: 'H-2B Seasonal Visa (Hospitality/Resorts)' },
+                  { value: 'J-1 Summer Work / Hospitality', label: 'J-1 Summer Work / Exchange' },
                   { value: 'OPT/CPT Friendly', label: 'OPT / STEM OPT Friendly' },
                   { value: 'US Remote (Contractor/W-8BEN)', label: 'Global Remote (W-8BEN)' },
                 ].map(opt => (
@@ -312,7 +316,7 @@ function JobsContent() {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search job title, skills, or company name..."
+                placeholder="Search job title, company, farm, resort, or visa type..."
                 className="w-full text-sm bg-white border border-slate-200 rounded-xl pl-10 pr-4 py-2.5 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
               />
             </div>
@@ -323,6 +327,42 @@ function JobsContent() {
               Search
             </button>
           </form>
+
+          {/* High-Volume Popular Quick Filters */}
+          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs">
+            <span className="text-slate-400 font-bold uppercase tracking-wider text-[10px] shrink-0 mr-1">Popular:</span>
+            {[
+              { label: '🌾 H-2A Farm & Harvest', sponsor: 'H-2A Agricultural Visa', cat: 'Agricultural & Farming' },
+              { label: '🏔️ H-2B Resort & Seasonal', sponsor: 'H-2B Seasonal Visa', cat: 'Hospitality, Resorts & Seasonal' },
+              { label: '🩺 Nurse Green Card', sponsor: 'Schedule A EB-3 Nurse', cat: 'all' },
+              { label: '🏛️ Cap-Exempt H-1B', sponsor: 'Cap-Exempt H-1B', cat: 'all' },
+              { label: '🌐 Global USD (W-8BEN)', sponsor: 'US Remote (Contractor/W-8BEN)', cat: 'all' },
+            ].map(p => (
+              <button
+                key={p.label}
+                type="button"
+                onClick={() => {
+                  setSelectedSponsorship(p.sponsor);
+                  if (p.cat !== 'all') setSelectedCategory(p.cat);
+                }}
+                className={`shrink-0 px-3 py-1.5 rounded-lg border font-semibold transition-all ${
+                  selectedSponsorship === p.sponsor
+                    ? 'bg-blue-600 text-white border-blue-600 shadow-sm'
+                    : 'bg-white text-slate-700 border-slate-200 hover:border-blue-400 hover:text-blue-600'
+                }`}
+              >
+                {p.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Statutory Worker Anti-Scam Notice */}
+          <div className="p-3 bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200 rounded-xl text-xs text-emerald-900 flex items-start gap-2.5">
+            <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+            <div>
+              <span className="font-bold">Verified Statutory Worker Protections (DOL 20 CFR § 655.135):</span> Employers & recruiters are strictly prohibited by US federal law from charging recruitment, placement, or visa processing fees to H-2A agricultural and H-2B seasonal workers. Certified H-2A jobs guarantee inspected free housing and state Adverse Effect Wage Rates (AEWR).
+            </div>
+          </div>
 
           {/* Active filter chips */}
           {hasActiveFilters && (
