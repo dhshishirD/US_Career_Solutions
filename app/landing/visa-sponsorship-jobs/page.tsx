@@ -75,6 +75,37 @@ export default function VisaSponsorshipJobsLandingPage() {
         </div>
       </div>
 
+      {/* High-Intent LCA Prevailing Wage Search Banner */}
+      <div className="mb-12 bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 border border-indigo-500/30 rounded-3xl p-6 sm:p-8 text-white shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div className="space-y-2 max-w-2xl">
+          <div className="inline-flex items-center gap-2 bg-indigo-500/20 text-indigo-300 border border-indigo-500/40 px-3 py-1 rounded-full text-xs font-bold tracking-wide">
+            <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
+            Official Certified DOL Data
+          </div>
+          <h3 className="text-xl sm:text-2xl font-black text-white">
+            Looking for Real Certified Salaries by Company & Wage Level?
+          </h3>
+          <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Use our live <strong>H-1B LCA Prevailing Wage Search Tool</strong> to search real DOL Form ETA-9035 certified filings across Google, Microsoft, Amazon, Meta, and cap-exempt universities.
+          </p>
+        </div>
+        <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+          <Link
+            href="/tools/lca-salary-search"
+            className="inline-flex items-center justify-center gap-2 bg-indigo-500 hover:bg-indigo-600 text-white text-xs sm:text-sm font-bold px-5 py-3 rounded-xl shadow-lg transition-all"
+          >
+            <span>Search LCA Salaries</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+          <Link
+            href="/guides/top-cap-exempt-h1b-sponsors-list-2026"
+            className="inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs sm:text-sm font-semibold px-4 py-3 rounded-xl transition-all"
+          >
+            <span>Cap-Exempt Sponsor List</span>
+          </Link>
+        </div>
+      </div>
+
       {/* Live Sponsoring Openings */}
       <div className="mb-8 flex items-center justify-between">
         <div>

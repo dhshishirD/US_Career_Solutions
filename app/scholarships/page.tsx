@@ -134,12 +134,18 @@ function ScholarshipsContent() {
             Unlike other countries where universities charge massive tuition, US departments hire international graduate students as <strong>Graduate Research Assistants (GRA)</strong> or <strong>Teaching Assistants (GTA)</strong>. The university pays 100% of your tuition and gives you a bi-weekly paycheck to cover housing, food, and living expenses.
           </p>
         </div>
-        <div className="shrink-0">
+        <div className="shrink-0 flex flex-col sm:flex-row gap-2">
+          <Link
+            href="/guides/study-usa-zero-tuition-graduate-assistantship"
+            className="inline-flex items-center justify-center gap-1.5 text-xs font-bold px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white shadow transition-all whitespace-nowrap"
+          >
+            <span>GTA Application Guide</span> <ArrowRight className="w-3.5 h-3.5 text-indigo-400" />
+          </Link>
           <Link
             href="/services"
-            className="inline-flex items-center gap-1.5 text-xs font-bold px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white shadow transition-all whitespace-nowrap"
+            className="inline-flex items-center justify-center gap-1.5 text-xs font-bold px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white shadow transition-all whitespace-nowrap"
           >
-            Get SOP & Email Help <ArrowRight className="w-3.5 h-3.5" />
+            <span>Get SOP & Email Help</span> <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
       </div>
