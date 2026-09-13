@@ -34,6 +34,12 @@ export default function FeeWaiverDirectoryPage() {
   const [selectedState, setSelectedState] = useState('all');
   const [selectedGre, setSelectedGre] = useState('all');
   const [selectedWaiverType, setSelectedWaiverType] = useState('all');
+  const [selectedDiscipline, setSelectedDiscipline] = useState('all');
+  const [showEmailModal, setShowEmailModal] = useState(false);
+  const [emailApplicantName, setEmailApplicantName] = useState('');
+  const [emailProfName, setEmailProfName] = useState('');
+  const [emailUniName, setEmailUniName] = useState('');
+  const [emailField, setEmailField] = useState('Machine Learning & AI');
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [copiedEmail, setCopiedEmail] = useState(false);
 
@@ -49,10 +55,23 @@ export default function FeeWaiverDirectoryPage() {
       const matchesState = selectedState === 'all' || uni.state.toUpperCase() === selectedState.toUpperCase();
       const matchesGre = selectedGre === 'all' || uni.greRequirement.includes(selectedGre);
       const matchesType = selectedWaiverType === 'all' || uni.waiverType.includes(selectedWaiverType);
+      
+      let matchesDiscipline = true;
+      if (selectedDiscipline === 'cs') {
+        matchesDiscipline = /computer|software|ai|cyber|information|tech/i.test(uni.description + ' ' + uni.university);
+      } else if (selectedDiscipline === 'eng') {
+        matchesDiscipline = /engineering|aerospace|mechanical|robotics|electrical/i.test(uni.description + ' ' + uni.university);
+      } else if (selectedDiscipline === 'data') {
+        matchesDiscipline = /data|analytics|statistics|applied math/i.test(uni.description + ' ' + uni.university);
+      } else if (selectedDiscipline === 'health') {
+        matchesDiscipline = /health|biomedical|nursing|pharmacy|biological/i.test(uni.description + ' ' + uni.university);
+      } else if (selectedDiscipline === 'business') {
+        matchesDiscipline = /business|mba|management|finance/i.test(uni.description + ' ' + uni.university);
+      }
 
-      return matchesQuery && matchesState && matchesGre && matchesType;
+      return matchesQuery && matchesState && matchesGre && matchesType && matchesDiscipline;
     });
-  }, [searchQuery, selectedState, selectedGre, selectedWaiverType]);
+  }, [searchQuery, selectedState, selectedGre, selectedWaiverType, selectedDiscipline]);
 
   // Telemetry KPIs
   const stats = useMemo(() => {

@@ -1,6 +1,7 @@
 export type VisaSponsorshipType = 
   | 'H-1B Sponsor' 
   | 'Cap-Exempt H-1B' 
+  | 'Schedule A EB-3 Nurse'
   | 'OPT/CPT Friendly' 
   | 'US Remote (Contractor/W-8BEN)'
   | 'Requires US Auth';

@@ -307,6 +307,68 @@ export const MASTER_GUIDES: GuideArticle[] = [
         <p style="margin-bottom: 0;">Under Section 861 and 862 of the Internal Revenue Code, compensation for personal labor or services performed outside the U.S. is considered <strong>foreign-source income</strong>. Because it is foreign-source, U.S. companies do <strong>not</strong> withhold the standard 30% nonresident tax from your invoices.</p>
       </div>
 
+      <h2 id="50-state-endorsement-matrix">6. 50-State NCLEX Endorsement & eNLC Multistate License Matrix</h2>
+      <p>Many international nurses take their NCLEX examination under a state board with streamlined foreign applicant procedures (such as the <strong>New York State Board of Nursing</strong>, <strong>Northern Mariana Islands</strong>, or <strong>Illinois</strong>). Once you pass the NCLEX and arrive in the United States, you can <strong>endorse your RN license</strong> into your employer's target state.</p>
+
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-left border-collapse text-xs sm:text-sm">
+          <thead>
+            <tr class="bg-slate-800 text-slate-200 border-b border-slate-700">
+              <th class="p-3">State / Jurisdiction</th>
+              <th class="p-3">Compact Status</th>
+              <th class="p-3">Foreign Credential Body</th>
+              <th class="p-3">English Test Requirement</th>
+              <th class="p-3">Average Hospital RN Salary</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800 text-slate-300">
+            <tr>
+              <td class="p-3 font-bold text-white">Texas (TX)</td>
+              <td class="p-3"><span class="px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800 text-[11px] font-bold">eNLC Compact</span></td>
+              <td class="p-3">CGFNS CES or IERF / Josef Silny</td>
+              <td class="p-3">IELTS 6.5 (7.0 speaking) or OET Grade B</td>
+              <td class="p-3 text-emerald-400 font-bold">\$82,000 – \$112,000 / yr</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-white">Florida (FL)</td>
+              <td class="p-3"><span class="px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800 text-[11px] font-bold">eNLC Compact</span></td>
+              <td class="p-3">CGFNS CES Professional Report</td>
+              <td class="p-3">IELTS / TOEFL / OET accepted</td>
+              <td class="p-3 text-emerald-400 font-bold">\$75,000 – \$98,000 / yr</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-white">California (CA)</td>
+              <td class="p-3"><span class="px-2 py-0.5 rounded bg-rose-950 text-rose-300 border border-rose-800 text-[11px] font-bold">Non-Compact (Single State)</span></td>
+              <td class="p-3">California Board Direct Evaluation (Strict Micro/Anatomy Concurrency)</td>
+              <td class="p-3">VisaScreen Certificate for I-140</td>
+              <td class="p-3 text-emerald-400 font-bold">\$115,000 – \$158,000 / yr</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-white">New York (NY)</td>
+              <td class="p-3"><span class="px-2 py-0.5 rounded bg-blue-950 text-blue-300 border border-blue-800 text-[11px] font-bold">Popular Initial Exam State</span></td>
+              <td class="p-3">CGFNS CVS for NYS</td>
+              <td class="p-3">Exempt for initial exam; required for VisaScreen</td>
+              <td class="p-3 text-emerald-400 font-bold">\$95,000 – \$130,000 / yr</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-white">Ohio & Minnesota (Cleveland / Mayo)</td>
+              <td class="p-3"><span class="px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800 text-[11px] font-bold">eNLC Compact (Ohio)</span></td>
+              <td class="p-3">CGFNS CES / VisaScreen</td>
+              <td class="p-3">IELTS Academic 6.5+ / OET B</td>
+              <td class="p-3 text-emerald-400 font-bold">\$78,000 – \$108,000 / yr</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-indigo-50 border-2 border-indigo-200 rounded-2xl p-6 my-6 shadow-sm">
+        <h4 class="text-indigo-950 font-bold text-base mb-2">⚡ Understanding the Enhanced Nurse Licensure Compact (eNLC)</h4>
+        <p class="text-slate-700 text-sm leading-relaxed">
+          Over <strong>41 U.S. states and territories</strong> participate in the <strong>Enhanced Nurse Licensure Compact (eNLC)</strong>. Once you declare primary state residency in an eNLC state (e.g., Texas, Florida, North Carolina, Ohio) and receive a multistate license, you can practice physically and via telehealth across all 41 participating states without filing separate state license applications!
+        </p>
+      </div>
+
+
       <h2 id="why-zero-tax">2. Why Services Performed Outside the US Have 0% US Tax</h2>
       <p>The IRS tax code determines tax jurisdiction based on the <em>physical location where the work is performed</em>, not the location of the paying company. If you write code, design interfaces, or manage marketing campaigns from your home office in Bangladesh, India, Nigeria, Brazil, or the UK, the work is sourced in your home country.</p>
       

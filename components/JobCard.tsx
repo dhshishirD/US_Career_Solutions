@@ -99,6 +99,13 @@ export default function JobCard({ job, onSaveToggle, isInitiallySaved = false }:
             Global Contractor (W-8BEN)
           </span>
         );
+      case 'Schedule A EB-3 Nurse':
+        return (
+          <span className="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300">
+            <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+            Schedule A EB-3 (Direct Green Card)
+          </span>
+        );
       default:
         return (
           <span className="inline-flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 border border-slate-200">

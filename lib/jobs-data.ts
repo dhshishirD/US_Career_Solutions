@@ -924,6 +924,185 @@ export const INITIAL_JOBS: JobPosting[] = [
     atsType: 'direct',
     postedDate: new Date(Date.now() - 1000 * 60 * 60 * 11).toISOString(),
     isFeatured: true
+  },
+  // ==========================================
+  // 5. HEALTHCARE & REGISTERED NURSES (DIRECT GREEN CARD SCHEDULE A)
+  // ==========================================
+  {
+    id: 'job-nurse-001',
+    title: 'Staff Registered Nurse - Intensive Care Unit (Schedule A Direct Green Card)',
+    company: 'Mayo Clinic',
+    location: 'Rochester, MN (Relocation Assistance + Direct Sponsorship)',
+    city: 'Rochester',
+    state: 'MN',
+    isRemote: false,
+    category: 'Healthcare & Nursing',
+    experienceLevel: 'Mid Level',
+    salaryMin: 82000,
+    salaryMax: 112000,
+    salaryCurrency: 'USD',
+    salaryPeriod: 'year',
+    visaSponsorship: 'Schedule A EB-3 Nurse',
+    sponsorshipConfidence: 'high',
+    description: 'Join the #1 ranked hospital in the nation. Mayo Clinic provides direct-hire EB-3 Schedule A permanent residency sponsorship for international Registered Nurses with NCLEX-RN passing credentials. Full relocation assistance, comprehensive health insurance, and 100% employer-covered Green Card legal fees under 20 CFR § 656.5.',
+    requirements: [
+      'Graduation from an accredited Nursing School (BSN preferred)',
+      'Valid NCLEX-RN passing certificate or active US State Nursing License',
+      'CGFNS VisaScreen Certificate (or in progress)',
+      'Minimum 1-2 years of acute care / ICU clinical hospital experience',
+      'English proficiency: IELTS Academic 6.5+ (7.0 speaking) or OET Grade B'
+    ],
+    skills: ['Critical Care', 'ICU Nursing', 'Patient Assessment', 'Ventilator Management', 'ACLS / BLS', 'Epic EHR'],
+    sourceUrl: 'https://jobs.mayoclinic.org/nursing',
+    atsType: 'workday',
+    postedDate: new Date(Date.now() - 1000 * 60 * 60 * 4).toISOString(),
+    isFeatured: true
+  },
+  {
+    id: 'job-nurse-002',
+    title: 'Critical Care Staff Nurse (Schedule A EB-3 Direct Hospital Sponsorship)',
+    company: 'Cleveland Clinic',
+    location: 'Cleveland, OH (Full Relocation + Green Card Filing)',
+    city: 'Cleveland',
+    state: 'OH',
+    isRemote: false,
+    category: 'Healthcare & Nursing',
+    experienceLevel: 'Mid Level',
+    salaryMin: 78000,
+    salaryMax: 105000,
+    salaryCurrency: 'USD',
+    salaryPeriod: 'year',
+    visaSponsorship: 'Schedule A EB-3 Nurse',
+    sponsorshipConfidence: 'high',
+    description: 'Direct hospital employment opportunity for foreign registered nurses. Cleveland Clinic sponsors Schedule A Group I I-140 immigrant petitions with zero PERM labor certification delays. Includes sign-on bonus, licensure endorsement support, and career progression in world-renowned heart and vascular institutes.',
+    requirements: [
+      'Bachelor of Science in Nursing (BSN) or equivalent foreign diploma',
+      'Passing score on NCLEX-RN examination',
+      'CGFNS Certification of Credentials / VisaScreen',
+      'At least 18 months of acute bedside hospital nursing experience',
+      'Commitment to a 3-year direct-hire hospital service agreement'
+    ],
+    skills: ['Critical Care', 'Cardiac Nursing', 'Hemodynamic Monitoring', 'Patient Advocacy', 'EPIC EMR'],
+    sourceUrl: 'https://jobs.clevelandclinic.org/',
+    atsType: 'workday',
+    postedDate: new Date(Date.now() - 1000 * 60 * 60 * 8).toISOString(),
+    isFeatured: true
+  },
+  {
+    id: 'job-nurse-003',
+    title: 'Medical-Surgical Registered Nurse (NCLEX Direct Hire Sponsorship)',
+    company: 'Houston Methodist Hospital',
+    location: 'Houston, TX (Texas Medical Center)',
+    city: 'Houston',
+    state: 'TX',
+    isRemote: false,
+    category: 'Healthcare & Nursing',
+    experienceLevel: 'Entry Level / Junior',
+    salaryMin: 80000,
+    salaryMax: 108000,
+    salaryCurrency: 'USD',
+    salaryPeriod: 'year',
+    visaSponsorship: 'Schedule A EB-3 Nurse',
+    sponsorshipConfidence: 'high',
+    description: 'Located in the world\'s largest medical complex (Texas Medical Center). Houston Methodist sponsors foreign RNs under Schedule A EB-3 with immediate Form I-140 immigrant filings. Enjoy Texas In-State living with zero state income tax and top-tier clinical technology.',
+    requirements: [
+      'NCLEX-RN Passer eligible for Texas Board of Nursing licensure endorsement',
+      'BSN Degree from recognized international nursing college',
+      'Active VisaScreen Certificate through CGFNS or IERF',
+      'Strong clinical communication and teamwork orientation'
+    ],
+    skills: ['Med-Surg Nursing', 'IV Therapy', 'Post-Operative Care', 'Patient Education', 'Texas NLC Licensure'],
+    sourceUrl: 'https://www.houstonmethodistcareers.org/',
+    atsType: 'workday',
+    postedDate: new Date(Date.now() - 1000 * 60 * 60 * 12).toISOString(),
+    isFeatured: true
+  },
+  {
+    id: 'job-nurse-004',
+    title: 'Emergency Department (ED) Registered Nurse (Direct Green Card + Sign-On)',
+    company: 'AdventHealth',
+    location: 'Orlando, FL (Direct Hospital Hire)',
+    city: 'Orlando',
+    state: 'FL',
+    isRemote: false,
+    category: 'Healthcare & Nursing',
+    experienceLevel: 'Mid Level',
+    salaryMin: 75000,
+    salaryMax: 98000,
+    salaryCurrency: 'USD',
+    salaryPeriod: 'year',
+    visaSponsorship: 'Schedule A EB-3 Nurse',
+    sponsorshipConfidence: 'high',
+    description: 'Direct hire opportunity with AdventHealth across major Florida hospital facilities. Direct EB-3 Green Card sponsorship for whole family (spouse and minor children). Florida has 0% state income tax and offers an Enhanced Nurse Licensure Compact (eNLC) multistate license.',
+    requirements: [
+      'Active NCLEX-RN passing result',
+      'Minimum 1 year emergency department (ED) or trauma triage experience',
+      'CGFNS VisaScreen Certificate',
+      'BLS, ACLS, and PALS certifications'
+    ],
+    skills: ['Emergency Nursing', 'Trauma Triage', 'Rapid Response', 'Florida eNLC License', 'Patient Care'],
+    sourceUrl: 'https://www.adventhealth.com/careers',
+    atsType: 'workday',
+    postedDate: new Date(Date.now() - 1000 * 60 * 60 * 18).toISOString(),
+    isFeatured: true
+  },
+  {
+    id: 'job-nurse-005',
+    title: 'Operating Room (OR) Perioperative Nurse (Schedule A EB-3 Fast-Track)',
+    company: 'Johns Hopkins Medicine',
+    location: 'Baltimore, MD',
+    city: 'Baltimore',
+    state: 'MD',
+    isRemote: false,
+    category: 'Healthcare & Nursing',
+    experienceLevel: 'Senior / Lead',
+    salaryMin: 86000,
+    salaryMax: 118000,
+    salaryCurrency: 'USD',
+    salaryPeriod: 'year',
+    visaSponsorship: 'Schedule A EB-3 Nurse',
+    sponsorshipConfidence: 'high',
+    description: 'Practice perioperative nursing at one of the most prestigious academic medical centers in the world. Direct Schedule A Green Card sponsorship with full immigration legal support, tuition reimbursement for advanced MSN/DNP degrees, and outstanding retirement benefits.',
+    requirements: [
+      'BSN degree with 2+ years Operating Room (scrub/circulate) experience',
+      'NCLEX-RN certification with Maryland or Compact state endorsement',
+      'VisaScreen Certificate and English oral proficiency (IELTS 7.0+ speaking)',
+      'CNOR certification is an advantage'
+    ],
+    skills: ['Perioperative Nursing', 'Surgical Scrubbing', 'Circulating Nurse', 'Aseptic Technique', 'Infection Control'],
+    sourceUrl: 'https://jobs.hopkinsmedicine.org/',
+    atsType: 'workday',
+    postedDate: new Date(Date.now() - 1000 * 60 * 60 * 22).toISOString(),
+    isFeatured: true
+  },
+  {
+    id: 'job-nurse-006',
+    title: 'Telemetry & Step-Down Staff RN (Direct Hospital Sponsorship)',
+    company: 'HCA Healthcare',
+    location: 'Nashville, TN (TriStar Division)',
+    city: 'Nashville',
+    state: 'TN',
+    isRemote: false,
+    category: 'Healthcare & Nursing',
+    experienceLevel: 'Entry Level / Junior',
+    salaryMin: 74000,
+    salaryMax: 96000,
+    salaryCurrency: 'USD',
+    salaryPeriod: 'year',
+    visaSponsorship: 'Schedule A EB-3 Nurse',
+    sponsorshipConfidence: 'high',
+    description: 'HCA Healthcare is the largest healthcare system in the United States. Our international nurse sponsorship program provides direct EB-3 green card filing, initial housing assistance, clinical preceptors, and NCLEX licensure endorsement into the Tennessee eNLC Compact.',
+    requirements: [
+      'NCLEX-RN passer (any state board of nursing)',
+      'BSN or equivalent nursing diploma',
+      'CGFNS VisaScreen or CES report',
+      'Minimum 1 year hospital experience'
+    ],
+    skills: ['Telemetry', 'Cardiac Monitoring', 'Medication Administration', 'Patient Assessment', 'eNLC License'],
+    sourceUrl: 'https://careers.hcahealthcare.com/',
+    atsType: 'workday',
+    postedDate: new Date(Date.now() - 1000 * 60 * 60 * 28).toISOString(),
+    isFeatured: true
   }
 ];
 
@@ -934,13 +1113,7 @@ export function getJobsList(): JobPosting[] {
 }
 
 export function addOrUpdateJobs(newJobs: JobPosting[]) {
-  const existingMap = new Map<string, JobPosting>();
-  dynamicJobs.forEach(j => existingMap.set(j.id, j));
-  newJobs.forEach(j => existingMap.set(j.id, j));
-  dynamicJobs = Array.from(existingMap.values());
-  dynamicJobs.sort((a, b) => new Date(b.postedDate).getTime() - new Date(a.postedDate).getTime());
-}
-
-export function findJobById(id: string): JobPosting | undefined {
-  return dynamicJobs.find(j => j.id === id);
+  const existingIds = new Set(dynamicJobs.map(j => j.id));
+  const toAdd = newJobs.filter(j => !existingIds.has(j.id));
+  dynamicJobs = [...toAdd, ...dynamicJobs];
 }
