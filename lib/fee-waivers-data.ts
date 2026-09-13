@@ -31,7 +31,7 @@ export const US_FEE_WAIVERS_DATA: UniversityFeeWaiver[] = [
     degreeLevels: ['MS', 'PhD'],
     priorityDeadlineFall2026: 'December 15, 2026 / Rolling',
     spring2027Available: true,
-    officialApplyUrl: 'https://coe.northeastern.edu/academics-experiential-learning/graduate-school/admissions/',
+    officialApplyUrl: 'https://coe.northeastern.edu/academics-experiential-learning/graduate-school/',
     nsfGrantFundingUrl: 'https://www.nsf.gov/awardsearch/advancedSearchResult?ProgEleCode=&BooleanElement=Any&BooleanRef=4&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&ProgRefCode=&HistoricalAwards=Y&Org=Northeastern+University',
     description: 'Premier R1 research university in Boston with world-leading Co-Op industry placement. Offers massive AI and biomedical graduate assistantships.'
   },
@@ -49,7 +49,7 @@ export const US_FEE_WAIVERS_DATA: UniversityFeeWaiver[] = [
     degreeLevels: ['MS', 'PhD'],
     priorityDeadlineFall2026: 'December 1, 2026',
     spring2027Available: false,
-    officialApplyUrl: 'https://rackham.umich.edu/admissions/applying/application-fee-and-waivers/',
+    officialApplyUrl: 'https://rackham.umich.edu/admissions/',
     description: 'Top-5 global public research powerhouse. 100% of PhD candidates receive full tuition remission, comprehensive health insurance, and guaranteed 5-year living stipends.'
   },
   // 3. Purdue University
@@ -66,7 +66,7 @@ export const US_FEE_WAIVERS_DATA: UniversityFeeWaiver[] = [
     degreeLevels: ['MS', 'PhD', 'Master of Engineering'],
     priorityDeadlineFall2026: 'December 15, 2026',
     spring2027Available: true,
-    officialApplyUrl: 'https://www.purdue.edu/gradschool/admissions/how-to-apply/application-fees.html',
+    officialApplyUrl: 'https://www.purdue.edu/gradschool/',
     description: 'World leader in aerospace, semiconductor engineering, and computer science with $600M+ in annual research expenditures.'
   },
   // 4. University of Texas at Arlington
@@ -83,7 +83,7 @@ export const US_FEE_WAIVERS_DATA: UniversityFeeWaiver[] = [
     degreeLevels: ['MS', 'PhD'],
     priorityDeadlineFall2026: 'February 15, 2027 (Priority Fall 2026)',
     spring2027Available: true,
-    officialApplyUrl: 'https://www.uta.edu/admissions/apply/graduate',
+    officialApplyUrl: 'https://www.uta.edu/admissions/apply',
     description: 'Major Texas R1 research university in the Dallas-Fort Worth tech corridor. Offers Texas In-State Tuition waivers for students receiving $1,000+ competitive scholarships.'
   },
   // 5. University of Rochester
@@ -100,7 +100,7 @@ export const US_FEE_WAIVERS_DATA: UniversityFeeWaiver[] = [
     degreeLevels: ['MS', 'PhD'],
     priorityDeadlineFall2026: 'January 5, 2027',
     spring2027Available: true,
-    officialApplyUrl: 'https://www.hajim.rochester.edu/graduate-admissions.html',
+    officialApplyUrl: 'https://www.hajim.rochester.edu/graduate/',
     description: 'Elite private research institution renowned for Optics, Data Science, and Biomedical Engineering with generous laboratory research fellowships.'
   },
   // 6. Michigan Technological University
@@ -117,7 +117,7 @@ export const US_FEE_WAIVERS_DATA: UniversityFeeWaiver[] = [
     degreeLevels: ['MS', 'PhD'],
     priorityDeadlineFall2026: 'February 1, 2027 / Rolling',
     spring2027Available: true,
-    officialApplyUrl: 'https://www.mtu.edu/gradschool/admissions/apply/',
+    officialApplyUrl: 'https://www.mtu.edu/gradschool/admissions/',
     description: 'Zero application fee barrier permanently. Highly regarded STEM curriculum with extensive automotive, robotics, and environmental research labs.'
   },
   // 7. University of Dayton
@@ -134,7 +134,7 @@ export const US_FEE_WAIVERS_DATA: UniversityFeeWaiver[] = [
     degreeLevels: ['MS', 'PhD'],
     priorityDeadlineFall2026: 'May 1, 2027 / Rolling',
     spring2027Available: true,
-    officialApplyUrl: 'https://udayton.edu/admission/international/graduate/apply.php',
+    officialApplyUrl: 'https://udayton.edu/apply/graduate/index.php',
     description: 'R1 research institution affiliated with GE Aviation and Wright-Patterson Air Force Research Laboratory with zero application costs.'
   },
   // 8. Stevens Institute of Technology
@@ -151,7 +151,7 @@ export const US_FEE_WAIVERS_DATA: UniversityFeeWaiver[] = [
     degreeLevels: ['MS', 'PhD'],
     priorityDeadlineFall2026: 'January 15, 2027',
     spring2027Available: true,
-    officialApplyUrl: 'https://www.stevens.edu/admissions/graduate-admissions/how-to-apply',
+    officialApplyUrl: 'https://www.stevens.edu/admissions/graduate-admissions',
     description: 'Overlooking the Manhattan skyline with direct hiring pipelines into Wall Street investment banks, quantitative trading firms, and FAANG tech.'
   },
   // 9. Illinois Institute of Technology
@@ -185,7 +185,7 @@ export const US_FEE_WAIVERS_DATA: UniversityFeeWaiver[] = [
     degreeLevels: ['MS', 'PhD'],
     priorityDeadlineFall2026: 'December 1, 2026',
     spring2027Available: true,
-    officialApplyUrl: 'https://www.gmu.edu/admissions-aid/apply-now/graduate',
+    officialApplyUrl: 'https://www.gmu.edu/admissions-aid/apply-now',
     description: 'Prime Washington D.C. capital region hub with extensive federal cybersecurity, cloud infrastructure, and defense research contracts.'
   },
   // 11. University of Colorado Boulder
@@ -202,7 +202,7 @@ export const US_FEE_WAIVERS_DATA: UniversityFeeWaiver[] = [
     degreeLevels: ['MS', 'PhD'],
     priorityDeadlineFall2026: 'December 15, 2026',
     spring2027Available: false,
-    officialApplyUrl: 'https://www.colorado.edu/graduateschool/admissions/how-apply',
+    officialApplyUrl: 'https://www.colorado.edu/graduateschool/admissions',
     description: 'Ranked top-10 in Aerospace and Environmental Sciences with massive research funding from NASA, NOAA, and NSF.'
   },
   // 12. Case Western Reserve University
@@ -219,7 +219,7 @@ export const US_FEE_WAIVERS_DATA: UniversityFeeWaiver[] = [
     degreeLevels: ['MS', 'PhD'],
     priorityDeadlineFall2026: 'January 15, 2027',
     spring2027Available: true,
-    officialApplyUrl: 'https://case.edu/graduate-studies/admissions',
+    officialApplyUrl: 'https://case.edu/gradstudies/',
     description: 'Powerhouse private research university partnered with Cleveland Clinic. Extensive biomedical, materials, and robotics funding.'
   },
   // 13. University of South Florida
@@ -253,7 +253,7 @@ export const US_FEE_WAIVERS_DATA: UniversityFeeWaiver[] = [
     degreeLevels: ['MS', 'PhD'],
     priorityDeadlineFall2026: 'January 10, 2027',
     spring2027Available: false,
-    officialApplyUrl: 'https://sse.tulane.edu/admissions/graduate',
+    officialApplyUrl: 'https://sse.tulane.edu/',
     description: 'Prestigious AAU private institution providing 100% tuition scholarships and guaranteed 5-year stipends for all accepted PhD candidates.'
   },
   // 15. Worcester Polytechnic Institute
@@ -270,7 +270,7 @@ export const US_FEE_WAIVERS_DATA: UniversityFeeWaiver[] = [
     degreeLevels: ['MS', 'PhD', 'Master of Engineering'],
     priorityDeadlineFall2026: 'February 1, 2027',
     spring2027Available: true,
-    officialApplyUrl: 'https://www.wpi.edu/admissions/graduate/how-to-apply',
+    officialApplyUrl: 'https://www.wpi.edu/admissions/graduate',
     description: 'Pioneering project-based STEM curriculum in Massachusetts with exceptional robotics, data science, and biotechnology labs.'
   },
   // 16. University of Wisconsin-Madison
@@ -304,7 +304,7 @@ export const US_FEE_WAIVERS_DATA: UniversityFeeWaiver[] = [
     degreeLevels: ['MS', 'PhD'],
     priorityDeadlineFall2026: 'January 15, 2027',
     spring2027Available: true,
-    officialApplyUrl: 'https://grad.arizona.edu/admissions/requirements/application-fees-and-fee-waivers',
+    officialApplyUrl: 'https://grad.arizona.edu/',
     description: 'World leader in astronomy, optical sciences, hydrology, and planetary exploration with direct NASA space mission funding.'
   },
   // 18. New Jersey Institute of Technology
@@ -321,7 +321,7 @@ export const US_FEE_WAIVERS_DATA: UniversityFeeWaiver[] = [
     degreeLevels: ['MS', 'PhD'],
     priorityDeadlineFall2026: 'February 15, 2027 / Rolling',
     spring2027Available: true,
-    officialApplyUrl: 'https://www.njit.edu/admissions/graduate/apply',
+    officialApplyUrl: 'https://www.njit.edu/graduate-admissions',
     description: 'Top public STEM polytechnic 20 minutes from NYC. Highest return on investment for computing and civil engineering.'
   },
   // 19. University of Massachusetts Amherst
@@ -338,7 +338,7 @@ export const US_FEE_WAIVERS_DATA: UniversityFeeWaiver[] = [
     degreeLevels: ['MS', 'PhD'],
     priorityDeadlineFall2026: 'December 15, 2026',
     spring2027Available: true,
-    officialApplyUrl: 'https://www.cics.umass.edu/admissions/graduate-admissions',
+    officialApplyUrl: 'https://www.cics.umass.edu/',
     description: 'Top-20 Computer Science program worldwide with world-class Natural Language Processing, Computer Vision, and Systems research labs.'
   },
   // 20. Virginia Tech
@@ -355,7 +355,7 @@ export const US_FEE_WAIVERS_DATA: UniversityFeeWaiver[] = [
     degreeLevels: ['MS', 'PhD'],
     priorityDeadlineFall2026: 'January 5, 2027',
     spring2027Available: true,
-    officialApplyUrl: 'https://graduateschool.vt.edu/admissions/how-to-apply/application-fees.html',
+    officialApplyUrl: 'https://graduateschool.vt.edu/admissions/how-to-apply.html',
     description: 'National leader in autonomous vehicles, smart grid engineering, and advanced manufacturing with extensive research sponsorships.'
   }
 ];
