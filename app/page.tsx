@@ -15,12 +15,22 @@ import {
   TrendingUp,
   Zap,
   Building,
-  GraduationCap
+  GraduationCap,
+  Calculator,
+  DollarSign,
+  Award,
+  BookOpen,
+  Layers,
+  Flame,
+  FileText,
+  MapPin,
+  Clock
 } from 'lucide-react';
 import JobCard from '@/components/JobCard';
 import CommunityBanner from '@/components/CommunityBanner';
 import { JobPosting } from '@/lib/types';
 import { INITIAL_JOBS } from '@/lib/jobs-data';
+import { MASTER_GUIDES } from '@/lib/guides-data';
 
 export default function HomePage() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -28,7 +38,6 @@ export default function HomePage() {
   const [jobs, setJobs] = useState<JobPosting[]>(INITIAL_JOBS);
 
   useEffect(() => {
-    // Optionally fetch dynamic jobs
     fetch('/api/jobs')
       .then(res => res.json())
       .then(data => {
@@ -50,7 +59,7 @@ export default function HomePage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
       
       {/* Hero Section */}
-      <section className="text-center max-w-4xl mx-auto pt-4 pb-12">
+      <section className="text-center max-w-4xl mx-auto pt-2 pb-10">
         <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 text-blue-700 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold mb-6 shadow-sm">
           <Zap className="w-4 h-4 text-blue-600 animate-pulse" />
           Everyday USA Valid Jobs Automated Pipeline + AI Career Care
@@ -64,10 +73,7 @@ export default function HomePage() {
         </h1>
 
         <p className="mt-5 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-          The all-in-one place where public US jobs are automatically aggregated daily. Filter directly for 
-          <span className="font-semibold text-slate-900"> H-1B Sponsors</span>, 
-          <span className="font-semibold text-slate-900"> Cap-Exempt institutions</span> (no lottery!), and 
-          <span className="font-semibold text-slate-900"> US Remote</span> positions, with instant AI resume tailoring.
+          The all-in-one platform for international professionals, F-1 students, and remote workers. Access verified <strong>H-1B Sponsors</strong>, <strong>Cap-Exempt institutions</strong> (no lottery!), <strong>$0 University Fee Waivers</strong>, and certified <strong>DOL LCA salary records</strong>.
         </p>
 
         {/* Quick Search Bar */}
@@ -76,7 +82,7 @@ export default function HomePage() {
             <Search className="w-5 h-5 text-slate-400 shrink-0" />
             <input
               type="text"
-              placeholder="Search by job title, skill, or US company..."
+              placeholder="Search by job title, skill, or US company (e.g. Software, Data, Nurse, MIT)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               onKeyDown={(e) => {
@@ -97,7 +103,7 @@ export default function HomePage() {
         </div>
 
         {/* Highlight Stats */}
-        <div className="mt-8 flex items-center justify-center gap-6 sm:gap-10 text-slate-600 text-xs sm:text-sm flex-wrap">
+        <div className="mt-6 flex items-center justify-center gap-6 sm:gap-10 text-slate-600 text-xs sm:text-sm flex-wrap">
           <div className="flex items-center gap-2">
             <CheckCircle2 className="w-4 h-4 text-emerald-500" />
             <span><strong>100%</strong> Public & Valid Postings</span>
@@ -108,111 +114,175 @@ export default function HomePage() {
           </div>
           <div className="flex items-center gap-2">
             <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-            <span><strong>Built-In</strong> ATS Resume Engine</span>
+            <span><strong>Live DOL</strong> Certified LCA Filings</span>
           </div>
         </div>
       </section>
 
-      {/* Feature Tools Grid: "On Spot USA Jobs Solution Care" */}
-      <section className="my-12">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
-          <div>
-            <div className="text-xs font-bold uppercase tracking-wider text-blue-600 mb-1">
-              On-The-Spot Career Care
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-              Powerful Tools to Land US Interviews
+      {/* 🚀 6-Card Interactive Command Center (Instant Access Matrix) */}
+      <section className="my-8">
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-2">
+            <Sparkles className="w-4 h-4 text-indigo-600" />
+            <h2 className="text-xs font-black uppercase tracking-wider text-slate-500">
+              Instant Access Command Center
             </h2>
           </div>
-          <p className="text-sm text-slate-500 max-w-md">
-            Don't just apply blindly. Use our specialized tools engineered for international candidates and US ATS standards.
-          </p>
+          <span className="text-xs font-bold text-indigo-600">6 Core Interactive Gateways</span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {/* Tool 1 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          
+          {/* Card 1: LCA Prevailing Wage Search Engine */}
+          <Link
+            href="/tools/lca-salary-search"
+            className="group bg-gradient-to-br from-amber-500/10 via-white to-white rounded-2xl p-6 border-2 border-amber-200/80 hover:border-amber-400 hover:shadow-xl transition-all flex flex-col justify-between"
+          >
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-[10px] font-extrabold uppercase tracking-wide bg-amber-100 text-amber-900 px-2.5 py-0.5 rounded-full border border-amber-300">
+                  ⚡ Live DOL Data
+                </span>
+                <span className="text-xs font-bold text-slate-400">10,000+ Filings</span>
+              </div>
+              <h3 className="text-lg font-black text-slate-900 group-hover:text-amber-700 transition-colors flex items-center gap-2">
+                H-1B LCA Salary Search
+              </h3>
+              <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                Search certified base salaries by company, Wage Levels (I–IV), and state from official Form ETA-9035 filings.
+              </p>
+            </div>
+            <div className="mt-4 pt-3 border-t border-amber-100 flex items-center justify-between text-xs font-bold text-amber-700">
+              <span>Search Certified Wages</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </Link>
+
+          {/* Card 2: Fall 2026 Application Fee Waiver Directory */}
+          <Link
+            href="/scholarships/fee-waiver-directory"
+            className="group bg-gradient-to-br from-emerald-500/10 via-white to-white rounded-2xl p-6 border-2 border-emerald-200/80 hover:border-emerald-400 hover:shadow-xl transition-all flex flex-col justify-between"
+          >
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-[10px] font-extrabold uppercase tracking-wide bg-emerald-100 text-emerald-900 px-2.5 py-0.5 rounded-full border border-emerald-300">
+                  🎓 Save $1,500+
+                </span>
+                <span className="text-xs font-bold text-slate-400">30+ US Universities</span>
+              </div>
+              <h3 className="text-lg font-black text-slate-900 group-hover:text-emerald-700 transition-colors flex items-center gap-2">
+                Fall 2026 Fee Waivers & GRE
+              </h3>
+              <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                Verified $0 application promo codes, webinar attendee waivers, and GRE exemption policies for US graduate admissions.
+              </p>
+            </div>
+            <div className="mt-4 pt-3 border-t border-emerald-100 flex items-center justify-between text-xs font-bold text-emerald-700">
+              <span>Explore Promo Codes</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </Link>
+
+          {/* Card 3: Salary & STEM OPT Tax Calculator */}
+          <Link
+            href="/tools/salary-tax-calculator"
+            className="group bg-gradient-to-br from-blue-500/10 via-white to-white rounded-2xl p-6 border-2 border-blue-200/80 hover:border-blue-400 hover:shadow-xl transition-all flex flex-col justify-between"
+          >
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-[10px] font-extrabold uppercase tracking-wide bg-blue-100 text-blue-900 px-2.5 py-0.5 rounded-full border border-blue-300">
+                  💰 IRC § 3121 Exemption
+                </span>
+                <span className="text-xs font-bold text-slate-400">50-State Tax Engine</span>
+              </div>
+              <h3 className="text-lg font-black text-slate-900 group-hover:text-blue-700 transition-colors flex items-center gap-2">
+                STEM OPT Tax Calculator
+              </h3>
+              <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                Calculate your exact take-home pay with F-1 FICA tax exemptions (7.65%), federal income tax, and state tax brackets.
+              </p>
+            </div>
+            <div className="mt-4 pt-3 border-t border-blue-100 flex items-center justify-between text-xs font-bold text-blue-700">
+              <span>Calculate Take-Home Pay</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </Link>
+
+          {/* Card 4: AI ATS Resume Checker */}
           <Link
             href="/tools/ats-scanner"
-            className="group bg-white rounded-2xl p-6 border border-slate-200 hover:border-amber-400 hover:shadow-lg transition-all flex flex-col justify-between"
+            className="group bg-gradient-to-br from-purple-500/10 via-white to-white rounded-2xl p-6 border-2 border-purple-200/80 hover:border-purple-400 hover:shadow-xl transition-all flex flex-col justify-between"
           >
             <div>
-              <div className="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Sparkles className="w-6 h-6" />
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-[10px] font-extrabold uppercase tracking-wide bg-purple-100 text-purple-900 px-2.5 py-0.5 rounded-full border border-purple-300">
+                  🎯 Google XYZ Formula
+                </span>
+                <span className="text-xs font-bold text-slate-400">0-100% Score</span>
               </div>
-              <h3 className="text-lg font-bold text-slate-900 group-hover:text-amber-600 transition-colors">
-                AI ATS Resume Tailorer
+              <h3 className="text-lg font-black text-slate-900 group-hover:text-purple-700 transition-colors flex items-center gap-2">
+                AI ATS Resume Scanner
               </h3>
-              <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
-                Scan your CV against any US job description. Get a 0-100% ATS score, missing keywords, and one-click bullet rewrites.
+              <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                Pass Workday and Greenhouse automated candidate scoring algorithms with real-time keyword density matching.
               </p>
             </div>
-            <div className="mt-5 pt-4 border-t border-slate-100 flex items-center text-xs font-bold text-amber-600 gap-1">
-              Optimize Resume Now <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            <div className="mt-4 pt-3 border-t border-purple-100 flex items-center justify-between text-xs font-bold text-purple-700">
+              <span>Scan CV Free</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
           </Link>
 
-          {/* Tool 2 */}
+          {/* Card 5: H-1B to Green Card PERM & I-140 Roadmap */}
           <Link
-            href="/tools/visa-checker"
-            className="group bg-white rounded-2xl p-6 border border-slate-200 hover:border-emerald-400 hover:shadow-lg transition-all flex flex-col justify-between"
+            href="/guides/h1b-to-green-card-perm-i140-timeline-audit-guide-2026"
+            className="group bg-gradient-to-br from-indigo-500/10 via-white to-white rounded-2xl p-6 border-2 border-indigo-200/80 hover:border-indigo-400 hover:shadow-xl transition-all flex flex-col justify-between"
           >
             <div>
-              <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <ShieldCheck className="w-6 h-6" />
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-[10px] font-extrabold uppercase tracking-wide bg-indigo-100 text-indigo-900 px-2.5 py-0.5 rounded-full border border-indigo-300">
+                  🏛️ Master Blueprint
+                </span>
+                <span className="text-xs font-bold text-slate-400">DOL & USCIS</span>
               </div>
-              <h3 className="text-lg font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">
-                Visa Sponsor Radar
+              <h3 className="text-lg font-black text-slate-900 group-hover:text-indigo-700 transition-colors flex items-center gap-2">
+                H-1B to Green Card PERM
               </h3>
-              <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
-                Check historical US Department of Labor LCA data and H-1B approval rates for top US employers before applying.
+              <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                Form ETA-9089 filing, prevailing wage stages, audit triggers, and AC21 180-day portability when switching employers.
               </p>
             </div>
-            <div className="mt-5 pt-4 border-t border-slate-100 flex items-center text-xs font-bold text-emerald-600 gap-1">
-              Check Company Visas <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            <div className="mt-4 pt-3 border-t border-indigo-100 flex items-center justify-between text-xs font-bold text-indigo-700">
+              <span>Read Full Roadmap</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
           </Link>
 
-          {/* Tool 3 */}
+          {/* Card 6: Day 1 CPT Universities [2026 Compliance List] */}
           <Link
-            href="/tools/outreach-gen"
-            className="group bg-white rounded-2xl p-6 border border-slate-200 hover:border-indigo-400 hover:shadow-lg transition-all flex flex-col justify-between"
+            href="/guides/day-1-cpt-universities-usa-legitimate-list-uscis-guide-2026"
+            className="group bg-gradient-to-br from-rose-500/10 via-white to-white rounded-2xl p-6 border-2 border-rose-200/80 hover:border-rose-400 hover:shadow-xl transition-all flex flex-col justify-between"
           >
             <div>
-              <div className="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Send className="w-6 h-6" />
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-[10px] font-extrabold uppercase tracking-wide bg-rose-100 text-rose-900 px-2.5 py-0.5 rounded-full border border-rose-300">
+                  🛡️ 8 CFR § 214.2
+                </span>
+                <span className="text-xs font-bold text-slate-400">Accredited List</span>
               </div>
-              <h3 className="text-lg font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
-                Recruiter Cold Outreach
+              <h3 className="text-lg font-black text-slate-900 group-hover:text-rose-700 transition-colors flex items-center gap-2">
+                Day 1 CPT Universities
               </h3>
-              <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
-                Generate high-converting LinkedIn connection notes and cold emails tailored to the hiring manager and position.
+              <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                Verified regional accreditation (WASC/HLC), 364-day OPT preservation rules, and 7 mandatory RFE defense documents.
               </p>
             </div>
-            <div className="mt-5 pt-4 border-t border-slate-100 flex items-center text-xs font-bold text-indigo-600 gap-1">
-              Draft Outreach Message <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            <div className="mt-4 pt-3 border-t border-rose-100 flex items-center justify-between text-xs font-bold text-rose-700">
+              <span>Explore Day 1 CPT List</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
           </Link>
 
-          {/* Tool 4 */}
-          <Link
-            href="/tracker"
-            className="group bg-white rounded-2xl p-6 border border-slate-200 hover:border-blue-400 hover:shadow-lg transition-all flex flex-col justify-between"
-          >
-            <div>
-              <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <CheckSquare className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
-                Application Tracker
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
-                Track all your active US job applications, saved roles, interview stages, and follow-ups in a clean personal dashboard.
-              </p>
-            </div>
-            <div className="mt-5 pt-4 border-t border-slate-100 flex items-center text-xs font-bold text-blue-600 gap-1">
-              Open Dashboard <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-            </div>
-          </Link>
         </div>
       </section>
 
@@ -230,17 +300,25 @@ export default function HomePage() {
               Top USA University Scholarships & Assistantships (GRA/GTA)
             </h3>
             <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-xl">
-              Study in the US with 100% full tuition waivers plus monthly living salaries ($24,000 – $45,000/year). Verified programs at Stanford, Purdue, MIT, Georgia Tech, and Fulbright.
+              Study in the US with 100% full tuition waivers plus monthly living salaries ($24,000 – $45,000/year). Verified programs at Stanford, Purdue, MIT, Georgia Tech, and Berea.
             </p>
           </div>
         </div>
 
-        <div className="shrink-0">
+        <div className="shrink-0 flex flex-col sm:flex-row gap-2.5">
+          <Link
+            href="/scholarships/fee-waiver-directory"
+            className="inline-flex items-center justify-center gap-1.5 text-xs font-bold bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-3 rounded-xl shadow-lg transition-transform hover:-translate-y-0.5 whitespace-nowrap"
+          >
+            <span>$0 Fee Waivers</span>
+            <Sparkles className="w-3.5 h-3.5" />
+          </Link>
           <Link
             href="/scholarships"
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold bg-white text-indigo-950 hover:bg-slate-100 px-6 py-3 rounded-xl shadow-lg transition-transform hover:-translate-y-0.5 whitespace-nowrap"
+            className="inline-flex items-center justify-center gap-2 text-xs font-bold bg-white text-indigo-950 hover:bg-slate-100 px-5 py-3 rounded-xl shadow-lg transition-transform hover:-translate-y-0.5 whitespace-nowrap"
           >
-            Explore USA Scholarships <ArrowRight className="w-4 h-4 text-indigo-600" />
+            <span>Explore Scholarships</span>
+            <ArrowRight className="w-4 h-4 text-indigo-600" />
           </Link>
         </div>
       </section>
@@ -249,61 +327,39 @@ export default function HomePage() {
       <section className="my-12">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <div>
-            <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight">
-              Featured US Opportunities
+            <div className="text-xs font-bold uppercase tracking-wider text-blue-600 mb-1">
+              Real-Time Feed
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+              Featured USA Jobs Today
             </h2>
-            <p className="text-xs sm:text-sm text-slate-500 mt-1">
-              Verified daily listings with active visa pathways
-            </p>
           </div>
 
-          {/* Filter Pills */}
+          {/* Quick Filter Tabs */}
           <div className="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0">
-            <button
-              onClick={() => setSelectedTag('all')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors ${
-                selectedTag === 'all'
-                  ? 'bg-blue-600 text-white shadow-sm'
-                  : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
-              }`}
-            >
-              All Jobs
-            </button>
-            <button
-              onClick={() => setSelectedTag('capexempt')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors ${
-                selectedTag === 'capexempt'
-                  ? 'bg-amber-600 text-white shadow-sm'
-                  : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
-              }`}
-            >
-              Cap-Exempt (No Lottery)
-            </button>
-            <button
-              onClick={() => setSelectedTag('h1b')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors ${
-                selectedTag === 'h1b'
-                  ? 'bg-blue-700 text-white shadow-sm'
-                  : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
-              }`}
-            >
-              H-1B Sponsors
-            </button>
-            <button
-              onClick={() => setSelectedTag('remote')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors ${
-                selectedTag === 'remote'
-                  ? 'bg-purple-600 text-white shadow-sm'
-                  : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
-              }`}
-            >
-              US Remote / W-8BEN
-            </button>
+            {[
+              { id: 'all', label: 'All Jobs' },
+              { id: 'h1b', label: 'H-1B Sponsor' },
+              { id: 'capexempt', label: 'Cap-Exempt (No Lottery)' },
+              { id: 'remote', label: 'US Remote (W-8BEN)' }
+            ].map(tab => (
+              <button
+                key={tab.id}
+                onClick={() => setSelectedTag(tab.id)}
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
+                  selectedTag === tab.id
+                    ? 'bg-blue-600 text-white shadow-sm'
+                    : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
           </div>
         </div>
 
         {/* Job Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {featuredJobs.map(job => (
             <JobCard key={job.id} job={job} />
           ))}
@@ -312,88 +368,67 @@ export default function HomePage() {
         <div className="mt-8 text-center">
           <Link
             href="/jobs"
-            className="inline-flex items-center gap-2 text-sm font-bold bg-slate-900 hover:bg-black text-white px-8 py-3.5 rounded-xl shadow-md transition-all hover:shadow-lg"
+            className="inline-flex items-center gap-2 text-sm font-bold text-blue-600 hover:text-blue-800 bg-blue-50 hover:bg-blue-100 px-6 py-3 rounded-xl border border-blue-200 transition-colors"
           >
-            Explore All Daily US Postings
+            Browse All {jobs.length}+ Verified USA Job Openings
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
       </section>
 
-      {/* Educational Guide: Visa Pathways Breakdown */}
-      <section className="my-14 bg-white rounded-2xl border border-slate-200 p-6 sm:p-10 shadow-sm">
-        <div className="max-w-3xl">
-          <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight">
-            How International Job Seekers Land US Roles
-          </h2>
-          <p className="mt-2 text-sm text-slate-600">
-            Many candidates don't realize there are multiple valid legal ways to work for US companies:
-          </p>
+      {/* Master Guides Showcase Section */}
+      <section className="my-16 bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-10">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+          <div>
+            <div className="text-xs font-bold uppercase tracking-wider text-purple-600 mb-1">
+              Institutional Intelligence
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+              Master Career & Visa Blueprints (14 Guides)
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-600 mt-1">
+              Researched and cited from official USCIS, DOL OFLC, and IRS statutory regulations.
+            </p>
+          </div>
+          <Link
+            href="/guides"
+            className="text-xs sm:text-sm font-bold text-blue-600 hover:underline inline-flex items-center gap-1 shrink-0"
+          >
+            <span>View All 14 Guides</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-          <div className="bg-amber-50/60 border border-amber-200/80 rounded-xl p-5">
-            <span className="text-xs font-bold uppercase tracking-wider text-amber-800 bg-amber-100 px-2 py-0.5 rounded">
-              Secret Superpower
-            </span>
-            <h3 className="text-base font-bold text-slate-900 mt-2">Cap-Exempt H-1B</h3>
-            <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">
-              Universities, non-profit medical centers, and research institutes do <strong>NOT</strong> participate in the 85,000 annual lottery cap. You can be hired and sponsored year-round.
-            </p>
-          </div>
-
-          <div className="bg-purple-50/60 border border-purple-200/80 rounded-xl p-5">
-            <span className="text-xs font-bold uppercase tracking-wider text-purple-800 bg-purple-100 px-2 py-0.5 rounded">
-              Work From Home Country
-            </span>
-            <h3 className="text-base font-bold text-slate-900 mt-2">US Remote (W-8BEN)</h3>
-            <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">
-              Earn in US Dollars from anywhere in the world. US tech firms hire international talent as independent contractors or via Employer of Record (EOR) platforms.
-            </p>
-          </div>
-
-          <div className="bg-blue-50/60 border border-blue-200/80 rounded-xl p-5">
-            <span className="text-xs font-bold uppercase tracking-wider text-blue-800 bg-blue-100 px-2 py-0.5 rounded">
-              Corporate Relocation
-            </span>
-            <h3 className="text-base font-bold text-slate-900 mt-2">H-1B & L-1 Transfer</h3>
-            <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">
-              Top technology, finance, and engineering companies sponsor petitions for in-demand candidates, with complete legal and relocation assistance.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* 1-on-1 Consultation Callout */}
-      <section className="my-14 bg-gradient-to-r from-emerald-900 to-teal-900 rounded-3xl p-6 sm:p-10 text-white shadow-xl relative overflow-hidden">
-        <div className="max-w-3xl relative z-10">
-          <span className="text-xs font-bold uppercase tracking-wider text-emerald-300 bg-emerald-800/60 border border-emerald-400/30 px-3 py-1 rounded-full">
-            ★ Dedicated 1-on-1 Care
-          </span>
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-white mt-3 tracking-tight leading-tight">
-            Need Expert Help Crafting Your US Resume & Strategy?
-          </h2>
-          <p className="mt-3 text-sm sm:text-base text-emerald-100 leading-relaxed">
-            Work directly with our career specialists to transform your CV into a US executive 1-page standard, map your exact visa pathway, and prepare for interviews.
-          </p>
-
-          <div className="mt-6 flex flex-wrap items-center gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {MASTER_GUIDES.slice(0, 6).map((guide) => (
             <Link
-              href="/services"
-              className="inline-flex items-center gap-2 text-sm font-bold bg-white text-emerald-950 hover:bg-emerald-50 px-6 py-3 rounded-xl shadow-lg transition-transform hover:-translate-y-0.5"
+              key={guide.slug}
+              href={`/guides/${guide.slug}`}
+              className="group bg-white rounded-2xl p-5 border border-slate-200 hover:border-purple-300 hover:shadow-md transition-all flex flex-col justify-between"
             >
-              View Packages & Book Call
-              <ArrowRight className="w-4 h-4 text-emerald-700" />
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-[10px] font-bold text-purple-700 bg-purple-50 px-2 py-0.5 rounded-md border border-purple-200">
+                    {guide.category}
+                  </span>
+                  <span className="text-[11px] text-slate-400 flex items-center gap-1">
+                    <Clock className="w-3 h-3" />
+                    {guide.readTime}
+                  </span>
+                </div>
+                <h3 className="text-sm font-bold text-slate-900 group-hover:text-purple-700 transition-colors line-clamp-2 mt-1">
+                  {guide.title}
+                </h3>
+                <p className="text-xs text-slate-500 mt-2 line-clamp-2 leading-relaxed">
+                  {guide.excerpt}
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-purple-600">
+                <span>Read Blueprint</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </div>
             </Link>
-            <a
-              href="https://wa.me/8801981505761?text=Hi%20Jobs%20in%20USA%2C%20I%20would%20like%20to%20discuss%201-on-1%20Career%20Guidance"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm font-bold bg-emerald-700 hover:bg-emerald-600 border border-emerald-500/50 text-white px-6 py-3 rounded-xl transition-colors"
-            >
-              Chat on WhatsApp (+880 1981-505761)
-            </a>
-          </div>
+          ))}
         </div>
       </section>
 
