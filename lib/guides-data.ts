@@ -1535,8 +1535,8 @@ export const MASTER_GUIDES: GuideArticle[] = [
       <h2 id="mandatory-hybrid-attendance">4. Mandatory On-Campus Attendance & Academic Rigor Standards</h2>
       <p>Under 8 CFR 214.2(f)(6)(i)(G), F-1 international students may count <strong>no more than one online course (maximum 3 credits)</strong> toward a full course of study per semester. Every accredited Day 1 CPT institution satisfies this requirement through an executive hybrid structure.</p>
 
-      <div class="bg-slate-900 border border-indigo-500/30 rounded-2xl p-6 my-6 space-y-3">
-        <h4 class="text-white font-bold text-base flex items-center gap-2">
+      <div class="bg-indigo-50/70 border-2 border-indigo-200 rounded-2xl p-6 my-6 space-y-3 shadow-sm">
+        <h4 class="text-indigo-950 font-bold text-base flex items-center gap-2">
           <span>🏛️</span> The Anatomy of an Executive Hybrid Schedule
         </h4>
         <ul class="list-disc list-inside space-y-2 text-slate-300 text-sm">
@@ -1592,8 +1592,10 @@ export const MASTER_GUIDES: GuideArticle[] = [
       <h2 id="uscis-rfe-defense">6. Surviving a Change of Status (H-1B / I-485) RFE: The 7 Mandatory Evidence Documents</h2>
       <p>When you are selected in the H-1B lottery or file an I-485 Green Card Adjustment of Status while on Day 1 CPT, USCIS routinely issues a <strong>Request for Evidence (RFE) on Maintenance of Status</strong>. As long as you maintain a complete academic portfolio, these RFEs have an over 98% approval rate.</p>
 
-      <div class="bg-slate-900 border border-slate-700 rounded-2xl p-6 my-6">
-        <h4 class="text-emerald-400 font-bold text-base mb-3">📁 The 7 Mandatory RFE Defense Documents to Retain Every Semester</h4>
+      <div class="bg-emerald-50/70 border-2 border-emerald-200 rounded-2xl p-6 my-6 shadow-sm">
+        <h4 class="text-emerald-950 font-bold text-base mb-3 flex items-center gap-2">
+          <span>📁</span> The 7 Mandatory RFE Defense Documents to Retain Every Semester
+        </h4>
         <ol class="list-decimal list-inside space-y-2.5 text-slate-300 text-sm">
           <li><strong>Official Academic Transcripts:</strong> Demonstrating continuous full-time enrollment and maintaining a GPA above 3.0.</li>
           <li><strong>Course Syllabi & Assignment Proof:</strong> Copies of course syllabi detailing the physical residency schedule and graded assignments from your learning portal.</li>
@@ -1636,19 +1638,34 @@ export const MASTER_GUIDES: GuideArticle[] = [
 
       <h2 id="faq">8. Frequently Asked Questions (FAQ)</h2>
       <div class="space-y-4 my-6">
-        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
-          <h4 class="text-white font-bold text-sm sm:text-base">Can I travel internationally on an F-1 visa while enrolled in Day 1 CPT?</h4>
-          <p class="text-slate-300 text-xs sm:text-sm mt-2">While international travel is legally permitted with a valid F-1 visa stamp and DSO travel signature, it carries heightened scrutiny at U.S. Customs and Border Protection (CBP) ports of entry. It is strongly recommended to avoid non-essential international travel while on Day 1 CPT unless you carry a complete academic portfolio proving regular physical class attendance.</p>
+        <div class="bg-white border-2 border-indigo-100 rounded-2xl p-6 shadow-sm">
+          <h4 class="text-slate-900 font-bold text-base flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-indigo-600"></span>
+            Can I travel internationally on an F-1 visa while enrolled in Day 1 CPT?
+          </h4>
+          <p class="text-slate-700 text-sm mt-3 leading-relaxed">
+            While international travel is legally permitted with a valid F-1 visa stamp and DSO travel signature, it carries heightened scrutiny at U.S. Customs and Border Protection (CBP) ports of entry. It is strongly recommended to avoid non-essential international travel while on Day 1 CPT unless you carry a complete academic portfolio (official transcripts, tuition receipts, hotel and travel records proving regular physical class attendance).
+          </p>
         </div>
 
-        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
-          <h4 class="text-white font-bold text-sm sm:text-base">Can I work for multiple employers simultaneously on Day 1 CPT?</h4>
-          <p class="text-slate-300 text-xs sm:text-sm mt-2">Yes, provided your university policy permits multiple CPT employers and you obtain a separate CPT endorsement on your Form I-20 for each employer. Each position must be directly related to your academic major.</p>
+        <div class="bg-white border-2 border-indigo-100 rounded-2xl p-6 shadow-sm">
+          <h4 class="text-slate-900 font-bold text-base flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-indigo-600"></span>
+            Can I work for multiple employers simultaneously on Day 1 CPT?
+          </h4>
+          <p class="text-slate-700 text-sm mt-3 leading-relaxed">
+            Yes, provided your university policy permits concurrent CPT employers and you obtain a separate CPT endorsement on your Form I-20 for each employer. Each position must directly align with your degree curriculum and be approved by your Academic Department and DSO.
+          </p>
         </div>
 
-        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
-          <h4 class="text-white font-bold text-sm sm:text-base">Are Day 1 CPT earnings subject to FICA taxes?</h4>
-          <p class="text-slate-300 text-xs sm:text-sm mt-2">Under Internal Revenue Code (IRC) Section 3121(b)(19), F-1 international students who have been in the United States for 5 calendar years or fewer are classified as Non-Resident Aliens (NRAs) and are legally 100% exempt from Social Security (6.2%) and Medicare (1.45%) taxes on CPT employment.</p>
+        <div class="bg-white border-2 border-indigo-100 rounded-2xl p-6 shadow-sm">
+          <h4 class="text-slate-900 font-bold text-base flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-indigo-600"></span>
+            Are Day 1 CPT earnings subject to FICA taxes?
+          </h4>
+          <p class="text-slate-700 text-sm mt-3 leading-relaxed">
+            Under <strong>Internal Revenue Code (IRC) Section 3121(b)(19)</strong>, F-1 international students who have been in the United States for 5 calendar years or fewer are classified as Non-Resident Aliens (NRAs) and are <strong>100% exempt from Social Security (6.2%) and Medicare (1.45%) taxes</strong> on CPT earnings.
+          </p>
         </div>
       </div>
     `,
@@ -1876,19 +1893,34 @@ export const MASTER_GUIDES: GuideArticle[] = [
 
       <h2 id="faq">8. Frequently Asked Questions (FAQ)</h2>
       <div class="space-y-4 my-6">
-        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
-          <h4 class="text-white font-bold text-sm sm:text-base">Can an employee pay for the PERM Labor Certification costs?</h4>
-          <p class="text-slate-300 text-xs sm:text-sm mt-2">No. Under federal regulation 20 CFR § 656.12, the sponsoring employer is legally mandated to pay 100% of all attorney fees and recruitment advertising expenses associated with the PERM labor certification. Employees are strictly prohibited from paying or reimbursing these costs directly or indirectly.</p>
+        <div class="bg-white border-2 border-indigo-100 rounded-2xl p-6 shadow-sm">
+          <h4 class="text-slate-900 font-bold text-base flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-indigo-600"></span>
+            Can an employee pay for the PERM Labor Certification costs?
+          </h4>
+          <p class="text-slate-700 text-sm mt-3 leading-relaxed">
+            <strong>No.</strong> Under federal regulation <strong>20 CFR § 656.12</strong>, the sponsoring employer is legally mandated to pay 100% of all attorney fees and recruitment advertising expenses associated with the PERM labor certification. Employees are strictly prohibited by federal law from paying or reimbursing these costs directly or indirectly.
+          </p>
         </div>
 
-        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
-          <h4 class="text-white font-bold text-sm sm:text-base">What happens if my company undergoes layoffs during my PERM process?</h4>
-          <p class="text-slate-300 text-xs sm:text-sm mt-2">Under 20 CFR § 656.10(c)(10), if an employer laid off any U.S. workers in the same or similar occupation within the geographic area of intended employment in the 6 months prior to filing PERM, the employer must notify and consider all laid-off U.S. workers before filing Form ETA-9089. In practice, many employers pause PERM filings in affected job families during layoff cycles.</p>
+        <div class="bg-white border-2 border-indigo-100 rounded-2xl p-6 shadow-sm">
+          <h4 class="text-slate-900 font-bold text-base flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-indigo-600"></span>
+            What happens if my company undergoes layoffs during my PERM process?
+          </h4>
+          <p class="text-slate-700 text-sm mt-3 leading-relaxed">
+            Under <strong>20 CFR § 656.10(c)(10)</strong>, if an employer laid off any U.S. workers in the same or similar occupation within the geographic area of intended employment in the 6 months prior to filing PERM, the employer must notify and consider all qualified laid-off U.S. workers before filing Form ETA-9089. In practice, many employers temporarily pause PERM filings in affected job families during layoff cycles.
+          </p>
         </div>
 
-        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
-          <h4 class="text-white font-bold text-sm sm:text-base">What is the difference between Cross-Chargeability and standard filing?</h4>
-          <p class="text-slate-300 text-xs sm:text-sm mt-2">Under INA § 202(b), if your spouse was born in a country other than yours (e.g., born in Europe, Latin America, or Canada while you were born in India or China), you can "cross-charge" to your spouse's country of birth on Form I-485, skipping decades of country-specific visa backlogs.</p>
+        <div class="bg-white border-2 border-indigo-100 rounded-2xl p-6 shadow-sm">
+          <h4 class="text-slate-900 font-bold text-base flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-indigo-600"></span>
+            What is the difference between Cross-Chargeability and standard filing?
+          </h4>
+          <p class="text-slate-700 text-sm mt-3 leading-relaxed">
+            Under <strong>INA § 202(b)</strong>, if your spouse was born in a country other than yours (e.g., born in Europe, Latin America, or Canada while you were born in India or China), you can "cross-charge" to your spouse's country of birth on Form I-485, skipping years of country-specific visa backlogs.
+          </p>
         </div>
       </div>
     `,

@@ -49,7 +49,7 @@ body {
 .guide-article-content h2 {
   font-size: 1.65rem;
   font-weight: 800;
-  color: #0f172a !important;
+  color: #0f172a;
   margin-top: 2.5rem;
   margin-bottom: 1rem;
   letter-spacing: -0.02em;
@@ -61,22 +61,57 @@ body {
 .guide-article-content h3 {
   font-size: 1.3rem;
   font-weight: 750;
-  color: #1e293b !important;
+  color: #1e293b;
   margin-top: 2rem;
   margin-bottom: 0.75rem;
   letter-spacing: -0.01em;
 }
 
+.guide-article-content h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
 .guide-article-content p {
-  color: #334155 !important;
+  color: #334155;
   font-size: 1.0625rem;
   line-height: 1.8;
   margin-bottom: 1.25rem;
 }
 
 .guide-article-content strong {
-  color: #0f172a !important;
+  color: #0f172a;
   font-weight: 700;
+}
+
+/* Ensure perfect contrast inside dark themed callout boxes and cards */
+.guide-article-content [class*="bg-slate-9"] p,
+.guide-article-content [class*="bg-slate-8"] p,
+.guide-article-content [class*="bg-indigo-9"] p,
+.guide-article-content [class*="bg-amber-9"] p,
+.guide-article-content [class*="bg-emerald-9"] p,
+.guide-article-content [class*="bg-gradient"] p {
+  color: #cbd5e1 !important;
+}
+
+.guide-article-content [class*="bg-slate-9"] strong,
+.guide-article-content [class*="bg-slate-8"] strong,
+.guide-article-content [class*="bg-indigo-9"] strong,
+.guide-article-content [class*="bg-amber-9"] strong,
+.guide-article-content [class*="bg-emerald-9"] strong,
+.guide-article-content [class*="bg-gradient"] strong {
+  color: #ffffff !important;
+}
+
+.guide-article-content [class*="bg-slate-9"] li,
+.guide-article-content [class*="bg-slate-8"] li,
+.guide-article-content [class*="bg-indigo-9"] li,
+.guide-article-content [class*="bg-amber-9"] li,
+.guide-article-content [class*="bg-emerald-9"] li,
+.guide-article-content [class*="bg-gradient"] li {
+  color: #cbd5e1 !important;
 }
 
 .guide-article-content ul {
