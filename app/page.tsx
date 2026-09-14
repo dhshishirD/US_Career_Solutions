@@ -159,6 +159,32 @@ export default function HomePage() {
             </div>
           </Link>
 
+          {/* Card: W-8BEN Compliance Validator */}
+          <Link
+            href="/tools/w8ben-validator"
+            className="group bg-gradient-to-br from-emerald-500/10 via-white to-white rounded-2xl p-6 border-2 border-emerald-200/80 hover:border-emerald-500 hover:shadow-xl transition-all flex flex-col justify-between"
+          >
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-[10px] font-extrabold uppercase tracking-wide bg-emerald-100 text-emerald-900 px-2.5 py-0.5 rounded-full border border-emerald-300">
+                  🌐 IRC § 1441 / 894
+                </span>
+                <span className="text-xs font-bold text-slate-400">0% Withholding</span>
+              </div>
+              <h3 className="text-lg font-black text-slate-900 group-hover:text-emerald-600 transition-colors flex items-center gap-2">
+                W-8BEN Form Validator
+              </h3>
+              <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                4-step compliance wizard for non-US remote contractors to verify FTIN formats, claim double tax treaty rates, and generate US client packets.
+              </p>
+            </div>
+            <div className="mt-4 pt-3 border-t border-emerald-100 flex items-center justify-between text-xs font-bold text-emerald-700">
+              <span>Validate W-8BEN Free</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </Link>
+
+
           {/* Card: F-1 OPT Grace Period Calculator */}
           <Link
             href="/tools/opt-grace-period-calculator"

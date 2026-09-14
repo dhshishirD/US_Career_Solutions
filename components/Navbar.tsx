@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
-import { 
+import { FileCheck, 
   Briefcase, 
   ShieldCheck, 
   Sparkles,
@@ -342,6 +342,25 @@ export default function Navbar() {
                       <div className="text-[11px] text-slate-500">Estimate take-home pay, federal & state taxes</div>
                     </div>
                   </Link>
+
+                  <Link
+                    href="/tools/w8ben-validator"
+                    onClick={closeAll}
+                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-emerald-50/80 transition-colors group"
+                  >
+                    <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
+                      <FileCheck className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-emerald-700 flex items-center gap-1.5">
+                        W-8BEN Compliance Validator
+                        <span className="text-[9px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.2 rounded-full">0% Tax</span>
+                      </div>
+                      <div className="text-[11px] text-slate-500">Foreign Tax ID (FTIN) check & treaty rates</div>
+                    </div>
+                  </Link>
+
+
 
                   <Link
                     href="/tools/ats-scanner"
