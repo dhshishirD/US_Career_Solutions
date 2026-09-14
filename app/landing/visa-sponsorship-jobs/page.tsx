@@ -6,8 +6,8 @@ import { INITIAL_JOBS } from '@/lib/jobs-data';
 import JobCard from '@/components/JobCard';
 
 export const metadata: Metadata = {
-  title: "Jobs in USA with Visa Sponsorship (H-1B, Cap-Exempt, EB-3) — Verified 2026",
-  description: "Browse verified daily US jobs offering real visa sponsorship including Cap-Exempt H-1B (no lottery), Schedule A Green Cards for nurses, and corporate H-1B filings.",
+  title: "USA Jobs with Visa Sponsorship (Cap-Exempt H-1B, EB-3, H-2A/B) — 2026",
+  description: "Explore 100% verified US jobs with legal visa sponsorship. Cap-Exempt H-1B (no lottery), Schedule A Green Cards for nurses, H-2A farm jobs with free housing, and tech H-1B filings.",
   keywords: [
     "jobs in usa with visa sponsorship",
     "usa jobs with visa sponsorship",
@@ -15,12 +15,22 @@ export const metadata: Metadata = {
     "h1b visa sponsorship jobs in usa",
     "cap exempt h1b jobs",
     "eb3 visa sponsorship jobs usa",
-    "companies sponsoring work visa in usa"
+    "companies sponsoring work visa in usa",
+    "h2a agricultural visa jobs usa",
+    "h2b seasonal resort jobs"
   ]
 };
 
 export default function VisaSponsorshipJobsLandingPage() {
-  const visaJobs = INITIAL_JOBS.filter(j => j.visaSponsorship === 'H-1B Sponsor' || j.visaSponsorship === 'Cap-Exempt H-1B' || j.visaSponsorship === 'OPT/CPT Friendly');
+  const visaJobs = INITIAL_JOBS.filter(j => 
+    j.visaSponsorship === 'H-1B Sponsor' || 
+    j.visaSponsorship === 'Cap-Exempt H-1B' || 
+    j.visaSponsorship === 'Schedule A EB-3 Nurse' ||
+    j.visaSponsorship === 'H-2A Agricultural Visa' ||
+    j.visaSponsorship === 'H-2B Seasonal Visa' ||
+    j.visaSponsorship === 'J-1 Summer Work / Hospitality' ||
+    j.visaSponsorship === 'OPT/CPT Friendly'
+  );
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
