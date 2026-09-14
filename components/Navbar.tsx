@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
-import { FileCheck, 
+import { FileCheck, Stethoscope, Tractor, 
   Briefcase, 
   ShieldCheck, 
   Sparkles,
@@ -141,6 +141,42 @@ export default function Navbar() {
                       <div className="text-[11px] text-slate-500">Universities, research labs & teaching hospitals</div>
                     </div>
                   </Link>
+
+                  <Link
+                    href="/jobs/nursing-schedule-a-directory"
+                    onClick={closeAll}
+                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-rose-50/80 transition-colors group"
+                  >
+                    <div className="w-8 h-8 rounded-lg bg-rose-100 text-rose-700 flex items-center justify-center shrink-0 mt-0.5">
+                      <Stethoscope className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-rose-700 flex items-center gap-1.5">
+                        50-State Nurse Endorsement
+                        <span className="text-[9px] bg-rose-100 text-rose-800 font-bold px-1.5 py-0.2 rounded-full">Schedule A</span>
+                      </div>
+                      <div className="text-[11px] text-slate-500">CGFNS CES rules & direct-hire hospital jobs</div>
+                    </div>
+                  </Link>
+
+                  <Link
+                    href="/jobs/seasonal-h2-directory"
+                    onClick={closeAll}
+                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-amber-50/80 transition-colors group"
+                  >
+                    <div className="w-8 h-8 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center shrink-0 mt-0.5">
+                      <Tractor className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-amber-800 flex items-center gap-1.5">
+                        H-2A & H-2B Seasonal Hub
+                        <span className="text-[9px] bg-amber-100 text-amber-800 font-bold px-1.5 py-0.2 rounded-full">Harvest Map</span>
+                      </div>
+                      <div className="text-[11px] text-slate-500">Crop calendar, AEWR rates & certified employers</div>
+                    </div>
+                  </Link>
+
+
 
                   <Link
                     href="/landing/us-remote-jobs-w8ben"

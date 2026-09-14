@@ -184,6 +184,57 @@ export default function HomePage() {
             </div>
           </Link>
 
+          {/* Card: 50-State Nurse Endorsement & Schedule A Directory */}
+          <Link
+            href="/jobs/nursing-schedule-a-directory"
+            className="group bg-gradient-to-br from-rose-500/10 via-white to-white rounded-2xl p-6 border-2 border-rose-200/80 hover:border-rose-500 hover:shadow-xl transition-all flex flex-col justify-between"
+          >
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-[10px] font-extrabold uppercase tracking-wide bg-rose-100 text-rose-900 px-2.5 py-0.5 rounded-full border border-rose-300">
+                  🩺 20 CFR § 656.5
+                </span>
+                <span className="text-xs font-bold text-slate-400">Direct-Hire Green Card</span>
+              </div>
+              <h3 className="text-lg font-black text-slate-900 group-hover:text-rose-700 transition-colors flex items-center gap-2">
+                50-State Nurse Endorsement
+              </h3>
+              <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                State BON endorsement rules, CGFNS CES requirements, and direct-hire non-profit hospital networks sponsoring EB-3 Green Cards.
+              </p>
+            </div>
+            <div className="mt-4 pt-3 border-t border-rose-100 flex items-center justify-between text-xs font-bold text-rose-700">
+              <span>Explore Hospital Jobs</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </Link>
+
+          {/* Card: H-2A & H-2B Seasonal Directory */}
+          <Link
+            href="/jobs/seasonal-h2-directory"
+            className="group bg-gradient-to-br from-amber-500/10 via-white to-white rounded-2xl p-6 border-2 border-amber-200/80 hover:border-amber-500 hover:shadow-xl transition-all flex flex-col justify-between"
+          >
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-[10px] font-extrabold uppercase tracking-wide bg-amber-100 text-amber-900 px-2.5 py-0.5 rounded-full border border-amber-300">
+                  🚜 DOL 20 CFR § 655
+                </span>
+                <span className="text-xs font-bold text-slate-400">Harvest Calendar</span>
+              </div>
+              <h3 className="text-lg font-black text-slate-900 group-hover:text-amber-800 transition-colors flex items-center gap-2">
+                H-2A & H-2B Seasonal Hub
+              </h3>
+              <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                Track US crop harvest seasons by state, check Adverse Effect Wage Rates ($15.50–$19.75/hr), and apply directly with free housing.
+              </p>
+            </div>
+            <div className="mt-4 pt-3 border-t border-amber-100 flex items-center justify-between text-xs font-bold text-amber-700">
+              <span>View Harvest Seasons</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </Link>
+
+
 
           {/* Card: F-1 OPT Grace Period Calculator */}
           <Link
