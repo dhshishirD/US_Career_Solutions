@@ -4,7 +4,9 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { 
   Search, 
-  Sparkles, 
+  Sparkles,
+  Scale,
+  Clock, 
   ShieldCheck, 
   Send, 
   CheckSquare, 
@@ -23,8 +25,7 @@ import {
   Layers,
   Flame,
   FileText,
-  MapPin,
-  Clock
+  MapPin
 } from 'lucide-react';
 import JobCard from '@/components/JobCard';
 import CommunityBanner from '@/components/CommunityBanner';
@@ -128,11 +129,61 @@ export default function HomePage() {
               Instant Access Command Center
             </h2>
           </div>
-          <span className="text-xs font-bold text-indigo-600">6 Core Interactive Gateways</span>
+          <span className="text-xs font-bold text-indigo-600">8 Premier Interactive Gateways</span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           
+          {/* Card: EB-2 NIW Profile Evaluator */}
+          <Link
+            href="/tools/eb2-niw-evaluator"
+            className="group bg-gradient-to-br from-indigo-500/10 via-white to-white rounded-2xl p-6 border-2 border-indigo-200/80 hover:border-indigo-500 hover:shadow-xl transition-all flex flex-col justify-between"
+          >
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-[10px] font-extrabold uppercase tracking-wide bg-indigo-100 text-indigo-900 px-2.5 py-0.5 rounded-full border border-indigo-300">
+                  ⚖️ Self-Petition
+                </span>
+                <span className="text-xs font-bold text-slate-400">Dhanasar 3-Prong</span>
+              </div>
+              <h3 className="text-lg font-black text-slate-900 group-hover:text-indigo-600 transition-colors flex items-center gap-2">
+                EB-2 NIW Profile Evaluator
+              </h3>
+              <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                Test your direct Green Card approval probability without an employer sponsor based on citations, publications, and critical tech endeavors.
+              </p>
+            </div>
+            <div className="mt-4 pt-3 border-t border-indigo-100 flex items-center justify-between text-xs font-bold text-indigo-700">
+              <span>Evaluate Profile Free</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </Link>
+
+          {/* Card: F-1 OPT Grace Period Calculator */}
+          <Link
+            href="/tools/opt-grace-period-calculator"
+            className="group bg-gradient-to-br from-rose-500/10 via-white to-white rounded-2xl p-6 border-2 border-rose-200/80 hover:border-rose-400 hover:shadow-xl transition-all flex flex-col justify-between"
+          >
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-[10px] font-extrabold uppercase tracking-wide bg-rose-100 text-rose-900 px-2.5 py-0.5 rounded-full border border-rose-300">
+                  ⏱️ 8 CFR § 214.2
+                </span>
+                <span className="text-xs font-bold text-slate-400">60-Day Tracker</span>
+              </div>
+              <h3 className="text-lg font-black text-slate-900 group-hover:text-rose-700 transition-colors flex items-center gap-2">
+                F-1 OPT Grace Calculator
+              </h3>
+              <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                Calculate exact 60-day departure deadlines, 90/150-day cumulative unemployment gauges, Day 1 CPT transfers, and RFE compliance audits.
+              </p>
+            </div>
+            <div className="mt-4 pt-3 border-t border-rose-100 flex items-center justify-between text-xs font-bold text-rose-700">
+              <span>Launch Calculator</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </Link>
+
           {/* Card 1: LCA Prevailing Wage Search Engine */}
           <Link
             href="/tools/lca-salary-search"

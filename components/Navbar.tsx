@@ -5,7 +5,9 @@ import Link from 'next/link';
 import { 
   Briefcase, 
   ShieldCheck, 
-  Sparkles, 
+  Sparkles,
+  Scale,
+  Clock, 
   Send, 
   CheckSquare, 
   Search, 
@@ -256,6 +258,40 @@ export default function Navbar() {
                     Live Data Calculators & Scanners
                   </div>
                   
+                  <Link
+                    href="/tools/eb2-niw-evaluator"
+                    onClick={closeAll}
+                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-indigo-50/80 transition-colors group"
+                  >
+                    <div className="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center shrink-0 mt-0.5">
+                      <Scale className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-indigo-600 flex items-center gap-1.5">
+                        EB-2 NIW Profile Evaluator
+                        <span className="text-[9px] bg-indigo-100 text-indigo-800 font-bold px-1.5 py-0.2 rounded-full">Dhanasar Test</span>
+                      </div>
+                      <div className="text-[11px] text-slate-500">Self-petition Green Card odds & citation calculator</div>
+                    </div>
+                  </Link>
+
+                  <Link
+                    href="/tools/opt-grace-period-calculator"
+                    onClick={closeAll}
+                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-rose-50/80 transition-colors group"
+                  >
+                    <div className="w-8 h-8 rounded-lg bg-rose-100 text-rose-700 flex items-center justify-center shrink-0 mt-0.5">
+                      <Clock className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-rose-600 flex items-center gap-1.5">
+                        F-1 OPT Grace Period Calculator
+                        <span className="text-[9px] bg-rose-100 text-rose-800 font-bold px-1.5 py-0.2 rounded-full">60-Day Window</span>
+                      </div>
+                      <div className="text-[11px] text-slate-500">Track 90/150-day unemployment & SEVIS transfer deadlines</div>
+                    </div>
+                  </Link>
+
                   <Link
                     href="/tools/lca-salary-search"
                     onClick={closeAll}
