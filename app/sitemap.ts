@@ -26,6 +26,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.95,
     },
     {
+      url: `${baseUrl}/jobs/cap-exempt-directory`,
+      lastModified: currentDate,
+      changeFrequency: 'daily',
+      priority: 0.95,
+    },
+    {
       url: `${baseUrl}/landing/us-remote-jobs-w8ben`,
       lastModified: currentDate,
       changeFrequency: 'daily',

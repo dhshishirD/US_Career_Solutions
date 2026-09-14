@@ -126,6 +126,23 @@ export default function Navbar() {
                   </Link>
 
                   <Link
+                    href="/jobs/cap-exempt-directory"
+                    onClick={closeAll}
+                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-amber-50/80 transition-colors group"
+                  >
+                    <div className="w-8 h-8 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center shrink-0 mt-0.5">
+                      <Building2 className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-amber-700 flex items-center gap-1.5">
+                        100+ Cap-Exempt Database
+                        <span className="text-[9px] bg-amber-100 text-amber-800 font-bold px-1.5 py-0.2 rounded-full">No Lottery</span>
+                      </div>
+                      <div className="text-[11px] text-slate-500">Universities, research labs & teaching hospitals</div>
+                    </div>
+                  </Link>
+
+                  <Link
                     href="/landing/us-remote-jobs-w8ben"
                     onClick={closeAll}
                     className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-blue-50/80 transition-colors group"
