@@ -1,86 +1,78 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
-import { FileText, ArrowLeft, ShieldAlert } from 'lucide-react';
-
-export const metadata = {
-  title: 'Terms of Service | US Career Solutions',
-  description: 'Terms of Service and legal disclaimer for US Career Solutions.'
-};
+import { FileText, ShieldCheck, Scale, ArrowLeft } from 'lucide-react';
 
 export default function TermsOfServicePage() {
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
       
       <Link 
         href="/" 
-        className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-800 mb-6"
+        className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-800"
       >
         <ArrowLeft className="w-4 h-4" /> Back to Home
       </Link>
 
-      <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-10 shadow-sm">
+      <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-10 shadow-sm space-y-6">
         
-        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue-600 mb-2">
+        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue-600">
           <FileText className="w-4 h-4" />
           Terms & Conditions
         </div>
 
-        <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight mb-2">
+        <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
           Terms of Service
         </h1>
-        <p className="text-xs text-slate-400 mb-8">
+        <p className="text-xs text-slate-400">
           Last Updated: September 2026
         </p>
 
         <div className="space-y-6 text-sm text-slate-700 leading-relaxed">
-          <section>
-            <h2 className="text-base font-bold text-slate-900 mb-2">1. Acceptance of Terms</h2>
+          
+          <section className="space-y-2">
+            <h2 className="text-base font-bold text-slate-900">1. Acceptance of Terms</h2>
             <p>
-              By accessing and using US Career Solutions ("the platform"), you agree to abide by these Terms of Service. If you do not agree with any part of these terms, please do not use our website or consulting services.
+              By accessing and using US Career Solutions (<strong>uscareersolutions.online</strong>), you acknowledge that you have read, understood, and agreed to be bound by these Terms of Service, our Privacy Policy, and our Legal Disclaimer. If you do not agree, please discontinue use of the site immediately.
             </p>
           </section>
 
-          <section className="bg-amber-50/70 border border-amber-200 p-4 rounded-xl">
-            <h2 className="text-base font-bold text-amber-900 mb-1 flex items-center gap-2">
-              <ShieldAlert className="w-5 h-5 text-amber-600" />
-              2. Legal & Immigration Disclaimer
-            </h2>
-            <p className="text-xs sm:text-sm text-amber-900 leading-relaxed">
-              US Career Solutions is an independent career coaching and job indexing platform. <strong>We are NOT an immigration law firm, licensed attorney, or government agency.</strong> We do NOT sell visas, guarantee employment, or guarantee visa approvals. All visa-related decisions are made solely by US employers and the United States Citizenship and Immigration Services (USCIS) / Department of State.
+          <section className="space-y-2">
+            <h2 className="text-base font-bold text-slate-900">2. Description of Services</h2>
+            <p>
+              US Career Solutions provides educational information, publicly aggregated job feeds with visa sponsorship metadata, university scholarship directories, and interactive career tools. We do not guarantee employment, visa issuance, scholarship awards, or petition outcomes.
             </p>
           </section>
 
-          <section>
-            <h2 className="text-base font-bold text-slate-900 mb-2">3. Accuracy of Job & Scholarship Listings</h2>
+          <section className="space-y-2">
+            <h2 className="text-base font-bold text-slate-900">3. Intellectual Property Rights</h2>
             <p>
-              Job openings and university scholarship details are aggregated from public employer feeds, institutional announcements, and public APIs. While we make every effort to ensure accuracy and verify active postings daily, we cannot guarantee that any third-party position remains open or unfulfilled.
+              All proprietary content, brand assets, interactive calculators, software code, and editorial guides published on this website are the intellectual property of US Career Solutions, protected by applicable copyright and international intellectual property laws. Unauthorized reproduction or scraping is prohibited.
             </p>
           </section>
 
-          <section>
-            <h2 className="text-base font-bold text-slate-900 mb-2">4. 1-on-1 Consulting & Resume Services</h2>
+          <section className="space-y-2">
+            <h2 className="text-base font-bold text-slate-900">4. User Conduct & Acceptable Use</h2>
             <p>
-              Our paid services (Resume Makeover, 1-on-1 Career Strategy Calls, and Application Bundles) provide professional career advisory, ATS formatting, and mentorship. Deliverables are crafted according to US industry best practices. Payments cover the specialist’s time, analysis, and custom drafting.
+              You agree not to use the website for any unlawful purpose, attempt to interfere with site cybersecurity, or employ automated bots to disrupt server availability.
             </p>
           </section>
 
-          <section>
-            <h2 className="text-base font-bold text-slate-900 mb-2">5. Intellectual Property</h2>
+          <section className="space-y-2">
+            <h2 className="text-base font-bold text-slate-900">5. Limitation of Liability & Warranty Disclaimer</h2>
             <p>
-              All software, design elements, algorithms, and proprietary tools on this website are the intellectual property of US Career Solutions. You may not duplicate or scrape our codebase without explicit permission.
+              The platform and all tools are provided on an "as is" and "as available" basis without warranties of any kind. US Career Solutions shall not be liable for any direct, indirect, incidental, or consequential damages resulting from the use of our services.
             </p>
           </section>
 
-          <section>
-            <h2 className="text-base font-bold text-slate-900 mb-2">6. Contact Information</h2>
+          <section className="space-y-2">
+            <h2 className="text-base font-bold text-slate-900">6. Governing Law</h2>
             <p>
-              For inquiries regarding these Terms, contact our official support team:
+              These Terms shall be governed by and construed in accordance with applicable laws, without regard to conflict of law principles.
             </p>
-            <div className="mt-3 p-4 bg-slate-50 rounded-xl border border-slate-200 text-xs sm:text-sm">
-              <div><strong>WhatsApp:</strong> +880 1981-505761</div>
-              <div><strong>Facebook:</strong> <a href="https://www.facebook.com/profile.php?id=61573335766965" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Jobs in USA</a></div>
-            </div>
           </section>
+
         </div>
 
       </div>

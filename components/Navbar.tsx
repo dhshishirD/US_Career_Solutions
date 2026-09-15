@@ -549,6 +549,20 @@ export default function Navbar() {
             </Link>
 
             <Link
+              href="/about"
+              className="px-3 py-2 text-xs font-bold text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-lg transition-colors"
+            >
+              About
+            </Link>
+
+            <Link
+              href="/contact"
+              className="px-3 py-2 text-xs font-bold text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-lg transition-colors"
+            >
+              Contact
+            </Link>
+
+            <Link
               href="/services"
               className="inline-flex items-center gap-1.5 text-xs font-bold px-3.5 py-2 rounded-xl bg-emerald-50 text-emerald-800 hover:bg-emerald-100 border border-emerald-300 transition-all shadow-sm"
             >
@@ -639,6 +653,20 @@ export default function Navbar() {
 
           {/* Mobile CTAs */}
           <div className="pt-4 border-t border-slate-200 space-y-2.5">
+            <Link
+              href="/about"
+              className="px-3 py-2 text-xs font-bold text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-lg transition-colors"
+            >
+              About
+            </Link>
+
+            <Link
+              href="/contact"
+              className="px-3 py-2 text-xs font-bold text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-lg transition-colors"
+            >
+              Contact
+            </Link>
+
             <Link
               href="/services"
               onClick={closeAll}

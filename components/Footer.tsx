@@ -126,6 +126,15 @@ export default function Footer() {
             <p>
               © {new Date().getFullYear()} US Career Solutions. Independent public jobs & scholarship intelligence platform.
             </p>
+            <Link href="/about" className="text-slate-400 hover:text-white underline transition-colors">
+              About Us
+            </Link>
+            <Link href="/contact" className="text-slate-400 hover:text-white underline transition-colors">
+              Contact & Support
+            </Link>
+            <Link href="/disclaimer" className="text-slate-400 hover:text-white underline transition-colors">
+              Legal Disclaimer
+            </Link>
             <Link href="/privacy" className="text-slate-400 hover:text-white underline transition-colors">
               Privacy Policy
             </Link>
