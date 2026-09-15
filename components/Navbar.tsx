@@ -452,7 +452,7 @@ export default function Navbar() {
                 }`}
               >
                 <BookOpen className="w-3.5 h-3.5 text-purple-600" />
-                <span>Master Guides (14)</span>
+                <span>Master Guides (17)</span>
                 <ChevronDown className={`w-3 h-3 transition-transform ${activeDropdown === 'guides' ? 'rotate-180 text-purple-600' : 'text-slate-400'}`} />
               </button>
 
@@ -460,7 +460,7 @@ export default function Navbar() {
                 <div className="absolute left-0 mt-2 w-88 bg-white rounded-2xl shadow-2xl border border-slate-200 p-3 z-50 animate-in fade-in slide-in-from-top-2">
                   <div className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 px-3 py-1.5 flex items-center justify-between">
                     <span>Institutional Career Blueprints</span>
-                    <Link href="/guides" onClick={closeAll} className="text-blue-600 hover:underline">View All 14 →</Link>
+                    <Link href="/guides" onClick={closeAll} className="text-blue-600 hover:underline">View All 17 →</Link>
                   </div>
 
                   <Link
@@ -640,7 +640,7 @@ export default function Navbar() {
           {/* Section 4: Master Guides */}
           <div>
             <div className="text-[11px] font-black uppercase tracking-wider text-purple-600 mb-2 flex items-center gap-1.5">
-              <BookOpen className="w-3.5 h-3.5" /> Master Guides (14)
+              <BookOpen className="w-3.5 h-3.5" /> Master Guides (17)
             </div>
             <div className="space-y-1 pl-2">
               <Link href="/guides/h1b-to-green-card-perm-i140-timeline-audit-guide-2026" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-purple-600">H-1B to Green Card PERM Roadmap</Link>
