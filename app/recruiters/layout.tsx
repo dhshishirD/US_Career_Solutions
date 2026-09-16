@@ -1,6 +1,9 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://www.uscareersolutions.online/recruiters",
+  },
   title: 'For Employers & Recruiters: Post a US Role & Hire Global Talent',
   description: 'Post your open US positions with visa sponsorship or global remote USD contractor roles. Reach over 50,000+ ambitious international professionals.',
   keywords: ['post a job in usa', 'hire h1b candidates', 'recruit international nurses', 'post remote usd contractor jobs', 'us job posting site'],

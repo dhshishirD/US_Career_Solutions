@@ -1,6 +1,9 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://www.uscareersolutions.online/tools/visa-checker",
+  },
   title: 'US Company Visa Sponsor Radar: H-1B, Cap-Exempt & EB-3 Hospital Database',
   description: 'Verify whether a US employer actively sponsors H-1B visas, Cap-Exempt petitions, or direct Schedule A green cards based on certified Department of Labor filing data.',
   keywords: ['company visa sponsor checker', 'h1b sponsor database', 'cap-exempt employers list', 'hospital green card sponsors', 'h1b visa radar'],

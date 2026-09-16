@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     type: 'website',
   },
   alternates: {
-    canonical: 'https://www.uscareersolutions.online/tools/opt-grace-period-calculator'
+    canonical: "https://www.uscareersolutions.online/tools/opt-grace-period-calculator"
   }
 };
 

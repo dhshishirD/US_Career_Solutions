@@ -1,6 +1,9 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://www.uscareersolutions.online/jobs/cap-exempt-directory",
+  },
   title: '100+ Cap-Exempt H-1B Employers & University Database [2026 Directory]',
   description: 'Search verified Cap-Exempt H-1B employers in the USA. Browse 100+ universities, non-profit research institutes, and hospital networks offering year-round H-1B sponsorship with NO annual lottery.',
   keywords: [

@@ -1,6 +1,9 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://www.uscareersolutions.online/tools/eb2-niw-evaluator",
+  },
   title: 'EB-2 NIW Profile Evaluator & Citation Scorer [2026] | Matter of Dhanasar Test',
   description: 'Evaluate your EB-2 National Interest Waiver (NIW) Green Card approval odds. Free assessment based on USCIS Matter of Dhanasar 3-prong precedent, citation metrics, and critical tech endeavors.',
   keywords: [

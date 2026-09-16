@@ -1,6 +1,9 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://www.uscareersolutions.online/tools/scholarship-predictor",
+  },
   title: 'USA University 100% Scholarship Predictor & Professor Pitch AI [2026 Free Tool]',
   description: 'Calculate your probability for a 100% tuition waiver plus $2,400–$3,500/month Graduate Assistantship (GRA/TA), and generate high-reply cold outreach emails to US faculty.',
   keywords: ['graduate school scholarships', 'graduate student scholarships', 'fully funded masters programs', 'fully funded phd', 'grants for graduate students', 'how to email us professors for funding', 'graduate assistantship stipend tuition waiver'],

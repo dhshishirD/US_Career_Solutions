@@ -32,6 +32,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.95,
     },
     {
+      url: `${baseUrl}/jobs/nursing-schedule-a-directory`,
+      lastModified: currentDate,
+      changeFrequency: 'daily',
+      priority: 0.95,
+    },
+    {
+      url: `${baseUrl}/jobs/seasonal-h2-directory`,
+      lastModified: currentDate,
+      changeFrequency: 'daily',
+      priority: 0.95,
+    },
+    {
       url: `${baseUrl}/landing/us-remote-jobs-w8ben`,
       lastModified: currentDate,
       changeFrequency: 'daily',
@@ -50,6 +62,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.95,
     },
     {
+      url: `${baseUrl}/tools/w8ben-validator`,
+      lastModified: currentDate,
+      changeFrequency: 'daily',
+      priority: 0.95,
+    },
+    {
       url: `${baseUrl}/guides`,
       lastModified: currentDate,
       changeFrequency: 'daily',
@@ -59,7 +77,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/scholarships`,
       lastModified: currentDate,
       changeFrequency: 'daily',
-      priority: 0.9,
+      priority: 0.95,
     },
     {
       url: `${baseUrl}/scholarships/fee-waiver-directory`,
@@ -146,17 +164,41 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/about`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/disclaimer`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/privacy`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
-      priority: 0.5,
+      priority: 0.7,
     },
     {
       url: `${baseUrl}/terms`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
-      priority: 0.5,
+      priority: 0.7,
     },
+    {
+      url: `${baseUrl}/compare/jobscan-alternative`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.85,
+    }
   ];
 
   const guideRoutes: MetadataRoute.Sitemap = MASTER_GUIDES.map(guide => ({

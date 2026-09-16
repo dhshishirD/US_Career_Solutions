@@ -1,6 +1,9 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://www.uscareersolutions.online/tools/outreach-gen",
+  },
   title: 'AI Executive Recruiter Outreach & Cold Pitch Email Generator',
   description: 'Generate high-converting, professional cold outreach emails and LinkedIn messages tailored for US tech recruiters, hospital hiring managers, and university department chairs.',
   keywords: ['recruiter outreach generator', 'cold email template for jobs', 'how to message recruiters on linkedin', 'visa sponsorship cold email', 'executive pitch generator'],

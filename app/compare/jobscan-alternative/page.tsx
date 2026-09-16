@@ -4,6 +4,9 @@ import { Check, X, Sparkles, ArrowRight, ShieldCheck, Briefcase, GraduationCap, 
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://www.uscareersolutions.online/compare/jobscan-alternative",
+  },
   title: "Free Jobscan & Resume.io Alternative — AI ATS Scanner & US Career Radar",
   description: "Looking for a 100% free alternative to Jobscan, Resume.io, and Teal? US Career Solutions provides free AI ATS resume match scoring, verified daily US remote jobs (W-8BEN), and fully-funded scholarships without expensive subscriptions.",
   keywords: [

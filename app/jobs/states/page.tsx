@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   title: 'Top US States for Visa Sponsorship & Tech Jobs 2026 | US Career Solutions',
   description: 'Explore the top 10 US states ranked by H-1B visa approvals, median tech salaries, state income tax (0% tax states), and cost of living. California, Texas, New York, Washington & more.',
   alternates: {
-    canonical: 'https://www.uscareersolutions.online/jobs/states',
+    canonical: "https://www.uscareersolutions.online/jobs/states",
   },
   openGraph: {
     title: 'Top US States for Visa Sponsorship & Tech Jobs 2026',

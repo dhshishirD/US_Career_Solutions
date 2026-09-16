@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     type: 'website',
   },
   alternates: {
-    canonical: 'https://www.uscareersolutions.online/tools/lca-salary-search'
+    canonical: "https://www.uscareersolutions.online/tools/lca-salary-search"
   }
 };
 

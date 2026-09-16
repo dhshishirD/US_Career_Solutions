@@ -6,6 +6,9 @@ import { INITIAL_JOBS } from '@/lib/jobs-data';
 import JobCard from '@/components/JobCard';
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://www.uscareersolutions.online/landing/us-remote-jobs-w8ben",
+  },
   title: "US Remote Jobs for Foreigners (W-8BEN) — Earn in USD from Home",
   description: "Explore verified daily US remote contractor jobs open to international applicants. Work from your home country, earn $45,000 - $80,000+ USD per year under IRS Form W-8BEN with no US work visa required.",
   keywords: [

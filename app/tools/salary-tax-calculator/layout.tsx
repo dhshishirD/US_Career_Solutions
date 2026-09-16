@@ -1,6 +1,9 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://www.uscareersolutions.online/tools/salary-tax-calculator",
+  },
   title: 'US Take-Home Pay & Paycheck Tax Calculator [2026 Free Tool] | W-2, F-1 OPT & Form W-8BEN',
   description: 'Calculate your true net take-home pay after taxes across all 50 US states (TX, CA, NY, WA, FL). Includes F-1 STEM OPT FICA 7.65% tax exemption savings and remote W-8BEN treaty calculations.',
   keywords: ['take home pay calculator', 'paycheck calculator', 'calculate salary after tax', 'calculate pay after tax', '1099 tax calculator', 'federal income tax calculator', 'net pay calculator', 'f1 opt fica tax exemption calculator', 'w8ben tax calculator'],

@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     type: 'website',
   },
   alternates: {
-    canonical: 'https://www.uscareersolutions.online/scholarships/fee-waiver-directory'
+    canonical: "https://www.uscareersolutions.online/scholarships/fee-waiver-directory"
   }
 };
 

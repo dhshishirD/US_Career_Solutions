@@ -1,6 +1,9 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://www.uscareersolutions.online/tools/visa-simulator",
+  },
   title: '2026 AI US Visa & Green Card Eligibility Simulator [Instant Report] | Cap-Exempt, EB-2 NIW, EB-3',
   description: 'Run the 60-second diagnostic across 6 official US immigration pathways. Discover if you qualify to bypass the annual H-1B lottery via Cap-Exempt institutions, Schedule A, or EB-2 NIW.',
   keywords: ['green card eligibility simulator', 'eb2 niw green card', 'eb1a green card', 'self sponsored green card', 'employment based green card', 'cap-exempt h1b eligibility', 'schedule a nurse green card', 'h1b to green card'],

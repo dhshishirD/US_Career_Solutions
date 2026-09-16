@@ -6,6 +6,9 @@ import { INITIAL_JOBS } from '@/lib/jobs-data';
 import JobCard from '@/components/JobCard';
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://www.uscareersolutions.online/landing/visa-sponsorship-jobs",
+  },
   title: "USA Jobs with Visa Sponsorship (Cap-Exempt H-1B, EB-3, H-2A/B) — 2026",
   description: "Explore 100% verified US jobs with legal visa sponsorship. Cap-Exempt H-1B (no lottery), Schedule A Green Cards for nurses, H-2A farm jobs with free housing, and tech H-1B filings.",
   keywords: [

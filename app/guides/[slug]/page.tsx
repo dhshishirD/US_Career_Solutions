@@ -44,6 +44,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: 'article',
       url: `https://www.uscareersolutions.online/guides/${guide.slug}`,
       publishedTime: guide.publishedDate
+    },
+    alternates: {
+      canonical: `https://www.uscareersolutions.online/guides/${guide.slug}`,
     }
   };
 }
