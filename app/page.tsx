@@ -184,6 +184,31 @@ export default function HomePage() {
             </div>
           </Link>
 
+          {/* Card: J-1 2-Year Rule (212e) Waiver Advisor */}
+          <Link
+            href="/tools/j1-waiver-advisor"
+            className="group bg-gradient-to-br from-amber-500/10 via-white to-white rounded-2xl p-6 border-2 border-amber-200/80 hover:border-amber-500 hover:shadow-xl transition-all flex flex-col justify-between"
+          >
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-[10px] font-extrabold uppercase tracking-wide bg-amber-100 text-amber-900 px-2.5 py-0.5 rounded-full border border-amber-300">
+                  ⚖️ INA § 212(e)
+                </span>
+                <span className="text-xs font-bold text-slate-400">Conrad 30 / NOS</span>
+              </div>
+              <h3 className="text-lg font-black text-slate-900 group-hover:text-amber-800 transition-colors flex items-center gap-2">
+                J-1 2-Year Rule Waiver Advisor
+              </h3>
+              <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                Check 212(e) home country rule subjectivity, simulate 5 waiver pathways (No Objection, Conrad 30, IGA), and generate Form DS-3035 packets.
+              </p>
+            </div>
+            <div className="mt-4 pt-3 border-t border-amber-100 flex items-center justify-between text-xs font-bold text-amber-700">
+              <span>Run 212(e) Diagnostic</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </Link>
+
           {/* Card: 50-State Nurse Endorsement & Schedule A Directory */}
           <Link
             href="/jobs/nursing-schedule-a-directory"

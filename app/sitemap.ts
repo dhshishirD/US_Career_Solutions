@@ -68,6 +68,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.95,
     },
     {
+      url: `${baseUrl}/tools/j1-waiver-advisor`,
+      lastModified: currentDate,
+      changeFrequency: 'daily',
+      priority: 0.95,
+    },
+    {
       url: `${baseUrl}/guides`,
       lastModified: currentDate,
       changeFrequency: 'daily',

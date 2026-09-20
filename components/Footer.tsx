@@ -97,6 +97,16 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/tools/j1-waiver-advisor" className="text-amber-400 font-bold hover:text-amber-300 transition-colors">
+                  ⚖️ J-1 2-Year Rule (212e) Waiver Advisor
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools/w8ben-validator" className="text-emerald-400 font-bold hover:text-emerald-300 transition-colors">
+                  📄 Form W-8BEN Compliance Validator
+                </Link>
+              </li>
+              <li>
                 <Link href="/tools/ats-scanner" className="hover:text-white transition-colors">
                   AI ATS Resume Tailorer
                 </Link>

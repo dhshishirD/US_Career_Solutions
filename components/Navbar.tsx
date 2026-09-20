@@ -396,6 +396,23 @@ export default function Navbar() {
                     </div>
                   </Link>
 
+                  <Link
+                    href="/tools/j1-waiver-advisor"
+                    onClick={closeAll}
+                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-amber-50/80 transition-colors group"
+                  >
+                    <div className="w-8 h-8 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 mt-0.5">
+                      <Scale className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-amber-700 flex items-center gap-1.5">
+                        J-1 2-Year Rule (212e) Waiver Advisor
+                        <span className="text-[9px] bg-amber-100 text-amber-800 font-bold px-1.5 py-0.2 rounded-full">Conrad 30</span>
+                      </div>
+                      <div className="text-[11px] text-slate-500">212(e) subjectivity check, DS-3035 & IGA simulator</div>
+                    </div>
+                  </Link>
+
 
 
                   <Link
@@ -630,6 +647,8 @@ export default function Navbar() {
             </div>
             <div className="space-y-1 pl-2">
               <Link href="/tools/lca-salary-search" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-amber-700">⚡ Live H-1B LCA Salary Search</Link>
+              <Link href="/tools/j1-waiver-advisor" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-amber-700">J-1 2-Year Rule (212e) Waiver Advisor</Link>
+              <Link href="/tools/w8ben-validator" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-amber-700">W-8BEN Compliance Validator</Link>
               <Link href="/tools/salary-tax-calculator" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-amber-700">STEM OPT & Salary Tax Calculator</Link>
               <Link href="/tools/ats-scanner" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-amber-700">AI ATS Resume Checker</Link>
               <Link href="/tools/outreach-gen" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-amber-700">Recruiter Outreach Generator</Link>
