@@ -584,4 +584,623 @@ export const US_STATES_DATA: Record<string, StateData> = {
       'Capital One’s headquarters in McLean is a major sponsor of quantitative analysts and software engineers.'
     ]
   }
+,
+  'pennsylvania': {
+    name: "Pennsylvania",
+    code: 'PA',
+    slug: 'pennsylvania',
+    tagline: "Robotics, Life Sciences, Ivy League Healthcare & Financial Hub",
+    metaDescription: "Complete 2026 Pennsylvania H-1B Visa & Job Guide. Top sponsors in Philadelphia & Pittsburgh, 3.07% flat state tax, $135k+ tech salaries, and Schedule A healthcare direct hire.",
+    badgeColor: '#38BDF8',
+    heroBgGradient: 'from-blue-900/40 via-sky-950/30 to-slate-950',
+    stats: {
+        "avgTechSalary": "$136,500",
+        "h1bApprovalRank": "#7 in USA (24,000+ Filings)",
+        "stateIncomeTax": "3.07% (Flat State Tax)",
+        "medianRent": "$1,650 / mo",
+        "costOfLivingIndex": 101,
+        "eVerifyRank": "#6 in Nationwide Employer Participation"
+},
+    keyHubs: ["Philadelphia Metro (University City & Center City)", "Pittsburgh Robotics Row & AI Corridor", "King of Prussia Tech & Biotech Hub", "Allentown / Lehigh Valley"],
+    topSponsors: [
+        {
+                  "name": "University of Pennsylvania & Penn Medicine",
+                  "industry": "Higher-Ed & Clinical Oncology",
+                  "h1bApprovals": "1,450+",
+                  "medianSalary": "$125,000",
+                  "eVerify": true,
+                  "day1GreenCard": true
+        },
+        {
+                  "name": "UPMC (Univ. of Pittsburgh Medical Center)",
+                  "industry": "Academic Healthcare & Surgery",
+                  "h1bApprovals": "1,120+",
+                  "medianSalary": "$118,000",
+                  "eVerify": true,
+                  "day1GreenCard": true
+        },
+        {
+                  "name": "Comcast Corporation",
+                  "industry": "Telecommunications & Cloud Media",
+                  "h1bApprovals": "980+",
+                  "medianSalary": "$145,000",
+                  "eVerify": true,
+                  "day1GreenCard": true
+        },
+        {
+                  "name": "Carnegie Mellon University (CMU)",
+                  "industry": "AI, Robotics & Software Research",
+                  "h1bApprovals": "820+",
+                  "medianSalary": "$132,000",
+                  "eVerify": true,
+                  "day1GreenCard": true
+        },
+        {
+                  "name": "Vanguard Group",
+                  "industry": "Fintech & Asset Management",
+                  "h1bApprovals": "750+",
+                  "medianSalary": "$140,000",
+                  "eVerify": true,
+                  "day1GreenCard": true
+        }
+],
+    capExemptInstitutions: [
+        {
+                  "name": "Penn Medicine (University of Pennsylvania)",
+                  "type": "Research University",
+                  "city": "Philadelphia",
+                  "highlight": "Zero H-1B lottery cap, leader in mRNA and CAR-T cell immunotherapy."
+        },
+        {
+                  "name": "Carnegie Mellon University (CMU)",
+                  "type": "Research University",
+                  "city": "Pittsburgh",
+                  "highlight": "#1 Robotics and AI institute with direct cap-exempt research appointments."
+        },
+        {
+                  "name": "Children\u2019s Hospital of Philadelphia (CHOP)",
+                  "type": "Medical Center / Hospital",
+                  "city": "Philadelphia",
+                  "highlight": "High-volume Schedule A EB-3 pediatric nursing and clinical genomics petitions."
+        }
+],
+    taxAnalysis: {
+        "grossSalary": 130000,
+        "federalTax": 20800,
+        "stateTax": 3991,
+        "ficaTax": 9945,
+        "netTakeHome": 95264,
+        "effectiveTaxRate": "26.7%",
+        "comparisonNote": "Pennsylvania boasts one of the lowest flat state income tax rates in the nation (3.07%). Note that Philadelphia imposes an additional local wage tax (~3.75% for residents)."
+},
+    discussions: [
+        {
+                  "question": "How accessible is Schedule A Green Card direct hire for international nurses in Pennsylvania?",
+                  "authorRole": "Staff Registered Nurse (CHOP)",
+                  "answer": "Pennsylvania medical centers (UPMC, Penn Medicine, CHOP) are among the most active Schedule A direct-hire sponsors in the Northeast, offering 100% legal fee coverage, relocation stipends, and direct Form I-140 filing with zero agency middlemen.",
+                  "upvotes": 114
+        },
+        {
+                  "question": "Are robotics and AI roles in Pittsburgh eligible for Cap-Exempt H-1B?",
+                  "authorRole": "CMU Robotics Research Scientist",
+                  "answer": "Yes. Research labs affiliated with Carnegie Mellon University, Pitt, and the National Robotics Engineering Center (NREC) are statutory cap-exempt institutions under INA \u00a7 214(g)(5), allowing immediate filing without lottery caps.",
+                  "upvotes": 86
+        }
+],
+    insiderTips: [
+        "Pittsburgh offers one of the highest tech salary-to-rent ratios in the US (median rent $1,400/mo vs $135k+ tech salaries).",
+        "Philadelphia\u2019s University City is a global hub for cell and gene therapy venture investments and postdoctoral appointments.",
+        "Living in Montgomery or Delaware County avoids the Philadelphia city wage tax while maintaining a 20-minute commuter rail trip."
+]
+  },
+  'new-jersey': {
+    name: "New Jersey",
+    code: 'NJ',
+    slug: 'new-jersey',
+    tagline: "Global Pharmaceutical Capital, FinTech Gateway & New York Metro Hub",
+    metaDescription: "2026 New Jersey Visa & Tech Jobs Guide. Top pharmaceutical H-1B sponsors in Princeton, Jersey City fintech, $155k+ salaries, and Rutgers cap-exempt research.",
+    badgeColor: '#818CF8',
+    heroBgGradient: 'from-indigo-900/40 via-purple-950/30 to-slate-950',
+    stats: {
+        "avgTechSalary": "$156,200",
+        "h1bApprovalRank": "#4 in USA (38,000+ Filings)",
+        "stateIncomeTax": "1.4% \u2013 10.75%",
+        "medianRent": "$2,350 / mo",
+        "costOfLivingIndex": 122,
+        "eVerifyRank": "#4 in East Coast Tech Filings"
+},
+    keyHubs: ["Jersey City & Hoboken (Wall Street West)", "Princeton Life Sciences & Tech Cluster", "New Brunswick Healthcare Corridor", "Parsippany Pharma Headquarters"],
+    topSponsors: [
+        {
+                  "name": "Johnson & Johnson",
+                  "industry": "Pharmaceuticals & MedTech",
+                  "h1bApprovals": "1,250+",
+                  "medianSalary": "$152,000",
+                  "eVerify": true,
+                  "day1GreenCard": true
+        },
+        {
+                  "name": "Merck & Co.",
+                  "industry": "Biopharma & Oncology Research",
+                  "h1bApprovals": "1,100+",
+                  "medianSalary": "$148,000",
+                  "eVerify": true,
+                  "day1GreenCard": true
+        },
+        {
+                  "name": "Cognizant Technology Solutions",
+                  "industry": "Enterprise Cloud & IT Consulting",
+                  "h1bApprovals": "2,400+",
+                  "medianSalary": "$115,000",
+                  "eVerify": true,
+                  "day1GreenCard": true
+        },
+        {
+                  "name": "Prudential Financial",
+                  "industry": "Fintech & Insurance Analytics",
+                  "h1bApprovals": "650+",
+                  "medianSalary": "$142,000",
+                  "eVerify": true,
+                  "day1GreenCard": true
+        },
+        {
+                  "name": "Rutgers University",
+                  "industry": "Higher-Ed & Biomedical Sciences",
+                  "h1bApprovals": "850+",
+                  "medianSalary": "$108,000",
+                  "eVerify": true,
+                  "day1GreenCard": true
+        }
+],
+    capExemptInstitutions: [
+        {
+                  "name": "Rutgers, The State University of New Jersey",
+                  "type": "Research University",
+                  "city": "New Brunswick / Newark",
+                  "highlight": "Zero lottery cap for 800+ international researchers and technical specialists."
+        },
+        {
+                  "name": "Princeton University",
+                  "type": "Research University",
+                  "city": "Princeton",
+                  "highlight": "Fully funded postdoctoral, computational, and faculty H-1B appointments."
+        },
+        {
+                  "name": "Hackensack Meridian Health",
+                  "type": "Medical Center / Hospital",
+                  "city": "Hackensack",
+                  "highlight": "High-volume international nursing and medical specialist sponsorship."
+        }
+],
+    taxAnalysis: {
+        "grossSalary": 145000,
+        "federalTax": 24200,
+        "stateTax": 7450,
+        "ficaTax": 11092,
+        "netTakeHome": 102258,
+        "effectiveTaxRate": "29.5%",
+        "comparisonNote": "New Jersey offers substantial commuter advantages for NYC workers. Under NY-NJ tax credit rules, taxes paid to New York are credited against your NJ resident tax return."
+},
+    discussions: [
+        {
+                  "question": "If I work in Manhattan but live in Jersey City, do I pay double state tax?",
+                  "authorRole": "Senior Quantitative Analyst (Jersey City)",
+                  "answer": "No. You file a non-resident New York return and pay NY state tax first. You then file a resident New Jersey return and claim a full credit (Form NJ-CO) for taxes paid to New York, preventing double taxation.",
+                  "upvotes": 168
+        }
+],
+    insiderTips: [
+        "Jersey City (Exchange Place and Newport) offers PATH train access to Manhattan in under 10 minutes with significantly lower rent per square foot.",
+        "Target pharmaceutical giants along the Route 1 corridor (Princeton) for stable R&D sponsorships and rapid Green Card initiation.",
+        "E-Verify participation is exceptionally high across New Jersey fintech and biotechnology companies."
+]
+  },
+  'ohio': {
+    name: "Ohio",
+    code: 'OH',
+    slug: 'ohio',
+    tagline: "Silicon Heartland Semiconductor Hub, World-Class Healthcare & Manufacturing",
+    metaDescription: "2026 Ohio H-1B Visa Sponsorship Jobs in Columbus, Cleveland & Cincinnati. Low cost of living, Intel Silicon Heartland semiconductor mega-fabs, and Cleveland Clinic Schedule A nursing.",
+    badgeColor: '#F59E0B',
+    heroBgGradient: 'from-amber-900/40 via-orange-950/30 to-slate-950',
+    stats: {
+        "avgTechSalary": "$124,500",
+        "h1bApprovalRank": "#11 in USA (18,000+ Filings)",
+        "stateIncomeTax": "0.0% \u2013 3.5%",
+        "medianRent": "$1,320 / mo",
+        "costOfLivingIndex": 91,
+        "eVerifyRank": "#8 in Midwest E-Verify Filings"
+},
+    keyHubs: ["Columbus (Silicon Heartland & Smart Mobility)", "Cleveland (Medical Innovation & Advanced Manufacturing)", "Cincinnati (Consumer Tech & Financial Services)", "Dayton (Aerospace & Defense Research)"],
+    topSponsors: [
+        {
+                  "name": "Cleveland Clinic Health System",
+                  "industry": "Cardiovascular & Acute Healthcare",
+                  "h1bApprovals": "1,650+",
+                  "medianSalary": "$115,000",
+                  "eVerify": true,
+                  "day1GreenCard": true
+        },
+        {
+                  "name": "Intel Corporation (Silicon Heartland)",
+                  "industry": "Semiconductors & Fab Engineering",
+                  "h1bApprovals": "1,200+",
+                  "medianSalary": "$135,000",
+                  "eVerify": true,
+                  "day1GreenCard": true
+        },
+        {
+                  "name": "Ohio State University & Wexner Medical",
+                  "industry": "Higher-Ed & Biomedical Research",
+                  "h1bApprovals": "950+",
+                  "medianSalary": "$102,000",
+                  "eVerify": true,
+                  "day1GreenCard": true
+        },
+        {
+                  "name": "JPMorgan Chase & Co. (Columbus Tech Hub)",
+                  "industry": "Enterprise Fintech & Banking Software",
+                  "h1bApprovals": "1,400+",
+                  "medianSalary": "$138,000",
+                  "eVerify": true,
+                  "day1GreenCard": true
+        },
+        {
+                  "name": "Procter & Gamble (P&G)",
+                  "industry": "Consumer Tech & Supply Chain Analytics",
+                  "h1bApprovals": "620+",
+                  "medianSalary": "$130,000",
+                  "eVerify": true,
+                  "day1GreenCard": true
+        }
+],
+    capExemptInstitutions: [
+        {
+                  "name": "Cleveland Clinic Foundation",
+                  "type": "Medical Center / Hospital",
+                  "city": "Cleveland",
+                  "highlight": "World #1 heart institute with 1,500+ H-1B doctors, nurses, and researchers."
+        },
+        {
+                  "name": "The Ohio State University",
+                  "type": "Research University",
+                  "city": "Columbus",
+                  "highlight": "Major Big Ten research institution with cap-exempt STEM appointments."
+        },
+        {
+                  "name": "Case Western Reserve University",
+                  "type": "Research University",
+                  "city": "Cleveland",
+                  "highlight": "Biomedical engineering and materials science cap-exempt research."
+        }
+],
+    taxAnalysis: {
+        "grossSalary": 120000,
+        "federalTax": 18600,
+        "stateTax": 3420,
+        "ficaTax": 9180,
+        "netTakeHome": 88800,
+        "effectiveTaxRate": "26.0%",
+        "comparisonNote": "Ohio state income tax is capped at a low 3.5% top bracket. With median home prices under $250k, Ohio offers one of the best real purchasing power indexes in the US."
+},
+    discussions: [
+        {
+                  "question": "How will Intel\u2019s $20B Silicon Heartland mega-fab in New Albany impact H-1B sponsorships?",
+                  "authorRole": "Semiconductor Process Engineer (Intel Ohio)",
+                  "answer": "Intel\u2019s new manufacturing campus outside Columbus is creating thousands of advanced engineering roles in VLSI, chemical engineering, and wafer fabrication, driving massive E-Verify STEM OPT and H-1B hiring.",
+                  "upvotes": 135
+        }
+],
+    insiderTips: [
+        "Columbus is one of the fastest-growing tech hubs in the Midwest, anchored by JPMorgan Chase\u2019s 10,000-person Polaris tech campus.",
+        "Cleveland Clinic provides some of the highest visa approval rates in the nation for international registered nurses and medical fellows.",
+        "Living costs in Ohio allow international professionals to save 40%+ of their net take-home salary."
+]
+  },
+  'colorado': {
+    name: "Colorado",
+    code: 'CO',
+    slug: 'colorado',
+    tagline: "Rocky Mountain Aerospace, CleanTech & High-Altitude Software Boom",
+    metaDescription: "2026 Colorado Visa Sponsorship & Engineering Jobs Guide. Top tech employers in Denver & Boulder, 4.4% flat state tax, $145k+ salaries, and NCAR/CU Boulder cap-exempt research.",
+    badgeColor: '#10B981',
+    heroBgGradient: 'from-emerald-900/40 via-teal-950/30 to-slate-950',
+    stats: {
+        "avgTechSalary": "$144,800",
+        "h1bApprovalRank": "#12 in USA (16,000+ Filings)",
+        "stateIncomeTax": "4.4% (Flat State Tax)",
+        "medianRent": "$2,050 / mo",
+        "costOfLivingIndex": 114,
+        "eVerifyRank": "#10 in CleanTech & Aerospace Filings"
+},
+    keyHubs: ["Denver Tech Center (DTC) & LoDo", "Boulder Quantum & Climate Tech Corridor", "Colorado Springs (Space & Defense)", "Fort Collins (Semiconductors & BioTech)"],
+    topSponsors: [
+        {
+                  "name": "University of Colorado Boulder",
+                  "industry": "Aerospace, Space Physics & Computing",
+                  "h1bApprovals": "680+",
+                  "medianSalary": "$112,000",
+                  "eVerify": true,
+                  "day1GreenCard": true
+        },
+        {
+                  "name": "Lockheed Martin Space",
+                  "industry": "Aerospace & Satellite Engineering",
+                  "h1bApprovals": "540+",
+                  "medianSalary": "$138,000",
+                  "eVerify": true,
+                  "day1GreenCard": true
+        },
+        {
+                  "name": "Ball Aerospace (BAE Systems)",
+                  "industry": "Optics, Remote Sensing & Systems",
+                  "h1bApprovals": "380+",
+                  "medianSalary": "$132,000",
+                  "eVerify": true,
+                  "day1GreenCard": true
+        },
+        {
+                  "name": "Google (Boulder Campus)",
+                  "industry": "Cloud Infrastructure & Google Drive",
+                  "h1bApprovals": "450+",
+                  "medianSalary": "$182,000",
+                  "eVerify": true,
+                  "day1GreenCard": true
+        },
+        {
+                  "name": "Vail Resorts",
+                  "industry": "Hospitality & Mountain Operations",
+                  "h1bApprovals": "850+ (H-2B/J-1)",
+                  "medianSalary": "$45,000",
+                  "eVerify": true,
+                  "day1GreenCard": false
+        }
+],
+    capExemptInstitutions: [
+        {
+                  "name": "University of Colorado Boulder (LASP / JILA)",
+                  "type": "Research University",
+                  "city": "Boulder",
+                  "highlight": "World-leading space physics and quantum physics cap-exempt research appointments."
+        },
+        {
+                  "name": "National Center for Atmospheric Research (NCAR)",
+                  "type": "Non-Profit Research Lab",
+                  "city": "Boulder",
+                  "highlight": "Climate simulation, supercomputing, and atmospheric science H-1B sponsorship."
+        },
+        {
+                  "name": "UCHealth University of Colorado Hospital",
+                  "type": "Medical Center / Hospital",
+                  "city": "Aurora",
+                  "highlight": "Top academic medical center sponsoring international nurses and medical researchers."
+        }
+],
+    taxAnalysis: {
+        "grossSalary": 135000,
+        "federalTax": 21900,
+        "stateTax": 5940,
+        "ficaTax": 10328,
+        "netTakeHome": 96832,
+        "effectiveTaxRate": "28.3%",
+        "comparisonNote": "Colorado has a flat individual income tax rate of 4.4%. High outdoor quality of life, 300 days of sunshine, and a booming tech scene make it a top destination for engineers."
+},
+    discussions: [
+        {
+                  "question": "Are H-2B seasonal hospitality visas available in Colorado ski towns?",
+                  "authorRole": "Resort Operations Manager (Vail)",
+                  "answer": "Yes. Colorado ski resorts (Vail, Breckenridge, Aspen, Steamboat) are the largest winter H-2B seasonal visa employers in the US, hiring thousands of international hospitality and resort staff annually.",
+                  "upvotes": 122
+        }
+],
+    insiderTips: [
+        "Boulder has the highest concentration of quantum tech startups and physicists per capita in the United States.",
+        "Denver Tech Center (DTC) offers Light Rail connectivity and major enterprise telecom/software employers.",
+        "Colorado requires statutory salary ranges on all job postings by law (Equal Pay for Equal Work Act), providing 100% pay transparency."
+]
+  },
+  'arizona': {
+    name: "Arizona",
+    code: 'AZ',
+    slug: 'arizona',
+    tagline: "Silicon Desert Semiconductor Capital, Autonomous Tech & Sunshine Boom",
+    metaDescription: "2026 Arizona US Visa & Semiconductor Jobs Guide. TSMC & Intel mega-fabs in Phoenix, 2.5% flat state tax, $132k+ salaries, and ASU cap-exempt research.",
+    badgeColor: '#F97316',
+    heroBgGradient: 'from-orange-900/40 via-amber-950/30 to-slate-950',
+    stats: {
+        "avgTechSalary": "$132,400",
+        "h1bApprovalRank": "#13 in USA (15,000+ Filings)",
+        "stateIncomeTax": "2.5% (Flat State Tax \u2014 Lowest in West)",
+        "medianRent": "$1,750 / mo",
+        "costOfLivingIndex": 104,
+        "eVerifyRank": "#5 in Nationwide E-Verify Participation"
+},
+    keyHubs: ["Phoenix East Valley (Chandler, Tempe, Mesa)", "North Phoenix Semiconductor Corridor (TSMC Fab 21)", "Scottsdale Software & Healthcare Corridor", "Tucson (Optics Valley & Aerospace)"],
+    topSponsors: [
+        {
+                  "name": "TSMC (Taiwan Semiconductor Manufacturing Co.)",
+                  "industry": "Advanced Semiconductor Foundries",
+                  "h1bApprovals": "1,500+",
+                  "medianSalary": "$128,000",
+                  "eVerify": true,
+                  "day1GreenCard": true
+        },
+        {
+                  "name": "Intel Corporation (Ocotillo Campus)",
+                  "industry": "Semiconductor Fabrication & Packaging",
+                  "h1bApprovals": "1,350+",
+                  "medianSalary": "$136,000",
+                  "eVerify": true,
+                  "day1GreenCard": true
+        },
+        {
+                  "name": "Arizona State University (ASU)",
+                  "industry": "Higher-Ed & Engineering Research",
+                  "h1bApprovals": "890+",
+                  "medianSalary": "$104,000",
+                  "eVerify": true,
+                  "day1GreenCard": true
+        },
+        {
+                  "name": "Raytheon Missiles & Defense",
+                  "industry": "Aerospace & Radar Guidance Systems",
+                  "h1bApprovals": "420+",
+                  "medianSalary": "$125,000",
+                  "eVerify": true,
+                  "day1GreenCard": true
+        },
+        {
+                  "name": "Banner Health",
+                  "industry": "Acute Care & Hospital Networks",
+                  "h1bApprovals": "780+",
+                  "medianSalary": "$95,000",
+                  "eVerify": true,
+                  "day1GreenCard": true
+        }
+],
+    capExemptInstitutions: [
+        {
+                  "name": "Arizona State University (ASU)",
+                  "type": "Research University",
+                  "city": "Tempe / Phoenix",
+                  "highlight": "#1 in US Innovation for 9 consecutive years, massive cap-exempt research appointments."
+        },
+        {
+                  "name": "University of Arizona",
+                  "type": "Research University",
+                  "city": "Tucson",
+                  "highlight": "Leader in space exploration, optical sciences, and biomedical research."
+        },
+        {
+                  "name": "Mayo Clinic Arizona",
+                  "type": "Medical Center / Hospital",
+                  "city": "Phoenix / Scottsdale",
+                  "highlight": "Top academic medical center sponsoring international nurses and clinical researchers."
+        }
+],
+    taxAnalysis: {
+        "grossSalary": 125000,
+        "federalTax": 19700,
+        "stateTax": 3125,
+        "ficaTax": 9563,
+        "netTakeHome": 92612,
+        "effectiveTaxRate": "25.9%",
+        "comparisonNote": "Arizona has an ultra-low flat individual income tax rate of 2.5%, making it one of the most tax-friendly states in the western United States."
+},
+    discussions: [
+        {
+                  "question": "Are TSMC and Intel hiring foreign engineers on STEM OPT in Phoenix?",
+                  "authorRole": "Fab Yield Engineer (TSMC Phoenix)",
+                  "answer": "Yes. TSMC Fab 21 in North Phoenix and Intel Ocotillo in Chandler are actively hiring hundreds of chemical, electrical, materials, and industrial engineers with full E-Verify STEM OPT extensions and H-1B sponsorship.",
+                  "upvotes": 156
+        }
+],
+    insiderTips: [
+        "Phoenix has surpassed Austin as the fastest-growing semiconductor capital in the Western Hemisphere.",
+        "Tempe and North Phoenix offer vibrant, sunny living with short commutes to semiconductor campuses.",
+        "Arizona strictly enforces state E-Verify laws, meaning virtually every tech employer is pre-certified for STEM OPT 24-month extensions."
+]
+  },
+  'maryland': {
+    name: "Maryland",
+    code: 'MD',
+    slug: 'maryland',
+    tagline: "Federal Research Epicenter, BioHealth Capital & Defense Cyber Corridor",
+    metaDescription: "2026 Maryland Visa & Jobs Guide. Top sponsors at Johns Hopkins, NIH, and Bethesda biotech. $146k+ salaries, and world-class academic research institutions.",
+    badgeColor: '#06B6D4',
+    heroBgGradient: 'from-cyan-900/40 via-blue-950/30 to-slate-950',
+    stats: {
+        "avgTechSalary": "$146,500",
+        "h1bApprovalRank": "#9 in USA (22,000+ Filings)",
+        "stateIncomeTax": "2.0% \u2013 5.75%",
+        "medianRent": "$2,100 / mo",
+        "costOfLivingIndex": 118,
+        "eVerifyRank": "#7 in Federal Contractor & Biotech Filings"
+},
+    keyHubs: ["Bethesda / Rockville I-270 BioHealth Capital Region", "Baltimore Medical & Innovation Corridor", "Fort Meade Cybersecurity Hub", "Laurel / Columbia Tech Corridor"],
+    topSponsors: [
+        {
+                  "name": "Johns Hopkins University & Health System",
+                  "industry": "Higher-Ed & Biomedical Research",
+                  "h1bApprovals": "2,100+",
+                  "medianSalary": "$118,000",
+                  "eVerify": true,
+                  "day1GreenCard": true
+        },
+        {
+                  "name": "National Institutes of Health (NIH / Contract Partners)",
+                  "industry": "Biomedical & Clinical Trials",
+                  "h1bApprovals": "1,450+",
+                  "medianSalary": "$122,000",
+                  "eVerify": true,
+                  "day1GreenCard": true
+        },
+        {
+                  "name": "AstraZeneca (Gaithersburg Biologics)",
+                  "industry": "Biopharmaceuticals & Oncology",
+                  "h1bApprovals": "620+",
+                  "medianSalary": "$145,000",
+                  "eVerify": true,
+                  "day1GreenCard": true
+        },
+        {
+                  "name": "University of Maryland (College Park & Baltimore)",
+                  "industry": "Quantum Computing & CS Research",
+                  "h1bApprovals": "980+",
+                  "medianSalary": "$112,000",
+                  "eVerify": true,
+                  "day1GreenCard": true
+        },
+        {
+                  "name": "Johns Hopkins Applied Physics Lab (JHU APL)",
+                  "industry": "Space Systems & Autonomous Cyber",
+                  "h1bApprovals": "480+",
+                  "medianSalary": "$136,000",
+                  "eVerify": true,
+                  "day1GreenCard": true
+        }
+],
+    capExemptInstitutions: [
+        {
+                  "name": "Johns Hopkins University",
+                  "type": "Research University",
+                  "city": "Baltimore",
+                  "highlight": "#1 US academic R&D spending ($3.4B+ annually) with 2,000+ cap-exempt appointments."
+        },
+        {
+                  "name": "University of Maryland, College Park",
+                  "type": "Research University",
+                  "city": "College Park",
+                  "highlight": "Leader in quantum computing (Joint Quantum Institute) and cap-exempt AI research."
+        },
+        {
+                  "name": "University of Maryland Medical Center (UMMC)",
+                  "type": "Medical Center / Hospital",
+                  "city": "Baltimore",
+                  "highlight": "Schedule A nursing and acute trauma clinical sponsorship."
+        }
+],
+    taxAnalysis: {
+        "grossSalary": 140000,
+        "federalTax": 23100,
+        "stateTax": 7700,
+        "ficaTax": 10710,
+        "netTakeHome": 98490,
+        "effectiveTaxRate": "29.6%",
+        "comparisonNote": "Maryland state tax ranges from 2% to 5.75%, plus local county tax (typically ~3.2% in Montgomery and Howard counties). High median household incomes offset local taxes."
+},
+    discussions: [
+        {
+                  "question": "How strong is the biotech job market along the I-270 corridor in Montgomery County?",
+                  "authorRole": "Principal Scientist (AstraZeneca Gaithersburg)",
+                  "answer": "The I-270 corridor (Bethesda, Rockville, Gaithersburg) is home to over 300 life science and biotech companies alongside the NIH and FDA, providing one of the highest concentrations of biopharma H-1B sponsors in the world.",
+                  "upvotes": 144
+        }
+],
+    insiderTips: [
+        "Montgomery County offers Washington DC metro access with top-rated public schools and high concentrations of international researchers.",
+        "Johns Hopkins University in Baltimore files the highest volume of academic H-1B and EB-1B petitions in the Mid-Atlantic region.",
+        "The Maryland Tech Council provides extensive networking and job placement assistance for STEM professionals."
+]
+  }
 };
