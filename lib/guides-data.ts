@@ -1804,13 +1804,23 @@ export const MASTER_GUIDES: GuideArticle[] = [
 {
     slug: 'h1b-to-green-card-perm-i140-timeline-audit-guide-2026',
     subtitle: 'The comprehensive employer-sponsored EB-2 and EB-3 Green Card execution framework.',
-    keywords: ['h1b to green card timeline', 'perm processing time 2026', 'prevailing wage determination pwd time', 'form eta 9089 audit triggers', 'eb2 vs eb3 priority date', 'ac21 180 day green card portability'],
-    title: 'H-1B to Green Card Timeline & PERM Process [2026 DOL Audit & I-140 Survival Guide]',
+    keywords: [
+      'h1b to green card timeline',
+      'texas service center h1b processing time',
+      'eb2 priority date india',
+      'perm processing time 2026',
+      'prevailing wage determination pwd time',
+      'form eta 9089 audit triggers',
+      'eb2 vs eb3 priority date',
+      'ac21 180 day green card portability',
+      'nebraska service center i140 processing time'
+    ],
+    title: 'H-1B to Green Card Timeline (2026) | Step-by-Step DOL PERM ETA-9089, I-140 & Priority Date Guide',
     category: 'Visa & Green Cards',
-    readTime: '20 min read',
+    readTime: '22 min read',
     publishedDate: '2026-09-13T00:00:00.000Z',
-    updatedDate: '2026-09-13T00:00:00.000Z',
-    excerpt: 'Master roadmap for transitioning from H-1B to Employment-Based Green Card (EB-2 / EB-3). Master Prevailing Wage Determinations (Form ETA-9141), recruitment ads, DOL Form ETA-9089 audits, I-140 approvals, and AC21 180-day portability rules.',
+    updatedDate: '2026-09-22T00:00:00.000Z',
+    excerpt: 'Master roadmap for transitioning from H-1B to Employment-Based Green Card (EB-2 / EB-3). Master Prevailing Wage Determinations (Form ETA-9141), recruitment ads, DOL Form ETA-9089 audits, Texas/Nebraska Service Center I-140 processing times, and AC21 180-day portability rules.',
     author: {
       name: 'US Career Solutions Editorial Team',
       role: 'Immigration & Higher Education Compliance Specialists',
@@ -1821,7 +1831,8 @@ export const MASTER_GUIDES: GuideArticle[] = [
       { id: 'stage-1-pwd', title: '2. Stage 1: Prevailing Wage Determination (PWD Form ETA-9141) & Wage Level I-IV Defense' },
       { id: 'stage-2-labor-recruitment', title: '3. Stage 2: Mandatory Labor Market Recruitment (Sunday Newspapers, State Job Order & SWA 30-Day Silence)' },
       { id: 'stage-3-perm-filing', title: '4. Stage 3: DOL Form ETA-9089 PERM Filing & Audit Red Flags' },
-      { id: 'stage-4-form-i140', title: '5. Stage 4: USCIS Form I-140 Petition, Premium Processing & Priority Date Lock' },
+      { id: 'stage-4-form-i140', title: '5. Stage 4: USCIS Form I-140 Petition, Texas/Nebraska Processing Times & Priority Date Lock' },
+      { id: 'service-center-processing-times', title: '5.1 Texas vs. Nebraska Service Center Processing Benchmarks & EB-2 India Movement' },
       { id: 'stage-5-adjustment-of-status', title: '6. Stage 5: Form I-485 (Adjustment of Status) & 6-Year H-1B Beyond-Cap Extensions' },
       { id: 'ac21-portability-job-changes', title: '7. Changing Jobs on H-1B: AC21 180-Day Portability & Priority Date Retention' },
       { id: 'faq', title: '8. Frequently Asked Questions (FAQ)' }
@@ -1969,7 +1980,56 @@ export const MASTER_GUIDES: GuideArticle[] = [
       </div>
 
       <div class="bg-indigo-950/40 border border-indigo-500/30 rounded-xl p-4 my-4">
-        <p class="text-indigo-200 text-sm"><strong>⚡ Premium Processing Available:</strong> Form I-140 is eligible for USCIS Premium Processing (Form I-907, \$2,805 fee), guaranteeing an official adjudication decision within <strong>15 calendar days</strong>.</p>
+        <p class="text-indigo-200 text-sm"><strong>⚡ Premium Processing Available:</strong> Form I-140 is eligible for USCIS Premium Processing (Form I-907, $2,805 fee), guaranteeing an official adjudication decision within <strong>15 calendar days</strong>.</p>
+      </div>
+
+      <h2 id="service-center-processing-times">5.1 Texas vs. Nebraska Service Center Processing Benchmarks & EB-2 India Movement</h2>
+      <p>USCIS adjudicates Form I-129 (H-1B) and Form I-140 (Immigrant Petition) across five primary service centers. Adjudication timelines fluctuate significantly based on jurisdiction:</p>
+
+      <div class="overflow-x-auto my-6 border border-slate-800 rounded-2xl">
+        <table class="w-full text-left text-sm text-slate-300">
+          <thead class="bg-slate-900 text-slate-100 font-bold border-b border-slate-800 text-xs uppercase">
+            <tr>
+              <th class="p-3">USCIS Service Center</th>
+              <th class="p-3">H-1B Extension / Change of Employer (Regular)</th>
+              <th class="p-3">Form I-140 (EB-2 / EB-3 Regular)</th>
+              <th class="p-3">Premium Processing Adjudication</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800/60 font-mono text-xs">
+            <tr class="hover:bg-slate-800/30">
+              <td class="p-3 font-sans font-bold text-white">Texas Service Center (TSC)</td>
+              <td class="p-3 text-amber-300">2.5 – 4.5 Months</td>
+              <td class="p-3 text-blue-300">5.5 – 8.5 Months</td>
+              <td class="p-3 text-emerald-400 font-bold">15 Calendar Days ($2,805)</td>
+            </tr>
+            <tr class="hover:bg-slate-800/30">
+              <td class="p-3 font-sans font-bold text-white">Nebraska Service Center (NSC)</td>
+              <td class="p-3 text-amber-300">3.0 – 5.0 Months</td>
+              <td class="p-3 text-blue-300">6.0 – 9.0 Months</td>
+              <td class="p-3 text-emerald-400 font-bold">15 Calendar Days ($2,805)</td>
+            </tr>
+            <tr class="hover:bg-slate-800/30">
+              <td class="p-3 font-sans font-bold text-white">California Service Center (CSC)</td>
+              <td class="p-3 text-amber-300">2.0 – 4.0 Months</td>
+              <td class="p-3 text-blue-300">N/A (Direct Jurisdiction Routing)</td>
+              <td class="p-3 text-emerald-400 font-bold">15 Calendar Days ($2,805)</td>
+            </tr>
+            <tr class="hover:bg-slate-800/30">
+              <td class="p-3 font-sans font-bold text-white">Vermont Service Center (VSC)</td>
+              <td class="p-3 text-amber-300">3.5 – 5.5 Months</td>
+              <td class="p-3 text-blue-300">N/A (Specialty Adjudications)</td>
+              <td class="p-3 text-emerald-400 font-bold">15 Calendar Days ($2,805)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 my-6">
+        <h3 class="text-white font-bold text-base mb-2">📌 Strategic Note on EB-2 India Priority Date Retrogression</h3>
+        <p class="text-slate-300 text-sm leading-relaxed">
+          For Indian and Chinese nationals subject to per-country visa retrogression, the key milestone is securing the <strong>I-140 approval</strong> to lock in the Priority Date and enable AC21 beyond-6-year H-1B extensions. Once your Priority Date is locked, you can upgrade/downgrade between EB-2 and EB-3 without losing your place in the statutory queue.
+        </p>
       </div>
 
       <h2 id="stage-5-adjustment-of-status">6. Stage 5: Form I-485 (Adjustment of Status) & 6-Year H-1B Beyond-Cap Extensions</h2>

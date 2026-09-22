@@ -1,23 +1,25 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "100% Fully-Funded USA University Scholarships & Assistantships (2026)",
-  description: "Browse 200+ verified 100% fully-funded USA university scholarships, Graduate Teaching Assistantships (GTA), Research Assistantships (GRA), full tuition waivers, and $25k-$38k annual living stipends for international students.",
+  title: "USA Fully Funded Graduate Assistantships & Scholarships (2026) | Full Tuition + Living Stipends",
+  description: "Search 250+ verified USA graduate assistantships (GTA/GRA), 100% full tuition waivers, and $24,000–$38,000 annual living stipends for international students. Official Fall 2026 university portals.",
   keywords: [
-    "fully funded scholarships in usa for international students",
+    "fully funded graduate assistantship in usa for international students",
     "graduate assistantship usa full tuition waiver",
+    "fully funded scholarships in usa for international students",
     "usa university scholarships 2026",
     "gta gra assistantship stipend usa",
     "purdue graduate assistantship",
     "uiuc fully funded master phd",
-    "zero tuition universities in usa"
+    "zero tuition universities in usa",
+    "stanford university tuition waiver"
   ],
   alternates: {
     canonical: "https://www.uscareersolutions.online/scholarships"
   },
   openGraph: {
-    title: "100% Fully-Funded USA University Scholarships & Assistantships (2026)",
-    description: "Explore accredited US university graduate assistantships offering 100% full tuition waivers, monthly living stipends, and health insurance.",
+    title: "USA Fully Funded Graduate Assistantships & Scholarships (2026)",
+    description: "Search 250+ verified USA graduate assistantships (GTA/GRA), 100% full tuition waivers, and $24,000–$38,000 annual living stipends for international students.",
     url: "https://www.uscareersolutions.online/scholarships",
     siteName: "US Career Solutions",
     type: "website"

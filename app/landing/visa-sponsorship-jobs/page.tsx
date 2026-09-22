@@ -9,18 +9,19 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.uscareersolutions.online/landing/visa-sponsorship-jobs",
   },
-  title: "USA Jobs with Visa Sponsorship (Cap-Exempt H-1B, EB-3, H-2A/B) — 2026",
-  description: "Explore 100% verified US jobs with legal visa sponsorship. Cap-Exempt H-1B (no lottery), Schedule A Green Cards for nurses, H-2A farm jobs with free housing, and tech H-1B filings.",
+  title: "Companies Hiring H-1B in 2026: Verified Visa Sponsorship & Cap-Exempt Jobs | US Career Solutions",
+  description: "Search 500+ verified US companies sponsoring H-1B, Cap-Exempt (0% Lottery Quota), EB-3 Green Card, and H-2A/B seasonal visas. Direct-hire employer directory with certified prevailing wages.",
   keywords: [
+    "companies hiring h-1b 2026",
+    "cap exempt companies",
+    "h1b cap exempt employers list",
+    "h1b cap exempt organizations list",
     "jobs in usa with visa sponsorship",
     "usa jobs with visa sponsorship",
     "jobs in usa for foreigners with visa sponsorship",
     "h1b visa sponsorship jobs in usa",
-    "cap exempt h1b jobs",
     "eb3 visa sponsorship jobs usa",
-    "companies sponsoring work visa in usa",
-    "h2a agricultural visa jobs usa",
-    "h2b seasonal resort jobs"
+    "companies sponsoring work visa in usa"
   ]
 };
 
