@@ -2651,6 +2651,603 @@ export const MASTER_GUIDES: GuideArticle[] = [
     }
   }
 
+,
+  {
+    slug: 'o1a-extraordinary-ability-tech-founder-ai-guide-2026',
+    title: 'O-1A Visa Guide for Tech Founders, AI Engineers & Researchers (2026) | 8 CFR § 214.2(o) Playbook',
+    subtitle: 'How venture-backed founders, AI researchers, and engineering leads secure O-1A work authorization without H-1B lottery caps or prevailing wage minimums.',
+    excerpt: 'The O-1A nonimmigrant visa is the premier high-speed immigration vehicle for elite tech talent, founders, and machine learning researchers. Learn how to satisfy 3 of 8 evidentiary criteria under 8 CFR § 214.2(o), structure agent petitions, and transition directly to EB-1A green cards.',
+    category: 'Visa & Green Cards',
+    readTime: '12 min read',
+    publishedDate: '2026-09-22T00:00:00.000Z',
+    updatedDate: '2026-09-22T00:00:00.000Z',
+    author: {
+      name: 'US Career Solutions Statutory Legal Advisory Panel',
+      role: 'Immigration Attorneys & High-Tech Visa Specialists',
+      avatar: '/favicon.ico'
+    },
+    keywords: [
+      'o1a visa tech founders',
+      'o1 visa ai researchers',
+      '8 cfr 214.2 o 3 criteria',
+      'o1 agent petition startup',
+      'venture backed founder o1 visa',
+      'o1 vs h1b comparison'
+    ],
+    tableOfContents: [
+      { id: 'o1a-overview', title: '1. What is the O-1A Visa & Why is it Superior to H-1B?' },
+      { id: 'statutory-criteria', title: '2. The 8 Evidentiary Criteria Under 8 CFR § 214.2(o)(3)(iii)' },
+      { id: 'founder-petition-structure', title: '3. Structuring an O-1A for Startup Founders & Co-Founders' },
+      { id: 'ai-researcher-playbook', title: '4. The AI & Machine Learning Evidentiary Playbook' },
+      { id: 'o1-to-eb1a-pathway', title: '5. The Fast-Track O-1A to EB-1A Permanent Residency Pipeline' },
+      { id: 'o1a-faq', title: '6. Frequently Asked Questions (O-1A Visa)' }
+    ],
+    contentHtml: `
+      <div class="bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-transparent border-l-4 border-amber-500 p-6 rounded-r-2xl my-6">
+        <h3 class="text-amber-400 font-black text-lg mb-2 flex items-center gap-2">
+          ⚡ 2026 Statutory Framework: INA § 101(a)(15)(O)(i) & 8 CFR § 214.2(o)
+        </h3>
+        <p class="text-slate-300 text-sm leading-relaxed">
+          The <strong>O-1A classification</strong> is reserved for individuals who possess <em>extraordinary ability in the sciences, education, business, or athletics</em> demonstrated by sustained national or international acclaim. Unlike H-1B, O-1A has <strong>no annual numerical lottery cap</strong>, <strong>no mandatory DOL prevailing wage determination</strong>, and <strong>can be renewed indefinitely in 1-to-3-year increments</strong>.
+        </p>
+      </div>
+
+      <div id="o1a-overview" class="space-y-4 pt-6">
+        <h2 class="text-2xl font-black text-slate-900 tracking-tight">
+          1. What is the O-1A Visa & Why is it Superior to H-1B?
+        </h2>
+        <p class="text-slate-700 leading-relaxed">
+          For software architects, artificial intelligence researchers, and tech startup founders, the annual H-1B lottery (with historical selection rates hovering between 15% and 25%) presents an unacceptable systemic bottleneck. The O-1A visa provides a merit-driven alternative that rewards demonstrated technical and commercial impact rather than lottery luck.
+        </p>
+        
+        <div class="overflow-x-auto my-6">
+          <table class="min-w-full text-xs text-left text-slate-700 border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+            <thead class="bg-slate-100 text-slate-900 font-bold border-b border-slate-200">
+              <tr>
+                <th class="p-3">Feature</th>
+                <th class="p-3 text-amber-700">O-1A Extraordinary Ability</th>
+                <th class="p-3">Standard H-1B Visa</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200">
+              <tr>
+                <td class="p-3 font-semibold">Annual Numerical Cap</td>
+                <td class="p-3 text-emerald-700 font-bold">Uncapped (File Any Day of Year)</td>
+                <td class="p-3 text-rose-700 font-semibold">Strict 85,000 Annual Cap (Lottery)</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-semibold">Maximum Duration</td>
+                <td class="p-3 text-emerald-700 font-bold">Unlimited (Indefinite Extensions)</td>
+                <td class="p-3">6 Years (Unless PERM/I-140 Pending)</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-semibold">DOL Prevailing Wage & LCA</td>
+                <td class="p-3 text-emerald-700 font-bold">Not Required</td>
+                <td class="p-3 text-rose-700 font-semibold">Mandatory Certified LCA ETA-9035</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-semibold">Adjudication Speed</td>
+                <td class="p-3 text-emerald-700 font-bold">15 Calendar Days (Premium Form I-907)</td>
+                <td class="p-3">15 Calendar Days (Premium Form I-907)</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-semibold">Self-Employment / Equity</td>
+                <td class="p-3 text-emerald-700 font-bold">Permitted via Board of Directors / Agent</td>
+                <td class="p-3">Strict Employer-Employee Control Required</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="statutory-criteria" class="space-y-4 pt-8 border-t border-slate-200">
+        <h2 class="text-2xl font-black text-slate-900 tracking-tight">
+          2. The 8 Evidentiary Criteria Under 8 CFR § 214.2(o)(3)(iii)
+        </h2>
+        <p class="text-slate-700 leading-relaxed">
+          To qualify for O-1A classification, the petitioner must either present a major internationally recognized award (such as a Nobel Prize or Turing Award) or satisfy <strong>at least 3 of the following 8 statutory criteria</strong>:
+        </p>
+
+        <div class="space-y-4 my-6">
+          <div class="bg-white border-2 border-slate-100 rounded-2xl p-5 shadow-sm">
+            <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+              <span class="w-6 h-6 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center text-xs font-bold">1</span>
+              Nationally or Internationally Recognized Prizes / Awards (8 CFR § 214.2(o)(3)(iii)(A))
+            </h4>
+            <p class="text-slate-600 text-xs mt-2 leading-relaxed">
+              Competitive honors including Forbes 30 Under 30, national coding championships, VC accelerator demo day winner titles (Y Combinator, Techstars), or IEEE/ACM best paper awards.
+            </p>
+          </div>
+
+          <div class="bg-white border-2 border-slate-100 rounded-2xl p-5 shadow-sm">
+            <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+              <span class="w-6 h-6 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center text-xs font-bold">2</span>
+              Selective Association Memberships (8 CFR § 214.2(o)(3)(iii)(B))
+            </h4>
+            <p class="text-slate-600 text-xs mt-2 leading-relaxed">
+              Membership in elite bodies where admission requires outstanding achievements judged by recognized experts (e.g. IEEE Senior Member, Sigma Xi, curated founder fellowships).
+            </p>
+          </div>
+
+          <div class="bg-white border-2 border-slate-100 rounded-2xl p-5 shadow-sm">
+            <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+              <span class="w-6 h-6 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center text-xs font-bold">3</span>
+              Published Material About Your Work in Major Media (8 CFR § 214.2(o)(3)(iii)(C))
+            </h4>
+            <p class="text-slate-600 text-xs mt-2 leading-relaxed">
+              In-depth features and journalistic profiles in top-tier tech media (TechCrunch, Wired, Bloomberg, VentureBeat, MIT Tech Review) focusing specifically on you and your innovations.
+            </p>
+          </div>
+
+          <div class="bg-white border-2 border-slate-100 rounded-2xl p-5 shadow-sm">
+            <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+              <span class="w-6 h-6 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center text-xs font-bold">4</span>
+              Judging the Work of Peers (8 CFR § 214.2(o)(3)(iii)(D))
+            </h4>
+            <p class="text-slate-600 text-xs mt-2 leading-relaxed">
+              Peer review for top journals, technical program committee (TPC) membership for flagship conferences (NeurIPS, ICML, CVPR, ACL), or official judging at major hackathons.
+            </p>
+          </div>
+
+          <div class="bg-white border-2 border-slate-100 rounded-2xl p-5 shadow-sm">
+            <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+              <span class="w-6 h-6 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center text-xs font-bold">5</span>
+              Original Scientific or Business Contributions of Major Significance (8 CFR § 214.2(o)(3)(iii)(E))
+            </h4>
+            <p class="text-slate-600 text-xs mt-2 leading-relaxed">
+              Foundational ML models, open-source repositories with thousands of GitHub stars, patented enterprise architectures, and independent expert testimonial letters from industry luminaries.
+            </p>
+          </div>
+
+          <div class="bg-white border-2 border-slate-100 rounded-2xl p-5 shadow-sm">
+            <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+              <span class="w-6 h-6 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center text-xs font-bold">6</span>
+              Authorship of Scholarly Articles (8 CFR § 214.2(o)(3)(iii)(F))
+            </h4>
+            <p class="text-slate-600 text-xs mt-2 leading-relaxed">
+              Peer-reviewed conference proceedings, journal papers, or book chapters published in prestigious international outlets with demonstrable citation impact.
+            </p>
+          </div>
+
+          <div class="bg-white border-2 border-slate-100 rounded-2xl p-5 shadow-sm">
+            <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+              <span class="w-6 h-6 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center text-xs font-bold">7</span>
+              Critical or Essential Role for Distinguished Organizations (8 CFR § 214.2(o)(3)(iii)(G))
+            </h4>
+            <p class="text-slate-600 text-xs mt-2 leading-relaxed">
+              Founding CEO/CTO, Principal AI Scientist, or VP of Engineering leading key product initiatives at venture-backed startups ($1M+ raised) or distinguished enterprises.
+            </p>
+          </div>
+
+          <div class="bg-white border-2 border-slate-100 rounded-2xl p-5 shadow-sm">
+            <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+              <span class="w-6 h-6 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center text-xs font-bold">8</span>
+              High Remuneration Relative to Others in the Field (8 CFR § 214.2(o)(3)(iii)(H))
+            </h4>
+            <p class="text-slate-600 text-xs mt-2 leading-relaxed">
+              Total compensation (base salary, guaranteed bonus, equity grants) placing you in the top 10% of wage earners under DOL OEWS Level 4 benchmark schedules.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div id="founder-petition-structure" class="space-y-4 pt-8 border-t border-slate-200">
+        <h2 class="text-2xl font-black text-slate-900 tracking-tight">
+          3. Structuring an O-1A for Startup Founders & Co-Founders
+        </h2>
+        <p class="text-slate-700 leading-relaxed">
+          Under USCIS regulations, a beneficiary cannot petition for themselves directly as a natural person. However, foreign tech founders can legally sponsor their own O-1A through their US incorporated entity (C-Corp or LLC) using an established corporate governance mechanism:
+        </p>
+        <ul class="list-disc pl-6 space-y-2 text-slate-700 text-sm">
+          <li><strong>Board of Directors Oversight:</strong> The startup's Board of Directors or an Advisory Board retains the statutory authority to hire, review, and terminate the founder. This establishes the bona fide employer-employee relationship required under 8 CFR § 214.2(o)(2)(i).</li>
+          <li><strong>Agent-Based Petitions (8 CFR § 214.2(o)(2)(iv)(E)):</strong> A US management company, incubator, or designated co-founder can act as an authorized agent to file on behalf of multiple consulting clients or startup entities.</li>
+        </ul>
+      </div>
+
+      <div id="ai-researcher-playbook" class="space-y-4 pt-8 border-t border-slate-200">
+        <h2 class="text-2xl font-black text-slate-900 tracking-tight">
+          4. The AI & Machine Learning Evidentiary Playbook
+        </h2>
+        <p class="text-slate-700 leading-relaxed">
+          Following the White House Executive Orders on Safe, Secure, and Trustworthy Artificial Intelligence, USCIS officers are instructed to apply flexible evidentiary evaluation for AI researchers and machine learning engineers:
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+          <div class="bg-indigo-50/60 border border-indigo-100 rounded-2xl p-5">
+            <h5 class="font-bold text-indigo-900 text-sm mb-2">Open-Source Model Downloads</h5>
+            <p class="text-slate-600 text-xs leading-relaxed">
+              Hugging Face model downloads, PyTorch / TensorFlow library pulls, and GitHub repository stars serve as direct objective evidence of original contribution of major significance.
+            </p>
+          </div>
+          <div class="bg-indigo-50/60 border border-indigo-100 rounded-2xl p-5">
+            <h5 class="font-bold text-indigo-900 text-sm mb-2">Conference Paper Preprints</h5>
+            <p class="text-slate-600 text-xs leading-relaxed">
+              arXiv preprints accepted into NeurIPS, ICML, CVPR, or ACL with early cross-citations prove active leadership in foundational machine intelligence research.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div id="o1-to-eb1a-pathway" class="space-y-4 pt-8 border-t border-slate-200">
+        <h2 class="text-2xl font-black text-slate-900 tracking-tight">
+          5. The Fast-Track O-1A to EB-1A Permanent Residency Pipeline
+        </h2>
+        <p class="text-slate-700 leading-relaxed">
+          Because the 8 criteria for O-1A mirror the 10 criteria for EB-1A extraordinary ability green cards, an approved O-1A serves as a powerful foundational dossier. Once on O-1A status in the US, beneficiaries can continue accumulating citations, media features, and commercial milestones before self-petitioning for Form I-140 EB-1A with zero PERM labor certification requirements.
+        </p>
+      </div>
+
+      <div id="o1a-faq" class="space-y-4 pt-8 border-t border-slate-200">
+        <h3 class="text-xl font-bold text-slate-900">
+          6. Frequently Asked Questions (O-1A Visa)
+        </h3>
+
+        <div class="bg-white border-2 border-indigo-100 rounded-2xl p-6 shadow-sm">
+          <h4 class="text-slate-900 font-bold text-base flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-amber-600"></span>
+            Can I apply for an O-1A visa while in the US on STEM OPT or F-1 status?
+          </h4>
+          <p class="text-slate-700 text-sm mt-3 leading-relaxed">
+            <strong>Yes.</strong> You can file Form I-129 requesting a Change of Status from F-1 / STEM OPT to O-1A with USCIS Premium Processing. Once approved, your status transitions seamlessly without requiring an overseas consular visa stamp.
+          </p>
+        </div>
+
+        <div class="bg-white border-2 border-indigo-100 rounded-2xl p-6 shadow-sm">
+          <h4 class="text-slate-900 font-bold text-base flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-amber-600"></span>
+            Does an O-1A visa permit dual intent for permanent residency?
+          </h4>
+          <p class="text-slate-700 text-sm mt-3 leading-relaxed">
+            While O-1 is not explicitly categorized as dual intent like H-1B or L-1 under INA § 214(b), <strong>8 CFR § 214.2(o)(13)</strong> states that the approval of a labor certification or filing of an immigrant petition (Form I-140) shall not be a basis for denying an O-1 petition or extension.
+          </p>
+        </div>
+      </div>
+    `,
+    relatedTool: {
+      name: 'EB-1A & O-1A Extraordinary Ability Profile Scorer',
+      description: '10-criterion diagnostic engine built on 8 CFR § 204.5(h)(3) & § 214.2(o) with 1-click legal action memo generator.',
+      link: '/tools/eb1a-o1-evaluator',
+      buttonText: 'Evaluate O-1A / EB-1A Profile'
+    }
+  },
+  {
+    slug: 'concurrent-h1b-dual-employment-remote-jobs-guide-2026',
+    title: 'Concurrent H-1B Visa Guide (2026) | Legal Dual Employment, Second Remote Job & Form I-129 Rules',
+    subtitle: 'Step-by-step statutory guide to holding two simultaneous US jobs legally under 8 CFR § 214.2(h)(2)(i)(C) without cap lottery risks.',
+    excerpt: 'Can you work two jobs on an H-1B visa? Yes. Under 8 CFR § 214.2(h)(2)(i)(C), foreign professionals can legally work for a second US employer concurrently. Learn how concurrent H-1B petitions work, how cap-exempt transfers unlock private sector remote roles, and how to maintain strict USCIS compliance.',
+    category: 'Visa & Green Cards',
+    readTime: '11 min read',
+    publishedDate: '2026-09-22T00:00:00.000Z',
+    updatedDate: '2026-09-22T00:00:00.000Z',
+    author: {
+      name: 'US Career Solutions Statutory Legal Advisory Panel',
+      role: 'Immigration Compliance & LCA Specialists',
+      avatar: '/favicon.ico'
+    },
+    keywords: [
+      'concurrent h1b visa',
+      'h1b dual employment',
+      'working two remote jobs h1b',
+      'concurrent h1b cap exempt',
+      'form i129 concurrent employment',
+      'second job on h1b visa'
+    ],
+    tableOfContents: [
+      { id: 'statutory-authority', title: '1. Statutory Basis: 8 CFR § 214.2(h)(2)(i)(C)' },
+      { id: 'how-concurrent-h1b-works', title: '2. How Concurrent H-1B Employment Functions in Practice' },
+      { id: 'cap-exempt-loophole', title: '3. The Cap-Exempt + For-Profit Secondary Job Strategy' },
+      { id: 'lca-and-hours', title: '4. LCA Prevailing Wage, Hours & Moonlighting Contracts' },
+      { id: 'step-by-step-filing', title: '5. Step-by-Step Concurrent Form I-129 Filing Process' },
+      { id: 'concurrent-faq', title: '6. Frequently Asked Questions (Concurrent H-1B)' }
+    ],
+    contentHtml: `
+      <div class="bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-transparent border-l-4 border-blue-500 p-6 rounded-r-2xl my-6">
+        <h3 class="text-blue-400 font-black text-lg mb-2 flex items-center gap-2">
+          ⚖️ Federal Regulation: 8 CFR § 214.2(h)(2)(i)(C)
+        </h3>
+        <p class="text-slate-300 text-sm leading-relaxed">
+          "A nonimmigrant who is already in H-1B status and desires to perform services for a new or additional employer may begin work for the new employer after the new employer files a petition on Form I-129." Foreign professionals are legally entitled to engage in <strong>concurrent dual employment</strong> across two separate employers without violating status.
+        </p>
+      </div>
+
+      <div id="statutory-authority" class="space-y-4 pt-6">
+        <h2 class="text-2xl font-black text-slate-900 tracking-tight">
+          1. Statutory Basis: 8 CFR § 214.2(h)(2)(i)(C)
+        </h2>
+        <p class="text-slate-700 leading-relaxed">
+          A widespread myth among international workers in the United States is that H-1B status restricts you to working for a single employer exclusively. Under federal immigration law, you are permitted to work for multiple employers simultaneously, provided that <strong>each individual employer files an independent Form I-129 petition</strong> and obtains an approved <strong>Department of Labor Labor Condition Application (LCA Form ETA-9035)</strong>.
+        </p>
+      </div>
+
+      <div id="how-concurrent-h1b-works" class="space-y-4 pt-8 border-t border-slate-200">
+        <h2 class="text-2xl font-black text-slate-900 tracking-tight">
+          2. How Concurrent H-1B Employment Functions in Practice
+        </h2>
+        <p class="text-slate-700 leading-relaxed">
+          In a concurrent H-1B arrangement, you maintain your Primary Employer (usually full-time, 35–40 hours/week) while taking on a Secondary Employer (often part-time or remote, 10–20 hours/week).
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+          <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5">
+            <h4 class="font-bold text-slate-900 text-sm mb-2 text-blue-700">Primary Employer A (Full-Time)</h4>
+            <ul class="text-xs text-slate-600 space-y-1.5 list-disc pl-5">
+              <li>Holds primary approved Form I-797 Notice of Action.</li>
+              <li>Compensates at or above full-time OEWS Level 1-4 prevailing wage.</li>
+              <li>Maintains primary sponsorship status.</li>
+            </ul>
+          </div>
+          <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5">
+            <h4 class="font-bold text-slate-900 text-sm mb-2 text-indigo-700">Secondary Employer B (Concurrent)</h4>
+            <ul class="text-xs text-slate-600 space-y-1.5 list-disc pl-5">
+              <li>Files Form I-129 checking Box 2d ("Concurrent employment").</li>
+              <li>Files separate LCA specifying hourly prevailing wage and work location.</li>
+              <li>Provides independent Form W-2 at year-end.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="cap-exempt-loophole" class="space-y-4 pt-8 border-t border-slate-200">
+        <h2 class="text-2xl font-black text-slate-900 tracking-tight">
+          3. The Cap-Exempt + For-Profit Secondary Job Strategy (INA § 214(g)(5))
+        </h2>
+        <p class="text-slate-700 leading-relaxed">
+          One of the most powerful legal mobility mechanisms under the Immigration and Nationality Act (INA § 214(g)(5)) is the <strong>Cap-Exempt Concurrent Provision</strong>:
+        </p>
+        <div class="bg-indigo-50/80 border border-indigo-200 rounded-2xl p-6 text-sm text-slate-800 space-y-3">
+          <p class="font-bold text-indigo-950">
+            How Cap-Exempt Workers Can Legally Work for Private For-Profit Companies:
+          </p>
+          <p class="text-xs text-slate-700 leading-relaxed">
+            If you are currently employed by a <strong>cap-exempt institution</strong> (such as a university, university-affiliated medical hospital, or non-profit research institute under INA § 214(g)(5)), a commercial, for-profit tech enterprise can file a concurrent H-1B petition for you <strong>without submitting you to the annual H-1B cap lottery</strong>.
+          </p>
+          <p class="text-xs text-slate-600 italic">
+            *Crucial Requirement: You must maintain your primary cap-exempt employment continuously. If your primary cap-exempt position terminates, your concurrent cap-subject authorization ceases unless you win an H-1B cap lottery slot.
+          </p>
+        </div>
+      </div>
+
+      <div id="lca-and-hours" class="space-y-4 pt-8 border-t border-slate-200">
+        <h2 class="text-2xl font-black text-slate-900 tracking-tight">
+          4. LCA Prevailing Wage, Hours & Moonlighting Contracts
+        </h2>
+        <p class="text-slate-700 leading-relaxed">
+          Both employers must comply with Department of Labor wage schedules under 20 CFR § 655:
+        </p>
+        <ul class="list-disc pl-6 space-y-2 text-slate-700 text-sm">
+          <li><strong>Remote Work LCA:</strong> If you perform concurrent duties from your home residence, your secondary employer's LCA must list your home address as an official work site.</li>
+          <li><strong>Realistic Total Hours:</strong> USCIS will scrutinize petition schedules if combined hours exceed 60–70 hours/week. Clearly structured schedules (e.g., Primary: 40 hrs/wk M-F 9am-5pm; Secondary: 15 hrs/wk evenings and Saturdays) avoid RFEs.</li>
+          <li><strong>Non-Compete & IP Clauses:</strong> Review your primary employment agreement to ensure moonlighting or secondary consulting does not violate proprietary information agreements.</li>
+        </ul>
+      </div>
+
+      <div id="step-by-step-filing" class="space-y-4 pt-8 border-t border-slate-200">
+        <h2 class="text-2xl font-black text-slate-900 tracking-tight">
+          5. Step-by-Step Concurrent Form I-129 Filing Process
+        </h2>
+        <ol class="list-decimal pl-6 space-y-3 text-slate-700 text-sm">
+          <li><strong>Secure Offer from Secondary Employer:</strong> Obtain an offer detailing part-time duties, specialty occupation requirements, and hourly compensation.</li>
+          <li><strong>Submit DOL LCA Form ETA-9035:</strong> Secondary employer files an LCA specifying SOC code and prevailing wage (processed in 7 business days).</li>
+          <li><strong>File Form I-129 with USCIS:</strong> Select Part 2, Item 2: "Concurrent employment". Attach Form I-907 for 15-day Premium Processing.</li>
+          <li><strong>Commence Work via AC21 Portability (INA § 214(n)):</strong> Under AC21 portability provisions, you may begin working for the secondary employer immediately upon receipt of the official Form I-797C Notice of Action receipt.</li>
+        </ol>
+      </div>
+
+      <div id="concurrent-faq" class="space-y-4 pt-8 border-t border-slate-200">
+        <h3 class="text-xl font-bold text-slate-900">
+          6. Frequently Asked Questions (Concurrent H-1B)
+        </h3>
+
+        <div class="bg-white border-2 border-indigo-100 rounded-2xl p-6 shadow-sm">
+          <h4 class="text-slate-900 font-bold text-base flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
+            Does my Primary Employer need to know or sign off on my Secondary H-1B?
+          </h4>
+          <p class="text-slate-700 text-sm mt-3 leading-relaxed">
+            <strong>No.</strong> USCIS does not require primary employer permission or notification for a secondary concurrent filing. However, you must ensure secondary duties do not interfere with your primary contractual hours or violate non-compete clauses.
+          </p>
+        </div>
+
+        <div class="bg-white border-2 border-indigo-100 rounded-2xl p-6 shadow-sm">
+          <h4 class="text-slate-900 font-bold text-base flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
+            How do I file taxes when receiving two W-2s on H-1B?
+          </h4>
+          <p class="text-slate-700 text-sm mt-3 leading-relaxed">
+            You will receive two separate Form W-2s at year-end. You combine both incomes on your standard IRS Form 1040. Note that having two incomes may push you into a higher marginal tax bracket, so adjusting Form W-4 withholding is recommended.
+          </p>
+        </div>
+      </div>
+    `,
+    relatedTool: {
+      name: 'DOL LCA Prevailing Wage & Salary Explorer',
+      description: 'Search certified Level 1-4 prevailing hourly and annual wage schedules across 50 states for H-1B compliance.',
+      link: '/tools/lca-salary-search',
+      buttonText: 'Search LCA Wages'
+    }
+  },
+  {
+    slug: 'stem-opt-24-month-extension-form-i983-guide-2026',
+    title: 'STEM OPT 24-Month Extension Guide (2026) | Form I-983 Mentoring Plan, E-Verify & Form I-765 Filing',
+    subtitle: 'Complete guide to extending F-1 practical training by 24 months, completing Form I-983 training plans, managing 150-day unemployment limits, and maintaining statutory status.',
+    excerpt: 'F-1 graduates in STEM disciplines are eligible for a 24-month practical training extension under 8 CFR § 214.2(f)(10)(ii)(C). Master the Form I-983 Formal Training Plan, E-Verify employer validation, and Form I-765 USCIS filing timeline with zero status violations.',
+    category: 'Scholarships & Education',
+    readTime: '13 min read',
+    publishedDate: '2026-09-22T00:00:00.000Z',
+    updatedDate: '2026-09-22T00:00:00.000Z',
+    author: {
+      name: 'US Career Solutions Statutory Legal Advisory Panel',
+      role: 'International Student Advisors & DSO Specialists',
+      avatar: '/favicon.ico'
+    },
+    keywords: [
+      'stem opt 24 month extension',
+      'form i983 training plan sample',
+      'stem opt unemployment 150 days',
+      'form i765 opt extension e-verify',
+      'stem opt qualifying cip codes',
+      'cap gap extension f1 opt'
+    ],
+    tableOfContents: [
+      { id: 'eligibility-framework', title: '1. STEM OPT Eligibility & DHS STEM Designated Degree Program List' },
+      { id: 'form-i983-walkthrough', title: '2. Form I-983 (Training Plan for STEM OPT Students) Walkthrough' },
+      { id: 'e-verify-rules', title: '3. Employer E-Verify & Wage Attestation Requirements' },
+      { id: 'timeline-and-filing', title: '4. Form I-765 Application Timeline & 180-Day Extension Rule' },
+      { id: 'unemployment-capgap', title: '5. Unemployment Days Limits (150 Days) & H-1B Cap-Gap Rules' },
+      { id: 'stem-opt-faq', title: '6. Frequently Asked Questions (STEM OPT Extension)' }
+    ],
+    contentHtml: `
+      <div class="bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-transparent border-l-4 border-cyan-500 p-6 rounded-r-2xl my-6">
+        <h3 class="text-cyan-400 font-black text-lg mb-2 flex items-center gap-2">
+          🎓 Federal Regulation: 8 CFR § 214.2(f)(10)(ii)(C)
+        </h3>
+        <p class="text-slate-300 text-sm leading-relaxed">
+          Under the 2016 STEM OPT Final Rule, F-1 students who have received a degree in a Department of Homeland Security (DHS) approved Science, Technology, Engineering, or Math (STEM) field are eligible for a <strong>24-month extension</strong> of their 12-month post-completion OPT authorization (total <strong>36 months of US work authorization</strong>).
+        </p>
+      </div>
+
+      <div id="eligibility-framework" class="space-y-4 pt-6">
+        <h2 class="text-2xl font-black text-slate-900 tracking-tight">
+          1. STEM OPT Eligibility & DHS STEM Designated Degree Program List
+        </h2>
+        <p class="text-slate-700 leading-relaxed">
+          To qualify for the 24-month STEM OPT extension, you must meet four statutory prerequisites:
+        </p>
+        <ul class="list-disc pl-6 space-y-2 text-slate-700 text-sm">
+          <li><strong>Qualifying Degree:</strong> Hold a Bachelor’s, Master’s, or Doctoral degree with a Classification of Instructional Programs (CIP) code on the official DHS STEM Designated Degree Program List.</li>
+          <li><strong>Active 12-Month OPT:</strong> Currently participating in an active period of standard 12-month post-completion OPT.</li>
+          <li><strong>E-Verify Employer:</strong> Employed by or holding a job offer from an employer enrolled in the federal E-Verify system.</li>
+          <li><strong>Bona Fide Training Plan:</strong> Complete Form I-983 establishing direct supervisory oversight, professional learning objectives, and competitive compensation.</li>
+        </ul>
+      </div>
+
+      <div id="form-i983-walkthrough" class="space-y-4 pt-8 border-t border-slate-200">
+        <h2 class="text-2xl font-black text-slate-900 tracking-tight">
+          2. Form I-983 (Training Plan for STEM OPT Students) Walkthrough
+        </h2>
+        <p class="text-slate-700 leading-relaxed">
+          Form I-983 must be executed by both the student and the employer's designated supervisor before your Designated School Official (DSO) can issue the STEM OPT Form I-20:
+        </p>
+
+        <div class="space-y-4 my-6">
+          <div class="bg-white border-2 border-slate-100 rounded-2xl p-5 shadow-sm">
+            <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+              <span class="w-6 h-6 rounded-full bg-cyan-100 text-cyan-800 flex items-center justify-center text-xs font-bold">A</span>
+              Section 3: Employer Information & Compensation
+            </h4>
+            <p class="text-slate-600 text-xs mt-2 leading-relaxed">
+              Employer must certify EIN, E-Verify company ID number, weekly hours (minimum 20 hours/week), and monetary compensation matching commensurate US workers.
+            </p>
+          </div>
+
+          <div class="bg-white border-2 border-slate-100 rounded-2xl p-5 shadow-sm">
+            <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+              <span class="w-6 h-6 rounded-full bg-cyan-100 text-cyan-800 flex items-center justify-center text-xs font-bold">B</span>
+              Section 5: Training Plan for STEM OPT Students
+            </h4>
+            <p class="text-slate-600 text-xs mt-2 leading-relaxed">
+              Detail specific technological tools, software frameworks, supervisory review schedules, and measurable professional learning objectives.
+            </p>
+          </div>
+
+          <div class="bg-white border-2 border-slate-100 rounded-2xl p-5 shadow-sm">
+            <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+              <span class="w-6 h-6 rounded-full bg-cyan-100 text-cyan-800 flex items-center justify-center text-xs font-bold">C</span>
+              Section 6: Annual Evaluations on Student Progress
+            </h4>
+            <p class="text-slate-600 text-xs mt-2 leading-relaxed">
+              Mid-point evaluation (after 12 months of STEM extension) and final evaluation (at the conclusion of the 24 months) must be signed and submitted to the DSO.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div id="e-verify-rules" class="space-y-4 pt-8 border-t border-slate-200">
+        <h2 class="text-2xl font-black text-slate-900 tracking-tight">
+          3. Employer E-Verify & Wage Attestation Requirements
+        </h2>
+        <p class="text-slate-700 leading-relaxed">
+          Under 8 CFR § 214.2(f)(10)(ii)(C)(4), the employer must attest that:
+        </p>
+        <ul class="list-disc pl-6 space-y-2 text-slate-700 text-sm">
+          <li>The student will receive compensation commensurate with terms provided to similarly situated US workers in the same geographic area.</li>
+          <li>The company has sufficient resources and trained personnel available to provide appropriate supervision and mentoring.</li>
+          <li>The student will not displace any full- or part-time, temporary or permanent US worker.</li>
+        </ul>
+      </div>
+
+      <div id="timeline-and-filing" class="space-y-4 pt-8 border-t border-slate-200">
+        <h2 class="text-2xl font-black text-slate-900 tracking-tight">
+          4. Form I-765 Application Timeline & 180-Day Extension Rule
+        </h2>
+        <p class="text-slate-700 leading-relaxed">
+          Strict filing windows govern the submission of your STEM OPT application:
+        </p>
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 text-sm text-slate-800 space-y-3">
+          <ul class="space-y-2 text-xs text-slate-700">
+            <li><strong>Filing Window:</strong> You may submit Form I-765 to USCIS up to <strong>90 days before</strong> your initial 12-month OPT EAD card expires.</li>
+            <li><strong>DSO Form I-20 Validity:</strong> USCIS must receive your Form I-765 within <strong>60 days</strong> of the date the DSO recommends STEM OPT in SEVIS.</li>
+            <li><strong>Automatic 180-Day Work Authorization (8 CFR § 274a.12(b)(6)(iv)):</strong> If you file your Form I-765 on time (before your initial EAD expires), your work authorization is automatically extended for up to <strong>180 days</strong> while USCIS adjudicates your application.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="unemployment-capgap" class="space-y-4 pt-8 border-t border-slate-200">
+        <h2 class="text-2xl font-black text-slate-900 tracking-tight">
+          5. Unemployment Days Limits (150 Days) & H-1B Cap-Gap Rules
+        </h2>
+        <p class="text-slate-700 leading-relaxed">
+          Maintaining legal F-1 nonimmigrant status requires strict tracking of allowable unemployment limits:
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+          <div class="bg-cyan-50/60 border border-cyan-100 rounded-2xl p-5">
+            <h5 class="font-bold text-cyan-950 text-sm mb-1">150-Day Cumulative Unemployment</h5>
+            <p class="text-slate-600 text-xs leading-relaxed">
+              Standard OPT provides 90 days of unemployment. STEM OPT adds 60 days, giving a cumulative total of <strong>150 days of allowed unemployment</strong> across the entire 36-month period.
+            </p>
+          </div>
+          <div class="bg-cyan-50/60 border border-cyan-100 rounded-2xl p-5">
+            <h5 class="font-bold text-cyan-950 text-sm mb-1">H-1B Cap-Gap Extension</h5>
+            <p class="text-slate-600 text-xs leading-relaxed">
+              If an employer files an H-1B cap petition with change of status for you while on OPT, 8 CFR § 214.2(f)(5)(vi) automatically extends your F-1 status and work authorization through October 1.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div id="stem-opt-faq" class="space-y-4 pt-8 border-t border-slate-200">
+        <h3 class="text-xl font-bold text-slate-900">
+          6. Frequently Asked Questions (STEM OPT Extension)
+        </h3>
+
+        <div class="bg-white border-2 border-indigo-100 rounded-2xl p-6 shadow-sm">
+          <h4 class="text-slate-900 font-bold text-base flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-cyan-600"></span>
+            Can I qualify for STEM OPT based on a prior US STEM degree?
+          </h4>
+          <p class="text-slate-700 text-sm mt-3 leading-relaxed">
+            <strong>Yes.</strong> If you are currently completing OPT on a non-STEM master's degree (e.g. MBA) but previously earned a STEM bachelor's degree in the US within the last 10 years from an accredited institution, you can apply for the 24-month extension based on that prior degree.
+          </p>
+        </div>
+
+        <div class="bg-white border-2 border-indigo-100 rounded-2xl p-6 shadow-sm">
+          <h4 class="text-slate-900 font-bold text-base flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-cyan-600"></span>
+            Can I work remotely on STEM OPT?
+          </h4>
+          <p class="text-slate-700 text-sm mt-3 leading-relaxed">
+            <strong>Yes.</strong> Remote work is permitted as long as the employer maintains genuine supervision and mentoring as documented in Section 5 of Form I-983, and lists your home residence as an official work site.
+          </p>
+        </div>
+      </div>
+    `,
+    relatedTool: {
+      name: 'STEM OPT 60-Day Grace Period & Unemployment Calculator',
+      description: 'Track cumulative unemployment days (90/150 day limits), Form I-983 filing deadlines, and H-1B Cap-Gap extensions.',
+      link: '/tools/opt-grace-period-calculator',
+      buttonText: 'Launch OPT Calculator'
+    }
+  }
+
 ];
 
 export function getGuideBySlug(slug: string): GuideArticle | undefined {

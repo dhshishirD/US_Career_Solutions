@@ -32,6 +32,26 @@ export const metadata: Metadata = {
 
 const TOOLS = [
   {
+    title: 'EB-1A & O-1A Extraordinary Ability Scorer',
+    path: '/tools/eb1a-o1-evaluator',
+    badge: '8 CFR § 204.5(h) HIGH-CPC',
+    badgeColor: 'bg-amber-500/10 text-amber-400 border-amber-500/20',
+    description: '10-criterion diagnostic engine built on 8 CFR § 204.5(h)(3) & § 214.2(o). Audit Kazarian two-step merits risk and export a 1-click legal action filing memo.',
+    icon: Award,
+    iconBg: 'bg-amber-500/10 text-amber-400 border-amber-500/20',
+    features: ['10-Prong Evidentiary Wizard', 'Kazarian Step 2 Merits Audit', 'RFE Vulnerability Scorer', '1-Click Statutory Filing Memo']
+  },
+  {
+    title: 'USCIS Service Center Processing Times Hub',
+    path: '/tools/processing-times',
+    badge: 'LIVE BENCHMARKS (2026)',
+    badgeColor: 'bg-blue-500/10 text-blue-400 border-blue-500/20',
+    description: 'Track official adjudication times across Texas (SRC), Nebraska (LIN), California (WAC), and Vermont (EAC) service centers for H-1B, O-1, EB-2, and OPT.',
+    icon: Clock,
+    iconBg: 'bg-blue-500/10 text-blue-400 border-blue-500/20',
+    features: ['Texas vs. Nebraska Benchmarks', '15-Day Premium Clock Estimator', 'Automatic 180/240 Day Extension Rules', 'Outside Normal Processing e-Request Guide']
+  },
+  {
     title: 'J-1 Visa 2-Year Rule (212e) Waiver Advisor',
     path: '/tools/j1-waiver-advisor',
     badge: 'HIGH-CPC IMMIGRATION TOOL',
