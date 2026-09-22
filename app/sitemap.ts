@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { MASTER_GUIDES } from '@/lib/guides-data';
 import { US_STATES_DATA } from '@/lib/states-data';
+import { UNIVERSITIES_SCHOLARSHIPS_DATA } from '@/lib/university-scholarships-data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.uscareersolutions.online';
@@ -239,5 +240,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
-  return [...staticRoutes, ...guideRoutes, ...stateRoutes];
+  const universityRoutes: MetadataRoute.Sitemap = Object.values(UNIVERSITIES_SCHOLARSHIPS_DATA).map(uni => ({
+    url: `${baseUrl}/scholarships/university/${uni.slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'weekly',
+    priority: 0.92,
+  }));
+
+  return [...staticRoutes, ...guideRoutes, ...stateRoutes, ...universityRoutes];
 }
