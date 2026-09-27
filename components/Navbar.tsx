@@ -55,6 +55,44 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm" ref={dropdownRef}>
+      {/* Top Multi-Channel Community Alert Bar */}
+      <div className="bg-slate-950 text-white text-xs py-2 px-4 border-b border-slate-800">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2 overflow-hidden">
+            <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-black bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 shrink-0">
+              DAILY DROPS
+            </span>
+            <span className="hidden md:inline text-slate-300 truncate">
+              Verified Cap-Exempt H-1B Jobs, Schedule A Nurse Green Cards & $0 Scholarships:
+            </span>
+            <span className="md:hidden text-slate-300 text-[11px] truncate">
+              Verified USA Jobs & Visas:
+            </span>
+          </div>
+          <div className="flex items-center gap-3 shrink-0 text-xs">
+            <a 
+              href="https://t.me/usacareeroppurtunity" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 font-bold text-sky-400 hover:text-sky-300 transition-colors"
+            >
+              <Send className="w-3.5 h-3.5" />
+              <span>Telegram <span className="hidden sm:inline">Channel</span></span>
+            </a>
+            <span className="text-slate-700">|</span>
+            <a 
+              href="https://www.facebook.com/profile.php?id=61573335766965" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 font-bold text-blue-400 hover:text-blue-300 transition-colors"
+            >
+              <Users className="w-3.5 h-3.5" />
+              <span>Facebook <span className="hidden sm:inline">Page</span></span>
+            </a>
+          </div>
+        </div>
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           
