@@ -7,6 +7,7 @@ let cachedClient: SupabaseClient | null = null;
 // Official Supabase credentials provided by project administrator
 const DEFAULT_SUPABASE_URL = 'https://vfozkewdnelkgsluntex.supabase.co';
 const DEFAULT_SUPABASE_ANON_KEY = 'sb_publishable_0N-bsiW8Zxqiri5FEEoRoQ_x0naDUwt';
+export const GOOGLE_CLIENT_ID = '260193044309-vst2pf45p1iigsbivdv6vng7stn2nl3s.apps.googleusercontent.com';
 
 export function getSupabaseConfig(): { url: string; anonKey: string } {
   const envUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -24,7 +25,6 @@ export function getSupabaseConfig(): { url: string; anonKey: string } {
     }
   }
 
-  // Fallback to configured project credentials
   return {
     url: DEFAULT_SUPABASE_URL,
     anonKey: DEFAULT_SUPABASE_ANON_KEY
@@ -35,7 +35,7 @@ export function saveSupabaseConfig(url: string, anonKey: string): void {
   if (typeof window !== 'undefined') {
     localStorage.setItem('usc_supabase_url', url.trim());
     localStorage.setItem('usc_supabase_anon_key', anonKey.trim());
-    cachedClient = null; // reset cached instance
+    cachedClient = null;
   }
 }
 
@@ -67,6 +67,20 @@ export async function signInWithGoogleSupabase(redirectTo?: string) {
         prompt: 'consent'
       }
     }
+  });
+
+  if (error) {
+    throw error;
+  }
+
+  return data;
+}
+
+export async function signInWithGoogleIdToken(idToken: string) {
+  const supabase = getSupabase();
+  const { data, error } = await supabase.auth.signInWithIdToken({
+    provider: 'google',
+    token: idToken
   });
 
   if (error) {
