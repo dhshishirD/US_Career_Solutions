@@ -29,7 +29,7 @@ import { TrackedApplication, ApplicationStatus } from '@/lib/types';
 
 export default function TrackerPage() {
   const [applications, setApplications] = useState<TrackedApplication[]>([]);
-  const [credits, setCredits] = useState<number>(3);
+  const [credits, setCredits] = useState<number>(5);
   const [showAddModal, setShowAddModal] = useState(false);
   const [expandedIntelligenceId, setExpandedIntelligenceId] = useState<string | null>(null);
   const [copiedType, setCopiedType] = useState<string | null>(null);
@@ -49,8 +49,8 @@ export default function TrackerPage() {
       if (savedCredits !== null) {
         setCredits(parseInt(savedCredits, 10));
       } else {
-        localStorage.setItem('usc_app_credits', '3');
-        setCredits(3);
+        localStorage.setItem('usc_app_credits', '5');
+        setCredits(5);
       }
 
       // 2. Tracked Applications

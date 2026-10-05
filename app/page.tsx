@@ -96,7 +96,7 @@ export default function HomePage() {
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 text-sm sm:text-base font-extrabold bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-2xl shadow-lg shadow-blue-500/25 transition-all hover:scale-[1.02]"
           >
             <Sparkles className="w-5 h-5 text-blue-200" />
-            <span>Smart Apply to 101 Jobs (3 Free Credits)</span>
+            <span>Direct Apply to 101 Jobs (5 Free / mo)</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
           <Link
@@ -367,7 +367,7 @@ export default function HomePage() {
               <ul className="space-y-2.5 text-xs text-slate-700 pt-3 border-t border-slate-100">
                 <li className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span><strong>3 Free Smart Applications</strong> per month</span>
+                  <span><strong>5 Free Direct Applications</strong> per month</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-emerald-600 shrink-0" />

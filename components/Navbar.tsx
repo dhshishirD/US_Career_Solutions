@@ -15,6 +15,7 @@ import { FileCheck, Stethoscope, Tractor,
   X, 
   GraduationCap,
   Users,
+  User,
   BookOpen,
   Building2,
   ChevronDown,
@@ -27,11 +28,17 @@ import { FileCheck, Stethoscope, Tractor,
   ArrowRight,
   ExternalLink
 } from 'lucide-react';
+import { getCurrentUser, GoogleUserProfile } from '@/lib/user-vault';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const [currentUser, setCurrentUser] = useState<GoogleUserProfile | null>(null);
+
+  useEffect(() => {
+    setCurrentUser(getCurrentUser());
+  }, []);
 
   // Close dropdown on outside click
   useEffect(() => {
@@ -625,6 +632,29 @@ export default function Navbar() {
               <span>1-on-1 Concierge</span>
             </Link>
 
+            {currentUser ? (
+              <Link
+                href="/dashboard"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 border border-blue-200 text-xs font-bold text-blue-900 transition-colors"
+              >
+                <img src={currentUser.picture} alt={currentUser.name} className="w-5 h-5 rounded-full object-cover" />
+                <span>Dashboard ({currentUser.credits})</span>
+              </Link>
+            ) : (
+              <Link
+                href="/apply/choose-plan"
+                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl border border-slate-200 hover:border-slate-300 text-slate-700 hover:text-slate-900 text-xs font-bold bg-white transition-colors"
+              >
+                <svg className="w-3.5 h-3.5" viewBox="0 0 24 24">
+                  <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.66v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.15z" />
+                  <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.34 24 12 24z" />
+                  <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15z" />
+                  <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z" />
+                </svg>
+                <span>Sign In</span>
+              </Link>
+            )}
+
             <Link
               href="/jobs"
               className="inline-flex items-center gap-1.5 text-xs font-bold px-4 py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700 shadow-md transition-all whitespace-nowrap"
@@ -722,6 +752,15 @@ export default function Navbar() {
               className="px-3 py-2 text-xs font-bold text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-lg transition-colors"
             >
               Contact
+            </Link>
+
+            <Link
+              href="/dashboard"
+              onClick={closeAll}
+              className="w-full flex items-center justify-center gap-2 p-3 rounded-xl bg-slate-100 text-slate-800 font-bold text-sm border border-slate-200 shadow-sm"
+            >
+              <User className="w-4 h-4 text-blue-600" />
+              <span>{currentUser ? `My Candidate Dashboard (${currentUser.credits} Apps)` : 'Sign In with Google'}</span>
             </Link>
 
             <Link

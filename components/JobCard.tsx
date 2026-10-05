@@ -148,7 +148,7 @@ export default function JobCard({ job, onSaveToggle, isInitiallySaved = false }:
   };
 
   const shareUrl = `https://www.uscareersolutions.online/jobs`;
-  const shareText = `🔥 Check out this US Job: ${job.title} at ${job.company} (${job.salaryMin ? `$${job.salaryMin.toLocaleString()}/yr` : 'Competitive USD'}) — Apply on US Career Solutions:`;
+  const shareText = `Verified U.S. Opportunity: ${job.title} at ${job.company} (${job.salaryMin ? `$${job.salaryMin.toLocaleString()}/yr` : 'Competitive USD'}) — Apply on US Career Solutions:`;
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(`${shareText} ${shareUrl}`);
@@ -352,24 +352,15 @@ export default function JobCard({ job, onSaveToggle, isInitiallySaved = false }:
             <ExternalLink className="w-4 h-4" />
           </a>
 
-          <button
-            type="button"
-            onClick={() => setShowApplyModal(true)}
+          <Link
+            href={`/apply/choose-plan?jobId=${encodeURIComponent(job.id)}&title=${encodeURIComponent(job.title)}&company=${encodeURIComponent(job.company)}`}
             className="inline-flex items-center gap-1.5 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-xl shadow-sm hover:shadow transition-all"
           >
-            <span>🚀 Direct Apply</span>
-          </button>
+            <Send className="w-3.5 h-3.5" />
+            <span>Direct Apply (5 Free / mo)</span>
+          </Link>
         </div>
       </div>
-
-      {showApplyModal && (
-        <DirectApplyModal
-          job={job}
-          isOpen={showApplyModal}
-          onClose={() => setShowApplyModal(false)}
-          onSuccess={() => setSaved(true)}
-        />
-      )}
     </div>
   );
 }
