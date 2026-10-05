@@ -4,7 +4,11 @@ import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
 let cachedClient: SupabaseClient | null = null;
 
-export function getSupabaseConfig(): { url: string; anonKey: string } | null {
+// Official Supabase credentials provided by project administrator
+const DEFAULT_SUPABASE_URL = 'https://vfozkewdnelkgsluntex.supabase.co';
+const DEFAULT_SUPABASE_ANON_KEY = 'sb_publishable_0N-bsiW8Zxqiri5FEEoRoQ_x0naDUwt';
+
+export function getSupabaseConfig(): { url: string; anonKey: string } {
   const envUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const envKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
@@ -20,7 +24,11 @@ export function getSupabaseConfig(): { url: string; anonKey: string } | null {
     }
   }
 
-  return null;
+  // Fallback to configured project credentials
+  return {
+    url: DEFAULT_SUPABASE_URL,
+    anonKey: DEFAULT_SUPABASE_ANON_KEY
+  };
 }
 
 export function saveSupabaseConfig(url: string, anonKey: string): void {
@@ -31,33 +39,23 @@ export function saveSupabaseConfig(url: string, anonKey: string): void {
   }
 }
 
-export function getSupabase(): SupabaseClient | null {
+export function getSupabase(): SupabaseClient {
   if (cachedClient) return cachedClient;
 
   const config = getSupabaseConfig();
-  if (!config) return null;
 
-  try {
-    cachedClient = createClient(config.url, config.anonKey, {
-      auth: {
-        persistSession: true,
-        autoRefreshToken: true,
-        detectSessionInUrl: true
-      }
-    });
-    return cachedClient;
-  } catch (err) {
-    console.warn('Failed to initialize Supabase client:', err);
-    return null;
-  }
+  cachedClient = createClient(config.url, config.anonKey, {
+    auth: {
+      persistSession: true,
+      autoRefreshToken: true,
+      detectSessionInUrl: true
+    }
+  });
+  return cachedClient;
 }
 
 export async function signInWithGoogleSupabase(redirectTo?: string) {
   const supabase = getSupabase();
-  if (!supabase) {
-    throw new Error('Supabase configuration missing');
-  }
-
   const callbackUrl = redirectTo || `${window.location.origin}/auth/callback`;
 
   const { data, error } = await supabase.auth.signInWithOAuth({
