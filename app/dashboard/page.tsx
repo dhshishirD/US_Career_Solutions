@@ -55,6 +55,7 @@ import { parseResumeIntelligently } from '@/lib/resume-intelligence';
 import { generateATSResumeDocx } from '@/lib/export-ats-resume';
 import { TrackedApplication, ApplicationStatus } from '@/lib/types';
 import GoogleAuthModal from '@/components/GoogleAuthModal';
+import { signOutSupabase } from '@/lib/supabase';
 
 type ActiveTab = 'studio' | 'tracker' | 'outputs' | 'connections' | 'profile';
 
@@ -130,7 +131,12 @@ function DashboardContent() {
     setConnections(getConnections());
   }, [queryTitle, queryCompany]);
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    try {
+      await signOutSupabase();
+    } catch (e) {
+      console.warn(e);
+    }
     logoutUser();
     setUser(null);
     router.push('/');

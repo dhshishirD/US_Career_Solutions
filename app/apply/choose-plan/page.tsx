@@ -352,6 +352,9 @@ function ChoosePlanContent() {
         onClose={() => setShowGoogleModal(false)}
         onSuccess={handleAuthSuccess}
         selectedPlan={selectedPlan}
+        targetJobId={jobId}
+        targetTitle={jobTitle}
+        targetCompany={company}
       />
     </div>
   );
