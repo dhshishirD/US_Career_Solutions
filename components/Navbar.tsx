@@ -149,105 +149,113 @@ export default function Navbar() {
               </button>
 
               {activeDropdown === 'jobs' && (
-                <div className="absolute left-0 mt-2 w-88 bg-white rounded-2xl shadow-xl border border-slate-200 p-3 z-50 animate-in fade-in slide-in-from-top-2">
-                  <div className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 px-3 py-1.5 flex items-center justify-between">
+                <div className="absolute left-0 mt-2 w-[540px] bg-white rounded-2xl shadow-2xl border border-slate-200 p-4 z-50 animate-in fade-in slide-in-from-top-2">
+                  <div className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 px-1 pb-2 mb-2 border-b border-slate-100 flex items-center justify-between">
                     <span>Verified US Job Directories</span>
-                    <span className="text-[9px] bg-blue-50 text-blue-700 font-bold px-1.5 py-0.5 rounded">DOL & USCIS</span>
+                    <span className="text-[9px] bg-blue-50 text-blue-700 font-bold px-2 py-0.5 rounded-full">DOL & USCIS Statutory</span>
                   </div>
 
-                  <Link
-                    href="/jobs/cap-exempt-directory"
-                    onClick={closeAll}
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-amber-50/80 transition-colors group"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center shrink-0 mt-0.5">
-                      <Building2 className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-amber-700 flex items-center gap-1.5">
-                        Cap-Exempt H-1B Directory
-                        <span className="text-[9px] bg-amber-100 text-amber-800 font-bold px-1.5 py-0.2 rounded-full">No Lottery</span>
+                  <div className="grid grid-cols-2 gap-2">
+                    <Link
+                      href="/jobs/cap-exempt-directory"
+                      onClick={closeAll}
+                      className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-amber-50/70 transition-colors group"
+                    >
+                      <div className="w-7 h-7 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center shrink-0 mt-0.5">
+                        <Building2 className="w-3.5 h-3.5" />
                       </div>
-                      <div className="text-[11px] text-slate-500">100+ Universities, research institutions & hospitals</div>
-                    </div>
-                  </Link>
-
-                  <Link
-                    href="/jobs/nursing-schedule-a-directory"
-                    onClick={closeAll}
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-rose-50/80 transition-colors group"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-rose-100 text-rose-700 flex items-center justify-center shrink-0 mt-0.5">
-                      <Stethoscope className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-rose-700 flex items-center gap-1.5">
-                        50-State Nurse & Healthcare Hub
-                        <span className="text-[9px] bg-rose-100 text-rose-800 font-bold px-1.5 py-0.2 rounded-full">Schedule A</span>
+                      <div className="min-w-0">
+                        <div className="text-xs font-bold text-slate-900 group-hover:text-amber-700 flex items-center gap-1">
+                          <span className="truncate">Cap-Exempt H-1B</span>
+                          <span className="text-[9px] bg-amber-100 text-amber-800 font-bold px-1.5 py-0.2 rounded shrink-0">No Lottery</span>
+                        </div>
+                        <div className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">Universities & research labs</div>
                       </div>
-                      <div className="text-[11px] text-slate-500">Direct-hire hospital sponsors & EB-3 Green Card</div>
-                    </div>
-                  </Link>
+                    </Link>
 
-                  <Link
-                    href="/jobs/seasonal-h2-directory"
-                    onClick={closeAll}
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-amber-50/80 transition-colors group"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center shrink-0 mt-0.5">
-                      <Tractor className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-amber-800 flex items-center gap-1.5">
-                        H-2A & H-2B Seasonal Directory
-                        <span className="text-[9px] bg-amber-100 text-amber-800 font-bold px-1.5 py-0.2 rounded-full">AEWR Rates</span>
+                    <Link
+                      href="/jobs/nursing-schedule-a-directory"
+                      onClick={closeAll}
+                      className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-rose-50/70 transition-colors group"
+                    >
+                      <div className="w-7 h-7 rounded-lg bg-rose-100 text-rose-700 flex items-center justify-center shrink-0 mt-0.5">
+                        <Stethoscope className="w-3.5 h-3.5" />
                       </div>
-                      <div className="text-[11px] text-slate-500">Certified agricultural & non-ag seasonal employers</div>
-                    </div>
-                  </Link>
-
-                  <Link
-                    href="/jobs/states"
-                    onClick={closeAll}
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-purple-50/80 transition-colors group"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center shrink-0 mt-0.5">
-                      <MapPin className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-purple-700 flex items-center gap-1.5">
-                        50-State Career Radar
-                        <span className="text-[9px] bg-purple-100 text-purple-800 font-bold px-1.5 py-0.2 rounded-full">Salaries</span>
+                      <div className="min-w-0">
+                        <div className="text-xs font-bold text-slate-900 group-hover:text-rose-700 flex items-center gap-1">
+                          <span className="truncate">Nurse & Healthcare</span>
+                          <span className="text-[9px] bg-rose-100 text-rose-800 font-bold px-1.5 py-0.2 rounded shrink-0">EB-3</span>
+                        </div>
+                        <div className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">Direct hospital Green Card</div>
                       </div>
-                      <div className="text-[11px] text-slate-500">Tech, healthcare & logistics jobs by US state</div>
-                    </div>
-                  </Link>
+                    </Link>
 
-                  <Link
-                    href="/landing/us-remote-jobs-w8ben"
-                    onClick={closeAll}
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-emerald-50/80 transition-colors group"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
-                      <DollarSign className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-emerald-700 flex items-center gap-1.5">
-                        US Remote Hub (W-8BEN)
-                        <span className="text-[9px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.2 rounded-full">0% US Tax</span>
+                    <Link
+                      href="/jobs/seasonal-h2-directory"
+                      onClick={closeAll}
+                      className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-amber-50/70 transition-colors group"
+                    >
+                      <div className="w-7 h-7 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center shrink-0 mt-0.5">
+                        <Tractor className="w-3.5 h-3.5" />
                       </div>
-                      <div className="text-[11px] text-slate-500">Earn USD remotely with foreign contractor compliance</div>
-                    </div>
-                  </Link>
+                      <div className="min-w-0">
+                        <div className="text-xs font-bold text-slate-900 group-hover:text-amber-800 flex items-center gap-1">
+                          <span className="truncate">H-2A / H-2B Seasonal</span>
+                          <span className="text-[9px] bg-amber-100 text-amber-800 font-bold px-1.5 py-0.2 rounded shrink-0">AEWR</span>
+                        </div>
+                        <div className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">Certified seasonal employers</div>
+                      </div>
+                    </Link>
 
-                  <div className="pt-2 border-t border-slate-100 mt-1">
+                    <Link
+                      href="/landing/us-remote-jobs-w8ben"
+                      onClick={closeAll}
+                      className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-emerald-50/70 transition-colors group"
+                    >
+                      <div className="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
+                        <DollarSign className="w-3.5 h-3.5" />
+                      </div>
+                      <div className="min-w-0">
+                        <div className="text-xs font-bold text-slate-900 group-hover:text-emerald-700 flex items-center gap-1">
+                          <span className="truncate">US Remote (W-8BEN)</span>
+                          <span className="text-[9px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.2 rounded shrink-0">0% Tax</span>
+                        </div>
+                        <div className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">Global remote contractor roles</div>
+                      </div>
+                    </Link>
+
+                    <Link
+                      href="/jobs/states"
+                      onClick={closeAll}
+                      className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-purple-50/70 transition-colors group"
+                    >
+                      <div className="w-7 h-7 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center shrink-0 mt-0.5">
+                        <MapPin className="w-3.5 h-3.5" />
+                      </div>
+                      <div className="min-w-0">
+                        <div className="text-xs font-bold text-slate-900 group-hover:text-purple-700 flex items-center gap-1">
+                          <span className="truncate">50-State Career Radar</span>
+                          <span className="text-[9px] bg-purple-100 text-purple-800 font-bold px-1.5 py-0.2 rounded shrink-0">Wages</span>
+                        </div>
+                        <div className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">Salaries across CA, TX, NY & WA</div>
+                      </div>
+                    </Link>
+
                     <Link
                       href="/jobs"
                       onClick={closeAll}
-                      className="flex items-center justify-between p-2 rounded-lg bg-blue-50 text-blue-700 hover:bg-blue-100 transition-colors text-xs font-bold"
+                      className="flex items-start gap-2.5 p-2.5 rounded-xl bg-blue-50 hover:bg-blue-100 transition-colors group"
                     >
-                      <span>Browse All 100+ Live Jobs</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
+                      <div className="w-7 h-7 rounded-lg bg-blue-600 text-white flex items-center justify-center shrink-0 mt-0.5">
+                        <Search className="w-3.5 h-3.5" />
+                      </div>
+                      <div className="min-w-0">
+                        <div className="text-xs font-bold text-blue-900 group-hover:text-blue-700 flex items-center gap-1">
+                          <span className="truncate">Browse 100+ Jobs</span>
+                          <ArrowRight className="w-3 h-3 text-blue-600" />
+                        </div>
+                        <div className="text-[11px] text-blue-600 line-clamp-1 mt-0.5">Direct 1-click ATS applications</div>
+                      </div>
                     </Link>
                   </div>
                 </div>
@@ -268,78 +276,81 @@ export default function Navbar() {
               </button>
 
               {activeDropdown === 'scholarships' && (
-                <div className="absolute left-0 mt-2 w-84 bg-white rounded-2xl shadow-xl border border-slate-200 p-3 z-50 animate-in fade-in slide-in-from-top-2">
-                  <div className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 px-3 py-1.5">
-                    100% Free US Degree Pathways
+                <div className="absolute left-0 mt-2 w-[520px] bg-white rounded-2xl shadow-2xl border border-slate-200 p-4 z-50 animate-in fade-in slide-in-from-top-2">
+                  <div className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 px-1 pb-2 mb-2 border-b border-slate-100 flex items-center justify-between">
+                    <span>100% Free US Degree Pathways</span>
+                    <span className="text-[9px] bg-indigo-50 text-indigo-700 font-bold px-2 py-0.5 rounded-full">Fall 2026</span>
                   </div>
                   
-                  <Link
-                    href="/scholarships"
-                    onClick={closeAll}
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-indigo-50/80 transition-colors group"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center shrink-0 mt-0.5">
-                      <Award className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-indigo-600 flex items-center gap-1.5">
-                        Fully-Funded Directory
-                        <span className="text-[9px] bg-indigo-100 text-indigo-800 font-bold px-1.5 py-0.2 rounded-full">Top 12 Unis</span>
+                  <div className="grid grid-cols-2 gap-2">
+                    <Link
+                      href="/scholarships"
+                      onClick={closeAll}
+                      className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-indigo-50/70 transition-colors group"
+                    >
+                      <div className="w-7 h-7 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center shrink-0 mt-0.5">
+                        <Award className="w-3.5 h-3.5" />
                       </div>
-                      <div className="text-[11px] text-slate-500">100% tuition coverage + monthly living stipend</div>
-                    </div>
-                  </Link>
+                      <div className="min-w-0">
+                        <div className="text-xs font-bold text-slate-900 group-hover:text-indigo-600 flex items-center gap-1">
+                          <span className="truncate">Fully-Funded Hub</span>
+                          <span className="text-[9px] bg-indigo-100 text-indigo-800 font-bold px-1.5 py-0.2 rounded shrink-0">12 Unis</span>
+                        </div>
+                        <div className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">Full tuition + monthly living stipend</div>
+                      </div>
+                    </Link>
 
-                  <Link
-                    href="/scholarships/fee-waiver-directory"
-                    onClick={closeAll}
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-emerald-50/80 transition-colors group"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
-                      <Sparkles className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-emerald-700 flex items-center gap-1.5">
-                        Fall 2026 Fee Waivers
-                        <span className="text-[9px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.2 rounded-full">Save $1,500+</span>
+                    <Link
+                      href="/scholarships/fee-waiver-directory"
+                      onClick={closeAll}
+                      className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-emerald-50/70 transition-colors group"
+                    >
+                      <div className="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
+                        <Sparkles className="w-3.5 h-3.5" />
                       </div>
-                      <div className="text-[11px] text-slate-500">$0 application promo codes & GRE waiver codes</div>
-                    </div>
-                  </Link>
+                      <div className="min-w-0">
+                        <div className="text-xs font-bold text-slate-900 group-hover:text-emerald-700 flex items-center gap-1">
+                          <span className="truncate">Fall 2026 Fee Waivers</span>
+                          <span className="text-[9px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.2 rounded shrink-0">Save $1.5k</span>
+                        </div>
+                        <div className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">$0 promo codes & GRE waivers</div>
+                      </div>
+                    </Link>
 
-                  <Link
-                    href="/guides/study-usa-zero-tuition-graduate-assistantship"
-                    onClick={closeAll}
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-purple-50/80 transition-colors group"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center shrink-0 mt-0.5">
-                      <BookOpen className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-purple-700 flex items-center gap-1.5">
-                        GTA & GRA Assistantships
-                        <span className="text-[9px] bg-purple-100 text-purple-800 font-bold px-1.5 py-0.2 rounded-full">Protocol</span>
+                    <Link
+                      href="/guides/study-usa-zero-tuition-graduate-assistantship"
+                      onClick={closeAll}
+                      className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-purple-50/70 transition-colors group"
+                    >
+                      <div className="w-7 h-7 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center shrink-0 mt-0.5">
+                        <BookOpen className="w-3.5 h-3.5" />
                       </div>
-                      <div className="text-[11px] text-slate-500">How to secure funded teaching & research positions</div>
-                    </div>
-                  </Link>
+                      <div className="min-w-0">
+                        <div className="text-xs font-bold text-slate-900 group-hover:text-purple-700 flex items-center gap-1">
+                          <span className="truncate">GTA & GRA Positions</span>
+                          <span className="text-[9px] bg-purple-100 text-purple-800 font-bold px-1.5 py-0.2 rounded shrink-0">Guide</span>
+                        </div>
+                        <div className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">Funded teaching & research jobs</div>
+                      </div>
+                    </Link>
 
-                  <Link
-                    href="/guides/day-1-cpt-universities-usa-legitimate-list-uscis-guide-2026"
-                    onClick={closeAll}
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-amber-50/80 transition-colors group"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center shrink-0 mt-0.5">
-                      <ShieldCheck className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-amber-700 flex items-center gap-1.5">
-                        Day 1 CPT Universities
-                        <span className="text-[9px] bg-amber-100 text-amber-800 font-bold px-1.5 py-0.2 rounded-full">2026 List</span>
+                    <Link
+                      href="/guides/day-1-cpt-universities-usa-legitimate-list-uscis-guide-2026"
+                      onClick={closeAll}
+                      className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-amber-50/70 transition-colors group"
+                    >
+                      <div className="w-7 h-7 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center shrink-0 mt-0.5">
+                        <ShieldCheck className="w-3.5 h-3.5" />
                       </div>
-                      <div className="text-[11px] text-slate-500">Accredited colleges, hybrid courses & work permits</div>
-                    </div>
-                  </Link>
+                      <div className="min-w-0">
+                        <div className="text-xs font-bold text-slate-900 group-hover:text-amber-700 flex items-center gap-1">
+                          <span className="truncate">Day 1 CPT Colleges</span>
+                          <span className="text-[9px] bg-amber-100 text-amber-800 font-bold px-1.5 py-0.2 rounded shrink-0">2026</span>
+                        </div>
+                        <div className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">Accredited hybrid work-study</div>
+                      </div>
+                    </Link>
+                  </div>
                 </div>
               )}
             </div>
@@ -358,114 +369,120 @@ export default function Navbar() {
               </button>
 
               {activeDropdown === 'tools' && (
-                <div className="absolute left-0 mt-2 w-84 bg-white rounded-2xl shadow-xl border border-slate-200 p-3 z-50 animate-in fade-in slide-in-from-top-2">
-                  <div className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 px-3 py-1.5">
-                    Live Data Calculators & Scanners
+                <div className="absolute left-1/2 -translate-x-1/3 mt-2 w-[580px] bg-white rounded-2xl shadow-2xl border border-slate-200 p-4 z-50 animate-in fade-in slide-in-from-top-2">
+                  <div className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 px-1 pb-2 mb-2 border-b border-slate-100 flex items-center justify-between">
+                    <span>Live Statutory Data Calculators & Scanners</span>
+                    <span className="text-[9px] bg-amber-50 text-amber-800 font-bold px-2 py-0.5 rounded-full">100% Free Tools</span>
                   </div>
                   
-                  <Link
-                    href="/tools/ats-scanner"
-                    onClick={closeAll}
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-blue-50/80 transition-colors group"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center shrink-0 mt-0.5">
-                      <Sparkles className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-blue-600 flex items-center gap-1.5">
-                        AI ATS Resume Scanner
-                        <span className="text-[9px] bg-blue-100 text-blue-800 font-bold px-1.5 py-0.2 rounded-full">Workday / GH</span>
+                  <div className="grid grid-cols-2 gap-2">
+                    <Link
+                      href="/tools/ats-scanner"
+                      onClick={closeAll}
+                      className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-blue-50/70 transition-colors group"
+                    >
+                      <div className="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center shrink-0 mt-0.5">
+                        <Sparkles className="w-3.5 h-3.5" />
                       </div>
-                      <div className="text-[11px] text-slate-500">Instant resume ATS match score & keyword optimization</div>
-                    </div>
-                  </Link>
-
-                  <Link
-                    href="/tools/lca-salary-search"
-                    onClick={closeAll}
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-amber-50/80 transition-colors group"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 mt-0.5">
-                      <Search className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-amber-700 flex items-center gap-1.5">
-                        Live H-1B Prevailing Wage Search
-                        <span className="text-[9px] bg-amber-100 text-amber-800 font-bold px-1.5 py-0.2 rounded-full">DOL Data</span>
+                      <div className="min-w-0">
+                        <div className="text-xs font-bold text-slate-900 group-hover:text-blue-600 flex items-center gap-1">
+                          <span className="truncate">AI ATS Resume Scanner</span>
+                          <span className="text-[9px] bg-blue-100 text-blue-800 font-bold px-1.5 py-0.2 rounded shrink-0">Score</span>
+                        </div>
+                        <div className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">Workday & Greenhouse keywords</div>
                       </div>
-                      <div className="text-[11px] text-slate-500">Search certified LCA wage filings by title & city</div>
-                    </div>
-                  </Link>
+                    </Link>
 
-                  <Link
-                    href="/tools/eb2-niw-evaluator"
-                    onClick={closeAll}
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-indigo-50/80 transition-colors group"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center shrink-0 mt-0.5">
-                      <Scale className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-indigo-600 flex items-center gap-1.5">
-                        EB-2 NIW Profile Evaluator
-                        <span className="text-[9px] bg-indigo-100 text-indigo-800 font-bold px-1.5 py-0.2 rounded-full">Dhanasar</span>
+                    <Link
+                      href="/tools/lca-salary-search"
+                      onClick={closeAll}
+                      className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-amber-50/70 transition-colors group"
+                    >
+                      <div className="w-7 h-7 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 mt-0.5">
+                        <Search className="w-3.5 h-3.5" />
                       </div>
-                      <div className="text-[11px] text-slate-500">Green Card self-petition odds & citation evaluation</div>
-                    </div>
-                  </Link>
-
-                  <Link
-                    href="/tools/opt-grace-period-calculator"
-                    onClick={closeAll}
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-rose-50/80 transition-colors group"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-rose-100 text-rose-700 flex items-center justify-center shrink-0 mt-0.5">
-                      <Clock className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-rose-600 flex items-center gap-1.5">
-                        F-1 OPT Grace Period Calculator
-                        <span className="text-[9px] bg-rose-100 text-rose-800 font-bold px-1.5 py-0.2 rounded-full">60-Day SEVIS</span>
+                      <div className="min-w-0">
+                        <div className="text-xs font-bold text-slate-900 group-hover:text-amber-700 flex items-center gap-1">
+                          <span className="truncate">H-1B Wage Search</span>
+                          <span className="text-[9px] bg-amber-100 text-amber-800 font-bold px-1.5 py-0.2 rounded shrink-0">DOL Data</span>
+                        </div>
+                        <div className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">Certified LCA prevailing wages</div>
                       </div>
-                      <div className="text-[11px] text-slate-500">Track 90/150-day unemployment limits & transfer dates</div>
-                    </div>
-                  </Link>
+                    </Link>
 
-                  <Link
-                    href="/tools/w8ben-validator"
-                    onClick={closeAll}
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-emerald-50/80 transition-colors group"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
-                      <FileCheck className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-emerald-700 flex items-center gap-1.5">
-                        W-8BEN Compliance Validator
-                        <span className="text-[9px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.2 rounded-full">Tax Treaty</span>
+                    <Link
+                      href="/tools/eb2-niw-evaluator"
+                      onClick={closeAll}
+                      className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-indigo-50/70 transition-colors group"
+                    >
+                      <div className="w-7 h-7 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center shrink-0 mt-0.5">
+                        <Scale className="w-3.5 h-3.5" />
                       </div>
-                      <div className="text-[11px] text-slate-500">Validate FTIN & calculate remote contractor tax withholding</div>
-                    </div>
-                  </Link>
+                      <div className="min-w-0">
+                        <div className="text-xs font-bold text-slate-900 group-hover:text-indigo-600 flex items-center gap-1">
+                          <span className="truncate">EB-2 NIW Evaluator</span>
+                          <span className="text-[9px] bg-indigo-100 text-indigo-800 font-bold px-1.5 py-0.2 rounded shrink-0">Dhanasar</span>
+                        </div>
+                        <div className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">Green Card self-petition odds</div>
+                      </div>
+                    </Link>
 
-                  <Link
-                    href="/tracker"
-                    onClick={closeAll}
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 transition-colors group"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center shrink-0 mt-0.5">
-                      <CheckSquare className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-blue-600">Application Status CRM</div>
-                      <div className="text-[11px] text-slate-500">Organize interviews, recruiter follow-ups & deadlines</div>
-                    </div>
-                  </Link>
+                    <Link
+                      href="/tools/opt-grace-period-calculator"
+                      onClick={closeAll}
+                      className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-rose-50/70 transition-colors group"
+                    >
+                      <div className="w-7 h-7 rounded-lg bg-rose-100 text-rose-700 flex items-center justify-center shrink-0 mt-0.5">
+                        <Clock className="w-3.5 h-3.5" />
+                      </div>
+                      <div className="min-w-0">
+                        <div className="text-xs font-bold text-slate-900 group-hover:text-rose-600 flex items-center gap-1">
+                          <span className="truncate">F-1 OPT Grace Period</span>
+                          <span className="text-[9px] bg-rose-100 text-rose-800 font-bold px-1.5 py-0.2 rounded shrink-0">60 Days</span>
+                        </div>
+                        <div className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">Track unemployment & SEVIS dates</div>
+                      </div>
+                    </Link>
+
+                    <Link
+                      href="/tools/w8ben-validator"
+                      onClick={closeAll}
+                      className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-emerald-50/70 transition-colors group"
+                    >
+                      <div className="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
+                        <FileCheck className="w-3.5 h-3.5" />
+                      </div>
+                      <div className="min-w-0">
+                        <div className="text-xs font-bold text-slate-900 group-hover:text-emerald-700 flex items-center gap-1">
+                          <span className="truncate">W-8BEN Validator</span>
+                          <span className="text-[9px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.2 rounded shrink-0">Treaty</span>
+                        </div>
+                        <div className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">Validate FTIN & foreign tax treaty</div>
+                      </div>
+                    </Link>
+
+                    <Link
+                      href="/tracker"
+                      onClick={closeAll}
+                      className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-slate-50 transition-colors group"
+                    >
+                      <div className="w-7 h-7 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center shrink-0 mt-0.5">
+                        <CheckSquare className="w-3.5 h-3.5" />
+                      </div>
+                      <div className="min-w-0">
+                        <div className="text-xs font-bold text-slate-900 group-hover:text-blue-600 flex items-center gap-1">
+                          <span className="truncate">Application CRM</span>
+                          <span className="text-[9px] bg-slate-100 text-slate-700 font-bold px-1.5 py-0.2 rounded shrink-0">CRM</span>
+                        </div>
+                        <div className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">Track interviews & milestones</div>
+                      </div>
+                    </Link>
+                  </div>
                 </div>
               )}
             </div>
 
-            {/* 4. Master Guides & Platform Hub */}
+            {/* 4. Resources & Guides Dropdown */}
             <div className="relative">
               <button
                 onClick={() => handleDropdownToggle('resources')}
@@ -479,73 +496,90 @@ export default function Navbar() {
               </button>
 
               {activeDropdown === 'resources' && (
-                <div className="absolute left-0 mt-2 w-84 bg-white rounded-2xl shadow-xl border border-slate-200 p-3 z-50 animate-in fade-in slide-in-from-top-2">
-                  <div className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 px-3 py-1.5">
-                    Institutional Knowledge & Network
+                <div className="absolute right-0 mt-2 w-[500px] bg-white rounded-2xl shadow-2xl border border-slate-200 p-4 z-50 animate-in fade-in slide-in-from-top-2">
+                  <div className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 px-1 pb-2 mb-2 border-b border-slate-100 flex items-center justify-between">
+                    <span>Institutional Blueprints & Company Hub</span>
+                    <span className="text-[9px] bg-purple-50 text-purple-700 font-bold px-2 py-0.5 rounded-full">17 Guides</span>
                   </div>
 
-                  <Link
-                    href="/guides"
-                    onClick={closeAll}
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-purple-50/80 transition-colors group"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center shrink-0 mt-0.5">
-                      <BookOpen className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-purple-700 flex items-center gap-1.5">
-                        Master Career Guides (17)
-                        <span className="text-[9px] bg-purple-100 text-purple-800 font-bold px-1.5 py-0.2 rounded-full">Updated</span>
+                  <div className="grid grid-cols-2 gap-2">
+                    <Link
+                      href="/guides"
+                      onClick={closeAll}
+                      className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-purple-50/70 transition-colors group"
+                    >
+                      <div className="w-7 h-7 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center shrink-0 mt-0.5">
+                        <BookOpen className="w-3.5 h-3.5" />
                       </div>
-                      <div className="text-[11px] text-slate-500">PERM Green Card, Salary Negotiation, Form I-912 & NIW</div>
-                    </div>
-                  </Link>
+                      <div className="min-w-0">
+                        <div className="text-xs font-bold text-slate-900 group-hover:text-purple-700 flex items-center gap-1">
+                          <span className="truncate">Master Guides (17)</span>
+                          <span className="text-[9px] bg-purple-100 text-purple-800 font-bold px-1.5 py-0.2 rounded shrink-0">New</span>
+                        </div>
+                        <div className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">PERM, Salary Negotiation & NIW</div>
+                      </div>
+                    </Link>
 
-                  <Link
-                    href="/talent"
-                    onClick={closeAll}
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-blue-50/80 transition-colors group"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center shrink-0 mt-0.5">
-                      <Users className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-blue-600">Candidate Talent Board</div>
-                      <div className="text-[11px] text-slate-500">Verified international candidates seeking US sponsors</div>
-                    </div>
-                  </Link>
+                    <Link
+                      href="/talent"
+                      onClick={closeAll}
+                      className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-blue-50/70 transition-colors group"
+                    >
+                      <div className="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center shrink-0 mt-0.5">
+                        <Users className="w-3.5 h-3.5" />
+                      </div>
+                      <div className="min-w-0">
+                        <div className="text-xs font-bold text-slate-900 group-hover:text-blue-600 flex items-center gap-1">
+                          <span className="truncate">Talent Board</span>
+                          <span className="text-[9px] bg-blue-100 text-blue-800 font-bold px-1.5 py-0.2 rounded shrink-0">Radar</span>
+                        </div>
+                        <div className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">Vetted international candidates</div>
+                      </div>
+                    </Link>
 
-                  <Link
-                    href="/services"
-                    onClick={closeAll}
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-emerald-50/80 transition-colors group"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 mt-0.5">
-                      <Sparkles className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-emerald-700">1-on-1 Visa & Career Concierge</div>
-                      <div className="text-[11px] text-slate-500">Personalized profile auditing and petition strategy</div>
-                    </div>
-                  </Link>
+                    <Link
+                      href="/services"
+                      onClick={closeAll}
+                      className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-emerald-50/70 transition-colors group"
+                    >
+                      <div className="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 mt-0.5">
+                        <Sparkles className="w-3.5 h-3.5" />
+                      </div>
+                      <div className="min-w-0">
+                        <div className="text-xs font-bold text-slate-900 group-hover:text-emerald-700 flex items-center gap-1">
+                          <span className="truncate">1-on-1 Concierge</span>
+                          <span className="text-[9px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.2 rounded shrink-0">VIP</span>
+                        </div>
+                        <div className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">Personalized petition strategy</div>
+                      </div>
+                    </Link>
 
-                  <div className="pt-2 border-t border-slate-100 mt-1 grid grid-cols-2 gap-1 px-1">
                     <Link
                       href="/about"
                       onClick={closeAll}
-                      className="p-2 rounded-lg text-slate-700 hover:bg-slate-50 hover:text-blue-600 text-xs font-bold flex items-center gap-1.5"
+                      className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-slate-50 transition-colors group"
                     >
-                      <Info className="w-3.5 h-3.5 text-slate-400" />
-                      <span>About Us</span>
+                      <div className="w-7 h-7 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center shrink-0 mt-0.5">
+                        <Info className="w-3.5 h-3.5" />
+                      </div>
+                      <div className="min-w-0">
+                        <div className="text-xs font-bold text-slate-900 group-hover:text-blue-600 flex items-center gap-1">
+                          <span className="truncate">About Platform</span>
+                        </div>
+                        <div className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">Our compliance mission & team</div>
+                      </div>
                     </Link>
-                    <Link
-                      href="/contact"
-                      onClick={closeAll}
-                      className="p-2 rounded-lg text-slate-700 hover:bg-slate-50 hover:text-blue-600 text-xs font-bold flex items-center gap-1.5"
-                    >
+                  </div>
+
+                  <div className="pt-2 border-t border-slate-100 mt-2 flex items-center justify-between text-xs font-bold text-slate-600 px-1">
+                    <Link href="/contact" onClick={closeAll} className="hover:text-blue-600 flex items-center gap-1">
                       <MessageCircle className="w-3.5 h-3.5 text-slate-400" />
-                      <span>Contact Desk</span>
+                      <span>Contact Helpdesk</span>
                     </Link>
+                    <a href="https://wa.me/8801627714636" target="_blank" rel="noopener noreferrer" className="text-emerald-700 hover:text-emerald-800 flex items-center gap-1 font-bold">
+                      <PhoneCall className="w-3.5 h-3.5" />
+                      <span>WhatsApp Direct: 01627714636</span>
+                    </a>
                   </div>
                 </div>
               )}
