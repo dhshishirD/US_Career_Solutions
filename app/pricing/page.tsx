@@ -44,7 +44,7 @@ export default function PricingPage() {
     },
     {
       q: 'How can I pay from Bangladesh without international cards?',
-      a: 'We provide direct domestic payments via bKash and Nagad Send Money. Simply select BDT, send the fee (৳1,990 for Fast-Track or ৳4,990 for VIP) to our official number, and submit your Transaction ID (TrxID) for immediate account upgrade.'
+      a: 'We provide direct domestic payments via bKash, Nagad, and Rocket Send Money to our official personal account at 01627714636. Simply select BDT, send the fee (৳1,990 for Fast-Track or ৳4,990 for VIP), and submit your Transaction ID (TrxID) for immediate account upgrade. Anyone can also contact us directly on WhatsApp at 01627714636 for clarification before making a payment.'
     },
     {
       q: 'How do U.S. and international candidates pay in USD?',
@@ -80,7 +80,7 @@ export default function PricingPage() {
           </p>
 
           {/* Interactive Currency Switcher */}
-          <div className="pt-3 flex items-center justify-center">
+          <div className="pt-3 flex flex-col items-center justify-center gap-3">
             <div className="inline-flex items-center p-1.5 bg-white border border-slate-200 rounded-2xl shadow-sm">
               <button
                 type="button"
@@ -105,9 +105,20 @@ export default function PricingPage() {
                 }`}
               >
                 <Smartphone className="w-3.5 h-3.5" />
-                <span>BDT (৳) • Bangladesh (bKash/Nagad)</span>
+                <span>BDT (৳) • Bangladesh (bKash/Nagad/Rocket)</span>
               </button>
             </div>
+
+            {/* Pre-Payment WhatsApp Clarification Link */}
+            <a
+              href="https://wa.me/8801627714636?text=Hello%20US%20Career%20Solutions%2C%20I%20have%20a%20question%20regarding%20packages%20and%20payment%20options."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-800 text-xs font-bold transition-colors shadow-sm"
+            >
+              <Smartphone className="w-3.5 h-3.5 text-emerald-600" />
+              <span>Need pre-payment clarification? Chat on WhatsApp: 01627714636</span>
+            </a>
           </div>
         </div>
 

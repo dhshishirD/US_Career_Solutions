@@ -300,7 +300,7 @@ export interface PaymentSubmission {
   plan: PlanTier;
   currency: 'BDT' | 'USD';
   amount: string;
-  method: 'bkash' | 'nagad' | 'us_bank_wire' | 'card';
+  method: 'bkash' | 'nagad' | 'rocket' | 'us_bank_wire' | 'card';
   senderPhone?: string;
   trxId?: string;
   senderName?: string;

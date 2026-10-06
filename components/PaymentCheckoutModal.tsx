@@ -35,7 +35,7 @@ export default function PaymentCheckoutModal({
 }: PaymentCheckoutModalProps) {
   const [plan, setPlan] = useState<'fast_track' | 'vip'>(initialPlan === 'vip' ? 'vip' : 'fast_track');
   const [currency, setCurrency] = useState<'BDT' | 'USD'>(initialCurrency);
-  const [bdtMethod, setBdtMethod] = useState<'bkash' | 'nagad'>('bkash');
+  const [bdtMethod, setBdtMethod] = useState<'bkash' | 'nagad' | 'rocket'>('bkash');
   
   // BDT form state
   const [senderPhone, setSenderPhone] = useState('');
@@ -181,7 +181,7 @@ export default function PaymentCheckoutModal({
   };
 
   const activePricing = planPricing[plan];
-  const bKashNumber = '01719743174';
+  const bdWalletNumber = '01627714636';
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-200">
@@ -247,7 +247,7 @@ export default function PaymentCheckoutModal({
 
               <div className="pt-3 flex flex-col sm:flex-row items-center justify-center gap-3">
                 <a
-                  href={`https://wa.me/8801719743174?text=${encodeURIComponent(`Hello US Career Solutions, I just submitted payment for ${activePricing.name}. TrxID/Ref: ${currency === 'BDT' ? trxId : wireRef}. Please confirm.`)}`}
+                  href={`https://wa.me/8801627714636?text=${encodeURIComponent(`Hello US Career Solutions, I just submitted payment for ${activePricing.name}. TrxID/Ref: ${currency === 'BDT' ? trxId : wireRef}. Please confirm.`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm flex items-center justify-center gap-2 transition-colors"
@@ -349,35 +349,72 @@ export default function PaymentCheckoutModal({
                 </div>
               </div>
 
-              {/* Rail 1: Bangladesh bKash & Nagad */}
+              {/* Rail 1: Bangladesh bKash, Nagad & Rocket */}
               {currency === 'BDT' && (
                 <div className="space-y-4">
-                  {/* bKash / Nagad Method Switcher */}
-                  <div className="flex items-center gap-3">
+                  
+                  {/* Pre-Payment WhatsApp Clarification Help Banner */}
+                  <div className="bg-emerald-50/90 border border-emerald-300 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-sm">
+                    <div className="space-y-0.5">
+                      <div className="flex items-center gap-2">
+                        <span className="w-2.5 h-2.5 rounded-full bg-emerald-600 animate-pulse"></span>
+                        <span className="text-xs font-black text-emerald-950">Pre-Payment Clarification Available</span>
+                      </div>
+                      <p className="text-xs text-emerald-800 font-medium">
+                        Have questions before sending money? Chat directly with us on WhatsApp at <strong className="font-mono text-emerald-950 font-bold">{bdWalletNumber}</strong>.
+                      </p>
+                    </div>
+                    <a
+                      href={`https://wa.me/8801627714636?text=${encodeURIComponent(`Hello US Career Solutions, I would like clarification before purchasing the ${activePricing.name} package.`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="shrink-0 px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-sm transition-colors"
+                    >
+                      <Smartphone className="w-3.5 h-3.5" />
+                      <span>Chat on WhatsApp</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  </div>
+
+                  {/* bKash / Nagad / Rocket Method Switcher */}
+                  <div className="grid grid-cols-3 gap-2">
                     <button
                       type="button"
                       onClick={() => setBdtMethod('bkash')}
-                      className={`flex-1 py-2.5 px-3 rounded-xl border-2 flex items-center justify-center gap-2 text-xs font-bold transition-all ${
+                      className={`py-2 px-2.5 rounded-xl border-2 flex items-center justify-center gap-1.5 text-xs font-bold transition-all ${
                         bdtMethod === 'bkash'
                           ? 'border-pink-500 bg-pink-50/50 text-pink-900'
                           : 'border-slate-200 text-slate-600 hover:border-slate-300'
                       }`}
                     >
                       <span className="w-2 h-2 rounded-full bg-pink-600"></span>
-                      <span>bKash Send Money</span>
+                      <span>bKash (Personal)</span>
                     </button>
 
                     <button
                       type="button"
                       onClick={() => setBdtMethod('nagad')}
-                      className={`flex-1 py-2.5 px-3 rounded-xl border-2 flex items-center justify-center gap-2 text-xs font-bold transition-all ${
+                      className={`py-2 px-2.5 rounded-xl border-2 flex items-center justify-center gap-1.5 text-xs font-bold transition-all ${
                         bdtMethod === 'nagad'
                           ? 'border-orange-500 bg-orange-50/50 text-orange-900'
                           : 'border-slate-200 text-slate-600 hover:border-slate-300'
                       }`}
                     >
                       <span className="w-2 h-2 rounded-full bg-orange-600"></span>
-                      <span>Nagad Send Money</span>
+                      <span>Nagad (Personal)</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setBdtMethod('rocket')}
+                      className={`py-2 px-2.5 rounded-xl border-2 flex items-center justify-center gap-1.5 text-xs font-bold transition-all ${
+                        bdtMethod === 'rocket'
+                          ? 'border-purple-500 bg-purple-50/50 text-purple-900'
+                          : 'border-slate-200 text-slate-600 hover:border-slate-300'
+                      }`}
+                    >
+                      <span className="w-2 h-2 rounded-full bg-purple-600"></span>
+                      <span>Rocket (Personal)</span>
                     </button>
                   </div>
 
@@ -386,15 +423,15 @@ export default function PaymentCheckoutModal({
                     <div className="flex items-start justify-between gap-2">
                       <div>
                         <div className="text-[11px] font-bold uppercase tracking-wider text-slate-500">
-                          {bdtMethod === 'bkash' ? 'bKash' : 'Nagad'} Number (Personal)
+                          {bdtMethod === 'bkash' ? 'bKash' : bdtMethod === 'nagad' ? 'Nagad' : 'Rocket'} Number (Personal)
                         </div>
                         <div className="font-mono text-base font-black text-slate-900 tracking-wider mt-0.5">
-                          {bKashNumber}
+                          {bdWalletNumber}
                         </div>
                       </div>
                       <button
                         type="button"
-                        onClick={() => copyToClipboard(bKashNumber, 'number')}
+                        onClick={() => copyToClipboard(bdWalletNumber, 'number')}
                         className="px-2.5 py-1.5 rounded-lg border border-slate-300 hover:bg-white text-slate-700 text-[11px] font-bold flex items-center gap-1.5 transition-colors"
                       >
                         {copiedField === 'number' ? (
@@ -413,10 +450,10 @@ export default function PaymentCheckoutModal({
 
                     <div className="text-xs text-slate-600 space-y-1 pt-1 border-t border-slate-200/70">
                       <p>
-                        1. Open your <strong>{bdtMethod === 'bkash' ? 'bKash' : 'Nagad'}</strong> App and select <strong>Send Money</strong>.
+                        1. Open your <strong>{bdtMethod === 'bkash' ? 'bKash' : bdtMethod === 'nagad' ? 'Nagad' : 'Rocket'}</strong> App and select <strong>Send Money</strong>.
                       </p>
                       <p>
-                        2. Send exact amount: <strong className="text-slate-900">{activePricing.bdt}</strong> to <span className="font-mono font-bold text-slate-900">{bKashNumber}</span>.
+                        2. Send exact amount: <strong className="text-slate-900">{activePricing.bdt}</strong> to <span className="font-mono font-bold text-slate-900">{bdWalletNumber}</span>.
                       </p>
                       <p>
                         3. Enter the <strong>Transaction ID (TrxID)</strong> and your mobile number below.
@@ -428,12 +465,12 @@ export default function PaymentCheckoutModal({
                   <form onSubmit={handleBdtSubmit} className="space-y-3">
                     <div>
                       <label className="block text-xs font-bold text-slate-700 mb-1">
-                        Your {bdtMethod === 'bkash' ? 'bKash' : 'Nagad'} Sender Mobile Number
+                        Your {bdtMethod === 'bkash' ? 'bKash' : bdtMethod === 'nagad' ? 'Nagad' : 'Rocket'} Sender Mobile Number
                       </label>
                       <input
                         type="text"
                         required
-                        placeholder="017XXXXXXXX"
+                        placeholder="01XXXXXXXXX"
                         value={senderPhone}
                         onChange={(e) => setSenderPhone(e.target.value)}
                         className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs font-medium focus:ring-2 focus:ring-blue-600 focus:border-blue-600 outline-none"
