@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { PlanTier, getCurrentUser, createGoogleUserSession } from '@/lib/user-vault';
 import GoogleAuthModal from '@/components/GoogleAuthModal';
+import PaymentCheckoutModal from '@/components/PaymentCheckoutModal';
 import { signInWithGoogleSupabase } from '@/lib/supabase';
 
 function ChoosePlanContent() {
@@ -31,6 +32,7 @@ function ChoosePlanContent() {
 
   const [selectedPlan, setSelectedPlan] = useState<PlanTier>('free');
   const [showGoogleModal, setShowGoogleModal] = useState(false);
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
   const [loading, setLoading] = useState(false);
 
   // If already logged in, redirect directly to dashboard
@@ -359,6 +361,20 @@ function ChoosePlanContent() {
             <Lock className="w-3.5 h-3.5 text-slate-400" />
             <span>Instant Access • No credit card required for Free Explorer (5 Apps/Month)</span>
           </div>
+
+          {selectedPlan !== 'free' && (
+            <div className="pt-3 border-t border-slate-100 flex flex-col items-center gap-1.5">
+              <span className="text-[11px] text-slate-500 font-medium">Ready to pay directly?</span>
+              <button
+                type="button"
+                onClick={() => setShowPaymentModal(true)}
+                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-800 font-bold text-xs rounded-xl shadow-sm transition-all"
+              >
+                <span>Pay & Activate via bKash / Nagad / US Wire</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          )}
         </div>
 
       </div>
@@ -371,6 +387,16 @@ function ChoosePlanContent() {
         targetJobId={jobId}
         targetTitle={jobTitle}
         targetCompany={company}
+      />
+
+      <PaymentCheckoutModal
+        isOpen={showPaymentModal}
+        onClose={() => setShowPaymentModal(false)}
+        initialPlan={selectedPlan}
+        onSuccess={() => {
+          setShowPaymentModal(false);
+          router.push(`/dashboard${jobId ? `?jobId=${encodeURIComponent(jobId)}&title=${encodeURIComponent(jobTitle)}&company=${encodeURIComponent(company)}` : ''}`);
+        }}
       />
     </div>
   );

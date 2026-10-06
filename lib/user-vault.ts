@@ -293,3 +293,64 @@ export function deleteConnection(id: string): void {
     }
   }
 }
+
+export interface PaymentSubmission {
+  id: string;
+  userId?: string;
+  plan: PlanTier;
+  currency: 'BDT' | 'USD';
+  amount: string;
+  method: 'bkash' | 'nagad' | 'us_bank_wire' | 'card';
+  senderPhone?: string;
+  trxId?: string;
+  senderName?: string;
+  senderBank?: string;
+  reference?: string;
+  status: 'pending' | 'verified';
+  submittedAt: string;
+}
+
+export function upgradeUserPlan(newPlan: PlanTier, creditsToAdd?: number): GoogleUserProfile | null {
+  const user = getCurrentUser();
+  if (!user) return null;
+  const creditsMap: Record<PlanTier, number> = {
+    free: 5,
+    fast_track: 25,
+    vip: 100
+  };
+  const added = creditsToAdd !== undefined ? creditsToAdd : creditsMap[newPlan];
+  user.plan = newPlan;
+  user.credits = Math.max(user.credits, 0) + added;
+  saveCurrentUser(user);
+  return user;
+}
+
+export function savePaymentSubmission(sub: Omit<PaymentSubmission, 'id' | 'submittedAt'>): PaymentSubmission {
+  const newSub: PaymentSubmission = {
+    ...sub,
+    id: `pay_${Date.now()}`,
+    submittedAt: new Date().toISOString()
+  };
+  if (typeof window !== 'undefined') {
+    try {
+      const raw = localStorage.getItem('usc_payments_history');
+      const list: PaymentSubmission[] = raw ? JSON.parse(raw) : [];
+      list.unshift(newSub);
+      localStorage.setItem('usc_payments_history', JSON.stringify(list));
+    } catch (e) {
+      console.warn('Error saving payment record:', e);
+    }
+  }
+  return newSub;
+}
+
+export function getPaymentSubmissions(): PaymentSubmission[] {
+  if (typeof window === 'undefined') return [];
+  try {
+    const raw = localStorage.getItem('usc_payments_history');
+    return raw ? JSON.parse(raw) : [];
+  } catch (e) {
+    return [];
+  }
+}
+

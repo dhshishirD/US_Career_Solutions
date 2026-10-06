@@ -26,7 +26,8 @@ import { FileCheck, Stethoscope, Tractor,
   Flame,
   Award,
   ArrowRight,
-  ExternalLink
+  ExternalLink,
+  CreditCard
 } from 'lucide-react';
 import { getCurrentUser, GoogleUserProfile } from '@/lib/user-vault';
 
@@ -611,6 +612,13 @@ export default function Navbar() {
             </Link>
 
             <Link
+              href="/pricing"
+              className="px-3 py-2 text-xs font-bold text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-lg transition-colors"
+            >
+              Pricing
+            </Link>
+
+            <Link
               href="/about"
               className="px-3 py-2 text-xs font-bold text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-lg transition-colors"
             >
@@ -761,6 +769,15 @@ export default function Navbar() {
             >
               <User className="w-4 h-4 text-blue-600" />
               <span>{currentUser ? `My Candidate Dashboard (${currentUser.credits} Apps)` : 'Sign In with Google'}</span>
+            </Link>
+
+            <Link
+              href="/pricing"
+              onClick={closeAll}
+              className="w-full flex items-center justify-center gap-2 p-3 rounded-xl bg-blue-50 text-blue-900 font-bold text-sm border border-blue-200 shadow-sm"
+            >
+              <CreditCard className="w-4 h-4 text-blue-600" />
+              <span>Pricing & Packages (5 Free / Mo)</span>
             </Link>
 
             <Link
