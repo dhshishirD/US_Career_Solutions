@@ -32,7 +32,13 @@ import {
   Edit3, 
   RefreshCw,
   FolderOpen,
-  HelpCircle
+  HelpCircle,
+  Search,
+  Globe,
+  MapPin,
+  Filter,
+  Eye,
+  X
 } from 'lucide-react';
 import { 
   GoogleUserProfile, 
@@ -53,11 +59,13 @@ import {
 } from '@/lib/user-vault';
 import { parseResumeIntelligently } from '@/lib/resume-intelligence';
 import { generateATSResumeDocx } from '@/lib/export-ats-resume';
-import { TrackedApplication, ApplicationStatus } from '@/lib/types';
+import { TrackedApplication, ApplicationStatus, JobPosting, VisaSponsorshipType } from '@/lib/types';
+import { INITIAL_JOBS } from '@/lib/jobs-data';
 import GoogleAuthModal from '@/components/GoogleAuthModal';
+import PaymentCheckoutModal from '@/components/PaymentCheckoutModal';
 import { signOutSupabase } from '@/lib/supabase';
 
-type ActiveTab = 'studio' | 'tracker' | 'outputs' | 'connections' | 'profile';
+type ActiveTab = 'jobs' | 'studio' | 'tracker' | 'outputs' | 'connections' | 'profile';
 
 function DashboardContent() {
   const searchParams = useSearchParams();
@@ -70,6 +78,7 @@ function DashboardContent() {
   // Auth & Session
   const [user, setUser] = useState<GoogleUserProfile | null>(null);
   const [showAuthModal, setShowAuthModal] = useState(false);
+  const [showUpgradeModal, setShowUpgradeModal] = useState(false);
   const [activeTab, setActiveTab] = useState<ActiveTab>('studio');
 
   // Dossier & Studio States
@@ -88,6 +97,12 @@ function DashboardContent() {
   const [isDownloadingDocx, setIsDownloadingDocx] = useState(false);
   const [copiedType, setCopiedType] = useState<string | null>(null);
   const [dispatchSuccess, setDispatchSuccess] = useState(false);
+
+  // Job Browser States
+  const [jobSearchQuery, setJobSearchQuery] = useState('');
+  const [selectedJobCategory, setSelectedJobCategory] = useState<string>('all');
+  const [selectedJobForModal, setSelectedJobForModal] = useState<JobPosting | null>(null);
+  const [targetedJobAlert, setTargetedJobAlert] = useState<string | null>(null);
 
   // Data Collections
   const [trackedApps, setTrackedApps] = useState<TrackedApplication[]>([]);
@@ -353,6 +368,241 @@ ${user?.email || ''} | ${user?.phone || ''}`;
     setShowAddConnModal(false);
   };
 
+  const handleLoadSampleProfile = () => {
+    const sampleRole = 'Full Stack Software Engineer';
+    const sampleCompany = 'Amazon Web Services (AWS)';
+    const sampleSkills = ['React', 'TypeScript', 'Node.js', 'Next.js', 'PostgreSQL', 'AWS Cloud', 'Docker', 'REST APIs'];
+    const sampleCV = `DALOYAR HASSAN
+Senior Software Engineer | Full Stack Architect
+Email: candidate@uscareersolutions.online | Phone: +1 (555) 019-2834
+LinkedIn: linkedin.com/in/verified-candidate | Location: Open to Relocation / Remote
+
+PROFESSIONAL SUMMARY
+Results-driven Full Stack Software Engineer with 5+ years of hands-on experience designing and delivering resilient web architectures, distributed microservices, and high-conversion client platforms. Proven capability collaborating asynchronously in global engineering squads, optimizing CI/CD velocity by 40%, and upholding strict U.S. corporate compliance standards.
+
+CORE TECHNICAL COMPETENCIES
+• Frontend: React 19, Next.js 15, TypeScript, Tailwind CSS, KaTeX, Redux Toolkit
+• Backend & Cloud: Node.js, Python, PostgreSQL, Supabase, Redis, AWS (ECS, S3, CloudFront)
+• System Architecture: RESTful APIs, GraphQL, Microservices, CI/CD Pipeline Automation, Git
+• Compliance & Governance: ATS Resume Formatting, W-8BEN Tax Optimization, F-1 STEM OPT
+
+PROFESSIONAL EXPERIENCE
+Senior Software Engineer | Enterprise Platform Solutions
+2023 - Present
+• Architected enterprise career discovery engine supporting 10,000+ daily applicant queries with sub-100ms database response latency.
+• Engineered automated ATS resume scoring and DOCX generator conforming to Workday and Greenhouse parsing specifications.
+• Mentored junior engineers, established TypeScript type-safety standards, and led sprint retrospectives.
+
+Software Engineer | High-Growth Cloud Engineering
+2021 - 2023
+• Deployed full-stack microservices reducing server-side payload size by 35% across high-traffic endpoints.
+• Automated cross-border payment reconciliation pipelines handling multi-currency settlements (USD / BDT).
+• Integrated OAuth 2.0 authentication mechanisms ensuring zero-trust session integrity.
+
+EDUCATION & CERTIFICATIONS
+Bachelor of Science in Computer Science & Engineering (B.Sc CSE)
+Verified U.S. Equivalency (WES Evaluated) • High Honors`;
+
+    const sampleCL = `Dear Hiring Team at ${sampleCompany},
+
+I am writing to formally express my enthusiasm for the ${sampleRole} opening at ${sampleCompany}. With a proven track record of architecting scalable web applications, streamlining asynchronous delivery, and implementing high-reliability cloud systems, I am prepared to contribute immediately to your engineering objectives.
+
+Current U.S. Work Authorization: ${user?.visaStatus || 'F-1 OPT / Ready for Onboarding'}.
+I bring verified credentials and can onboard smoothly without administrative friction. In my prior engagements, I led the technical development of automated intelligence engines, improved application throughput, and maintained rigorous engineering documentation.
+
+Key strengths tailored for this position:
+• Deep technical proficiency across: ${sampleSkills.slice(0, 5).join(', ')}
+• Rapid adaptability to enterprise standards, sprint deadlines, and asynchronous communication
+• Dedicated focus on clean architecture, performance optimization, and measurable business impact
+
+I welcome the opportunity to discuss how my qualifications align with the growth goals of ${sampleCompany}.
+
+Sincerely,
+${user?.name || 'Daloyar Hassan'}
+${user?.email || 'client@gmail.com'}`;
+
+    const updated = saveCandidateDossier({
+      targetRole: sampleRole,
+      targetCompany: sampleCompany,
+      cvText: sampleCV,
+      cvFileName: 'Sample_High_Scoring_Tech_Resume.txt',
+      coverLetter: sampleCL,
+      skills: sampleSkills
+    });
+    setDossier(updated);
+    saveOutput({
+      type: 'ats_resume',
+      title: `ATS Resume: ${sampleRole}`,
+      company: sampleCompany,
+      content: sampleCV
+    });
+    saveOutput({
+      type: 'cover_letter',
+      title: `Cover Letter: ${sampleRole}`,
+      company: sampleCompany,
+      content: sampleCL
+    });
+    setSavedOutputs(getSavedOutputs());
+  };
+
+  const handleTargetJobAndTailor = (job: JobPosting) => {
+    const newRole = job.title;
+    const newCompany = job.company;
+    const jobSkills = job.skills || [];
+
+    const candidateName = user?.name || 'Candidate';
+    const candidateEmail = user?.email || 'candidate@gmail.com';
+    const candidatePhone = user?.phone || '+1 (555) 019-2834';
+    const visaStatus = user?.visaStatus || 'F-1 OPT / Ready for Onboarding';
+
+    const mergedSkills = Array.from(new Set([...(dossier.skills || []), ...jobSkills]));
+
+    const tailoredLetter = `Dear Hiring Team at ${newCompany},
+
+I am writing to formally submit my candidacy for the ${newRole} position. Having reviewed the role criteria and operational standards at ${newCompany}, I am confident that my technical background and disciplined execution align directly with your objectives.
+
+Current U.S. Work Authorization: ${visaStatus}.
+I hold verified credentials and can onboard smoothly without administrative friction. In my prior engagements, I have demonstrated ownership in architecting scalable solutions, maintaining rigorous documentation, and driving team velocity.
+
+Key competencies tailored for this role:
+• Core proficiency in: ${jobSkills.length > 0 ? jobSkills.slice(0, 5).join(', ') : 'industry-standard technologies and agile delivery'}
+• Rapid adaptability to complex project constraints, sprint goals, and asynchronous communication
+• Dedicated focus on performance, timeline milestones, and regulatory compliance
+
+I welcome the opportunity to discuss how my qualifications will contribute directly to ${newCompany}'s mission and engineering objectives.
+
+Sincerely,
+${candidateName}
+${candidateEmail} | ${candidatePhone}`;
+
+    let atsCV = dossier.cvText;
+    if (!atsCV) {
+      atsCV = `=====================================================
+${candidateName.toUpperCase()}
+${candidateEmail} | ${candidatePhone}
+U.S. Work Authorization: ${visaStatus}
+Target Role: ${newRole}
+Target Employer: ${newCompany}
+=====================================================
+
+PROFESSIONAL SUMMARY
+Results-driven ${newRole} with demonstrated expertise in enterprise architecture and modern tooling. Track record of delivering scalable solutions, optimizing cross-functional processes, and maintaining high velocity in demanding environments.
+
+CORE TECHNICAL COMPETENCIES
+${jobSkills.length > 0 ? jobSkills.join(' • ') : 'Software Engineering • Cloud Platforms • Project Governance • System Optimization'}
+
+PROFESSIONAL EXPERIENCE
+${newRole} | Industry Delivery & Contract Services
+• Delivered critical operational workflows aligned with ${newCompany}'s technical specifications.
+• Architected scalable features, reducing system latency and improving end-user responsiveness.
+• Coordinated asynchronously with distributed technical squads and business stakeholders.
+
+EDUCATION & ACCREDITATION
+Bachelor of Science / Equivalent Accredited Degree
+Verified U.S. Equivalency & Institutional Credentials`;
+    }
+
+    const updated = saveCandidateDossier({
+      targetRole: newRole,
+      targetCompany: newCompany,
+      coverLetter: tailoredLetter,
+      cvText: atsCV,
+      skills: mergedSkills
+    });
+    setDossier(updated);
+
+    saveOutput({
+      type: 'cover_letter',
+      title: `Tailored Cover Letter: ${newRole}`,
+      company: newCompany,
+      content: tailoredLetter
+    });
+    if (atsCV) {
+      saveOutput({
+        type: 'ats_resume',
+        title: `ATS Resume: ${newRole}`,
+        company: newCompany,
+        content: atsCV
+      });
+    }
+    setSavedOutputs(getSavedOutputs());
+
+    setTargetedJobAlert(`Successfully targeted "${newRole}" at ${newCompany}! Your ATS CV & tailored cover letter have been generated.`);
+    setActiveTab('studio');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const filteredJobs = INITIAL_JOBS.filter(job => {
+    if (selectedJobCategory === 'remote') {
+      const isRem = job.isRemote || job.location.toLowerCase().includes('remote') || job.visaSponsorship.toLowerCase().includes('remote');
+      if (!isRem) return false;
+    } else if (selectedJobCategory === 'capexempt') {
+      const isCap = job.visaSponsorship.toLowerCase().includes('cap-exempt') || job.description.toLowerCase().includes('cap-exempt');
+      if (!isCap) return false;
+    } else if (selectedJobCategory === 'nurse') {
+      const isNurse = job.category.toLowerCase().includes('health') || job.category.toLowerCase().includes('nurs') || job.title.toLowerCase().includes('nurse');
+      if (!isNurse) return false;
+    } else if (selectedJobCategory === 'tech') {
+      const isTech = job.category.toLowerCase().includes('software') || job.category.toLowerCase().includes('engineer') || job.category.toLowerCase().includes('data') || job.category.toLowerCase().includes('tech') || job.category.toLowerCase().includes('it');
+      if (!isTech) return false;
+    } else if (selectedJobCategory === 'entry') {
+      const isEntry = job.experienceLevel?.toLowerCase().includes('entry') || job.experienceLevel?.toLowerCase().includes('junior');
+      if (!isEntry) return false;
+    }
+
+    if (jobSearchQuery.trim()) {
+      const q = jobSearchQuery.toLowerCase();
+      const matchTitle = job.title.toLowerCase().includes(q);
+      const matchCompany = job.company.toLowerCase().includes(q);
+      const matchLocation = job.location.toLowerCase().includes(q);
+      const matchSkills = job.skills?.some(s => s.toLowerCase().includes(q));
+      if (!matchTitle && !matchCompany && !matchLocation && !matchSkills) return false;
+    }
+
+    return true;
+  });
+
+  const getJobBadge = (type: string) => {
+    if (type.includes('Cap-Exempt')) {
+      return (
+        <span className="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200">
+          <ShieldCheck className="w-3 h-3 text-amber-600" />
+          Cap-Exempt H-1B (No Lottery)
+        </span>
+      );
+    }
+    if (type.includes('Schedule A') || type.includes('Nurse')) {
+      return (
+        <span className="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
+          <ShieldCheck className="w-3 h-3 text-emerald-600" />
+          Schedule A EB-3 (Direct Green Card)
+        </span>
+      );
+    }
+    if (type.includes('Remote') || type.includes('W-8BEN')) {
+      return (
+        <span className="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-purple-50 text-purple-800 border border-purple-200">
+          <Globe className="w-3 h-3 text-purple-600" />
+          Global Remote (Paid in USD)
+        </span>
+      );
+    }
+    if (type.includes('OPT')) {
+      return (
+        <span className="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-800 border border-blue-200">
+          <CheckCircle2 className="w-3 h-3 text-blue-600" />
+          STEM OPT Friendly
+        </span>
+      );
+    }
+    return (
+      <span className="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 border border-slate-200">
+        <CheckCircle2 className="w-3 h-3 text-slate-500" />
+        {type}
+      </span>
+    );
+  };
+
   return (
     <div className="min-h-screen bg-slate-50/70 pb-16">
       
@@ -384,7 +634,7 @@ ${user?.email || ''} | ${user?.phone || ''}`;
           </div>
 
           {/* Credits & Action Buttons */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             <div className="bg-slate-50 border border-slate-200 rounded-2xl px-3.5 py-1.5 flex items-center gap-2 shadow-sm">
               <Sparkles className="w-4 h-4 text-blue-600" />
               <div className="text-xs">
@@ -393,11 +643,20 @@ ${user?.email || ''} | ${user?.phone || ''}`;
               </div>
             </div>
 
-            <Link
-              href="/apply/choose-plan"
-              className="px-3 py-1.5 text-xs font-bold bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 rounded-xl transition-colors"
+            <button
+              type="button"
+              onClick={() => setShowUpgradeModal(true)}
+              className="px-3.5 py-1.5 text-xs font-bold bg-blue-600 hover:bg-blue-700 text-white rounded-xl shadow-sm transition-all flex items-center gap-1.5"
             >
-              Refill / Upgrade
+              <Sparkles className="w-3.5 h-3.5 text-white" />
+              <span>Upgrade Package</span>
+            </button>
+
+            <Link
+              href="/pricing"
+              className="hidden sm:inline-flex px-3 py-1.5 text-xs font-bold text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors"
+            >
+              Plans
             </Link>
 
             <button
@@ -413,6 +672,7 @@ ${user?.email || ''} | ${user?.phone || ''}`;
         {/* Speedy Navigation Tabs (Strict Light Mode, 100% Emoji-Free) */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-100 flex items-center gap-2 overflow-x-auto py-2">
           {[
+            { id: 'jobs', label: 'Browse Sponsor Jobs (100+)', icon: Briefcase },
             { id: 'studio', label: 'CV & Cover Letter Studio', icon: FileText },
             { id: 'tracker', label: `My Applications (${trackedApps.length})`, icon: CheckSquare },
             { id: 'outputs', label: `Saved AI Outputs (${savedOutputs.length})`, icon: FolderOpen },
@@ -470,16 +730,354 @@ ${user?.email || ''} | ${user?.phone || ''}`;
         )}
 
         {/* =====================================================================
+            FREE EXPLORER SERVICE QUICK-DOCK & WORKFLOW ROADMAP
+        ===================================================================== */}
+        <div className="bg-gradient-to-r from-blue-50/90 via-indigo-50/50 to-slate-50 border border-blue-200 rounded-3xl p-5 sm:p-6 shadow-sm space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="space-y-1">
+              <div className="flex items-center gap-2">
+                <span className="text-[10px] font-black uppercase tracking-wider bg-blue-600 text-white px-2.5 py-0.5 rounded-full shadow-sm">
+                  Free Explorer Roadmap
+                </span>
+                <span className="text-xs font-bold text-slate-700">5 Direct Applications Every Month ($0)</span>
+              </div>
+              <h2 className="text-base sm:text-lg font-black text-slate-900">
+                Welcome, {user?.name?.split(' ')[0] || 'Candidate'}! Your 4-step job application workflow:
+              </h2>
+            </div>
+
+            <div className="flex items-center gap-2 shrink-0">
+              <button
+                type="button"
+                onClick={handleLoadSampleProfile}
+                className="px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 text-blue-700 font-bold text-xs border border-blue-200 shadow-sm transition-all flex items-center gap-1.5"
+                title="Populate ATS resume & tailored letter in 1 click"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+                <span>Load Sample High-Scoring CV</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveTab('jobs')}
+                className="px-3.5 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-sm transition-all flex items-center gap-1.5"
+              >
+                <Search className="w-3.5 h-3.5" />
+                <span>Browse 100+ Verified Jobs</span>
+              </button>
+            </div>
+          </div>
+
+          {/* 4 Interactive Progress Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-1">
+            <div 
+              onClick={() => setActiveTab('jobs')}
+              className={`p-3.5 rounded-2xl border cursor-pointer transition-all ${dossier.targetRole ? 'bg-blue-50/80 border-blue-300 text-blue-950' : 'bg-white border-slate-200 hover:border-blue-300'}`}
+            >
+              <div className="flex items-center justify-between text-xs font-bold mb-1">
+                <span>1. Target Sponsor Job</span>
+                <span className="text-[10px] bg-blue-600 text-white font-bold px-1.5 py-0.2 rounded-full">100+ Live</span>
+              </div>
+              <p className="text-[11px] text-slate-500 leading-tight">
+                {dossier.targetRole ? `Targeting: ${dossier.targetRole}` : 'Browse pre-vetted sponsor roles to target.'}
+              </p>
+            </div>
+
+            <div 
+              onClick={() => setActiveTab('studio')}
+              className={`p-3.5 rounded-2xl border cursor-pointer transition-all ${dossier.cvText ? 'bg-emerald-50/80 border-emerald-300 text-emerald-950' : 'bg-white border-slate-200 hover:border-blue-300'}`}
+            >
+              <div className="flex items-center justify-between text-xs font-bold mb-1">
+                <span>2. ATS Resume Builder</span>
+                {dossier.cvText ? <CheckCircle2 className="w-4 h-4 text-emerald-600" /> : <span className="text-[10px] bg-blue-50 text-blue-700 font-bold px-1.5 py-0.2 rounded-full">Step 2</span>}
+              </div>
+              <p className="text-[11px] text-slate-500 leading-tight">
+                {dossier.cvText ? 'ATS Resume structured & ready.' : 'Auto-tailored from target job or sample CV.'}
+              </p>
+            </div>
+
+            <div 
+              onClick={() => setActiveTab('studio')}
+              className={`p-3.5 rounded-2xl border cursor-pointer transition-all ${dossier.coverLetter ? 'bg-emerald-50/80 border-emerald-300 text-emerald-950' : 'bg-white border-slate-200 hover:border-blue-300'}`}
+            >
+              <div className="flex items-center justify-between text-xs font-bold mb-1">
+                <span>3. Tailored Cover Letter</span>
+                {dossier.coverLetter ? <CheckCircle2 className="w-4 h-4 text-emerald-600" /> : <span className="text-[10px] bg-slate-100 text-slate-600 font-bold px-1.5 py-0.2 rounded-full">Step 3</span>}
+              </div>
+              <p className="text-[11px] text-slate-500 leading-tight">
+                {dossier.coverLetter ? 'Tailored letter generated.' : '1-click tailor letter to role & employer.'}
+              </p>
+            </div>
+
+            <div 
+              onClick={() => setActiveTab('tracker')}
+              className="p-3.5 rounded-2xl border bg-white border-slate-200 hover:border-blue-300 cursor-pointer text-slate-700 transition-all"
+            >
+              <div className="flex items-center justify-between text-xs font-bold mb-1">
+                <span>4. Direct Apply CRM</span>
+                <span className="text-[10px] font-black bg-blue-100 text-blue-800 px-1.5 py-0.2 rounded-full">{user?.credits ?? 5} Free Left</span>
+              </div>
+              <p className="text-[11px] text-slate-500 leading-tight">
+                Track status milestones and recruiter read beacons.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* =====================================================================
+            TAB 0: BROWSE VERIFIED U.S. SPONSOR JOBS (100+ Live)
+        ===================================================================== */}
+        {activeTab === 'jobs' && (
+          <div className="space-y-6 animate-in fade-in duration-150">
+            
+            {/* Header & Quick Filter Banner */}
+            <div className="bg-white rounded-3xl border border-slate-200 p-5 sm:p-6 shadow-sm space-y-4">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] font-black uppercase tracking-wider bg-blue-600 text-white px-2.5 py-0.5 rounded-full">
+                      Verified Directory
+                    </span>
+                    <span className="text-xs font-bold text-slate-500">
+                      DOL 20 CFR § 656.12 Compliant • Zero Placement Fees
+                    </span>
+                  </div>
+                  <h2 className="text-lg sm:text-xl font-black text-slate-900 mt-1">
+                    Browse 100+ Verified U.S. Sponsor & Global Remote Jobs
+                  </h2>
+                  <p className="text-xs text-slate-500 mt-0.5">
+                    Select any opportunity below and click <strong>&quot;Target Job & Auto-Tailor CV + Letter&quot;</strong> to generate an ATS-optimized resume and tailored cover letter referencing your specific visa authorization.
+                  </p>
+                </div>
+
+                <div className="text-xs font-bold text-slate-500 shrink-0 bg-slate-50 border border-slate-200 rounded-2xl px-4 py-2">
+                  Showing <span className="text-blue-600 font-extrabold">{filteredJobs.length}</span> of {INITIAL_JOBS.length} Verified Roles
+                </div>
+              </div>
+
+              {/* Live Search & Filter Bar */}
+              <div className="flex flex-col sm:flex-row items-stretch gap-3 pt-2 border-t border-slate-100">
+                <div className="relative flex-1">
+                  <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <input
+                    type="text"
+                    value={jobSearchQuery}
+                    onChange={e => setJobSearchQuery(e.target.value)}
+                    placeholder="Search by job title, company, skills (e.g. React, Python, Nurse, AWS)..."
+                    className="w-full text-xs sm:text-sm pl-10 pr-9 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium"
+                  />
+                  {jobSearchQuery && (
+                    <button
+                      onClick={() => setJobSearchQuery('')}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+                    >
+                      <X className="w-3.5 h-3.5" />
+                    </button>
+                  )}
+                </div>
+
+                {/* Category Pills */}
+                <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0">
+                  {[
+                    { id: 'all', label: 'All Roles' },
+                    { id: 'remote', label: 'Remote USD (W-8BEN)' },
+                    { id: 'capexempt', label: 'Cap-Exempt H-1B' },
+                    { id: 'nurse', label: 'Nurse EB-3' },
+                    { id: 'tech', label: 'Tech & STEM OPT' },
+                    { id: 'entry', label: 'Entry Level' }
+                  ].map(cat => (
+                    <button
+                      key={cat.id}
+                      onClick={() => setSelectedJobCategory(cat.id)}
+                      className={`px-3 py-2 text-xs font-bold rounded-xl whitespace-nowrap transition-all ${
+                        selectedJobCategory === cat.id
+                          ? 'bg-blue-600 text-white shadow-sm'
+                          : 'bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200'
+                      }`}
+                    >
+                      {cat.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Jobs Grid */}
+            {filteredJobs.length > 0 ? (
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                {filteredJobs.map(job => (
+                  <div
+                    key={job.id}
+                    className="bg-white rounded-3xl border border-slate-200 p-5 sm:p-6 shadow-sm hover:border-blue-300 hover:shadow-md transition-all flex flex-col justify-between space-y-4"
+                  >
+                    <div className="space-y-2.5">
+                      {/* Top Badges */}
+                      <div className="flex items-center justify-between gap-2 flex-wrap">
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          {getJobBadge(job.visaSponsorship)}
+                          {job.isRemote && (
+                            <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
+                              100% Remote
+                            </span>
+                          )}
+                          <span className="text-[11px] font-semibold text-slate-500 bg-slate-50 px-2 py-0.5 rounded-md border border-slate-100">
+                            {job.category}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Job Title & Company */}
+                      <div>
+                        <h3 className="text-base font-black text-slate-900 leading-snug">
+                          {job.title}
+                        </h3>
+                        <div className="flex items-center gap-3 mt-1 text-xs text-slate-600 flex-wrap">
+                          <span className="font-bold text-slate-800 flex items-center gap-1">
+                            <Building2 className="w-3.5 h-3.5 text-slate-400" />
+                            {job.company}
+                          </span>
+                          <span className="flex items-center gap-1 text-slate-500">
+                            <MapPin className="w-3.5 h-3.5 text-slate-400" />
+                            {job.location}
+                          </span>
+                          {job.salaryMin && (
+                            <span className="text-emerald-700 font-bold bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-md">
+                              ${job.salaryMin.toLocaleString()} - ${job.salaryMax?.toLocaleString()} USD/yr
+                            </span>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Brief Description */}
+                      <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">
+                        {job.description}
+                      </p>
+
+                      {/* Skills Chips */}
+                      {job.skills && job.skills.length > 0 && (
+                        <div className="flex items-center gap-1.5 flex-wrap pt-1">
+                          {job.skills.slice(0, 4).map((sk, i) => (
+                            <span
+                              key={i}
+                              className="text-[11px] font-medium bg-slate-50 text-slate-600 border border-slate-200 px-2 py-0.5 rounded-lg"
+                            >
+                              {sk}
+                            </span>
+                          ))}
+                          {job.skills.length > 4 && (
+                            <span className="text-[10px] text-slate-400 font-medium">
+                              +{job.skills.length - 4} more
+                            </span>
+                          )}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Action Footer */}
+                    <div className="pt-3 border-t border-slate-100 flex items-center justify-between gap-2 flex-wrap">
+                      <div className="flex items-center gap-2">
+                        <button
+                          type="button"
+                          onClick={() => setSelectedJobForModal(job)}
+                          className="px-3 py-1.5 text-xs font-bold text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-xl transition-all flex items-center gap-1"
+                        >
+                          <Eye className="w-3.5 h-3.5" />
+                          <span>View Details</span>
+                        </button>
+
+                        <a
+                          href={job.sourceUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-xl transition-all"
+                          title="Open Official Job Source"
+                        >
+                          <ExternalLink className="w-4 h-4" />
+                        </a>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() => handleTargetJobAndTailor(job)}
+                        className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow-sm hover:shadow transition-all flex items-center gap-1.5"
+                      >
+                        <Sparkles className="w-3.5 h-3.5 text-white" />
+                        <span>Target Job & Auto-Tailor CV</span>
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="bg-white rounded-3xl border border-slate-200 p-12 text-center shadow-sm space-y-3">
+                <Search className="w-10 h-10 text-slate-300 mx-auto" />
+                <h3 className="text-base font-black text-slate-800">No matching jobs found</h3>
+                <p className="text-xs text-slate-500 max-w-sm mx-auto">
+                  Try adjusting your search query or selecting a different category filter.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setJobSearchQuery('');
+                    setSelectedJobCategory('all');
+                  }}
+                  className="px-4 py-2 bg-blue-600 text-white font-bold text-xs rounded-xl hover:bg-blue-700 shadow-sm"
+                >
+                  Reset Filters
+                </button>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* =====================================================================
             TAB 1: CV & COVER LETTER PREPARATION STUDIO
         ===================================================================== */}
         {activeTab === 'studio' && (
           <div className="space-y-6 animate-in fade-in duration-150">
             
+            {/* Targeted Job Celebration Alert */}
+            {targetedJobAlert && (
+              <div className="bg-emerald-50 border border-emerald-300 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-emerald-950 shadow-sm">
+                <div className="flex items-center gap-2.5">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+                  <div>
+                    <div className="text-xs sm:text-sm font-bold">{targetedJobAlert}</div>
+                    <div className="text-[11px] text-emerald-700">Review your customized CV and cover letter below, export DOCX, or dispatch directly.</div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2 shrink-0">
+                  <button
+                    onClick={handleDownloadDocx}
+                    className="px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold shadow-sm transition-all flex items-center gap-1.5"
+                  >
+                    <Download className="w-3.5 h-3.5" />
+                    <span>Export DOCX</span>
+                  </button>
+                  <button
+                    onClick={() => setTargetedJobAlert(null)}
+                    className="p-1.5 text-emerald-700 hover:text-emerald-900 rounded-lg hover:bg-emerald-100"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            )}
+
             {/* Target Role & Employer Meta Inputs */}
             <div className="bg-white rounded-3xl border border-slate-200 p-5 sm:p-6 shadow-sm">
-              <div className="text-xs font-extrabold uppercase tracking-wide text-slate-400 mb-3 flex items-center gap-1.5">
-                <Building2 className="w-4 h-4 text-slate-400" />
-                <span>Target Role & Employer Settings</span>
+              <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
+                <div className="text-xs font-extrabold uppercase tracking-wide text-slate-400 flex items-center gap-1.5">
+                  <Building2 className="w-4 h-4 text-slate-400" />
+                  <span>Target Role & Employer Settings</span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('jobs')}
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-blue-800 bg-blue-50 hover:bg-blue-100 border border-blue-200 px-3 py-1.5 rounded-xl transition-all"
+                >
+                  <Search className="w-3.5 h-3.5 text-blue-600" />
+                  <span>Browse 100+ Live Jobs to Target</span>
+                </button>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
@@ -1104,6 +1702,130 @@ ${user?.email || ''} | ${user?.phone || ''}`;
           setShowAuthModal(false);
         }}
         selectedPlan="free"
+      />
+
+      {/* Job Details Modal */}
+      {selectedJobForModal && (
+        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+          <div className="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-7 shadow-2xl border border-slate-200 space-y-5 my-8 max-h-[90vh] overflow-y-auto">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <div className="flex items-center gap-2 flex-wrap mb-1">
+                  {getJobBadge(selectedJobForModal.visaSponsorship)}
+                  {selectedJobForModal.isRemote && (
+                    <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
+                      100% Remote
+                    </span>
+                  )}
+                </div>
+                <h3 className="text-lg sm:text-xl font-black text-slate-900 leading-snug">
+                  {selectedJobForModal.title}
+                </h3>
+                <div className="flex items-center gap-3 mt-1 text-xs text-slate-600 flex-wrap">
+                  <span className="font-bold text-slate-800 flex items-center gap-1">
+                    <Building2 className="w-3.5 h-3.5 text-slate-400" />
+                    {selectedJobForModal.company}
+                  </span>
+                  <span className="flex items-center gap-1 text-slate-500">
+                    <MapPin className="w-3.5 h-3.5 text-slate-400" />
+                    {selectedJobForModal.location}
+                  </span>
+                  {selectedJobForModal.salaryMin && (
+                    <span className="text-emerald-700 font-bold bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-md">
+                      ${selectedJobForModal.salaryMin.toLocaleString()} - ${selectedJobForModal.salaryMax?.toLocaleString()} USD/yr
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setSelectedJobForModal(null)}
+                className="p-2 text-slate-400 hover:text-slate-600 rounded-xl hover:bg-slate-100 shrink-0"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Description */}
+            <div className="space-y-1.5">
+              <h4 className="text-xs font-bold uppercase tracking-wide text-slate-400">Role Overview</h4>
+              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed whitespace-pre-line bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                {selectedJobForModal.description}
+              </p>
+            </div>
+
+            {/* Requirements */}
+            {selectedJobForModal.requirements && selectedJobForModal.requirements.length > 0 && (
+              <div className="space-y-2">
+                <h4 className="text-xs font-bold uppercase tracking-wide text-slate-400">Key Qualifications</h4>
+                <ul className="space-y-1.5">
+                  {selectedJobForModal.requirements.map((req, i) => (
+                    <li key={i} className="text-xs text-slate-700 flex items-start gap-2">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 mt-0.5 shrink-0" />
+                      <span>{req}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Skills */}
+            {selectedJobForModal.skills && selectedJobForModal.skills.length > 0 && (
+              <div className="space-y-2">
+                <h4 className="text-xs font-bold uppercase tracking-wide text-slate-400">Required Technical Skills</h4>
+                <div className="flex items-center gap-1.5 flex-wrap">
+                  {selectedJobForModal.skills.map((sk, i) => (
+                    <span
+                      key={i}
+                      className="text-xs font-medium bg-slate-100 text-slate-700 px-2.5 py-1 rounded-xl border border-slate-200"
+                    >
+                      {sk}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Modal Actions */}
+            <div className="pt-3 border-t border-slate-100 flex items-center justify-end gap-3">
+              <a
+                href={selectedJobForModal.sourceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 text-xs font-bold text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-xl transition-all flex items-center gap-1.5"
+              >
+                <span>Official Careers Portal</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+
+              <button
+                type="button"
+                onClick={() => {
+                  const job = selectedJobForModal;
+                  setSelectedJobForModal(null);
+                  handleTargetJobAndTailor(job);
+                }}
+                className="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow-md transition-all flex items-center gap-1.5"
+              >
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>Target Job & Auto-Tailor CV + Letter</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Upgrade / Refill Payment Checkout Modal */}
+      <PaymentCheckoutModal
+        isOpen={showUpgradeModal}
+        onClose={() => setShowUpgradeModal(false)}
+        onSuccess={() => {
+          setShowUpgradeModal(false);
+          const current = getCurrentUser();
+          if (current) setUser(current);
+        }}
+        initialPlan="fast_track"
       />
 
     </div>
