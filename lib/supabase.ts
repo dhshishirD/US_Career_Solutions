@@ -6,7 +6,7 @@ let cachedClient: SupabaseClient | null = null;
 
 // Official Supabase credentials for US Career Solutions project (gsshpnbyrwgrjpvksmag)
 const DEFAULT_SUPABASE_URL = 'https://gsshpnbyrwgrjpvksmag.supabase.co';
-const DEFAULT_SUPABASE_ANON_KEY = 'sb_publishable_NlNyTb74QqGDVGpeVt_mug_iipC6Ot6';
+const DEFAULT_SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdzc2hwbmJ5cndncmpwdmtzbWFnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTEyNjIxNzYsImV4cCI6MjEwNjgzODE3Nn0.baKofIt8ics7KANawAYYC3UcL1Wz5esjroQ3uhM6B_A';
 export const GOOGLE_CLIENT_ID = '260193044309-vst2pf45p1iigsbivdv6vng7stn2nl3s.apps.googleusercontent.com';
 
 export function getSupabaseConfig(): { url: string; anonKey: string } {
