@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
-import { FileCheck, Stethoscope, Tractor, 
+import { 
   Briefcase, 
   ShieldCheck, 
   Sparkles,
@@ -21,13 +21,19 @@ import { FileCheck, Stethoscope, Tractor,
   ChevronDown,
   Calculator,
   DollarSign,
-  FileText,
+  FileCheck,
   MapPin,
   Flame,
   Award,
   ArrowRight,
   ExternalLink,
-  CreditCard
+  CreditCard,
+  Stethoscope,
+  Tractor,
+  HelpCircle,
+  MessageCircle,
+  Info,
+  PhoneCall
 } from 'lucide-react';
 import { getCurrentUser, GoogleUserProfile } from '@/lib/user-vault';
 
@@ -63,18 +69,18 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm" ref={dropdownRef}>
-      {/* Top Multi-Channel Community Alert Bar */}
+      {/* Top Updated Status & Multi-Channel Support Bar */}
       <div className="bg-slate-950 text-white text-xs py-2 px-4 border-b border-slate-800">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
           <div className="flex items-center gap-2 overflow-hidden">
             <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-black bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 shrink-0">
-              DAILY DROPS
+              UPDATED STATUS
             </span>
             <span className="hidden md:inline text-slate-300 truncate">
-              Verified Cap-Exempt H-1B Jobs, Schedule A Nurse Green Cards & $0 Scholarships:
+              Live Directories: Cap-Exempt H-1B, Schedule A Nursing & $0 Scholarships Verified
             </span>
             <span className="md:hidden text-slate-300 text-[11px] truncate">
-              Verified USA Jobs & Visas:
+              Live US Visa & Scholarship Directories
             </span>
           </div>
           <div className="flex items-center gap-3 shrink-0 text-xs">
@@ -97,32 +103,42 @@ export default function Navbar() {
               <Users className="w-3.5 h-3.5" />
               <span>Facebook <span className="hidden sm:inline">Page</span></span>
             </a>
+            <span className="hidden lg:inline text-slate-700">|</span>
+            <a 
+              href="https://wa.me/8801627714636" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hidden lg:inline-flex items-center gap-1.5 font-bold text-emerald-400 hover:text-emerald-300 transition-colors"
+            >
+              <PhoneCall className="w-3.5 h-3.5" />
+              <span>WhatsApp: 01627714636</span>
+            </a>
           </div>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-16 gap-4">
           
-          {/* Brand Logo */}
-          <Link href="/" onClick={closeAll} className="flex items-center gap-2.5 shrink-0">
-            <div className="w-10 h-10 rounded-xl overflow-hidden shadow-md border border-slate-700/20 flex-shrink-0">
+          {/* Brand Logo - Fully Locked & Un-shrinkable */}
+          <Link href="/" onClick={closeAll} className="flex items-center gap-2.5 shrink-0 group">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl overflow-hidden shadow-sm border border-slate-200 flex-shrink-0 group-hover:scale-105 transition-transform">
               <img src="/icon.svg" alt="US Career Solutions Icon" className="w-full h-full object-cover" />
             </div>
-            <div>
-              <span className="text-xl font-black tracking-tight text-slate-900">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:gap-2">
+              <span className="text-lg sm:text-xl font-black tracking-tight text-slate-900 whitespace-nowrap">
                 US<span className="text-blue-600">Career</span>Solutions
               </span>
-              <span className="hidden sm:inline-block ml-2 text-[10px] font-bold uppercase tracking-wider bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full border border-blue-200">
-                USA Jobs & Talent Hub
+              <span className="hidden xl:inline-block text-[10px] font-extrabold uppercase tracking-wider bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full border border-blue-200 whitespace-nowrap">
+                Directories Hub
               </span>
             </div>
           </Link>
 
-          {/* Desktop Mega Dropdowns */}
-          <nav className="hidden lg:flex items-center gap-1.5 xl:gap-2">
+          {/* Desktop Primary Navigation - Streamlined into 4 Organized Hubs */}
+          <nav className="hidden lg:flex items-center gap-1 xl:gap-1.5">
             
-            {/* 1. Jobs & Visas Dropdown */}
+            {/* 1. Job Directories Dropdown */}
             <div className="relative">
               <button
                 onClick={() => handleDropdownToggle('jobs')}
@@ -131,45 +147,16 @@ export default function Navbar() {
                 }`}
               >
                 <Briefcase className="w-3.5 h-3.5 text-blue-600" />
-                <span>Jobs & Visas</span>
+                <span>Job Directories</span>
                 <ChevronDown className={`w-3 h-3 transition-transform ${activeDropdown === 'jobs' ? 'rotate-180 text-blue-600' : 'text-slate-400'}`} />
               </button>
 
               {activeDropdown === 'jobs' && (
-                <div className="absolute left-0 mt-2 w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 p-3 z-50 animate-in fade-in slide-in-from-top-2">
-                  <div className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 px-3 py-1.5">
-                    USA Employment Pathways
+                <div className="absolute left-0 mt-2 w-88 bg-white rounded-2xl shadow-xl border border-slate-200 p-3 z-50 animate-in fade-in slide-in-from-top-2">
+                  <div className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 px-3 py-1.5 flex items-center justify-between">
+                    <span>Verified US Job Directories</span>
+                    <span className="text-[9px] bg-blue-50 text-blue-700 font-bold px-1.5 py-0.5 rounded">DOL & USCIS</span>
                   </div>
-                  <Link
-                    href="/jobs"
-                    onClick={closeAll}
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-blue-50/80 transition-colors group"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center shrink-0 mt-0.5">
-                      <Search className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-blue-600">Daily Verified Jobs</div>
-                      <div className="text-[11px] text-slate-500">Live aggregated US job postings with sponsorship filters</div>
-                    </div>
-                  </Link>
-
-                  <Link
-                    href="/landing/visa-sponsorship-jobs"
-                    onClick={closeAll}
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-blue-50/80 transition-colors group"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center shrink-0 mt-0.5">
-                      <ShieldCheck className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-blue-600 flex items-center gap-1.5">
-                        H-1B Sponsors Hub
-                        <span className="text-[9px] bg-indigo-100 text-indigo-800 font-bold px-1.5 py-0.2 rounded-full">Top Intent</span>
-                      </div>
-                      <div className="text-[11px] text-slate-500">Companies hiring H-1B, Cap-Exempt & Schedule A</div>
-                    </div>
-                  </Link>
 
                   <Link
                     href="/jobs/cap-exempt-directory"
@@ -181,10 +168,10 @@ export default function Navbar() {
                     </div>
                     <div>
                       <div className="text-xs font-bold text-slate-900 group-hover:text-amber-700 flex items-center gap-1.5">
-                        100+ Cap-Exempt Database
+                        Cap-Exempt H-1B Directory
                         <span className="text-[9px] bg-amber-100 text-amber-800 font-bold px-1.5 py-0.2 rounded-full">No Lottery</span>
                       </div>
-                      <div className="text-[11px] text-slate-500">Universities, research labs & teaching hospitals</div>
+                      <div className="text-[11px] text-slate-500">100+ Universities, research institutions & hospitals</div>
                     </div>
                   </Link>
 
@@ -198,10 +185,10 @@ export default function Navbar() {
                     </div>
                     <div>
                       <div className="text-xs font-bold text-slate-900 group-hover:text-rose-700 flex items-center gap-1.5">
-                        50-State Nurse Endorsement
+                        50-State Nurse & Healthcare Hub
                         <span className="text-[9px] bg-rose-100 text-rose-800 font-bold px-1.5 py-0.2 rounded-full">Schedule A</span>
                       </div>
-                      <div className="text-[11px] text-slate-500">CGFNS CES rules & direct-hire hospital jobs</div>
+                      <div className="text-[11px] text-slate-500">Direct-hire hospital sponsors & EB-3 Green Card</div>
                     </div>
                   </Link>
 
@@ -215,47 +202,62 @@ export default function Navbar() {
                     </div>
                     <div>
                       <div className="text-xs font-bold text-slate-900 group-hover:text-amber-800 flex items-center gap-1.5">
-                        H-2A & H-2B Seasonal Hub
-                        <span className="text-[9px] bg-amber-100 text-amber-800 font-bold px-1.5 py-0.2 rounded-full">Harvest Map</span>
+                        H-2A & H-2B Seasonal Directory
+                        <span className="text-[9px] bg-amber-100 text-amber-800 font-bold px-1.5 py-0.2 rounded-full">AEWR Rates</span>
                       </div>
-                      <div className="text-[11px] text-slate-500">Crop calendar, AEWR rates & certified employers</div>
-                    </div>
-                  </Link>
-
-
-
-                  <Link
-                    href="/landing/us-remote-jobs-w8ben"
-                    onClick={closeAll}
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-blue-50/80 transition-colors group"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
-                      <DollarSign className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-blue-600">US Remote (W-8BEN)</div>
-                      <div className="text-[11px] text-slate-500">Earn USD remotely with 0% US tax withholding</div>
+                      <div className="text-[11px] text-slate-500">Certified agricultural & non-ag seasonal employers</div>
                     </div>
                   </Link>
 
                   <Link
                     href="/jobs/states"
                     onClick={closeAll}
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-blue-50/80 transition-colors group"
+                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-purple-50/80 transition-colors group"
                   >
                     <div className="w-8 h-8 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center shrink-0 mt-0.5">
                       <MapPin className="w-4 h-4" />
                     </div>
                     <div>
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-blue-600">50-State Career Directory</div>
-                      <div className="text-[11px] text-slate-500">Browse salaries & tech jobs by state (CA, TX, NY, WA)</div>
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-purple-700 flex items-center gap-1.5">
+                        50-State Career Radar
+                        <span className="text-[9px] bg-purple-100 text-purple-800 font-bold px-1.5 py-0.2 rounded-full">Salaries</span>
+                      </div>
+                      <div className="text-[11px] text-slate-500">Tech, healthcare & logistics jobs by US state</div>
                     </div>
                   </Link>
+
+                  <Link
+                    href="/landing/us-remote-jobs-w8ben"
+                    onClick={closeAll}
+                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-emerald-50/80 transition-colors group"
+                  >
+                    <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
+                      <DollarSign className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-emerald-700 flex items-center gap-1.5">
+                        US Remote Hub (W-8BEN)
+                        <span className="text-[9px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.2 rounded-full">0% US Tax</span>
+                      </div>
+                      <div className="text-[11px] text-slate-500">Earn USD remotely with foreign contractor compliance</div>
+                    </div>
+                  </Link>
+
+                  <div className="pt-2 border-t border-slate-100 mt-1">
+                    <Link
+                      href="/jobs"
+                      onClick={closeAll}
+                      className="flex items-center justify-between p-2 rounded-lg bg-blue-50 text-blue-700 hover:bg-blue-100 transition-colors text-xs font-bold"
+                    >
+                      <span>Browse All 100+ Live Jobs</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </div>
                 </div>
               )}
             </div>
 
-            {/* 2. Scholarships & Funding Dropdown */}
+            {/* 2. Scholarships Directory Dropdown */}
             <div className="relative">
               <button
                 onClick={() => handleDropdownToggle('scholarships')}
@@ -264,15 +266,16 @@ export default function Navbar() {
                 }`}
               >
                 <GraduationCap className="w-3.5 h-3.5 text-indigo-600" />
-                <span>Scholarships & Funding</span>
+                <span>Scholarships Directory</span>
                 <ChevronDown className={`w-3 h-3 transition-transform ${activeDropdown === 'scholarships' ? 'rotate-180 text-indigo-600' : 'text-slate-400'}`} />
               </button>
 
               {activeDropdown === 'scholarships' && (
-                <div className="absolute left-0 mt-2 w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 p-3 z-50 animate-in fade-in slide-in-from-top-2">
+                <div className="absolute left-0 mt-2 w-84 bg-white rounded-2xl shadow-xl border border-slate-200 p-3 z-50 animate-in fade-in slide-in-from-top-2">
                   <div className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 px-3 py-1.5">
                     100% Free US Degree Pathways
                   </div>
+                  
                   <Link
                     href="/scholarships"
                     onClick={closeAll}
@@ -282,8 +285,11 @@ export default function Navbar() {
                       <Award className="w-4 h-4" />
                     </div>
                     <div>
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-indigo-600">100% Fully-Funded Hub</div>
-                      <div className="text-[11px] text-slate-500">Full tuition waivers + monthly living stipends</div>
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-indigo-600 flex items-center gap-1.5">
+                        Fully-Funded Directory
+                        <span className="text-[9px] bg-indigo-100 text-indigo-800 font-bold px-1.5 py-0.2 rounded-full">Top 12 Unis</span>
+                      </div>
+                      <div className="text-[11px] text-slate-500">100% tuition coverage + monthly living stipend</div>
                     </div>
                   </Link>
 
@@ -300,21 +306,24 @@ export default function Navbar() {
                         Fall 2026 Fee Waivers
                         <span className="text-[9px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.2 rounded-full">Save $1,500+</span>
                       </div>
-                      <div className="text-[11px] text-slate-500">$0 application promo codes & GRE waivers</div>
+                      <div className="text-[11px] text-slate-500">$0 application promo codes & GRE waiver codes</div>
                     </div>
                   </Link>
 
                   <Link
                     href="/guides/study-usa-zero-tuition-graduate-assistantship"
                     onClick={closeAll}
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-indigo-50/80 transition-colors group"
+                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-purple-50/80 transition-colors group"
                   >
                     <div className="w-8 h-8 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center shrink-0 mt-0.5">
                       <BookOpen className="w-4 h-4" />
                     </div>
                     <div>
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-indigo-600">GTA & GRA Application Protocol</div>
-                      <div className="text-[11px] text-slate-500">How to get teaching/research assistantships</div>
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-purple-700 flex items-center gap-1.5">
+                        GTA & GRA Assistantships
+                        <span className="text-[9px] bg-purple-100 text-purple-800 font-bold px-1.5 py-0.2 rounded-full">Protocol</span>
+                      </div>
+                      <div className="text-[11px] text-slate-500">How to secure funded teaching & research positions</div>
                     </div>
                   </Link>
 
@@ -323,15 +332,15 @@ export default function Navbar() {
                     onClick={closeAll}
                     className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-amber-50/80 transition-colors group"
                   >
-                    <div className="w-8 h-8 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 mt-0.5">
+                    <div className="w-8 h-8 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center shrink-0 mt-0.5">
                       <ShieldCheck className="w-4 h-4" />
                     </div>
                     <div>
                       <div className="text-xs font-bold text-slate-900 group-hover:text-amber-700 flex items-center gap-1.5">
-                        Day 1 CPT Universities [2026]
-                        <span className="text-[9px] bg-amber-100 text-amber-800 font-bold px-1.5 py-0.2 rounded-full">New Guide</span>
+                        Day 1 CPT Universities
+                        <span className="text-[9px] bg-amber-100 text-amber-800 font-bold px-1.5 py-0.2 rounded-full">2026 List</span>
                       </div>
-                      <div className="text-[11px] text-slate-500">Accredited colleges, hybrid schedules & RFE defense</div>
+                      <div className="text-[11px] text-slate-500">Accredited colleges, hybrid courses & work permits</div>
                     </div>
                   </Link>
                 </div>
@@ -347,16 +356,50 @@ export default function Navbar() {
                 }`}
               >
                 <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-                <span>Interactive Tools</span>
+                <span>Evaluation Tools</span>
                 <ChevronDown className={`w-3 h-3 transition-transform ${activeDropdown === 'tools' ? 'rotate-180 text-amber-600' : 'text-slate-400'}`} />
               </button>
 
               {activeDropdown === 'tools' && (
-                <div className="absolute left-0 mt-2 w-84 bg-white rounded-2xl shadow-2xl border border-slate-200 p-3 z-50 animate-in fade-in slide-in-from-top-2">
+                <div className="absolute left-0 mt-2 w-84 bg-white rounded-2xl shadow-xl border border-slate-200 p-3 z-50 animate-in fade-in slide-in-from-top-2">
                   <div className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 px-3 py-1.5">
                     Live Data Calculators & Scanners
                   </div>
                   
+                  <Link
+                    href="/tools/ats-scanner"
+                    onClick={closeAll}
+                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-blue-50/80 transition-colors group"
+                  >
+                    <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center shrink-0 mt-0.5">
+                      <Sparkles className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-blue-600 flex items-center gap-1.5">
+                        AI ATS Resume Scanner
+                        <span className="text-[9px] bg-blue-100 text-blue-800 font-bold px-1.5 py-0.2 rounded-full">Workday / GH</span>
+                      </div>
+                      <div className="text-[11px] text-slate-500">Instant resume ATS match score & keyword optimization</div>
+                    </div>
+                  </Link>
+
+                  <Link
+                    href="/tools/lca-salary-search"
+                    onClick={closeAll}
+                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-amber-50/80 transition-colors group"
+                  >
+                    <div className="w-8 h-8 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 mt-0.5">
+                      <Search className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-amber-700 flex items-center gap-1.5">
+                        Live H-1B Prevailing Wage Search
+                        <span className="text-[9px] bg-amber-100 text-amber-800 font-bold px-1.5 py-0.2 rounded-full">DOL Data</span>
+                      </div>
+                      <div className="text-[11px] text-slate-500">Search certified LCA wage filings by title & city</div>
+                    </div>
+                  </Link>
+
                   <Link
                     href="/tools/eb2-niw-evaluator"
                     onClick={closeAll}
@@ -368,9 +411,9 @@ export default function Navbar() {
                     <div>
                       <div className="text-xs font-bold text-slate-900 group-hover:text-indigo-600 flex items-center gap-1.5">
                         EB-2 NIW Profile Evaluator
-                        <span className="text-[9px] bg-indigo-100 text-indigo-800 font-bold px-1.5 py-0.2 rounded-full">Dhanasar Test</span>
+                        <span className="text-[9px] bg-indigo-100 text-indigo-800 font-bold px-1.5 py-0.2 rounded-full">Dhanasar</span>
                       </div>
-                      <div className="text-[11px] text-slate-500">Self-petition Green Card odds & citation calculator</div>
+                      <div className="text-[11px] text-slate-500">Green Card self-petition odds & citation evaluation</div>
                     </div>
                   </Link>
 
@@ -385,43 +428,9 @@ export default function Navbar() {
                     <div>
                       <div className="text-xs font-bold text-slate-900 group-hover:text-rose-600 flex items-center gap-1.5">
                         F-1 OPT Grace Period Calculator
-                        <span className="text-[9px] bg-rose-100 text-rose-800 font-bold px-1.5 py-0.2 rounded-full">60-Day Window</span>
+                        <span className="text-[9px] bg-rose-100 text-rose-800 font-bold px-1.5 py-0.2 rounded-full">60-Day SEVIS</span>
                       </div>
-                      <div className="text-[11px] text-slate-500">Track 90/150-day unemployment & SEVIS transfer deadlines</div>
-                    </div>
-                  </Link>
-
-                  <Link
-                    href="/tools/lca-salary-search"
-                    onClick={closeAll}
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-amber-50/80 transition-colors group"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 mt-0.5">
-                      <Search className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-amber-700 flex items-center gap-1.5">
-                        ⚡ Live H-1B LCA Salary Search
-                        <span className="text-[9px] bg-amber-100 text-amber-800 font-bold px-1.5 py-0.2 rounded-full">DOL Data</span>
-                      </div>
-                      <div className="text-[11px] text-slate-500">Search 10,000+ certified prevailing wage filings</div>
-                    </div>
-                  </Link>
-
-                  <Link
-                    href="/tools/salary-tax-calculator"
-                    onClick={closeAll}
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-emerald-50/80 transition-colors group"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
-                      <Calculator className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-emerald-700 flex items-center gap-1.5">
-                        STEM OPT & Salary Tax Calculator
-                        <span className="text-[9px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.2 rounded-full">FICA Exempt</span>
-                      </div>
-                      <div className="text-[11px] text-slate-500">Estimate take-home pay, federal & state taxes</div>
+                      <div className="text-[11px] text-slate-500">Track 90/150-day unemployment limits & transfer dates</div>
                     </div>
                   </Link>
 
@@ -436,163 +445,109 @@ export default function Navbar() {
                     <div>
                       <div className="text-xs font-bold text-slate-900 group-hover:text-emerald-700 flex items-center gap-1.5">
                         W-8BEN Compliance Validator
-                        <span className="text-[9px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.2 rounded-full">0% Tax</span>
+                        <span className="text-[9px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.2 rounded-full">Tax Treaty</span>
                       </div>
-                      <div className="text-[11px] text-slate-500">Foreign Tax ID (FTIN) check & treaty rates</div>
-                    </div>
-                  </Link>
-
-                  <Link
-                    href="/tools/j1-waiver-advisor"
-                    onClick={closeAll}
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-amber-50/80 transition-colors group"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 mt-0.5">
-                      <Scale className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-amber-700 flex items-center gap-1.5">
-                        J-1 2-Year Rule (212e) Waiver Advisor
-                        <span className="text-[9px] bg-amber-100 text-amber-800 font-bold px-1.5 py-0.2 rounded-full">Conrad 30</span>
-                      </div>
-                      <div className="text-[11px] text-slate-500">212(e) subjectivity check, DS-3035 & IGA simulator</div>
-                    </div>
-                  </Link>
-
-
-
-                  <Link
-                    href="/tools/ats-scanner"
-                    onClick={closeAll}
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-blue-50/80 transition-colors group"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center shrink-0 mt-0.5">
-                      <Sparkles className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-blue-600">AI ATS Resume Checker</div>
-                      <div className="text-[11px] text-slate-500">Score your CV against Workday & Greenhouse algorithms</div>
-                    </div>
-                  </Link>
-
-                  <Link
-                    href="/tools/outreach-gen"
-                    onClick={closeAll}
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-purple-50/80 transition-colors group"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center shrink-0 mt-0.5">
-                      <Send className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-purple-600">Recruiter Cold Outreach Generator</div>
-                      <div className="text-[11px] text-slate-500">Generate high-converting LinkedIn & email messages</div>
+                      <div className="text-[11px] text-slate-500">Validate FTIN & calculate remote contractor tax withholding</div>
                     </div>
                   </Link>
 
                   <Link
                     href="/tracker"
                     onClick={closeAll}
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-100 transition-colors group"
+                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 transition-colors group"
                   >
                     <div className="w-8 h-8 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center shrink-0 mt-0.5">
                       <CheckSquare className="w-4 h-4" />
                     </div>
                     <div>
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-blue-600">Application Tracker</div>
-                      <div className="text-[11px] text-slate-500">Track interviews, statuses & follow-up reminders</div>
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-blue-600">Application Status CRM</div>
+                      <div className="text-[11px] text-slate-500">Organize interviews, recruiter follow-ups & deadlines</div>
                     </div>
                   </Link>
                 </div>
               )}
             </div>
 
-            {/* 4. Master Guides Dropdown */}
+            {/* 4. Master Guides & Platform Hub */}
             <div className="relative">
               <button
-                onClick={() => handleDropdownToggle('guides')}
+                onClick={() => handleDropdownToggle('resources')}
                 className={`px-3 py-2 text-xs font-bold rounded-lg flex items-center gap-1.5 transition-colors ${
-                  activeDropdown === 'guides' ? 'bg-purple-50 text-purple-700' : 'text-slate-700 hover:text-purple-600 hover:bg-slate-50'
+                  activeDropdown === 'resources' ? 'bg-purple-50 text-purple-700' : 'text-slate-700 hover:text-purple-600 hover:bg-slate-50'
                 }`}
               >
                 <BookOpen className="w-3.5 h-3.5 text-purple-600" />
-                <span>Master Guides (17)</span>
-                <ChevronDown className={`w-3 h-3 transition-transform ${activeDropdown === 'guides' ? 'rotate-180 text-purple-600' : 'text-slate-400'}`} />
+                <span>Resources & Guides</span>
+                <ChevronDown className={`w-3 h-3 transition-transform ${activeDropdown === 'resources' ? 'rotate-180 text-purple-600' : 'text-slate-400'}`} />
               </button>
 
-              {activeDropdown === 'guides' && (
-                <div className="absolute left-0 mt-2 w-88 bg-white rounded-2xl shadow-2xl border border-slate-200 p-3 z-50 animate-in fade-in slide-in-from-top-2">
-                  <div className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 px-3 py-1.5 flex items-center justify-between">
-                    <span>Institutional Career Blueprints</span>
-                    <Link href="/guides" onClick={closeAll} className="text-blue-600 hover:underline">View All 17 →</Link>
+              {activeDropdown === 'resources' && (
+                <div className="absolute left-0 mt-2 w-84 bg-white rounded-2xl shadow-xl border border-slate-200 p-3 z-50 animate-in fade-in slide-in-from-top-2">
+                  <div className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 px-3 py-1.5">
+                    Institutional Knowledge & Network
                   </div>
 
                   <Link
-                    href="/guides/h1b-to-green-card-perm-i140-timeline-audit-guide-2026"
+                    href="/guides"
                     onClick={closeAll}
                     className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-purple-50/80 transition-colors group"
                   >
                     <div className="w-8 h-8 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center shrink-0 mt-0.5">
-                      <Flame className="w-4 h-4" />
+                      <BookOpen className="w-4 h-4" />
                     </div>
                     <div>
                       <div className="text-xs font-bold text-slate-900 group-hover:text-purple-700 flex items-center gap-1.5">
-                        H-1B to Green Card PERM Roadmap
-                        <span className="text-[9px] bg-purple-100 text-purple-800 font-bold px-1.5 py-0.2 rounded-full">New</span>
+                        Master Career Guides (17)
+                        <span className="text-[9px] bg-purple-100 text-purple-800 font-bold px-1.5 py-0.2 rounded-full">Updated</span>
                       </div>
-                      <div className="text-[11px] text-slate-500">PWD ETA-9141, Sunday recruitment & AC21 portability</div>
+                      <div className="text-[11px] text-slate-500">PERM Green Card, Salary Negotiation, Form I-912 & NIW</div>
                     </div>
                   </Link>
 
                   <Link
-                    href="/guides/us-job-offer-salary-negotiation-masterclass-2026"
-                    onClick={closeAll}
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-indigo-50/80 transition-colors group"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center shrink-0 mt-0.5">
-                      <DollarSign className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-indigo-600">Salary Negotiation Masterclass</div>
-                      <div className="text-[11px] text-slate-500">DOL Level IV leverage, signing bonus scripts & equity</div>
-                    </div>
-                  </Link>
-
-                  <Link
-                    href="/guides/uscis-form-i-912-fee-waiver-green-card-citizenship-guide-2026"
-                    onClick={closeAll}
-                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-emerald-50/80 transition-colors group"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
-                      <ShieldCheck className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-emerald-700">Form I-912 $0 USCIS Fee Waiver</div>
-                      <div className="text-[11px] text-slate-500">150% HHS poverty guidelines & Green Card fee exemptions</div>
-                    </div>
-                  </Link>
-
-                  <Link
-                    href="/guides/eb2-niw-self-petition-green-card-guide-2026"
+                    href="/talent"
                     onClick={closeAll}
                     className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-blue-50/80 transition-colors group"
                   >
                     <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center shrink-0 mt-0.5">
-                      <Award className="w-4 h-4" />
+                      <Users className="w-4 h-4" />
                     </div>
                     <div>
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-blue-600">EB-2 NIW Self-Petition Guide</div>
-                      <div className="text-[11px] text-slate-500">Matter of Dhanasar 3-prong framework & STEM criteria</div>
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-blue-600">Candidate Talent Board</div>
+                      <div className="text-[11px] text-slate-500">Verified international candidates seeking US sponsors</div>
                     </div>
                   </Link>
 
-                  <div className="pt-2 border-t border-slate-100 mt-1 px-3">
+                  <Link
+                    href="/services"
+                    onClick={closeAll}
+                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-emerald-50/80 transition-colors group"
+                  >
+                    <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 mt-0.5">
+                      <Sparkles className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-emerald-700">1-on-1 Visa & Career Concierge</div>
+                      <div className="text-[11px] text-slate-500">Personalized profile auditing and petition strategy</div>
+                    </div>
+                  </Link>
+
+                  <div className="pt-2 border-t border-slate-100 mt-1 grid grid-cols-2 gap-1 px-1">
                     <Link
-                      href="/guides"
+                      href="/about"
                       onClick={closeAll}
-                      className="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center justify-between py-1"
+                      className="p-2 rounded-lg text-slate-700 hover:bg-slate-50 hover:text-blue-600 text-xs font-bold flex items-center gap-1.5"
                     >
-                      <span>Explore All 14 In-Depth Guides</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
+                      <Info className="w-3.5 h-3.5 text-slate-400" />
+                      <span>About Us</span>
+                    </Link>
+                    <Link
+                      href="/contact"
+                      onClick={closeAll}
+                      className="p-2 rounded-lg text-slate-700 hover:bg-slate-50 hover:text-blue-600 text-xs font-bold flex items-center gap-1.5"
+                    >
+                      <MessageCircle className="w-3.5 h-3.5 text-slate-400" />
+                      <span>Contact Desk</span>
                     </Link>
                   </div>
                 </div>
@@ -601,52 +556,30 @@ export default function Navbar() {
 
           </nav>
 
-          {/* Header Action Buttons */}
-          <div className="hidden lg:flex items-center gap-2">
-            <Link
-              href="/talent"
-              className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-2 rounded-xl text-slate-700 hover:bg-slate-100 transition-colors"
-            >
-              <Users className="w-3.5 h-3.5 text-blue-600" />
-              <span>Talent Board</span>
-            </Link>
-
+          {/* Desktop Right Actions: Pricing, User Profile & CTA */}
+          <div className="hidden lg:flex items-center gap-2 xl:gap-3 shrink-0">
+            {/* Pricing Button */}
             <Link
               href="/pricing"
-              className="px-3 py-2 text-xs font-bold text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-lg transition-colors"
+              className="px-3 py-2 text-xs font-bold text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-lg transition-colors flex items-center gap-1"
             >
-              Pricing
+              <span>Pricing</span>
+              <span className="text-[10px] bg-emerald-100 text-emerald-800 font-extrabold px-1.5 py-0.2 rounded-full">
+                $10
+              </span>
             </Link>
 
-            <Link
-              href="/about"
-              className="px-3 py-2 text-xs font-bold text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-lg transition-colors"
-            >
-              About
-            </Link>
-
-            <Link
-              href="/contact"
-              className="px-3 py-2 text-xs font-bold text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-lg transition-colors"
-            >
-              Contact
-            </Link>
-
-            <Link
-              href="/services"
-              className="inline-flex items-center gap-1.5 text-xs font-bold px-3.5 py-2 rounded-xl bg-emerald-50 text-emerald-800 hover:bg-emerald-100 border border-emerald-300 transition-all shadow-sm"
-            >
-              <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-              <span>1-on-1 Concierge</span>
-            </Link>
-
+            {/* Candidate Dashboard / Google Session */}
             {currentUser ? (
               <Link
                 href="/dashboard"
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 border border-blue-200 text-xs font-bold text-blue-900 transition-colors"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 border border-blue-200 text-xs font-bold text-blue-900 transition-colors shadow-sm"
               >
-                <img src={currentUser.picture} alt={currentUser.name} className="w-5 h-5 rounded-full object-cover" />
-                <span>Dashboard ({currentUser.credits})</span>
+                <img src={currentUser.picture} alt={currentUser.name} className="w-5 h-5 rounded-full object-cover border border-blue-300" />
+                <span className="truncate max-w-[110px]">{currentUser.name.split(' ')[0]}</span>
+                <span className="bg-blue-600 text-white text-[10px] font-black px-1.5 py-0.2 rounded-full">
+                  {currentUser.credits}
+                </span>
               </Link>
             ) : (
               <Link
@@ -663,20 +596,30 @@ export default function Navbar() {
               </Link>
             )}
 
+            {/* Primary Action Button */}
             <Link
               href="/jobs"
-              className="inline-flex items-center gap-1.5 text-xs font-bold px-4 py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700 shadow-md transition-all whitespace-nowrap"
+              className="inline-flex items-center gap-1.5 text-xs font-bold px-3.5 py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700 shadow-sm transition-all whitespace-nowrap"
             >
+              <Search className="w-3.5 h-3.5" />
               <span>Find US Jobs</span>
-              <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="flex lg:hidden">
+          {/* Mobile menu hamburger toggle button */}
+          <div className="flex lg:hidden items-center gap-2">
+            {currentUser && (
+              <Link
+                href="/dashboard"
+                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-blue-50 text-blue-900 text-xs font-bold border border-blue-200"
+              >
+                <img src={currentUser.picture} alt={currentUser.name} className="w-4 h-4 rounded-full" />
+                <span>{currentUser.credits}</span>
+              </Link>
+            )}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-xl text-slate-700 hover:bg-slate-100"
+              className="p-2 rounded-xl text-slate-700 hover:bg-slate-100 transition-colors"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -688,80 +631,119 @@ export default function Navbar() {
 
       {/* Mobile Accordion Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-slate-200 bg-white max-h-[85vh] overflow-y-auto px-4 py-6 space-y-6">
+        <div className="lg:hidden border-t border-slate-200 bg-white max-h-[85vh] overflow-y-auto px-4 py-5 space-y-5 animate-in fade-in">
           
-          {/* Section 1: Jobs & Visas */}
+          {/* Quick Access Status Banner */}
+          <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between text-xs">
+            <span className="font-extrabold text-slate-800">Direct Live Status</span>
+            <span className="bg-emerald-100 text-emerald-800 font-bold text-[10px] px-2 py-0.5 rounded-full">
+              Directories Active
+            </span>
+          </div>
+
+          {/* Section 1: Job Directories */}
           <div>
             <div className="text-[11px] font-black uppercase tracking-wider text-blue-600 mb-2 flex items-center gap-1.5">
-              <Briefcase className="w-3.5 h-3.5" /> Jobs & Visa Sponsorship
+              <Briefcase className="w-3.5 h-3.5" /> Job Directories
             </div>
             <div className="space-y-1 pl-2">
-              <Link href="/jobs" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-blue-600">Daily Verified Jobs</Link>
-              <Link href="/landing/visa-sponsorship-jobs" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-blue-600">H-1B Sponsors Hub</Link>
-              <Link href="/landing/us-remote-jobs-w8ben" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-blue-600">US Remote Jobs (W-8BEN 0% Tax)</Link>
-              <Link href="/jobs/states" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-blue-600">50-State Career Radar</Link>
+              <Link href="/jobs/cap-exempt-directory" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-blue-600">
+                Cap-Exempt H-1B Directory (No Lottery)
+              </Link>
+              <Link href="/jobs/nursing-schedule-a-directory" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-blue-600">
+                50-State Nurse & Healthcare Hub (Schedule A)
+              </Link>
+              <Link href="/jobs/seasonal-h2-directory" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-blue-600">
+                H-2A & H-2B Seasonal Directory
+              </Link>
+              <Link href="/jobs/states" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-blue-600">
+                50-State Career Radar & Prevailing Salaries
+              </Link>
+              <Link href="/landing/us-remote-jobs-w8ben" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-blue-600">
+                US Remote Hub (W-8BEN 0% Tax)
+              </Link>
+              <Link href="/jobs" onClick={closeAll} className="block py-2 text-sm font-bold text-blue-600">
+                Browse All 100+ Live Jobs →
+              </Link>
             </div>
           </div>
 
-          {/* Section 2: Scholarships & Funding */}
+          {/* Section 2: Scholarships Directory */}
           <div>
             <div className="text-[11px] font-black uppercase tracking-wider text-indigo-600 mb-2 flex items-center gap-1.5">
-              <GraduationCap className="w-3.5 h-3.5" /> Scholarships & Degree Pathways
+              <GraduationCap className="w-3.5 h-3.5" /> Scholarships Directory
             </div>
             <div className="space-y-1 pl-2">
-              <Link href="/scholarships" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-indigo-600">100% Fully-Funded Hub</Link>
-              <Link href="/scholarships/fee-waiver-directory" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-indigo-600">Fall 2026 Fee Waivers ($0 Codes)</Link>
-              <Link href="/guides/study-usa-zero-tuition-graduate-assistantship" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-indigo-600">GTA & Assistantship Blueprint</Link>
-              <Link href="/guides/day-1-cpt-universities-usa-legitimate-list-uscis-guide-2026" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-indigo-600">Day 1 CPT Universities [2026 List]</Link>
+              <Link href="/scholarships" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-indigo-600">
+                100% Fully-Funded Degree Hub
+              </Link>
+              <Link href="/scholarships/fee-waiver-directory" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-indigo-600">
+                Fall 2026 Application Fee Waivers ($0 Codes)
+              </Link>
+              <Link href="/guides/study-usa-zero-tuition-graduate-assistantship" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-indigo-600">
+                GTA & GRA Teaching Assistantships
+              </Link>
+              <Link href="/guides/day-1-cpt-universities-usa-legitimate-list-uscis-guide-2026" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-indigo-600">
+                Day 1 CPT Universities [2026 List]
+              </Link>
             </div>
           </div>
 
-          {/* Section 3: Interactive Tools */}
+          {/* Section 3: Evaluation Tools */}
           <div>
             <div className="text-[11px] font-black uppercase tracking-wider text-amber-600 mb-2 flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5" /> Interactive Tools
+              <Sparkles className="w-3.5 h-3.5" /> Evaluation Tools & Calculators
             </div>
             <div className="space-y-1 pl-2">
-              <Link href="/tools/lca-salary-search" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-amber-700">⚡ Live H-1B LCA Salary Search</Link>
-              <Link href="/tools/j1-waiver-advisor" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-amber-700">J-1 2-Year Rule (212e) Waiver Advisor</Link>
-              <Link href="/tools/w8ben-validator" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-amber-700">W-8BEN Compliance Validator</Link>
-              <Link href="/tools/salary-tax-calculator" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-amber-700">STEM OPT & Salary Tax Calculator</Link>
-              <Link href="/tools/ats-scanner" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-amber-700">AI ATS Resume Checker</Link>
-              <Link href="/tools/outreach-gen" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-amber-700">Recruiter Outreach Generator</Link>
-              <Link href="/tracker" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-amber-700">Application Tracker</Link>
+              <Link href="/tools/ats-scanner" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-amber-700">
+                AI ATS Resume Scanner & Scorer
+              </Link>
+              <Link href="/tools/lca-salary-search" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-amber-700">
+                Live H-1B Prevailing Wage Search
+              </Link>
+              <Link href="/tools/eb2-niw-evaluator" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-amber-700">
+                EB-2 NIW Profile Evaluator
+              </Link>
+              <Link href="/tools/opt-grace-period-calculator" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-amber-700">
+                F-1 OPT Grace Period Calculator
+              </Link>
+              <Link href="/tools/w8ben-validator" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-amber-700">
+                W-8BEN Compliance Validator
+              </Link>
+              <Link href="/tracker" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-amber-700">
+                Application Status CRM
+              </Link>
             </div>
           </div>
 
-          {/* Section 4: Master Guides */}
+          {/* Section 4: Guides & Platform */}
           <div>
             <div className="text-[11px] font-black uppercase tracking-wider text-purple-600 mb-2 flex items-center gap-1.5">
-              <BookOpen className="w-3.5 h-3.5" /> Master Guides (17)
+              <BookOpen className="w-3.5 h-3.5" /> Resources & Network
             </div>
             <div className="space-y-1 pl-2">
-              <Link href="/guides/h1b-to-green-card-perm-i140-timeline-audit-guide-2026" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-purple-600">H-1B to Green Card PERM Roadmap</Link>
-              <Link href="/guides/us-job-offer-salary-negotiation-masterclass-2026" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-purple-600">Salary Negotiation Masterclass</Link>
-              <Link href="/guides/uscis-form-i-912-fee-waiver-green-card-citizenship-guide-2026" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-purple-600">Form I-912 $0 USCIS Fee Waiver</Link>
-              <Link href="/guides/eb2-niw-self-petition-green-card-guide-2026" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-purple-600">EB-2 NIW Self-Petition Guide</Link>
-              <Link href="/guides" onClick={closeAll} className="block py-2 text-sm font-bold text-blue-600">Explore All 14 Guides →</Link>
+              <Link href="/guides" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-purple-600">
+                Master Career Guides (17 Blueprints)
+              </Link>
+              <Link href="/talent" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-purple-600">
+                Candidate Talent Board
+              </Link>
+              <Link href="/services" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-purple-600">
+                1-on-1 Visa & Career Concierge
+              </Link>
+              <div className="grid grid-cols-2 gap-2 pt-2">
+                <Link href="/about" onClick={closeAll} className="text-xs font-bold text-slate-600 hover:text-blue-600">
+                  About Us
+                </Link>
+                <Link href="/contact" onClick={closeAll} className="text-xs font-bold text-slate-600 hover:text-blue-600">
+                  Contact Helpdesk
+                </Link>
+              </div>
             </div>
           </div>
 
-          {/* Mobile CTAs */}
+          {/* Mobile Bottom Action Buttons */}
           <div className="pt-4 border-t border-slate-200 space-y-2.5">
-            <Link
-              href="/about"
-              className="px-3 py-2 text-xs font-bold text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-lg transition-colors"
-            >
-              About
-            </Link>
-
-            <Link
-              href="/contact"
-              className="px-3 py-2 text-xs font-bold text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-lg transition-colors"
-            >
-              Contact
-            </Link>
-
             <Link
               href="/dashboard"
               onClick={closeAll}
@@ -774,27 +756,24 @@ export default function Navbar() {
             <Link
               href="/pricing"
               onClick={closeAll}
-              className="w-full flex items-center justify-center gap-2 p-3 rounded-xl bg-blue-50 text-blue-900 font-bold text-sm border border-blue-200 shadow-sm"
+              className="w-full flex items-center justify-between p-3 rounded-xl bg-blue-50 text-blue-900 font-bold text-sm border border-blue-200 shadow-sm"
             >
-              <CreditCard className="w-4 h-4 text-blue-600" />
-              <span>Pricing & Packages (5 Free / Mo)</span>
+              <div className="flex items-center gap-2">
+                <CreditCard className="w-4 h-4 text-blue-600" />
+                <span>Pricing & Upgrades</span>
+              </div>
+              <span className="text-xs bg-emerald-600 text-white font-extrabold px-2 py-0.5 rounded-full">
+                From $10 / ৳1,000
+              </span>
             </Link>
 
             <Link
-              href="/services"
-              onClick={closeAll}
-              className="w-full flex items-center justify-center gap-2 p-3 rounded-xl bg-emerald-50 text-emerald-800 font-bold text-sm border border-emerald-300 shadow-sm"
-            >
-              <Sparkles className="w-4 h-4 text-emerald-600" />
-              <span>Book 1-on-1 Career Consultation</span>
-            </Link>
-            <Link
               href="/jobs"
               onClick={closeAll}
-              className="w-full flex items-center justify-center gap-2 p-3 rounded-xl bg-blue-600 text-white font-bold text-sm shadow-md"
+              className="w-full flex items-center justify-center gap-2 p-3.5 rounded-xl bg-blue-600 text-white font-bold text-sm shadow-md"
             >
-              <span>Find US Jobs</span>
-              <ArrowRight className="w-4 h-4" />
+              <Search className="w-4 h-4" />
+              <span>Find US Jobs & Apply</span>
             </Link>
           </div>
 
