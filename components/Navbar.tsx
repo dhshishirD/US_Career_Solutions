@@ -125,12 +125,9 @@ export default function Navbar() {
             <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl overflow-hidden shadow-sm border border-slate-200 flex-shrink-0 group-hover:scale-105 transition-transform">
               <img src="/icon.svg" alt="US Career Solutions Icon" className="w-full h-full object-cover" />
             </div>
-            <div className="flex flex-col sm:flex-row sm:items-center sm:gap-2">
+            <div>
               <span className="text-lg sm:text-xl font-black tracking-tight text-slate-900 whitespace-nowrap">
                 US<span className="text-blue-600">Career</span>Solutions
-              </span>
-              <span className="hidden xl:inline-block text-[10px] font-extrabold uppercase tracking-wider bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full border border-blue-200 whitespace-nowrap">
-                Directories Hub
               </span>
             </div>
           </Link>
@@ -138,7 +135,7 @@ export default function Navbar() {
           {/* Desktop Primary Navigation - Streamlined into 4 Organized Hubs */}
           <nav className="hidden lg:flex items-center gap-1 xl:gap-1.5">
             
-            {/* 1. Job Directories Dropdown */}
+            {/* 1. Jobs Dropdown */}
             <div className="relative">
               <button
                 onClick={() => handleDropdownToggle('jobs')}
@@ -147,7 +144,7 @@ export default function Navbar() {
                 }`}
               >
                 <Briefcase className="w-3.5 h-3.5 text-blue-600" />
-                <span>Job Directories</span>
+                <span>Jobs</span>
                 <ChevronDown className={`w-3 h-3 transition-transform ${activeDropdown === 'jobs' ? 'rotate-180 text-blue-600' : 'text-slate-400'}`} />
               </button>
 
@@ -257,7 +254,7 @@ export default function Navbar() {
               )}
             </div>
 
-            {/* 2. Scholarships Directory Dropdown */}
+            {/* 2. Scholarships Dropdown */}
             <div className="relative">
               <button
                 onClick={() => handleDropdownToggle('scholarships')}
@@ -266,7 +263,7 @@ export default function Navbar() {
                 }`}
               >
                 <GraduationCap className="w-3.5 h-3.5 text-indigo-600" />
-                <span>Scholarships Directory</span>
+                <span>Scholarships</span>
                 <ChevronDown className={`w-3 h-3 transition-transform ${activeDropdown === 'scholarships' ? 'rotate-180 text-indigo-600' : 'text-slate-400'}`} />
               </button>
 
@@ -347,7 +344,7 @@ export default function Navbar() {
               )}
             </div>
 
-            {/* 3. Interactive Tools Dropdown */}
+            {/* 3. Tools Dropdown */}
             <div className="relative">
               <button
                 onClick={() => handleDropdownToggle('tools')}
@@ -356,7 +353,7 @@ export default function Navbar() {
                 }`}
               >
                 <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-                <span>Evaluation Tools</span>
+                <span>Tools</span>
                 <ChevronDown className={`w-3 h-3 transition-transform ${activeDropdown === 'tools' ? 'rotate-180 text-amber-600' : 'text-slate-400'}`} />
               </button>
 
@@ -556,14 +553,14 @@ export default function Navbar() {
 
           </nav>
 
-          {/* Desktop Right Actions: Pricing, User Profile & CTA */}
+          {/* Desktop Right Actions: Premium Services, User Profile & CTA */}
           <div className="hidden lg:flex items-center gap-2 xl:gap-3 shrink-0">
-            {/* Pricing Button */}
+            {/* Premium Services Button */}
             <Link
               href="/pricing"
-              className="px-3 py-2 text-xs font-bold text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-lg transition-colors flex items-center gap-1"
+              className="px-3 py-2 text-xs font-bold text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-lg transition-colors flex items-center gap-1.5"
             >
-              <span>Pricing</span>
+              <span>Premium Services</span>
               <span className="text-[10px] bg-emerald-100 text-emerald-800 font-extrabold px-1.5 py-0.2 rounded-full">
                 $10
               </span>
@@ -641,10 +638,10 @@ export default function Navbar() {
             </span>
           </div>
 
-          {/* Section 1: Job Directories */}
+          {/* Section 1: Jobs */}
           <div>
             <div className="text-[11px] font-black uppercase tracking-wider text-blue-600 mb-2 flex items-center gap-1.5">
-              <Briefcase className="w-3.5 h-3.5" /> Job Directories
+              <Briefcase className="w-3.5 h-3.5" /> Jobs
             </div>
             <div className="space-y-1 pl-2">
               <Link href="/jobs/cap-exempt-directory" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-blue-600">
@@ -668,10 +665,10 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Section 2: Scholarships Directory */}
+          {/* Section 2: Scholarships */}
           <div>
             <div className="text-[11px] font-black uppercase tracking-wider text-indigo-600 mb-2 flex items-center gap-1.5">
-              <GraduationCap className="w-3.5 h-3.5" /> Scholarships Directory
+              <GraduationCap className="w-3.5 h-3.5" /> Scholarships
             </div>
             <div className="space-y-1 pl-2">
               <Link href="/scholarships" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-indigo-600">
@@ -689,10 +686,10 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Section 3: Evaluation Tools */}
+          {/* Section 3: Tools */}
           <div>
             <div className="text-[11px] font-black uppercase tracking-wider text-amber-600 mb-2 flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5" /> Evaluation Tools & Calculators
+              <Sparkles className="w-3.5 h-3.5" /> Tools
             </div>
             <div className="space-y-1 pl-2">
               <Link href="/tools/ats-scanner" onClick={closeAll} className="block py-2 text-sm font-semibold text-slate-800 hover:text-amber-700">
@@ -760,7 +757,7 @@ export default function Navbar() {
             >
               <div className="flex items-center gap-2">
                 <CreditCard className="w-4 h-4 text-blue-600" />
-                <span>Pricing & Upgrades</span>
+                <span>Premium Services</span>
               </div>
               <span className="text-xs bg-emerald-600 text-white font-extrabold px-2 py-0.5 rounded-full">
                 From $10 / ৳1,000
