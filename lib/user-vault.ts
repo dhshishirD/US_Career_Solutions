@@ -15,6 +15,22 @@ export interface GoogleUserProfile {
   phone?: string;
 }
 
+export interface ClientIntakeProfile {
+  targetRoles: string[];
+  preferredLocations: string[];
+  workAuthorization: string;
+  minSalaryTarget: string;
+  targetCompanyTypes: string[];
+  specificTargetCompanies?: string;
+  experienceYears: string;
+  coreSkills: string[];
+  dealBreakers?: string;
+  linkedInUrl?: string;
+  githubOrPortfolioUrl?: string;
+  notesForFulfillment?: string;
+  intakeCompletedAt?: string;
+}
+
 export interface CandidateDossier {
   cvText: string;
   cvFileName?: string;
@@ -27,6 +43,7 @@ export interface CandidateDossier {
   readyCoverLetterFileName?: string;
   documentMode?: 'ready_documents' | 'ai_tailored';
   skills: string[];
+  intakeProfile?: ClientIntakeProfile;
   lastUpdated: string;
 }
 
@@ -58,7 +75,8 @@ const STORAGE_KEYS = {
   SAVED_OUTPUTS: 'usc_saved_outputs_v2',
   CONNECTIONS: 'usc_connections_v2',
   TRACKED_APPS: 'tracked_applications',
-  CREDITS: 'usc_app_credits'
+  CREDITS: 'usc_app_credits',
+  INTAKE: 'usc_client_intake_v2'
 };
 
 const DEFAULT_MONTHLY_FREE_CREDITS = 5;
@@ -468,4 +486,62 @@ export function getPaymentSubmissions(): PaymentSubmission[] {
     return [];
   }
 }
+
+export function getClientIntake(): ClientIntakeProfile | null {
+  if (typeof window === 'undefined') return null;
+  try {
+    const scopedKey = getScopedKey(STORAGE_KEYS.INTAKE);
+    const scopedRaw = localStorage.getItem(scopedKey);
+    if (scopedRaw) return JSON.parse(scopedRaw);
+
+    const raw = localStorage.getItem(STORAGE_KEYS.INTAKE);
+    if (raw) return JSON.parse(raw);
+
+    // Fallback to dossier's intakeProfile if exists
+    const dossier = getCandidateDossier();
+    return dossier.intakeProfile || null;
+  } catch (e) {
+    return null;
+  }
+}
+
+export function saveClientIntake(profile: Partial<ClientIntakeProfile>): ClientIntakeProfile {
+  const current = getClientIntake() || {
+    targetRoles: ['Senior Software Engineer'],
+    preferredLocations: ['Remote', 'California', 'Texas'],
+    workAuthorization: 'F-1 OPT / STEM OPT (No Initial Sponsorship Required)',
+    minSalaryTarget: '$100,000 / year',
+    targetCompanyTypes: ['Tech Scale-ups', 'Universities & Non-Profit (Cap-Exempt)'],
+    experienceYears: '3-5 years',
+    coreSkills: ['React', 'TypeScript', 'Node.js']
+  };
+
+  const updated: ClientIntakeProfile = {
+    ...current,
+    ...profile,
+    intakeCompletedAt: new Date().toISOString()
+  };
+
+  if (typeof window !== 'undefined') {
+    try {
+      const serialized = JSON.stringify(updated);
+      localStorage.setItem(STORAGE_KEYS.INTAKE, serialized);
+      const scopedKey = getScopedKey(STORAGE_KEYS.INTAKE);
+      if (scopedKey !== STORAGE_KEYS.INTAKE) {
+        localStorage.setItem(scopedKey, serialized);
+      }
+
+      // Also persist to candidate dossier
+      saveCandidateDossier({
+        intakeProfile: updated,
+        targetRole: updated.targetRoles[0] || undefined
+      });
+    } catch (e) {
+      console.warn('Error saving client intake:', e);
+    }
+  }
+
+  return updated;
+}
+
 

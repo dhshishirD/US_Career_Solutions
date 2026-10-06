@@ -14,7 +14,8 @@ import {
   ArrowRight,
   ExternalLink,
   RefreshCw,
-  AlertCircle
+  AlertCircle,
+  Sparkles
 } from 'lucide-react';
 import { PlanTier, getCurrentUser, savePaymentSubmission, upgradeUserPlan } from '@/lib/user-vault';
 
@@ -315,12 +316,23 @@ export default function PaymentCheckoutModal({
                 <button
                   onClick={() => {
                     onClose();
-                    window.location.href = '/dashboard';
+                    window.location.href = '/dashboard/intake';
                   }}
                   className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-sm flex items-center justify-center gap-2 transition-colors"
                 >
-                  <span>Go to Candidate Dashboard</span>
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>Complete Target Intake Profile</span>
                   <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+
+                <button
+                  onClick={() => {
+                    onClose();
+                    window.location.href = '/dashboard';
+                  }}
+                  className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs shadow-xs flex items-center justify-center gap-2 transition-colors"
+                >
+                  <span>Go to Candidate Dashboard</span>
                 </button>
               </div>
             </div>

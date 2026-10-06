@@ -97,7 +97,10 @@ export interface TrackedApplication {
   salary?: string;
   notes?: string;
   contactPerson?: string;
+  contactTitle?: string;
   recruiterEmail?: string;
+  contactLinkedIn?: string;
+  contactStatus?: 'verified' | 'corporate_pattern';
   jobUrl?: string;
   jobDescription?: string;
   readyCvText?: string;

@@ -838,6 +838,16 @@ Verified U.S. Equivalency & Institutional Credentials`;
               </button>
             );
           })}
+
+          <div className="ml-auto shrink-0 pl-2">
+            <Link
+              href="/dashboard/intake"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-amber-50 text-amber-900 border border-amber-200 hover:bg-amber-100 transition-all whitespace-nowrap shadow-2xs"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-amber-600" />
+              <span>Target Intake Studio</span>
+            </Link>
+          </div>
         </div>
       </div>
 
@@ -2061,6 +2071,26 @@ Verified U.S. Equivalency & Institutional Credentials`;
               <p className="text-xs text-slate-500 mb-6">
                 Your credentials are auto-injected into tailored application dossiers and ATS cover letters.
               </p>
+
+              {/* Dedicated Intake Profile Box */}
+              <div className="mb-6 p-4 bg-gradient-to-r from-blue-50/80 to-indigo-50/80 border border-blue-200 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-blue-600" />
+                    <span className="text-xs font-black text-blue-900">Placement Target Intake Profile</span>
+                  </div>
+                  <p className="text-xs text-blue-700">
+                    Specify target roles, desired states, target companies, expected salary, and deal-breakers for human concierge & AI matching.
+                  </p>
+                </div>
+                <Link
+                  href="/dashboard/intake"
+                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl shadow-xs transition-all shrink-0 inline-flex items-center gap-1.5"
+                >
+                  <span>Open Intake Studio</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
 
               <div className="space-y-4 max-w-2xl">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

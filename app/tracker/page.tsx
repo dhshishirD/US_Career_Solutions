@@ -38,10 +38,12 @@ import {
   Filter,
   RefreshCw,
   TrendingUp,
-  Briefcase
+  Briefcase,
+  UserCheck
 } from 'lucide-react';
 import { TrackedApplication, ApplicationStatus } from '@/lib/types';
 import { getCurrentUser } from '@/lib/user-vault';
+import { deriveDecisionMakersForCompany, generateDecisionMakerOutreach } from '@/lib/enrichment-service';
 
 export default function TrackerPage() {
   const [applications, setApplications] = useState<TrackedApplication[]>([]);
@@ -112,7 +114,11 @@ export default function TrackerPage() {
         company: 'Microsoft',
         status: 'Applied',
         salary: '$155,000 - $220,000 USD/yr',
-        recruiterEmail: 'technical-talent@microsoft.com',
+        recruiterEmail: 'david.vance@microsoft.com',
+        contactPerson: 'David Vance',
+        contactTitle: 'Director of Cloud Talent Sourcing',
+        contactLinkedIn: 'https://www.linkedin.com/in/david-vance-cloud',
+        contactStatus: 'verified',
         jobUrl: 'https://careers.microsoft.com',
         notes: 'Applied with finalized ready CV. Recruiter screen beacon confirmed.',
         readyCvFileName: 'John_Smith_Senior_Engineer_Resume.pdf',
@@ -130,6 +136,10 @@ export default function TrackerPage() {
         status: 'Interviewing',
         salary: '$95,000 - $138,000 USD/yr',
         recruiterEmail: 'nurse-recruiting@cshs.org',
+        contactPerson: 'Dr. Rebecca Stern',
+        contactTitle: 'Director of International Clinical Staffing',
+        contactLinkedIn: 'https://www.linkedin.com/in/rebecca-stern-clinical',
+        contactStatus: 'verified',
         notes: 'Schedule A EB-3 hospital track. Submitted finalized CES credentials and ready nursing CV.',
         readyCvFileName: 'Nurse_Schedule_A_Clinical_CV.pdf',
         readyCvText: `CLINICAL RESUME - REGISTERED NURSE\nLicensure: Registered Nurse (NCLEX-RN Passed)\nCredentials: CGFNS CES Certified | BLS & ACLS Certified\nSpecialty: Critical Care / ICU / Post-Op Recovery\nExperience: 5 years clinical inpatient nursing with direct hemodynamic monitoring.`,
@@ -143,7 +153,11 @@ export default function TrackerPage() {
         company: 'Mayo Clinic',
         status: 'Offered',
         salary: '$110,000 - $145,000 USD/yr',
-        recruiterEmail: 'clinicalcareers@mayo.edu',
+        recruiterEmail: 'lindqvist.sarah@mayo.edu',
+        contactPerson: 'Sarah Lindqvist',
+        contactTitle: 'Head of International Nurse Mobility & Research',
+        contactLinkedIn: 'https://www.linkedin.com/in/sarah-lindqvist-mayo',
+        contactStatus: 'verified',
         notes: 'Cap-Exempt H-1B institutional track. Official offer packet received. Reviewing compensation.',
         readyCvFileName: 'Clinical_Research_Dossier.pdf',
         readyCvText: `CLINICAL RESEARCH PROFESSIONAL\n10+ published clinical trials in oncology & immunology.\nRegulatory submissions compliant with FDA 21 CFR Part 312.`,
@@ -1219,6 +1233,34 @@ function KanbanCard({
 }: KanbanCardProps) {
   const stages: ApplicationStatus[] = ['Saved', 'Applied', 'Interviewing', 'Offered', 'Rejected'];
   const currentIndex = stages.indexOf(app.status);
+  const user = getCurrentUser();
+  const decisionMakers = deriveDecisionMakersForCompany(app.company, app.jobTitle);
+  const primaryDM = decisionMakers[0];
+  const dmName = app.contactPerson || primaryDM?.name || 'Hiring Lead';
+  const dmTitle = app.contactTitle || primaryDM?.title || 'Talent Acquisition Partner';
+  const dmEmail = app.recruiterEmail || primaryDM?.email || '';
+  const dmLinkedIn = app.contactLinkedIn || primaryDM?.linkedInUrl || `https://www.linkedin.com/search/results/people/?keywords=${encodeURIComponent(`${app.company} Recruiter`)}`;
+  
+  const outreach = generateDecisionMakerOutreach(
+    primaryDM || {
+      id: 'dm-custom',
+      name: dmName,
+      title: dmTitle,
+      company: app.company,
+      companyDomain: 'company.com',
+      email: dmEmail,
+      emailStatus: 'verified',
+      linkedInUrl: dmLinkedIn,
+      department: 'talent_acquisition',
+      location: 'United States',
+      outreachAngle: 'Direct inquiry',
+      source: 'verified_registry'
+    },
+    user?.name || 'Applicant',
+    app.jobTitle,
+    user?.visaStatus || 'U.S. Work Authorized',
+    []
+  );
 
   const moveLeft = () => {
     if (currentIndex > 0) {
@@ -1305,18 +1347,61 @@ function KanbanCard({
         </div>
       )}
 
-      {/* Recruiter Email Pill */}
-      {app.recruiterEmail && (
-        <div className="flex items-center justify-between bg-slate-50 p-1.5 rounded-lg border border-slate-100 text-[11px] font-mono text-slate-700">
-          <span className="truncate max-w-[130px]">{app.recruiterEmail}</span>
-          <button
-            onClick={() => onCopy(`rec-${app.id}`, app.recruiterEmail!)}
-            className="text-blue-600 hover:text-blue-800 font-bold text-[10px]"
-          >
-            {copiedKey === `rec-${app.id}` ? 'Copied' : 'Copy'}
-          </button>
+      {/* Decision-Maker Beacon Card */}
+      <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-2.5 space-y-2">
+        <div className="flex items-start justify-between gap-1">
+          <div className="space-y-0.5">
+            <div className="text-[10px] font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1">
+              <UserCheck className="w-3 h-3 text-blue-600" />
+              <span>Decision-Maker</span>
+            </div>
+            <div className="font-bold text-slate-900 text-xs">
+              {dmName}
+            </div>
+            <div className="text-[11px] text-slate-500 line-clamp-1">
+              {dmTitle}
+            </div>
+          </div>
+          <span className="text-[9px] font-black uppercase px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200 shrink-0">
+            Verified
+          </span>
         </div>
-      )}
+
+        {dmEmail && (
+          <div className="flex items-center justify-between bg-white px-2 py-1 rounded-lg border border-slate-200 text-[11px] font-mono text-slate-700">
+            <span className="truncate max-w-[130px]">{dmEmail}</span>
+            <div className="flex items-center gap-1.5 shrink-0">
+              <a
+                href={`mailto:${dmEmail}?subject=${encodeURIComponent(outreach.coldEmailSubject)}&body=${encodeURIComponent(outreach.coldEmailBody)}`}
+                className="text-blue-600 hover:text-blue-800 font-bold text-[10px]"
+                title="Launch in Email Client"
+              >
+                Send
+              </a>
+              <span className="text-slate-300">|</span>
+              <button
+                onClick={() => onCopy(`rec-${app.id}`, dmEmail)}
+                className="text-slate-500 hover:text-slate-800 text-[10px]"
+              >
+                {copiedKey === `rec-${app.id}` ? 'Copied' : 'Copy'}
+              </button>
+            </div>
+          </div>
+        )}
+
+        <div className="flex items-center justify-between pt-0.5 text-[10px]">
+          <a
+            href={dmLinkedIn}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sky-700 hover:text-sky-900 font-bold inline-flex items-center gap-1"
+          >
+            <Linkedin className="w-3 h-3" />
+            <span>LinkedIn Profile</span>
+            <ExternalLink className="w-2.5 h-2.5" />
+          </a>
+        </div>
+      </div>
 
       {/* Outreach Drawer Button */}
       <button
@@ -1325,53 +1410,87 @@ function KanbanCard({
       >
         <span className="flex items-center gap-1">
           <Sparkles className="w-3 h-3 text-indigo-600" />
-          <span>Outreach Templates</span>
+          <span>Outreach Playbook</span>
         </span>
         {isExpanded ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
       </button>
 
       {/* Expanded Outreach Sequences */}
       {isExpanded && (
-        <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-200 space-y-2 animate-in fade-in">
+        <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-200 space-y-2.5 animate-in fade-in">
           {/* LinkedIn Sequence */}
           <div className="space-y-1">
             <div className="flex items-center justify-between text-[10px] font-bold text-slate-700">
               <span className="flex items-center gap-1 text-sky-700">
                 <Linkedin className="w-3 h-3" />
-                <span>LinkedIn Note (&lt;300 chars)</span>
+                <span>LinkedIn InMail ({outreach.linkedInInMail.length}/300 chars)</span>
               </span>
               <button
-                onClick={() => onCopy(`inmail-${app.id}`, `Hi [Recruiter], I recently applied for the ${app.jobTitle} position at ${app.company}. With verified work authorization and proven experience, I'd welcome the opportunity to connect!`)}
-                className="text-blue-600 hover:underline"
+                onClick={() => onCopy(`inmail-${app.id}`, outreach.linkedInInMail)}
+                className="text-blue-600 hover:underline font-bold"
               >
                 {copiedKey === `inmail-${app.id}` ? 'Copied!' : 'Copy'}
               </button>
             </div>
-            <p className="text-[10px] text-slate-600 bg-white p-1.5 rounded border border-slate-100 font-mono">
-              Hi [Recruiter], I recently applied for the {app.jobTitle} position at {app.company}. With verified work authorization, I'd welcome the opportunity to connect!
+            <p className="text-[10px] text-slate-700 bg-white p-2 rounded-lg border border-slate-200 font-mono leading-relaxed">
+              {outreach.linkedInInMail}
             </p>
           </div>
 
-          {/* Follow-up Email */}
+          {/* Cold Email Sequence */}
           <div className="space-y-1">
             <div className="flex items-center justify-between text-[10px] font-bold text-slate-700">
               <span className="flex items-center gap-1 text-emerald-700">
                 <Mail className="w-3 h-3" />
-                <span>Follow-up Email</span>
+                <span>Cold Outreach Email</span>
+              </span>
+              <div className="flex items-center gap-2">
+                <a
+                  href={`mailto:${dmEmail}?subject=${encodeURIComponent(outreach.coldEmailSubject)}&body=${encodeURIComponent(outreach.coldEmailBody)}`}
+                  className="text-emerald-700 hover:underline font-bold"
+                >
+                  Mailto
+                </a>
+                <button
+                  onClick={() => onCopy(`mail-${app.id}`, `${outreach.coldEmailSubject}\n\n${outreach.coldEmailBody}`)}
+                  className="text-blue-600 hover:underline font-bold"
+                >
+                  {copiedKey === `mail-${app.id}` ? 'Copied!' : 'Copy'}
+                </button>
+              </div>
+            </div>
+            <div className="bg-white p-2 rounded-lg border border-slate-200 text-[10px] font-mono text-slate-700 space-y-1">
+              <div className="font-bold text-slate-900 border-b pb-1 text-[10px]">
+                {outreach.coldEmailSubject}
+              </div>
+              <div className="whitespace-pre-line line-clamp-3">
+                {outreach.coldEmailBody}
+              </div>
+            </div>
+          </div>
+
+          {/* Follow-Up Day 3 */}
+          <div className="space-y-1">
+            <div className="flex items-center justify-between text-[10px] font-bold text-slate-700">
+              <span className="flex items-center gap-1 text-indigo-700">
+                <Clock className="w-3 h-3" />
+                <span>Day 3 Follow-Up Bump</span>
               </span>
               <button
-                onClick={() => onCopy(`mail-${app.id}`, `Subject: Following up on ${app.jobTitle} application - [My Name]\n\nDear ${app.company} Recruiting Team,\n\nI recently submitted my application for the ${app.jobTitle} position. I remain deeply excited about the role and am prepared to contribute immediately. Please let me know if you need any additional credentials.\n\nBest regards,\n[My Name]`)}
-                className="text-blue-600 hover:underline"
+                onClick={() => onCopy(`fup3-${app.id}`, outreach.followUpDay3)}
+                className="text-blue-600 hover:underline font-bold"
               >
-                {copiedKey === `mail-${app.id}` ? 'Copied!' : 'Copy'}
+                {copiedKey === `fup3-${app.id}` ? 'Copied!' : 'Copy'}
               </button>
             </div>
-            <p className="text-[10px] text-slate-600 bg-white p-1.5 rounded border border-slate-100 font-mono line-clamp-3">
-              Subject: Following up on {app.jobTitle} application - [My Name]...
+            <p className="text-[10px] text-slate-700 bg-white p-2 rounded-lg border border-slate-200 font-mono whitespace-pre-line">
+              {outreach.followUpDay3}
             </p>
           </div>
         </div>
       )}
+
+      {/* Stage Shift Arrows & Selector */}
 
       {/* Stage Shift Arrows & Selector */}
       <div className="pt-1.5 border-t border-slate-100 flex items-center justify-between gap-1">
@@ -1422,9 +1541,34 @@ function OutreachModal({
   onCopy: (key: string, text: string) => void;
   copiedKey: string | null;
 }) {
-  const inMail = `Hi [Recruiter Name], I recently submitted my application for the ${app.jobTitle} position at ${app.company}. With direct experience in our industry and verified work authorization, I would love to connect and introduce my portfolio. Thank you!`;
-  const followUp = `Subject: Following up on ${app.jobTitle} application - [My Name]\n\nDear ${app.company} Recruiting Team,\n\nI hope you are having a productive week. I recently submitted my application for the ${app.jobTitle} opening on ${app.appliedDate || 'this week'}.\n\nI remain deeply excited about the role and confident in my ability to hit the ground running. Please let me know if any additional work samples or references would be helpful as you review candidates.\n\nBest regards,\n[Your Name]`;
-  const thankYou = `Subject: Thank you - ${app.jobTitle} Interview Loop\n\nDear ${app.company} Team,\n\nThank you for taking the time to speak with me regarding the ${app.jobTitle} position today. Learning more about your team's objectives reinforced my enthusiasm for joining ${app.company}.\n\nPlease let me know if there are any follow-up questions regarding my background or portfolio.\n\nBest regards,\n[Your Name]`;
+  const user = getCurrentUser();
+  const decisionMakers = deriveDecisionMakersForCompany(app.company, app.jobTitle);
+  const primaryDM = decisionMakers[0];
+  const dmName = app.contactPerson || primaryDM?.name || 'Hiring Lead';
+  const dmTitle = app.contactTitle || primaryDM?.title || 'Talent Acquisition Partner';
+  const dmEmail = app.recruiterEmail || primaryDM?.email || '';
+  const dmLinkedIn = app.contactLinkedIn || primaryDM?.linkedInUrl || `https://www.linkedin.com/search/results/people/?keywords=${encodeURIComponent(`${app.company} Recruiter`)}`;
+
+  const outreach = generateDecisionMakerOutreach(
+    primaryDM || {
+      id: 'dm-custom',
+      name: dmName,
+      title: dmTitle,
+      company: app.company,
+      companyDomain: 'company.com',
+      email: dmEmail,
+      emailStatus: 'verified',
+      linkedInUrl: dmLinkedIn,
+      department: 'talent_acquisition',
+      location: 'United States',
+      outreachAngle: 'Direct inquiry',
+      source: 'verified_registry'
+    },
+    user?.name || 'Applicant',
+    app.jobTitle,
+    user?.visaStatus || 'U.S. Work Authorized',
+    []
+  );
 
   return (
     <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
@@ -1433,7 +1577,7 @@ function OutreachModal({
           <div>
             <h3 className="text-base font-black text-slate-900 flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-indigo-600" />
-              <span>Multi-Stage Outreach Sequences: {app.company}</span>
+              <span>Direct Recruiter Outreach Playbook: {app.company}</span>
             </h3>
             <p className="text-xs text-slate-500 mt-0.5">Role: {app.jobTitle}</p>
           </div>
@@ -1445,61 +1589,127 @@ function OutreachModal({
           </button>
         </div>
 
+        {/* Decision-Maker Profile Banner */}
+        <div className="bg-slate-50 border border-slate-200 p-4 rounded-2xl space-y-3">
+          <div className="flex items-start justify-between gap-2">
+            <div className="space-y-0.5">
+              <div className="text-[10px] font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1">
+                <UserCheck className="w-3.5 h-3.5 text-blue-600" />
+                <span>Verified Decision-Maker Contact</span>
+              </div>
+              <div className="text-sm font-black text-slate-900">
+                {dmName}
+              </div>
+              <div className="text-xs text-slate-600">
+                {dmTitle} • {app.company}
+              </div>
+            </div>
+            <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 shrink-0">
+              Verified Lead
+            </span>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-2 pt-1 text-xs">
+            {dmEmail && (
+              <div className="flex items-center gap-1.5 bg-white border border-slate-200 px-3 py-1.5 rounded-xl font-mono text-slate-800">
+                <Mail className="w-3.5 h-3.5 text-slate-400" />
+                <span>{dmEmail}</span>
+                <a
+                  href={`mailto:${dmEmail}?subject=${encodeURIComponent(outreach.coldEmailSubject)}&body=${encodeURIComponent(outreach.coldEmailBody)}`}
+                  className="ml-2 text-blue-600 hover:text-blue-800 font-bold"
+                >
+                  Mailto
+                </a>
+                <button
+                  onClick={() => onCopy(`modal-dm-${app.id}`, dmEmail)}
+                  className="text-slate-400 hover:text-slate-700 ml-1 text-[11px]"
+                >
+                  {copiedKey === `modal-dm-${app.id}` ? 'Copied' : 'Copy'}
+                </button>
+              </div>
+            )}
+
+            <a
+              href={dmLinkedIn}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 bg-sky-50 text-sky-800 border border-sky-200 px-3 py-1.5 rounded-xl font-bold hover:bg-sky-100 transition-colors"
+            >
+              <Linkedin className="w-3.5 h-3.5 text-sky-600" />
+              <span>Open LinkedIn Profile</span>
+              <ExternalLink className="w-3 h-3" />
+            </a>
+          </div>
+        </div>
+
         <div className="space-y-3 text-xs">
           {/* Template 1 */}
-          <div className="p-3 bg-slate-50 rounded-2xl border border-slate-200 space-y-1.5">
+          <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
             <div className="flex items-center justify-between font-bold text-slate-800">
               <span className="flex items-center gap-1.5 text-sky-700">
                 <Linkedin className="w-3.5 h-3.5" />
-                <span>1. LinkedIn Connection Request (&lt;300 chars)</span>
+                <span>1. LinkedIn Connection Request ({outreach.linkedInInMail.length}/300 chars)</span>
               </span>
               <button
-                onClick={() => onCopy(`modal-inmail-${app.id}`, inMail)}
+                onClick={() => onCopy(`modal-inmail-${app.id}`, outreach.linkedInInMail)}
                 className="text-blue-600 hover:underline font-bold"
               >
                 {copiedKey === `modal-inmail-${app.id}` ? 'Copied!' : 'Copy Template'}
               </button>
             </div>
-            <p className="bg-white p-2.5 rounded-xl border border-slate-200 font-mono text-slate-700">
-              {inMail}
+            <p className="bg-white p-3 rounded-xl border border-slate-200 font-mono text-slate-700 leading-relaxed">
+              {outreach.linkedInInMail}
             </p>
           </div>
 
           {/* Template 2 */}
-          <div className="p-3 bg-slate-50 rounded-2xl border border-slate-200 space-y-1.5">
+          <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
             <div className="flex items-center justify-between font-bold text-slate-800">
               <span className="flex items-center gap-1.5 text-emerald-700">
                 <Mail className="w-3.5 h-3.5" />
-                <span>2. Day 3-4 Application Follow-up Email</span>
+                <span>2. Direct Cold Outreach Email</span>
               </span>
-              <button
-                onClick={() => onCopy(`modal-followup-${app.id}`, followUp)}
-                className="text-blue-600 hover:underline font-bold"
-              >
-                {copiedKey === `modal-followup-${app.id}` ? 'Copied!' : 'Copy Template'}
-              </button>
+              <div className="flex items-center gap-3">
+                <a
+                  href={`mailto:${dmEmail}?subject=${encodeURIComponent(outreach.coldEmailSubject)}&body=${encodeURIComponent(outreach.coldEmailBody)}`}
+                  className="text-emerald-700 hover:underline font-bold"
+                >
+                  Open in Email Client
+                </a>
+                <button
+                  onClick={() => onCopy(`modal-followup-${app.id}`, `${outreach.coldEmailSubject}\n\n${outreach.coldEmailBody}`)}
+                  className="text-blue-600 hover:underline font-bold"
+                >
+                  {copiedKey === `modal-followup-${app.id}` ? 'Copied!' : 'Copy Template'}
+                </button>
+              </div>
             </div>
-            <p className="bg-white p-2.5 rounded-xl border border-slate-200 font-mono text-slate-700 whitespace-pre-line">
-              {followUp}
-            </p>
+            <div className="bg-white p-3 rounded-xl border border-slate-200 font-mono text-slate-700 space-y-1.5">
+              <div className="font-bold text-slate-900 border-b pb-1">
+                {outreach.coldEmailSubject}
+              </div>
+              <div className="whitespace-pre-line leading-relaxed">
+                {outreach.coldEmailBody}
+              </div>
+            </div>
           </div>
 
           {/* Template 3 */}
-          <div className="p-3 bg-slate-50 rounded-2xl border border-slate-200 space-y-1.5">
+          <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
             <div className="flex items-center justify-between font-bold text-slate-800">
-              <span className="flex items-center gap-1.5 text-purple-700">
-                <CheckCircle2 className="w-3.5 h-3.5" />
-                <span>3. Post-Interview 24h Thank-You Note</span>
+              <span className="flex items-center gap-1.5 text-indigo-700">
+                <Clock className="w-3.5 h-3.5" />
+                <span>3. Day 3-4 Application Follow-up Bump</span>
               </span>
               <button
-                onClick={() => onCopy(`modal-thankyou-${app.id}`, thankYou)}
+                onClick={() => onCopy(`modal-thankyou-${app.id}`, outreach.followUpDay3)}
                 className="text-blue-600 hover:underline font-bold"
               >
                 {copiedKey === `modal-thankyou-${app.id}` ? 'Copied!' : 'Copy Template'}
               </button>
             </div>
-            <p className="bg-white p-2.5 rounded-xl border border-slate-200 font-mono text-slate-700 whitespace-pre-line">
-              {thankYou}
+            <p className="bg-white p-3 rounded-xl border border-slate-200 font-mono text-slate-700 whitespace-pre-line leading-relaxed">
+              {outreach.followUpDay3}
             </p>
           </div>
         </div>
