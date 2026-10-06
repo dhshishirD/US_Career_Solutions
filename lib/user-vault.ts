@@ -21,6 +21,11 @@ export interface CandidateDossier {
   targetRole: string;
   targetCompany: string;
   coverLetter: string;
+  readyCvText?: string;
+  readyCvFileName?: string;
+  readyCoverLetter?: string;
+  readyCoverLetterFileName?: string;
+  documentMode?: 'ready_documents' | 'ai_tailored';
   skills: string[];
   lastUpdated: string;
 }

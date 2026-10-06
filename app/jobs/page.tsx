@@ -210,6 +210,7 @@ function JobsContent() {
               <div className="space-y-2">
                 {[
                   { value: 'all', label: 'All Eligibility Types' },
+                  { value: 'U.S. Citizen / GC (Direct Hire)', label: 'U.S. Citizen / Permanent Resident (Direct Hire)' },
                   { value: 'H-1B Sponsor', label: 'H-1B Visa Sponsor' },
                   { value: 'Cap-Exempt H-1B', label: 'Cap-Exempt H-1B (No Lottery)' },
                   { value: 'Schedule A EB-3 Nurse', label: 'Schedule A EB-3 Nurse (Green Card)' },
@@ -332,11 +333,12 @@ function JobsContent() {
           <div className="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs">
             <span className="text-slate-400 font-bold uppercase tracking-wider text-[10px] shrink-0 mr-1">Popular:</span>
             {[
-              { label: '🌾 H-2A Farm & Harvest', sponsor: 'H-2A Agricultural Visa', cat: 'Agricultural & Farming' },
-              { label: '🏔️ H-2B Resort & Seasonal', sponsor: 'H-2B Seasonal Visa', cat: 'Hospitality, Resorts & Seasonal' },
-              { label: '🩺 Nurse Green Card', sponsor: 'Schedule A EB-3 Nurse', cat: 'all' },
-              { label: '🏛️ Cap-Exempt H-1B', sponsor: 'Cap-Exempt H-1B', cat: 'all' },
-              { label: '🌐 Global USD (W-8BEN)', sponsor: 'US Remote (Contractor/W-8BEN)', cat: 'all' },
+              { label: 'US Citizen / GC Direct Hire', sponsor: 'U.S. Citizen / GC (Direct Hire)', cat: 'all' },
+              { label: 'H-2A Farm & Harvest', sponsor: 'H-2A Agricultural Visa', cat: 'Agricultural & Farming' },
+              { label: 'H-2B Resort & Seasonal', sponsor: 'H-2B Seasonal Visa', cat: 'Hospitality, Resorts & Seasonal' },
+              { label: 'Nurse EB-3 Green Card', sponsor: 'Schedule A EB-3 Nurse', cat: 'all' },
+              { label: 'Cap-Exempt H-1B', sponsor: 'Cap-Exempt H-1B', cat: 'all' },
+              { label: 'Global USD (W-8BEN)', sponsor: 'US Remote (Contractor/W-8BEN)', cat: 'all' },
             ].map(p => (
               <button
                 key={p.label}

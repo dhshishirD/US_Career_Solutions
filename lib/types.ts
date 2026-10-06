@@ -7,6 +7,7 @@ export type VisaSponsorshipType =
   | 'J-1 Summer Work / Hospitality'
   | 'OPT/CPT Friendly' 
   | 'US Remote (Contractor/W-8BEN)'
+  | 'U.S. Citizen / GC (Direct Hire)'
   | 'Requires US Auth';
 
 export type JobCategory = 
@@ -96,5 +97,13 @@ export interface TrackedApplication {
   salary?: string;
   notes?: string;
   contactPerson?: string;
+  recruiterEmail?: string;
+  jobUrl?: string;
+  jobDescription?: string;
+  readyCvText?: string;
+  readyCvFileName?: string;
+  readyCoverLetterText?: string;
+  readyCoverLetterFileName?: string;
+  submissionType?: 'ready_documents' | 'ai_tailored';
   updatedAt: string;
 }

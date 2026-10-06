@@ -121,7 +121,7 @@ export default function PaymentCheckoutModal({
     setTimeout(() => setCopiedField(null), 2500);
   };
 
-  const handleBdtSubmit = (e: React.FormEvent) => {
+  const handleBdtSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMsg('');
 
@@ -135,30 +135,50 @@ export default function PaymentCheckoutModal({
     }
 
     setSubmitting(true);
-    setTimeout(() => {
-      // Record payment in vault
-      const user = getCurrentUser();
-      savePaymentSubmission({
-        userId: user?.id,
-        plan,
-        currency: 'BDT',
-        amount: planPricing[plan].bdt,
-        method: bdtMethod,
-        senderPhone: senderPhone.trim(),
-        trxId: trxId.trim().toUpperCase(),
-        status: 'verified'
+    const user = getCurrentUser();
+
+    try {
+      // Dispatch order to backend registry
+      await fetch('/api/orders', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId: user?.id,
+          userEmail: user?.email || candidateEmail,
+          userName: user?.name,
+          plan,
+          currency: 'BDT',
+          amount: planPricing[plan].bdt,
+          method: bdtMethod,
+          senderPhone: senderPhone.trim(),
+          trxId: trxId.trim().toUpperCase()
+        })
       });
+    } catch (err) {
+      console.warn('Backend order recording notice:', err);
+    }
 
-      // Automatically upgrade plan and credit balance in client vault
-      upgradeUserPlan(plan, planPricing[plan].credits);
+    // Record payment in vault
+    savePaymentSubmission({
+      userId: user?.id,
+      plan,
+      currency: 'BDT',
+      amount: planPricing[plan].bdt,
+      method: bdtMethod,
+      senderPhone: senderPhone.trim(),
+      trxId: trxId.trim().toUpperCase(),
+      status: 'verified'
+    });
 
-      setSubmitting(false);
-      setSubmitted(true);
-      if (onSuccess) onSuccess();
-    }, 700);
+    // Automatically upgrade plan and credit balance in client vault
+    upgradeUserPlan(plan, planPricing[plan].credits);
+
+    setSubmitting(false);
+    setSubmitted(true);
+    if (onSuccess) onSuccess();
   };
 
-  const handleUsdSubmit = (e: React.FormEvent) => {
+  const handleUsdSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMsg('');
 
@@ -172,27 +192,47 @@ export default function PaymentCheckoutModal({
     }
 
     setSubmitting(true);
-    setTimeout(() => {
-      const user = getCurrentUser();
-      savePaymentSubmission({
-        userId: user?.id,
-        plan,
-        currency: 'USD',
-        amount: planPricing[plan].usd,
-        method: 'us_bank_wire',
-        senderName: senderName.trim(),
-        senderBank: senderBank.trim() || 'US Commercial Bank',
-        reference: wireRef.trim().toUpperCase(),
-        status: 'verified'
+    const user = getCurrentUser();
+
+    try {
+      // Dispatch order to backend registry
+      await fetch('/api/orders', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId: user?.id,
+          userEmail: user?.email || candidateEmail,
+          userName: senderName.trim(),
+          plan,
+          currency: 'USD',
+          amount: planPricing[plan].usd,
+          method: 'us_bank_wire',
+          wireRef: wireRef.trim().toUpperCase(),
+          senderBank: senderBank.trim() || 'US Commercial Bank'
+        })
       });
+    } catch (err) {
+      console.warn('Backend order recording notice:', err);
+    }
 
-      // Automatically upgrade plan and credit balance
-      upgradeUserPlan(plan, planPricing[plan].credits);
+    savePaymentSubmission({
+      userId: user?.id,
+      plan,
+      currency: 'USD',
+      amount: planPricing[plan].usd,
+      method: 'us_bank_wire',
+      senderName: senderName.trim(),
+      senderBank: senderBank.trim() || 'US Commercial Bank',
+      reference: wireRef.trim().toUpperCase(),
+      status: 'verified'
+    });
 
-      setSubmitting(false);
-      setSubmitted(true);
-      if (onSuccess) onSuccess();
-    }, 700);
+    // Automatically upgrade plan and credit balance
+    upgradeUserPlan(plan, planPricing[plan].credits);
+
+    setSubmitting(false);
+    setSubmitted(true);
+    if (onSuccess) onSuccess();
   };
 
   const activePricing = planPricing[plan];

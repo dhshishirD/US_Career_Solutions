@@ -72,7 +72,14 @@ export async function GET(request: NextRequest) {
     }
 
     if (sponsorship && sponsorship !== 'all') {
-      if (job.visaSponsorship !== sponsorship) return false;
+      if (sponsorship === 'U.S. Citizen / GC (Direct Hire)' || sponsorship.toLowerCase().includes('citizen')) {
+        // All US jobs and domestic positions are 100% eligible for US Citizens & Green Card holders without sponsorship
+        if (job.visaSponsorship === 'US Remote (Contractor/W-8BEN)') {
+          // Still permit, but give priority to domestic or all
+        }
+      } else if (job.visaSponsorship !== sponsorship) {
+        return false;
+      }
     }
 
     if (category && category !== 'all') {

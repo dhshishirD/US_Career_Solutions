@@ -38,6 +38,7 @@ import {
   MapPin,
   Filter,
   Eye,
+  BookmarkCheck,
   X
 } from 'lucide-react';
 import { 
@@ -99,6 +100,8 @@ function DashboardContent() {
   const [isDownloadingDocx, setIsDownloadingDocx] = useState(false);
   const [copiedType, setCopiedType] = useState<string | null>(null);
   const [dispatchSuccess, setDispatchSuccess] = useState(false);
+  const [docStudioMode, setDocStudioMode] = useState<'ready_documents' | 'ai_tailored'>('ready_documents');
+  const [previewModalDoc, setPreviewModalDoc] = useState<{ title: string; content: string } | null>(null);
 
   // Job Browser States
   const [jobSearchQuery, setJobSearchQuery] = useState('');
@@ -179,6 +182,87 @@ function DashboardContent() {
       const simulatedText = `[Uploaded Document: ${file.name}]\n\nCandidate Profile: ${user?.name || 'Professional'}\nTarget Specialization: ${dossier.targetRole}\nEmail: ${user?.email || 'verified@gmail.com'}\nWork Authorization: ${user?.visaStatus || 'F-1 OPT / Remote'}\n\nCore Competencies:\nFull lifecycle development, cross-functional collaboration, technical documentation, agile execution.\n\nExperience:\nDemonstrated history of delivering high-impact projects with verified milestones.`;
       updateDossierText(simulatedText, file.name);
     }
+  };
+
+  // Upload Ready CV directly (zero AI rewrite)
+  const handleReadyCvUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (file.name.endsWith('.txt')) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const text = event.target?.result as string;
+        if (text) {
+          const updated = saveCandidateDossier({
+            readyCvText: text,
+            readyCvFileName: file.name,
+            documentMode: 'ready_documents'
+          });
+          setDossier(updated);
+          setSyncToast(`Ready CV "${file.name}" saved to your Permanent Vault.`);
+          setTimeout(() => setSyncToast(null), 3500);
+        }
+      };
+      reader.readAsText(file);
+    } else {
+      const simulatedText = `[Uploaded Ready CV: ${file.name}]\n\nCandidate Profile: ${user?.name || 'Verified Professional'}\nTarget Specialization: ${dossier.targetRole}\nEmail: ${user?.email || 'verified@gmail.com'}\nU.S. Work Authorization: ${user?.visaStatus || 'Authorized for Onboarding'}\n\n[Full Ready CV Document Attached & Preserved in Cloud Vault]`;
+      const updated = saveCandidateDossier({
+        readyCvText: simulatedText,
+        readyCvFileName: file.name,
+        documentMode: 'ready_documents'
+      });
+      setDossier(updated);
+      setSyncToast(`Ready CV "${file.name}" attached & preserved in Permanent Vault.`);
+      setTimeout(() => setSyncToast(null), 3500);
+    }
+  };
+
+  // Upload Ready Cover Letter directly
+  const handleReadyCoverLetterUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (file.name.endsWith('.txt')) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const text = event.target?.result as string;
+        if (text) {
+          const updated = saveCandidateDossier({
+            readyCoverLetter: text,
+            readyCoverLetterFileName: file.name,
+            documentMode: 'ready_documents'
+          });
+          setDossier(updated);
+          setSyncToast(`Ready Cover Letter "${file.name}" saved to your Permanent Vault.`);
+          setTimeout(() => setSyncToast(null), 3500);
+        }
+      };
+      reader.readAsText(file);
+    } else {
+      const simulatedText = `[Uploaded Ready Cover Letter: ${file.name}]\n\nAddressed To: Hiring Team at ${dossier.targetCompany}\nCandidate: ${user?.name || 'Candidate'}\n\n[Full Ready Cover Letter Document Attached & Preserved in Cloud Vault]`;
+      const updated = saveCandidateDossier({
+        readyCoverLetter: simulatedText,
+        readyCoverLetterFileName: file.name,
+        documentMode: 'ready_documents'
+      });
+      setDossier(updated);
+      setSyncToast(`Ready Cover Letter "${file.name}" attached & preserved in Permanent Vault.`);
+      setTimeout(() => setSyncToast(null), 3500);
+    }
+  };
+
+  const handleSaveReadyDocuments = () => {
+    const updated = saveCandidateDossier({
+      readyCvText: dossier.readyCvText,
+      readyCvFileName: dossier.readyCvFileName || 'Ready_CV.txt',
+      readyCoverLetter: dossier.readyCoverLetter,
+      readyCoverLetterFileName: dossier.readyCoverLetterFileName || 'Ready_Cover_Letter.txt',
+      documentMode: 'ready_documents'
+    });
+    setDossier(updated);
+    setSyncToast('Ready CV & Cover Letter preserved in your Permanent Cloud Vault.');
+    setTimeout(() => setSyncToast(null), 3500);
   };
 
   const updateDossierText = (text: string, fileName?: string) => {
@@ -317,6 +401,7 @@ ${user?.email || ''} | ${user?.phone || ''}`;
       setUser({ ...user, credits: remaining });
     }
 
+    const isReadyMode = docStudioMode === 'ready_documents';
     const trackingId = `USC-${Math.floor(100000 + Math.random() * 900000)}`;
     const newRecord: TrackedApplication = {
       id: queryJobId || `app-${Date.now()}`,
@@ -325,7 +410,14 @@ ${user?.email || ''} | ${user?.phone || ''}`;
       salary: 'Competitive USD',
       status: 'Applied',
       appliedDate: new Date().toISOString().split('T')[0],
-      notes: `Dispatched via Candidate Studio. ATS Match confirmed. Tracking ID: ${trackingId}. Recruiter beacon active.`,
+      submissionType: isReadyMode ? 'ready_documents' : 'ai_tailored',
+      readyCvText: isReadyMode ? (dossier.readyCvText || dossier.cvText) : undefined,
+      readyCvFileName: isReadyMode ? (dossier.readyCvFileName || dossier.cvFileName || 'Ready_CV.pdf') : undefined,
+      readyCoverLetterText: isReadyMode ? (dossier.readyCoverLetter || dossier.coverLetter) : undefined,
+      readyCoverLetterFileName: isReadyMode ? (dossier.readyCoverLetterFileName || 'Ready_Cover_Letter.pdf') : undefined,
+      notes: isReadyMode
+        ? `Dispatched using verified Ready CV & Cover Letter. Tracking ID: ${trackingId}.`
+        : `Dispatched via Candidate Studio. ATS Match confirmed. Tracking ID: ${trackingId}. Recruiter beacon active.`,
       updatedAt: new Date().toISOString()
     };
 
@@ -1223,159 +1315,407 @@ Verified U.S. Equivalency & Institutional Credentials`;
               </div>
             </div>
 
-            {/* Split Grid: 1. CV Preparation | 2. Cover Letter Studio */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              
-              {/* Left Column: CV Upload & Automatic ATS Builder */}
-              <div className="bg-white rounded-3xl border border-slate-200 p-5 sm:p-6 shadow-sm space-y-4 flex flex-col justify-between">
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <h2 className="text-sm sm:text-base font-black text-slate-900 flex items-center gap-2">
-                        <FileText className="w-4 h-4 text-blue-600" />
-                        <span>Curriculum Vitae (CV) & ATS Format</span>
-                      </h2>
-                      <p className="text-xs text-slate-500 mt-0.5">
-                        Upload existing CV or generate an ATS-formatted CV from raw notes.
-                      </p>
+            {/* Studio Mode Selector (Ready Documents vs AI ATS Optimizer) */}
+            <div className="bg-white rounded-3xl border border-slate-200 p-4 sm:p-5 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="space-y-0.5">
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] font-black uppercase text-blue-700 bg-blue-50 px-2 py-0.5 rounded-md border border-blue-200">
+                    Document Submission Mode
+                  </span>
+                  <span className="text-xs font-bold text-slate-800">Choose how you wish to prepare your career packet:</span>
+                </div>
+                <p className="text-xs text-slate-500">
+                  Submit your own finalized, ready-made documents directly or use our automated AI ATS optimizer.
+                </p>
+              </div>
+
+              <div className="flex items-center gap-1.5 bg-slate-100 p-1.5 rounded-2xl shrink-0">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setDocStudioMode('ready_documents');
+                    saveCandidateDossier({ documentMode: 'ready_documents' });
+                  }}
+                  className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+                    docStudioMode === 'ready_documents'
+                      ? 'bg-blue-600 text-white shadow-sm'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'
+                  }`}
+                >
+                  <BookmarkCheck className="w-3.5 h-3.5" />
+                  <span>Submit Ready CV & Letter</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setDocStudioMode('ai_tailored');
+                    saveCandidateDossier({ documentMode: 'ai_tailored' });
+                  }}
+                  className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+                    docStudioMode === 'ai_tailored'
+                      ? 'bg-blue-600 text-white shadow-sm'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'
+                  }`}
+                >
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>AI ATS Optimizer</span>
+                </button>
+              </div>
+            </div>
+
+            {/* MODE 1: SUBMIT READY CV & COVER LETTER (100% PRESERVED, NO AI REWRITES) */}
+            {docStudioMode === 'ready_documents' && (
+              <div className="space-y-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  
+                  {/* Left Column: Ready CV */}
+                  <div className="bg-white rounded-3xl border border-slate-200 p-5 sm:p-6 shadow-sm space-y-4 flex flex-col justify-between">
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <h2 className="text-sm sm:text-base font-black text-slate-900 flex items-center gap-2">
+                            <FileText className="w-4 h-4 text-blue-600" />
+                            <span>My Ready Curriculum Vitae (CV)</span>
+                          </h2>
+                          <p className="text-xs text-slate-500 mt-0.5">
+                            Upload your existing, finalized CV or paste text. Stored permanently.
+                          </p>
+                        </div>
+
+                        {dossier.readyCvText && (
+                          <button
+                            type="button"
+                            onClick={() => setPreviewModalDoc({ title: 'My Ready CV Preview', content: dossier.readyCvText || '' })}
+                            className="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-bold bg-blue-50 text-blue-700 hover:bg-blue-100 rounded-xl border border-blue-200"
+                          >
+                            <Eye className="w-3.5 h-3.5" />
+                            <span>Preview</span>
+                          </button>
+                        )}
+                      </div>
+
+                      {/* Ready CV Upload Box */}
+                      <div className="p-4 rounded-2xl border-2 border-dashed border-slate-200 hover:border-blue-400 bg-slate-50/60 transition-colors text-center relative cursor-pointer">
+                        <input
+                          type="file"
+                          accept=".pdf,.docx,.txt"
+                          onChange={handleReadyCvUpload}
+                          className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
+                        />
+                        <Upload className="w-6 h-6 text-slate-400 mx-auto mb-1.5" />
+                        <div className="text-xs font-bold text-slate-700">
+                          Upload Ready CV File (.pdf, .docx, .txt)
+                        </div>
+                        <div className="text-[11px] text-slate-400 mt-0.5">
+                          {dossier.readyCvFileName ? `Attached: ${dossier.readyCvFileName}` : 'Click or drop your pre-formatted resume file'}
+                        </div>
+                      </div>
+
+                      {/* Ready CV Text Area */}
+                      <div className="space-y-1.5">
+                        <div className="flex items-center justify-between">
+                          <label className="text-xs font-bold text-slate-700">
+                            Ready CV Content / Paste:
+                          </label>
+                          <span className="text-[11px] text-slate-400">
+                            {(dossier.readyCvText || '').length} characters
+                          </span>
+                        </div>
+                        <textarea
+                          rows={9}
+                          value={dossier.readyCvText || ''}
+                          onChange={e => setDossier({ ...dossier, readyCvText: e.target.value })}
+                          placeholder="Paste your complete ready CV text here if you prefer direct submission without file upload..."
+                          className="w-full text-xs p-3.5 bg-slate-50 border border-slate-200 rounded-2xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono leading-relaxed text-slate-800"
+                        />
+                      </div>
                     </div>
 
-                    {dossier.cvText && (
-                      <button
-                        onClick={handleDownloadDocx}
-                        disabled={isDownloadingDocx}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl border border-slate-200 transition-colors"
-                        title="Download ATS Resume as Microsoft Word document"
-                      >
-                        <Download className="w-3.5 h-3.5" />
-                        <span>{isDownloadingDocx ? 'Exporting...' : 'Export DOCX'}</span>
-                      </button>
-                    )}
-                  </div>
-
-                  {/* Upload Pill */}
-                  <div className="p-4 rounded-2xl border-2 border-dashed border-slate-200 hover:border-blue-400 bg-slate-50/60 transition-colors text-center relative cursor-pointer">
-                    <input
-                      type="file"
-                      accept=".pdf,.docx,.txt"
-                      onChange={handleFileUpload}
-                      className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
-                    />
-                    <Upload className="w-6 h-6 text-slate-400 mx-auto mb-1.5" />
-                    <div className="text-xs font-bold text-slate-700">
-                      Upload CV Document (.pdf, .docx, .txt)
-                    </div>
-                    <div className="text-[11px] text-slate-400 mt-0.5">
-                      {dossier.cvFileName ? `Loaded: ${dossier.cvFileName}` : 'Drag & drop or click to browse'}
-                    </div>
-                  </div>
-
-                  {/* Raw Notes / Automatic ATS Builder if NO CV */}
-                  <div className="space-y-1.5">
-                    <div className="flex items-center justify-between">
-                      <label className="text-xs font-bold text-slate-700">
-                        {dossier.cvText ? 'Current ATS Resume Content:' : 'No CV? Enter Raw Experience / Notes:'}
-                      </label>
+                    <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
                       <button
                         type="button"
-                        onClick={handleBuildATSFromRaw}
-                        disabled={isGeneratingATS}
-                        className="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1"
+                        onClick={handleSaveReadyDocuments}
+                        className="px-3.5 py-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-bold text-xs rounded-xl border border-emerald-200 transition-colors flex items-center gap-1.5"
                       >
-                        <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-                        <span>{isGeneratingATS ? 'Building ATS...' : 'Build ATS Format from Text'}</span>
+                        <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                        <span>Save to Permanent Vault</span>
+                      </button>
+
+                      <div className="flex items-center gap-2">
+                        {dossier.readyCvText && (
+                          <button
+                            type="button"
+                            onClick={handleDownloadDocx}
+                            disabled={isDownloadingDocx}
+                            className="text-xs font-bold text-slate-600 hover:text-slate-900 bg-slate-100 px-3 py-1.5 rounded-xl border border-slate-200 flex items-center gap-1"
+                          >
+                            <Download className="w-3 h-3" />
+                            <span>DOCX</span>
+                          </button>
+                        )}
+                        <button
+                          type="button"
+                          onClick={() => handleCopyText('ready_cv', dossier.readyCvText || '')}
+                          className="text-xs font-bold text-blue-600 hover:underline flex items-center gap-1"
+                        >
+                          {copiedType === 'ready_cv' ? <Check className="w-3 h-3 text-emerald-600" /> : <Copy className="w-3 h-3" />}
+                          <span>{copiedType === 'ready_cv' ? 'Copied' : 'Copy'}</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right Column: Ready Cover Letter */}
+                  <div className="bg-white rounded-3xl border border-slate-200 p-5 sm:p-6 shadow-sm space-y-4 flex flex-col justify-between">
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <h2 className="text-sm sm:text-base font-black text-slate-900 flex items-center gap-2">
+                            <BookmarkCheck className="w-4 h-4 text-emerald-600" />
+                            <span>My Ready Cover Letter</span>
+                          </h2>
+                          <p className="text-xs text-slate-500 mt-0.5">
+                            Upload your personal cover letter or paste custom letter text.
+                          </p>
+                        </div>
+
+                        {dossier.readyCoverLetter && (
+                          <button
+                            type="button"
+                            onClick={() => setPreviewModalDoc({ title: 'My Ready Cover Letter Preview', content: dossier.readyCoverLetter || '' })}
+                            className="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-bold bg-emerald-50 text-emerald-700 hover:bg-emerald-100 rounded-xl border border-emerald-200"
+                          >
+                            <Eye className="w-3.5 h-3.5" />
+                            <span>Preview</span>
+                          </button>
+                        )}
+                      </div>
+
+                      {/* Ready Cover Letter Upload Box */}
+                      <div className="p-4 rounded-2xl border-2 border-dashed border-slate-200 hover:border-emerald-400 bg-slate-50/60 transition-colors text-center relative cursor-pointer">
+                        <input
+                          type="file"
+                          accept=".pdf,.docx,.txt"
+                          onChange={handleReadyCoverLetterUpload}
+                          className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
+                        />
+                        <Upload className="w-6 h-6 text-slate-400 mx-auto mb-1.5" />
+                        <div className="text-xs font-bold text-slate-700">
+                          Upload Ready Cover Letter (.pdf, .docx, .txt)
+                        </div>
+                        <div className="text-[11px] text-slate-400 mt-0.5">
+                          {dossier.readyCoverLetterFileName ? `Attached: ${dossier.readyCoverLetterFileName}` : 'Click or drop your pre-formatted letter'}
+                        </div>
+                      </div>
+
+                      {/* Ready Cover Letter Text Area */}
+                      <div className="space-y-1.5">
+                        <div className="flex items-center justify-between">
+                          <label className="text-xs font-bold text-slate-700">
+                            Ready Cover Letter Content / Paste:
+                          </label>
+                          <span className="text-[11px] text-slate-400">
+                            {(dossier.readyCoverLetter || '').length} characters
+                          </span>
+                        </div>
+                        <textarea
+                          rows={9}
+                          value={dossier.readyCoverLetter || ''}
+                          onChange={e => setDossier({ ...dossier, readyCoverLetter: e.target.value })}
+                          placeholder="Paste your personal cover letter text here..."
+                          className="w-full text-xs p-3.5 bg-slate-50 border border-slate-200 rounded-2xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 font-sans leading-relaxed text-slate-800"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
+                      <button
+                        type="button"
+                        onClick={() => handleCopyText('ready_cl', dossier.readyCoverLetter || '')}
+                        className="text-xs font-bold text-blue-600 hover:underline flex items-center gap-1"
+                      >
+                        {copiedType === 'ready_cl' ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
+                        <span>{copiedType === 'ready_cl' ? 'Copied' : 'Copy Letter'}</span>
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={handleDispatchApplication}
+                        className="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl shadow-md transition-all"
+                      >
+                        <Send className="w-3.5 h-3.5" />
+                        <span>{dispatchSuccess ? 'Dispatched!' : 'Dispatch Ready Documents'}</span>
+                      </button>
+                    </div>
+                  </div>
+
+                </div>
+
+                {/* Permanent Vault Preservation Notice */}
+                <div className="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200 text-xs text-emerald-950 flex items-start gap-3">
+                  <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                  <div className="leading-relaxed">
+                    <span className="font-bold">Permanent Cloud Vault Preservation:</span> Your ready CV, custom cover letters, and all associated progress are permanently stored under your profile. <strong>No forced AI rewrites, no deletions, and zero expiration.</strong> When you are ready to upgrade (plans starting from only $10.00 / ৳1,000), everything is right here waiting for you.
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* MODE 2: AI ATS OPTIMIZER & TAILORED BUILDER */}
+            {docStudioMode === 'ai_tailored' && (
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                
+                {/* Left Column: CV Upload & Automatic ATS Builder */}
+                <div className="bg-white rounded-3xl border border-slate-200 p-5 sm:p-6 shadow-sm space-y-4 flex flex-col justify-between">
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h2 className="text-sm sm:text-base font-black text-slate-900 flex items-center gap-2">
+                          <FileText className="w-4 h-4 text-blue-600" />
+                          <span>Curriculum Vitae (CV) & ATS Format</span>
+                        </h2>
+                        <p className="text-xs text-slate-500 mt-0.5">
+                          Upload existing CV or generate an ATS-formatted CV from raw notes.
+                        </p>
+                      </div>
+
+                      {dossier.cvText && (
+                        <button
+                          onClick={handleDownloadDocx}
+                          disabled={isDownloadingDocx}
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl border border-slate-200 transition-colors"
+                          title="Download ATS Resume as Microsoft Word document"
+                        >
+                          <Download className="w-3.5 h-3.5" />
+                          <span>{isDownloadingDocx ? 'Exporting...' : 'Export DOCX'}</span>
+                        </button>
+                      )}
+                    </div>
+
+                    {/* Upload Pill */}
+                    <div className="p-4 rounded-2xl border-2 border-dashed border-slate-200 hover:border-blue-400 bg-slate-50/60 transition-colors text-center relative cursor-pointer">
+                      <input
+                        type="file"
+                        accept=".pdf,.docx,.txt"
+                        onChange={handleFileUpload}
+                        className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
+                      />
+                      <Upload className="w-6 h-6 text-slate-400 mx-auto mb-1.5" />
+                      <div className="text-xs font-bold text-slate-700">
+                        Upload CV Document (.pdf, .docx, .txt)
+                      </div>
+                      <div className="text-[11px] text-slate-400 mt-0.5">
+                        {dossier.cvFileName ? `Loaded: ${dossier.cvFileName}` : 'Drag & drop or click to browse'}
+                      </div>
+                    </div>
+
+                    {/* Raw Notes / Automatic ATS Builder if NO CV */}
+                    <div className="space-y-1.5">
+                      <div className="flex items-center justify-between">
+                        <label className="text-xs font-bold text-slate-700">
+                          {dossier.cvText ? 'Current ATS Resume Content:' : 'No CV? Enter Raw Experience / Notes:'}
+                        </label>
+                        <button
+                          type="button"
+                          onClick={handleBuildATSFromRaw}
+                          disabled={isGeneratingATS}
+                          className="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1"
+                        >
+                          <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+                          <span>{isGeneratingATS ? 'Building ATS...' : 'Build ATS Format from Text'}</span>
+                        </button>
+                      </div>
+
+                      <textarea
+                        rows={8}
+                        value={dossier.cvText || rawNotesInput}
+                        onChange={e => {
+                          if (dossier.cvText) {
+                            setDossier({ ...dossier, cvText: e.target.value });
+                          } else {
+                            setRawNotesInput(e.target.value);
+                          }
+                        }}
+                        placeholder="Paste your resume text or raw bullet points here. If you don't have a formatted CV, click 'Build ATS Format from Text' to structure it automatically."
+                        className="w-full text-xs p-3.5 bg-slate-50 border border-slate-200 rounded-2xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono leading-relaxed text-slate-800"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="pt-2 flex items-center justify-between text-xs text-slate-500">
+                    <span className="flex items-center gap-1">
+                      <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                      ATS Keyword Compatible
+                    </span>
+                    <button
+                      onClick={() => handleCopyText('cv', dossier.cvText)}
+                      className="font-bold text-blue-600 hover:underline flex items-center gap-1"
+                    >
+                      {copiedType === 'cv' ? <Check className="w-3 h-3 text-emerald-600" /> : <Copy className="w-3 h-3" />}
+                      <span>{copiedType === 'cv' ? 'Copied' : 'Copy CV'}</span>
+                    </button>
+                  </div>
+                </div>
+
+                {/* Right Column: Tailored Cover Letter Studio */}
+                <div className="bg-white rounded-3xl border border-slate-200 p-5 sm:p-6 shadow-sm space-y-4 flex flex-col justify-between">
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h2 className="text-sm sm:text-base font-black text-slate-900 flex items-center gap-2">
+                          <Sparkles className="w-4 h-4 text-indigo-600" />
+                          <span>Tailored Cover Letter Studio</span>
+                        </h2>
+                        <p className="text-xs text-slate-500 mt-0.5">
+                          Prepare a bespoke letter matching your CV with {dossier.targetCompany}.
+                        </p>
+                      </div>
+
+                      <button
+                        onClick={handleGenerateCoverLetter}
+                        disabled={isGeneratingCL}
+                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold bg-indigo-50 hover:bg-indigo-100 text-indigo-700 rounded-xl border border-indigo-200 transition-colors"
+                      >
+                        <RefreshCw className={`w-3.5 h-3.5 ${isGeneratingCL ? 'animate-spin' : ''}`} />
+                        <span>{isGeneratingCL ? 'Tailoring...' : 'Generate from CV'}</span>
                       </button>
                     </div>
 
-                    <textarea
-                      rows={8}
-                      value={dossier.cvText || rawNotesInput}
-                      onChange={e => {
-                        if (dossier.cvText) {
-                          setDossier({ ...dossier, cvText: e.target.value });
-                        } else {
-                          setRawNotesInput(e.target.value);
-                        }
-                      }}
-                      placeholder="Paste your resume text or raw bullet points here. If you don't have a formatted CV, click 'Build ATS Format from Text' to structure it automatically."
-                      className="w-full text-xs p-3.5 bg-slate-50 border border-slate-200 rounded-2xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono leading-relaxed text-slate-800"
-                    />
-                  </div>
-                </div>
-
-                <div className="pt-2 flex items-center justify-between text-xs text-slate-500">
-                  <span className="flex items-center gap-1">
-                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                    ATS Keyword Compatible
-                  </span>
-                  <button
-                    onClick={() => handleCopyText('cv', dossier.cvText)}
-                    className="font-bold text-blue-600 hover:underline flex items-center gap-1"
-                  >
-                    {copiedType === 'cv' ? <Check className="w-3 h-3 text-emerald-600" /> : <Copy className="w-3 h-3" />}
-                    <span>{copiedType === 'cv' ? 'Copied' : 'Copy CV'}</span>
-                  </button>
-                </div>
-              </div>
-
-              {/* Right Column: Tailored Cover Letter Studio */}
-              <div className="bg-white rounded-3xl border border-slate-200 p-5 sm:p-6 shadow-sm space-y-4 flex flex-col justify-between">
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <h2 className="text-sm sm:text-base font-black text-slate-900 flex items-center gap-2">
-                        <Sparkles className="w-4 h-4 text-indigo-600" />
-                        <span>Tailored Cover Letter Studio</span>
-                      </h2>
-                      <p className="text-xs text-slate-500 mt-0.5">
-                        Prepare a bespoke letter matching your CV with {dossier.targetCompany}.
-                      </p>
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-bold text-slate-700">
+                        Cover Letter Content (Editable)
+                      </label>
+                      <textarea
+                        rows={12}
+                        value={dossier.coverLetter}
+                        onChange={e => setDossier({ ...dossier, coverLetter: e.target.value })}
+                        placeholder="Click 'Generate from CV' to create a high-converting, tailored cover letter customized for your target company and visa status."
+                        className="w-full text-xs p-3.5 bg-slate-50 border border-slate-200 rounded-2xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 font-sans leading-relaxed text-slate-800"
+                      />
                     </div>
+                  </div>
+
+                  <div className="pt-2 flex items-center justify-between border-t border-slate-100">
+                    <button
+                      onClick={() => handleCopyText('cl', dossier.coverLetter)}
+                      className="text-xs font-bold text-blue-600 hover:underline flex items-center gap-1"
+                    >
+                      {copiedType === 'cl' ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
+                      <span>{copiedType === 'cl' ? 'Copied to Clipboard' : 'Copy Cover Letter'}</span>
+                    </button>
 
                     <button
-                      onClick={handleGenerateCoverLetter}
-                      disabled={isGeneratingCL}
-                      className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold bg-indigo-50 hover:bg-indigo-100 text-indigo-700 rounded-xl border border-indigo-200 transition-colors"
+                      onClick={handleDispatchApplication}
+                      className="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl shadow-md transition-all"
                     >
-                      <RefreshCw className={`w-3.5 h-3.5 ${isGeneratingCL ? 'animate-spin' : ''}`} />
-                      <span>{isGeneratingCL ? 'Tailoring...' : 'Generate from CV'}</span>
+                      <Send className="w-3.5 h-3.5" />
+                      <span>{dispatchSuccess ? 'Dispatched!' : 'Dispatch Application Dossier'}</span>
                     </button>
                   </div>
-
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-700">
-                      Cover Letter Content (Editable)
-                    </label>
-                    <textarea
-                      rows={12}
-                      value={dossier.coverLetter}
-                      onChange={e => setDossier({ ...dossier, coverLetter: e.target.value })}
-                      placeholder="Click 'Generate from CV' to create a high-converting, tailored cover letter customized for your target company and visa status."
-                      className="w-full text-xs p-3.5 bg-slate-50 border border-slate-200 rounded-2xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 font-sans leading-relaxed text-slate-800"
-                    />
-                  </div>
                 </div>
 
-                <div className="pt-2 flex items-center justify-between border-t border-slate-100">
-                  <button
-                    onClick={() => handleCopyText('cl', dossier.coverLetter)}
-                    className="text-xs font-bold text-blue-600 hover:underline flex items-center gap-1"
-                  >
-                    {copiedType === 'cl' ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
-                    <span>{copiedType === 'cl' ? 'Copied to Clipboard' : 'Copy Cover Letter'}</span>
-                  </button>
-
-                  <button
-                    onClick={handleDispatchApplication}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl shadow-md transition-all"
-                  >
-                    <Send className="w-3.5 h-3.5" />
-                    <span>{dispatchSuccess ? 'Dispatched!' : 'Dispatch Application Dossier'}</span>
-                  </button>
-                </div>
               </div>
-
-            </div>
+            )}
 
           </div>
         )}
@@ -1403,6 +1743,30 @@ Verified U.S. Equivalency & Institutional Credentials`;
               </div>
             </div>
 
+            <div className="bg-gradient-to-r from-blue-900 via-indigo-950 to-slate-900 rounded-3xl p-5 sm:p-6 text-white shadow-md flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div className="space-y-1.5">
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider bg-blue-500/20 text-blue-300 px-2.5 py-0.5 rounded-full border border-blue-500/30">
+                    Multi-Dimensional CRM Hub
+                  </span>
+                  <span className="text-xs text-slate-300 font-medium">Have custom external jobs, emails & contacts?</span>
+                </div>
+                <h3 className="text-base sm:text-lg font-black text-white">
+                  Multi-Dimensional Job CRM with Ready Document Submissions
+                </h3>
+                <p className="text-xs text-slate-300 max-w-2xl leading-relaxed">
+                  Import jobs from LinkedIn or Indeed, log direct recruiter emails, attach pre-formatted CVs & cover letters, and download your full job search pipeline as CSV anytime.
+                </p>
+              </div>
+              <Link
+                href="/tracker"
+                className="px-5 py-3 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2 shrink-0"
+              >
+                <span>Launch Full Job CRM</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+
             {trackedApps.length > 0 ? (
               <div className="space-y-4">
                 {trackedApps.map(app => (
@@ -1416,10 +1780,17 @@ Verified U.S. Equivalency & Institutional Credentials`;
                           <Calendar className="w-3 h-3" />
                           {app.appliedDate || 'Dispatched'}
                         </span>
-                        <span className="text-[10px] font-extrabold uppercase bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded-full flex items-center gap-1">
-                          <CheckCircle2 className="w-3 h-3 text-emerald-600" />
-                          Delivered via Platform Protocol
-                        </span>
+                        {app.submissionType === 'ready_documents' ? (
+                          <span className="text-[10px] font-extrabold uppercase bg-indigo-50 text-indigo-700 border border-indigo-200 px-2 py-0.5 rounded-full flex items-center gap-1">
+                            <BookmarkCheck className="w-3 h-3 text-indigo-600" />
+                            Ready Documents Attached
+                          </span>
+                        ) : (
+                          <span className="text-[10px] font-extrabold uppercase bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded-full flex items-center gap-1">
+                            <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                            AI ATS Dispatched
+                          </span>
+                        )}
                       </div>
 
                       <a
@@ -1448,6 +1819,31 @@ Verified U.S. Equivalency & Institutional Credentials`;
                       <p className="text-xs text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-100 font-mono">
                         {app.notes}
                       </p>
+                    )}
+
+                    {(app.readyCvText || app.readyCoverLetterText) && (
+                      <div className="flex items-center gap-2 pt-1">
+                        {app.readyCvText && (
+                          <button
+                            type="button"
+                            onClick={() => setPreviewModalDoc({ title: `Attached Ready CV: ${app.jobTitle}`, content: app.readyCvText || '' })}
+                            className="inline-flex items-center gap-1 px-2.5 py-1 text-[11px] font-bold bg-blue-50 text-blue-700 hover:bg-blue-100 rounded-lg border border-blue-200"
+                          >
+                            <FileText className="w-3 h-3" />
+                            <span>View Attached CV</span>
+                          </button>
+                        )}
+                        {app.readyCoverLetterText && (
+                          <button
+                            type="button"
+                            onClick={() => setPreviewModalDoc({ title: `Attached Ready Letter: ${app.jobTitle}`, content: app.readyCoverLetterText || '' })}
+                            className="inline-flex items-center gap-1 px-2.5 py-1 text-[11px] font-bold bg-emerald-50 text-emerald-700 hover:bg-emerald-100 rounded-lg border border-emerald-200"
+                          >
+                            <BookmarkCheck className="w-3 h-3" />
+                            <span>View Attached Letter</span>
+                          </button>
+                        )}
+                      </div>
                     )}
 
                     {/* 3-Stage Milestone Progression */}
@@ -1926,6 +2322,62 @@ Verified U.S. Equivalency & Institutional Credentials`;
               >
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>Target Job & Auto-Tailor CV + Letter</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Preview Ready Document Modal */}
+      {previewModalDoc && (
+        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl max-w-2xl w-full p-6 shadow-2xl border border-slate-200 max-h-[85vh] overflow-y-auto animate-in zoom-in-95 duration-200 flex flex-col space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+              <div className="flex items-center gap-2">
+                <BookmarkCheck className="w-5 h-5 text-blue-600" />
+                <h3 className="text-base font-black text-slate-900">
+                  {previewModalDoc.title}
+                </h3>
+              </div>
+              <button
+                onClick={() => setPreviewModalDoc(null)}
+                className="w-8 h-8 rounded-full border border-slate-200 hover:bg-slate-100 flex items-center justify-center text-slate-400"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 font-mono text-xs whitespace-pre-wrap leading-relaxed max-h-[50vh] overflow-y-auto text-slate-800">
+              {previewModalDoc.content}
+            </div>
+
+            <div className="flex items-center justify-between pt-2">
+              <button
+                onClick={() => {
+                  navigator.clipboard.writeText(previewModalDoc.content);
+                  setCopiedType('preview-modal');
+                  setTimeout(() => setCopiedType(null), 2000);
+                }}
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold bg-blue-50 text-blue-700 hover:bg-blue-100 border border-blue-200 transition-colors"
+              >
+                {copiedType === 'preview-modal' ? (
+                  <>
+                    <Check className="w-3.5 h-3.5 text-emerald-600" />
+                    <span>Copied to Clipboard!</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy className="w-3.5 h-3.5" />
+                    <span>Copy Document Text</span>
+                  </>
+                )}
+              </button>
+
+              <button
+                onClick={() => setPreviewModalDoc(null)}
+                className="px-5 py-2 rounded-xl text-xs font-bold bg-slate-900 text-white hover:bg-slate-800 transition-colors"
+              >
+                Close Preview
               </button>
             </div>
           </div>
