@@ -4,9 +4,9 @@ import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
 let cachedClient: SupabaseClient | null = null;
 
-// Official Supabase credentials provided by project administrator
-const DEFAULT_SUPABASE_URL = 'https://vfozkewdnelkgsluntex.supabase.co';
-const DEFAULT_SUPABASE_ANON_KEY = 'sb_publishable_0N-bsiW8Zxqiri5FEEoRoQ_x0naDUwt';
+// Official Supabase credentials for US Career Solutions project (gsshpnbyrwgrjpvksmag)
+const DEFAULT_SUPABASE_URL = 'https://gsshpnbyrwgrjpvksmag.supabase.co';
+const DEFAULT_SUPABASE_ANON_KEY = 'sb_publishable_NlNyTb74QqGDVGpeVt_mug_iipC6Ot6';
 export const GOOGLE_CLIENT_ID = '260193044309-vst2pf45p1iigsbivdv6vng7stn2nl3s.apps.googleusercontent.com';
 
 export function getSupabaseConfig(): { url: string; anonKey: string } {
@@ -21,7 +21,12 @@ export function getSupabaseConfig(): { url: string; anonKey: string } {
     const localUrl = localStorage.getItem('usc_supabase_url');
     const localKey = localStorage.getItem('usc_supabase_anon_key');
     if (localUrl && localKey) {
-      return { url: localUrl, anonKey: localKey };
+      if (localUrl.includes('vfozkewdnelkgsluntex')) {
+        localStorage.removeItem('usc_supabase_url');
+        localStorage.removeItem('usc_supabase_anon_key');
+      } else {
+        return { url: localUrl, anonKey: localKey };
+      }
     }
   }
 
