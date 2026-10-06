@@ -1,6 +1,6 @@
 'use client';
 
-export type PlanTier = 'free' | 'fast_track' | 'vip';
+export type PlanTier = 'free' | 'starter' | 'fast_track' | 'vip';
 
 export interface GoogleUserProfile {
   id: string;
@@ -57,6 +57,21 @@ const STORAGE_KEYS = {
 };
 
 const DEFAULT_MONTHLY_FREE_CREDITS = 5;
+
+export function getScopedKey(baseKey: string): string {
+  if (typeof window === 'undefined') return baseKey;
+  try {
+    const rawUser = localStorage.getItem(STORAGE_KEYS.USER);
+    if (rawUser) {
+      const u = JSON.parse(rawUser);
+      const identifier = u.email || u.id;
+      if (identifier) {
+        return `${baseKey}_${identifier.replace(/[^a-zA-Z0-9]/g, '_')}`;
+      }
+    }
+  } catch (e) {}
+  return baseKey;
+}
 
 function getCurrentMonthKey(): string {
   const d = new Date();
@@ -157,6 +172,10 @@ export function getCandidateDossier(): CandidateDossier {
 
   if (typeof window === 'undefined') return fallback;
   try {
+    const scopedKey = getScopedKey(STORAGE_KEYS.DOSSIER);
+    const scopedRaw = localStorage.getItem(scopedKey);
+    if (scopedRaw) return JSON.parse(scopedRaw);
+
     const raw = localStorage.getItem(STORAGE_KEYS.DOSSIER);
     return raw ? JSON.parse(raw) : fallback;
   } catch (e) {
@@ -174,7 +193,12 @@ export function saveCandidateDossier(dossier: Partial<CandidateDossier>): Candid
 
   if (typeof window !== 'undefined') {
     try {
-      localStorage.setItem(STORAGE_KEYS.DOSSIER, JSON.stringify(updated));
+      const serialized = JSON.stringify(updated);
+      localStorage.setItem(STORAGE_KEYS.DOSSIER, serialized);
+      const scopedKey = getScopedKey(STORAGE_KEYS.DOSSIER);
+      if (scopedKey !== STORAGE_KEYS.DOSSIER) {
+        localStorage.setItem(scopedKey, serialized);
+      }
     } catch (e) {
       console.warn('Error saving candidate dossier:', e);
     }
@@ -186,6 +210,10 @@ export function saveCandidateDossier(dossier: Partial<CandidateDossier>): Candid
 export function getSavedOutputs(): SavedOutput[] {
   if (typeof window === 'undefined') return [];
   try {
+    const scopedKey = getScopedKey(STORAGE_KEYS.SAVED_OUTPUTS);
+    const scopedRaw = localStorage.getItem(scopedKey);
+    if (scopedRaw) return JSON.parse(scopedRaw);
+
     const raw = localStorage.getItem(STORAGE_KEYS.SAVED_OUTPUTS);
     return raw ? JSON.parse(raw) : [];
   } catch (e) {
@@ -204,7 +232,12 @@ export function saveOutput(output: Omit<SavedOutput, 'id' | 'createdAt'>): Saved
   const updated = [newOutput, ...outputs];
   if (typeof window !== 'undefined') {
     try {
-      localStorage.setItem(STORAGE_KEYS.SAVED_OUTPUTS, JSON.stringify(updated));
+      const serialized = JSON.stringify(updated);
+      localStorage.setItem(STORAGE_KEYS.SAVED_OUTPUTS, serialized);
+      const scopedKey = getScopedKey(STORAGE_KEYS.SAVED_OUTPUTS);
+      if (scopedKey !== STORAGE_KEYS.SAVED_OUTPUTS) {
+        localStorage.setItem(scopedKey, serialized);
+      }
     } catch (e) {
       console.warn('Error saving output:', e);
     }
@@ -217,7 +250,12 @@ export function deleteSavedOutput(id: string): void {
   const outputs = getSavedOutputs().filter(o => o.id !== id);
   if (typeof window !== 'undefined') {
     try {
-      localStorage.setItem(STORAGE_KEYS.SAVED_OUTPUTS, JSON.stringify(outputs));
+      const serialized = JSON.stringify(outputs);
+      localStorage.setItem(STORAGE_KEYS.SAVED_OUTPUTS, serialized);
+      const scopedKey = getScopedKey(STORAGE_KEYS.SAVED_OUTPUTS);
+      if (scopedKey !== STORAGE_KEYS.SAVED_OUTPUTS) {
+        localStorage.setItem(scopedKey, serialized);
+      }
     } catch (e) {
       console.warn('Error deleting output:', e);
     }
@@ -227,6 +265,10 @@ export function deleteSavedOutput(id: string): void {
 export function getConnections(): ConnectionContact[] {
   if (typeof window === 'undefined') return [];
   try {
+    const scopedKey = getScopedKey(STORAGE_KEYS.CONNECTIONS);
+    const scopedRaw = localStorage.getItem(scopedKey);
+    if (scopedRaw) return JSON.parse(scopedRaw);
+
     const raw = localStorage.getItem(STORAGE_KEYS.CONNECTIONS);
     if (raw) return JSON.parse(raw);
     
@@ -274,7 +316,12 @@ export function saveConnection(contact: Omit<ConnectionContact, 'id'>): Connecti
   const updated = [newConn, ...connections];
   if (typeof window !== 'undefined') {
     try {
-      localStorage.setItem(STORAGE_KEYS.CONNECTIONS, JSON.stringify(updated));
+      const serialized = JSON.stringify(updated);
+      localStorage.setItem(STORAGE_KEYS.CONNECTIONS, serialized);
+      const scopedKey = getScopedKey(STORAGE_KEYS.CONNECTIONS);
+      if (scopedKey !== STORAGE_KEYS.CONNECTIONS) {
+        localStorage.setItem(scopedKey, serialized);
+      }
     } catch (e) {
       console.warn('Error saving connection:', e);
     }
@@ -287,11 +334,89 @@ export function deleteConnection(id: string): void {
   const connections = getConnections().filter(c => c.id !== id);
   if (typeof window !== 'undefined') {
     try {
-      localStorage.setItem(STORAGE_KEYS.CONNECTIONS, JSON.stringify(connections));
+      const serialized = JSON.stringify(connections);
+      localStorage.setItem(STORAGE_KEYS.CONNECTIONS, serialized);
+      const scopedKey = getScopedKey(STORAGE_KEYS.CONNECTIONS);
+      if (scopedKey !== STORAGE_KEYS.CONNECTIONS) {
+        localStorage.setItem(scopedKey, serialized);
+      }
     } catch (e) {
       console.warn('Error deleting connection:', e);
     }
   }
+}
+
+export function exportVaultBackup(): string {
+  if (typeof window === 'undefined') return '{}';
+  const user = getCurrentUser();
+  const dossier = getCandidateDossier();
+  const outputs = getSavedOutputs();
+  const connections = getConnections();
+  let apps = [];
+  try {
+    const rawApps = localStorage.getItem('tracked_applications');
+    if (rawApps) apps = JSON.parse(rawApps);
+  } catch (e) {}
+
+  const payload = {
+    platform: 'US Career Solutions Candidate Vault',
+    version: '2.0',
+    exportedAt: new Date().toISOString(),
+    user,
+    dossier,
+    outputs,
+    connections,
+    applications: apps
+  };
+  return JSON.stringify(payload, null, 2);
+}
+
+export function importVaultBackup(jsonStr: string): boolean {
+  if (typeof window === 'undefined') return false;
+  try {
+    const data = JSON.parse(jsonStr);
+    if (data.dossier) saveCandidateDossier(data.dossier);
+    if (Array.isArray(data.outputs)) {
+      localStorage.setItem(STORAGE_KEYS.SAVED_OUTPUTS, JSON.stringify(data.outputs));
+      const scopedKey = getScopedKey(STORAGE_KEYS.SAVED_OUTPUTS);
+      if (scopedKey !== STORAGE_KEYS.SAVED_OUTPUTS) {
+        localStorage.setItem(scopedKey, JSON.stringify(data.outputs));
+      }
+    }
+    if (Array.isArray(data.connections)) {
+      localStorage.setItem(STORAGE_KEYS.CONNECTIONS, JSON.stringify(data.connections));
+      const scopedKey = getScopedKey(STORAGE_KEYS.CONNECTIONS);
+      if (scopedKey !== STORAGE_KEYS.CONNECTIONS) {
+        localStorage.setItem(scopedKey, JSON.stringify(data.connections));
+      }
+    }
+    if (Array.isArray(data.applications)) {
+      localStorage.setItem('tracked_applications', JSON.stringify(data.applications));
+    }
+    if (data.user) {
+      saveCurrentUser(data.user);
+    }
+    return true;
+  } catch (e) {
+    console.warn('Failed to import backup:', e);
+    return false;
+  }
+}
+
+export function upgradeUserPlan(newPlan: PlanTier, creditsToAdd?: number): GoogleUserProfile | null {
+  const user = getCurrentUser();
+  if (!user) return null;
+  const creditsMap: Record<PlanTier, number> = {
+    free: 5,
+    starter: 15,
+    fast_track: 35,
+    vip: 100
+  };
+  const added = creditsToAdd !== undefined ? creditsToAdd : creditsMap[newPlan];
+  user.plan = newPlan;
+  user.credits = Math.max(user.credits, 0) + added;
+  saveCurrentUser(user);
+  return user;
 }
 
 export interface PaymentSubmission {
@@ -308,21 +433,6 @@ export interface PaymentSubmission {
   reference?: string;
   status: 'pending' | 'verified';
   submittedAt: string;
-}
-
-export function upgradeUserPlan(newPlan: PlanTier, creditsToAdd?: number): GoogleUserProfile | null {
-  const user = getCurrentUser();
-  if (!user) return null;
-  const creditsMap: Record<PlanTier, number> = {
-    free: 5,
-    fast_track: 25,
-    vip: 100
-  };
-  const added = creditsToAdd !== undefined ? creditsToAdd : creditsMap[newPlan];
-  user.plan = newPlan;
-  user.credits = Math.max(user.credits, 0) + added;
-  saveCurrentUser(user);
-  return user;
 }
 
 export function savePaymentSubmission(sub: Omit<PaymentSubmission, 'id' | 'submittedAt'>): PaymentSubmission {

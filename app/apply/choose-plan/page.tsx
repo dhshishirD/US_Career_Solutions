@@ -106,20 +106,20 @@ function ChoosePlanContent() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             
             {/* Plan 1: Free Explorer (5 Free / Month) */}
             <div 
               onClick={() => setSelectedPlan('free')}
-              className={`bg-white rounded-3xl border-2 p-6 cursor-pointer transition-all duration-200 relative flex flex-col justify-between ${
+              className={`bg-white rounded-3xl border-2 p-5 cursor-pointer transition-all duration-200 relative flex flex-col justify-between ${
                 selectedPlan === 'free'
                   ? 'border-blue-600 ring-4 ring-blue-50 shadow-xl'
                   : 'border-slate-200 hover:border-slate-300 shadow-sm'
               }`}
             >
-              <div className="space-y-4">
+              <div className="space-y-3.5">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200 px-2.5 py-1 rounded-full">
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200 px-2.5 py-0.5 rounded-full">
                     Recommended
                   </span>
                   <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
@@ -130,45 +130,112 @@ function ChoosePlanContent() {
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-black text-slate-900">Free Explorer</h3>
+                  <h3 className="text-base font-black text-slate-900">Free Explorer</h3>
                   <p className="text-xs text-slate-500 mt-0.5">Perfect for starting your search</p>
                 </div>
 
                 <div className="pt-2 border-t border-slate-100">
-                  <div className="text-3xl font-black text-slate-900">$0</div>
+                  <div className="text-2xl font-black text-slate-900">$0</div>
                   <div className="text-xs font-bold text-emerald-700 mt-0.5">5 Free Applications / Month</div>
                 </div>
 
-                <ul className="space-y-2.5 text-xs text-slate-600 pt-2">
-                  <li className="flex items-start gap-2">
+                <ul className="space-y-2 text-xs text-slate-600 pt-1">
+                  <li className="flex items-start gap-1.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                    <span><strong>5 Direct Applications</strong> per month</span>
+                    <span><strong>5 Direct Applications</strong> / mo</span>
                   </li>
-                  <li className="flex items-start gap-2">
+                  <li className="flex items-start gap-1.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                    <span>Instant AI ATS Resume Optimization</span>
+                    <span>Permanent Cloud Vault (Never Deleted)</span>
                   </li>
-                  <li className="flex items-start gap-2">
+                  <li className="flex items-start gap-1.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                    <span>Tailored Cover Letter Generator</span>
+                    <span>AI ATS Resume Optimizer</span>
                   </li>
-                  <li className="flex items-start gap-2">
+                  <li className="flex items-start gap-1.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                    <span>Application Status Dashboard</span>
+                    <span>1-Click DOCX Export</span>
                   </li>
                 </ul>
               </div>
 
-              <div className="pt-6 mt-4 border-t border-slate-100">
+              <div className="pt-4 mt-3 border-t border-slate-100">
                 <button
                   type="button"
-                  className={`w-full py-2.5 px-4 rounded-xl text-xs font-bold transition-all ${
+                  className={`w-full py-2 px-3 rounded-xl text-xs font-bold transition-all ${
                     selectedPlan === 'free'
                       ? 'bg-blue-600 text-white shadow-sm'
                       : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
                   }`}
                 >
                   {selectedPlan === 'free' ? 'Selected' : 'Select Free'}
+                </button>
+              </div>
+            </div>
+
+            {/* Plan 2: Starter Pass ($10 / ৳1,000) */}
+            <div 
+              onClick={() => setSelectedPlan('starter')}
+              className={`bg-white rounded-3xl border-2 p-5 cursor-pointer transition-all duration-200 relative flex flex-col justify-between ${
+                selectedPlan === 'starter'
+                  ? 'border-emerald-600 ring-4 ring-emerald-50 shadow-xl'
+                  : 'border-slate-200 hover:border-slate-300 shadow-sm'
+              }`}
+            >
+              <div className="space-y-3.5">
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200 px-2.5 py-0.5 rounded-full">
+                    Starts from $10
+                  </span>
+                  <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+                    selectedPlan === 'starter' ? 'border-emerald-600 bg-emerald-600 text-white' : 'border-slate-300'
+                  }`}>
+                    {selectedPlan === 'starter' && <Check className="w-3 h-3 stroke-[3]" />}
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-base font-black text-slate-900">Starter Pass</h3>
+                  <p className="text-xs text-slate-500 mt-0.5">Budget-friendly acceleration</p>
+                </div>
+
+                <div className="pt-2 border-t border-slate-100">
+                  <div className="text-2xl font-black text-slate-900">
+                    $10.00 <span className="text-xs font-bold text-slate-400">/ ৳1,000</span>
+                  </div>
+                  <div className="text-xs font-bold text-emerald-700 mt-0.5">15 Direct Applications</div>
+                </div>
+
+                <ul className="space-y-2 text-xs text-slate-600 pt-1">
+                  <li className="flex items-start gap-1.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                    <span><strong>15 Direct Applications</strong></span>
+                  </li>
+                  <li className="flex items-start gap-1.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                    <span>1-Click Job-to-CV Tailoring</span>
+                  </li>
+                  <li className="flex items-start gap-1.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                    <span>Lifetime Vault Preservation</span>
+                  </li>
+                  <li className="flex items-start gap-1.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                    <span>bKash / Nagad / Bank Wire</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="pt-4 mt-3 border-t border-slate-100">
+                <button
+                  type="button"
+                  className={`w-full py-2 px-3 rounded-xl text-xs font-bold transition-all ${
+                    selectedPlan === 'starter'
+                      ? 'bg-emerald-600 text-white shadow-sm'
+                      : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                  }`}
+                >
+                  {selectedPlan === 'starter' ? 'Selected' : 'Select Starter'}
                 </button>
               </div>
             </div>

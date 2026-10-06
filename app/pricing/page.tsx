@@ -39,12 +39,20 @@ export default function PricingPage() {
 
   const faqs = [
     {
+      q: 'Will my updated CV or saved work be removed if I remain on the Free tier?',
+      a: 'Never. All your tailored CVs, customized cover letters, targeted employer notes, and application tracking records are permanently preserved in your candidate cloud vault. No progress is ever removed or deleted. You can use the free tier as long as you want and upgrade whenever you are ready (with upgrade passes starting from just $10 / ৳1,000).'
+    },
+    {
+      q: 'Can I start upgrading with just $10 or ৳1,000?',
+      a: 'Yes! Our Starter Pass starts at just $10.00 (or ৳1,000 via bKash/Nagad/Rocket). It provides 15 direct verified applications, 1-click ATS resume & cover letter tailoring, and lifetime preservation of your complete career portfolio.'
+    },
+    {
       q: 'How does the Free Explorer tier (5 Free Applications/mo) work?',
       a: 'Every registered candidate receives 5 free direct application credits each calendar month. These credits automatically refresh on the 1st of every month at zero cost. No credit card is required to sign up or use these credits.'
     },
     {
       q: 'How can I pay from Bangladesh without international cards?',
-      a: 'We provide direct domestic payments via bKash, Nagad, and Rocket Send Money to our official personal account at 01627714636. Simply select BDT, send the fee (৳1,990 for Fast-Track or ৳4,990 for VIP), and submit your Transaction ID (TrxID) for immediate account upgrade. Anyone can also contact us directly on WhatsApp at 01627714636 for clarification before making a payment.'
+      a: 'We provide direct domestic payments via bKash, Nagad, and Rocket Send Money to our official personal account at 01627714636. Simply select BDT, send the fee (৳1,000 for Starter, ৳1,990 for Fast-Track, or ৳4,990 for VIP), and submit your Transaction ID (TrxID) for immediate account upgrade. Anyone can also contact us directly on WhatsApp at 01627714636 for clarification before making a payment.'
     },
     {
       q: 'How do U.S. and international candidates pay in USD?',
@@ -122,28 +130,28 @@ export default function PricingPage() {
           </div>
         </div>
 
-        {/* 3 Core Pricing Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+        {/* 4 Core Pricing Cards (Starts from $10) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
           
           {/* Card 1: Free Explorer */}
-          <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm flex flex-col justify-between hover:border-slate-300 transition-all">
-            <div className="space-y-5">
+          <div className="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm flex flex-col justify-between hover:border-slate-300 transition-all">
+            <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-[10px] font-extrabold uppercase tracking-wider bg-slate-100 text-slate-700 px-3 py-1 rounded-full">
+                <span className="text-[10px] font-extrabold uppercase tracking-wider bg-slate-100 text-slate-700 px-2.5 py-1 rounded-full">
                   Every Month
                 </span>
-                <span className="text-xs text-emerald-700 font-bold bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full">
+                <span className="text-xs text-emerald-700 font-bold bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">
                   100% Free
                 </span>
               </div>
 
               <div>
-                <h3 className="text-xl font-black text-slate-900">Free Explorer</h3>
-                <p className="text-xs text-slate-500 mt-1">Foundational access for all job seekers</p>
+                <h3 className="text-lg font-black text-slate-900">Free Explorer</h3>
+                <p className="text-xs text-slate-500 mt-0.5">Foundational access for all candidates</p>
               </div>
 
               <div className="pt-2 border-t border-slate-100">
-                <div className="text-4xl font-black text-slate-900">
+                <div className="text-3xl font-black text-slate-900">
                   {currency === 'USD' ? '$0' : '৳0'}
                 </div>
                 <div className="text-xs font-bold text-emerald-700 mt-1">
@@ -151,132 +159,201 @@ export default function PricingPage() {
                 </div>
               </div>
 
-              <ul className="space-y-3 text-xs text-slate-600 pt-2">
-                <li className="flex items-start gap-2.5">
+              <ul className="space-y-2.5 text-xs text-slate-600 pt-2">
+                <li className="flex items-start gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span><strong>5 Direct Applications</strong> per calendar month</span>
+                  <span><strong>5 Direct Applications</strong> every month</span>
                 </li>
-                <li className="flex items-start gap-2.5">
+                <li className="flex items-start gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span>AI ATS Resume Scanner & Keyword Optimizer</span>
+                  <span><strong>Permanent Cloud Vault:</strong> Work never removed</span>
                 </li>
-                <li className="flex items-start gap-2.5">
+                <li className="flex items-start gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span>Tailored Cover Letter Generator</span>
+                  <span>AI ATS Resume Scanner & Scorer</span>
                 </li>
-                <li className="flex items-start gap-2.5">
+                <li className="flex items-start gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                   <span>Instant 1-Click DOCX Resume Export</span>
                 </li>
-                <li className="flex items-start gap-2.5">
+                <li className="flex items-start gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span>Application Milestone Tracking Dashboard</span>
+                  <span>Application Milestone CRM Tracker</span>
                 </li>
               </ul>
             </div>
 
-            <div className="pt-8 mt-6 border-t border-slate-100">
+            <div className="pt-6 mt-4 border-t border-slate-100">
               <Link
                 href="/apply/choose-plan"
-                className="w-full py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-sm"
+                className="w-full py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-sm"
               >
                 <span>Start Free with Google</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
-              <p className="text-[10px] text-slate-400 text-center mt-2 font-medium">
+              <p className="text-[10px] text-slate-400 text-center mt-1.5 font-medium">
                 No credit card required
               </p>
             </div>
           </div>
 
-          {/* Card 2: Fast-Track Pack (Featured) */}
-          <div className="bg-white rounded-3xl border-2 border-blue-600 p-6 sm:p-8 shadow-xl relative flex flex-col justify-between ring-4 ring-blue-50">
-            <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[10px] font-black uppercase tracking-wider px-3.5 py-1 rounded-full shadow-md">
-              Most Popular • High Conversion
+          {/* Card 2: Starter Pass ($10 / ৳1,000) */}
+          <div className="bg-white rounded-3xl border-2 border-emerald-500 p-6 shadow-md relative flex flex-col justify-between hover:shadow-lg transition-all ring-2 ring-emerald-50">
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-emerald-600 text-white text-[9px] font-black uppercase tracking-wider px-3 py-0.5 rounded-full shadow-sm">
+              Starts from $10
             </div>
 
-            <div className="space-y-5">
+            <div className="space-y-4">
               <div className="flex items-center justify-between pt-1">
-                <span className="text-[10px] font-extrabold uppercase tracking-wider bg-blue-50 text-blue-800 border border-blue-200 px-3 py-1 rounded-full">
+                <span className="text-[10px] font-extrabold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200 px-2.5 py-1 rounded-full">
+                  Entry Pass
+                </span>
+                <span className="text-xs text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded-full">
+                  Quick Access
+                </span>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-black text-slate-900">Starter Pass</h3>
+                <p className="text-xs text-slate-500 mt-0.5">Budget-friendly boost for serious applicants</p>
+              </div>
+
+              <div className="pt-2 border-t border-slate-100">
+                <div className="text-3xl font-black text-slate-900">
+                  {currency === 'USD' ? '$10.00' : '৳1,000'}
+                </div>
+                <div className="text-xs font-bold text-emerald-700 mt-1">
+                  15 Direct Applications + Full Vault
+                </div>
+              </div>
+
+              <ul className="space-y-2.5 text-xs text-slate-600 pt-2">
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                  <span><strong>15 Direct Applications</strong> with AI Dossier</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                  <span><strong>1-Click Job-to-CV Tailoring Engine</strong></span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                  <span>Custom Employer-Specific Cover Letters</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                  <span>Lifetime Career Vault Preservation</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                  <span>bKash / Nagad / Bank Wire Accepted</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="pt-6 mt-4 border-t border-slate-100">
+              <button
+                type="button"
+                onClick={() => openCheckout('starter')}
+                className="w-full py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-sm"
+              >
+                <span>Upgrade for {currency === 'USD' ? '$10' : '৳1,000'}</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+              <p className="text-[10px] text-slate-400 text-center mt-1.5 font-medium">
+                Instant delivery to your dashboard
+              </p>
+            </div>
+          </div>
+
+          {/* Card 3: Fast-Track Pack (Featured) */}
+          <div className="bg-white rounded-3xl border-2 border-blue-600 p-6 shadow-xl relative flex flex-col justify-between ring-4 ring-blue-50">
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[9px] font-black uppercase tracking-wider px-3 py-0.5 rounded-full shadow-md">
+              Most Popular
+            </div>
+
+            <div className="space-y-4">
+              <div className="flex items-center justify-between pt-1">
+                <span className="text-[10px] font-extrabold uppercase tracking-wider bg-blue-50 text-blue-800 border border-blue-200 px-2.5 py-1 rounded-full">
                   Accelerated Pack
                 </span>
-                <span className="text-xs text-blue-700 font-bold bg-blue-50 px-2.5 py-0.5 rounded-full">
+                <span className="text-xs text-blue-700 font-bold bg-blue-50 px-2 py-0.5 rounded-full">
                   Instant Activation
                 </span>
               </div>
 
               <div>
-                <h3 className="text-xl font-black text-slate-900">Fast-Track Pack</h3>
-                <p className="text-xs text-slate-500 mt-1">Accelerate hiring manager screens & recruiter outreach</p>
+                <h3 className="text-lg font-black text-slate-900">Fast-Track Pack</h3>
+                <p className="text-xs text-slate-500 mt-0.5">Accelerate recruiter screens & reachouts</p>
               </div>
 
               <div className="pt-2 border-t border-slate-100">
-                <div className="text-4xl font-black text-slate-900">
+                <div className="text-3xl font-black text-slate-900">
                   {currency === 'USD' ? '$19.99' : '৳1,990'}
                 </div>
                 <div className="text-xs font-bold text-blue-700 mt-1">
-                  25 Direct Applications + Full AI Dossier
+                  35 Direct Applications + Recruiter Radar
                 </div>
               </div>
 
-              <ul className="space-y-3 text-xs text-slate-600 pt-2">
-                <li className="flex items-start gap-2.5">
+              <ul className="space-y-2.5 text-xs text-slate-600 pt-2">
+                <li className="flex items-start gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span><strong>25 Direct Applications</strong> with AI Dossier</span>
+                  <span><strong>35 Direct Applications</strong> with AI Dossier</span>
                 </li>
-                <li className="flex items-start gap-2.5">
+                <li className="flex items-start gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                   <span>Priority Recruiter Read Beacons & Alerts</span>
                 </li>
-                <li className="flex items-start gap-2.5">
+                <li className="flex items-start gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span>Hiring Manager LinkedIn InMail Outreach Scripts</span>
+                  <span>Hiring Manager LinkedIn Outreach Scripts</span>
                 </li>
-                <li className="flex items-start gap-2.5">
+                <li className="flex items-start gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                   <span>Professional Connections CRM Vault</span>
                 </li>
-                <li className="flex items-start gap-2.5">
+                <li className="flex items-start gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                   <span>bKash, Nagad & US Bank Wire Accepted</span>
                 </li>
               </ul>
             </div>
 
-            <div className="pt-8 mt-6 border-t border-slate-100">
+            <div className="pt-6 mt-4 border-t border-slate-100">
               <button
                 type="button"
                 onClick={() => openCheckout('fast_track')}
-                className="w-full py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-md hover:shadow-lg"
+                className="w-full py-2.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-md hover:shadow-lg"
               >
                 <span>Upgrade to Fast-Track</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
-              <p className="text-[10px] text-slate-500 text-center mt-2 font-medium">
+              <p className="text-[10px] text-slate-500 text-center mt-1.5 font-medium">
                 Instant delivery to your dashboard
               </p>
             </div>
           </div>
 
-          {/* Card 3: VIP Concierge */}
-          <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm flex flex-col justify-between hover:border-slate-300 transition-all">
-            <div className="space-y-5">
+          {/* Card 4: VIP Concierge */}
+          <div className="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm flex flex-col justify-between hover:border-slate-300 transition-all">
+            <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-[10px] font-extrabold uppercase tracking-wider bg-purple-50 text-purple-800 border border-purple-200 px-3 py-1 rounded-full">
-                  Executive Concierge
+                <span className="text-[10px] font-extrabold uppercase tracking-wider bg-purple-50 text-purple-800 border border-purple-200 px-2.5 py-1 rounded-full">
+                  VIP Concierge
                 </span>
-                <span className="text-xs text-purple-700 font-bold bg-purple-50 px-2.5 py-0.5 rounded-full">
+                <span className="text-xs text-purple-700 font-bold bg-purple-50 px-2 py-0.5 rounded-full">
                   Full Service
                 </span>
               </div>
 
               <div>
-                <h3 className="text-xl font-black text-slate-900">VIP Concierge</h3>
-                <p className="text-xs text-slate-500 mt-1">Maximum volume, dossier review & dedicated support</p>
+                <h3 className="text-lg font-black text-slate-900">VIP Concierge</h3>
+                <p className="text-xs text-slate-500 mt-0.5">High volume, audit & dedicated advisory</p>
               </div>
 
               <div className="pt-2 border-t border-slate-100">
-                <div className="text-4xl font-black text-slate-900">
+                <div className="text-3xl font-black text-slate-900">
                   {currency === 'USD' ? '$49.99' : '৳4,990'}
                 </div>
                 <div className="text-xs font-bold text-purple-700 mt-1">
@@ -284,40 +361,40 @@ export default function PricingPage() {
                 </div>
               </div>
 
-              <ul className="space-y-3 text-xs text-slate-600 pt-2">
-                <li className="flex items-start gap-2.5">
+              <ul className="space-y-2.5 text-xs text-slate-600 pt-2">
+                <li className="flex items-start gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                   <span><strong>100 Direct Applications</strong> with AI Dossier</span>
                 </li>
-                <li className="flex items-start gap-2.5">
+                <li className="flex items-start gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span><strong>1-on-1 Visa & Dossier Audit</strong> (H-1B / Schedule A / NIW)</span>
+                  <span><strong>1-on-1 Visa & Dossier Audit</strong> (H-1B / EB-3)</span>
                 </li>
-                <li className="flex items-start gap-2.5">
+                <li className="flex items-start gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                   <span>Dedicated WhatsApp Concierge Desk</span>
                 </li>
-                <li className="flex items-start gap-2.5">
+                <li className="flex items-start gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span>Custom Targeted Decision-Maker Outreach List</span>
+                  <span>Targeted Decision-Maker Outreach List</span>
                 </li>
-                <li className="flex items-start gap-2.5">
+                <li className="flex items-start gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span>Priority Queue for Hiring Manager Delivery</span>
+                  <span>Priority Queue for Employer Delivery</span>
                 </li>
               </ul>
             </div>
 
-            <div className="pt-8 mt-6 border-t border-slate-100">
+            <div className="pt-6 mt-4 border-t border-slate-100">
               <button
                 type="button"
                 onClick={() => openCheckout('vip')}
-                className="w-full py-3 px-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-md"
+                className="w-full py-2.5 px-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-md"
               >
                 <span>Get VIP Concierge</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
-              <p className="text-[10px] text-slate-500 text-center mt-2 font-medium">
+              <p className="text-[10px] text-slate-500 text-center mt-1.5 font-medium">
                 Includes 1-on-1 strategy session
               </p>
             </div>

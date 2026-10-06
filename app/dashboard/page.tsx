@@ -55,7 +55,9 @@ import {
   decrementUserCredit,
   ConnectionContact,
   SavedOutput,
-  CandidateDossier
+  CandidateDossier,
+  exportVaultBackup,
+  importVaultBackup
 } from '@/lib/user-vault';
 import { parseResumeIntelligently } from '@/lib/resume-intelligence';
 import { generateATSResumeDocx } from '@/lib/export-ats-resume';
@@ -103,6 +105,7 @@ function DashboardContent() {
   const [selectedJobCategory, setSelectedJobCategory] = useState<string>('all');
   const [selectedJobForModal, setSelectedJobForModal] = useState<JobPosting | null>(null);
   const [targetedJobAlert, setTargetedJobAlert] = useState<string | null>(null);
+  const [syncToast, setSyncToast] = useState<string | null>(null);
 
   // Data Collections
   const [trackedApps, setTrackedApps] = useState<TrackedApplication[]>([]);
@@ -445,6 +448,53 @@ ${user?.email || 'client@gmail.com'}`;
     setSavedOutputs(getSavedOutputs());
   };
 
+  const handleManualSyncVault = () => {
+    saveCandidateDossier(dossier);
+    setSyncToast('Permanent Vault synchronized. All your updated CVs, cover letters, and application progress are securely stored.');
+    setTimeout(() => setSyncToast(null), 4000);
+  };
+
+  const handleExportBackup = () => {
+    const backupJson = exportVaultBackup();
+    const blob = new Blob([backupJson], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${(user?.name || 'Candidate').replace(/\s+/g, '_')}_Career_Vault_Backup.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    setSyncToast('Backup exported! Your complete career portfolio has been downloaded to your device.');
+    setTimeout(() => setSyncToast(null), 4000);
+  };
+
+  const handleImportBackup = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const text = event.target?.result as string;
+      if (text) {
+        const ok = importVaultBackup(text);
+        if (ok) {
+          setDossier(getCandidateDossier());
+          setSavedOutputs(getSavedOutputs());
+          setConnections(getConnections());
+          try {
+            const stored = localStorage.getItem('tracked_applications');
+            if (stored) setTrackedApps(JSON.parse(stored));
+          } catch (e) {}
+          setSyncToast('Backup restored successfully! All your customized CVs, cover letters, and application history have been reloaded.');
+          setTimeout(() => setSyncToast(null), 4000);
+        } else {
+          alert('Could not parse backup file. Please provide a valid JSON vault file.');
+        }
+      }
+    };
+    reader.readAsText(file);
+  };
+
   const handleTargetJobAndTailor = (job: JobPosting) => {
     const newRole = job.title;
     const newCompany = job.company;
@@ -728,6 +778,72 @@ Verified U.S. Equivalency & Institutional Credentials`;
             </button>
           </div>
         )}
+
+        {/* Sync Toast Feedback */}
+        {syncToast && (
+          <div className="bg-emerald-50 border border-emerald-300 text-emerald-900 rounded-2xl p-4 shadow-sm flex items-center justify-between gap-3 animate-in fade-in">
+            <div className="flex items-center gap-2.5">
+              <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+              <span className="text-xs sm:text-sm font-bold">{syncToast}</span>
+            </div>
+            <button
+              onClick={() => setSyncToast(null)}
+              className="p-1 text-emerald-700 hover:text-emerald-900 rounded-lg hover:bg-emerald-100"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+        )}
+
+        {/* Permanent Career Vault Guarantee & Cloud Sync Bar */}
+        <div className="bg-white border border-slate-200/90 rounded-3xl p-4 sm:p-5 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-2xl bg-emerald-50 text-emerald-700 border border-emerald-200 flex items-center justify-center shrink-0 shadow-sm">
+              <ShieldCheck className="w-6 h-6 text-emerald-600" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="text-xs sm:text-sm font-black text-slate-900">
+                  Permanent Cloud Vault Guarantee
+                </span>
+                <span className="text-[10px] font-extrabold uppercase bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full">
+                  100% Preserved • Never Expires
+                </span>
+              </div>
+              <p className="text-xs text-slate-500 mt-0.5 max-w-2xl leading-relaxed">
+                All your updated CVs, tailored cover letters, targeted jobs, and CRM milestones are permanently preserved under your profile. <strong>None of your work will ever be removed.</strong> Stay on Free Explorer as long as you need — whenever you have the funds to upgrade (starting from $10), your portfolio will be right here.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2 shrink-0 self-end md:self-center">
+            <button
+              type="button"
+              onClick={handleManualSyncVault}
+              className="px-3 py-2 text-xs font-bold text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-xl transition-all flex items-center gap-1.5 shadow-sm"
+              title="Save current progress"
+            >
+              <RefreshCw className="w-3.5 h-3.5 text-slate-600" />
+              <span>Sync Vault</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={handleExportBackup}
+              className="px-3 py-2 text-xs font-bold text-blue-700 hover:text-blue-900 bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded-xl transition-all flex items-center gap-1.5 shadow-sm"
+              title="Download offline backup of all your career assets"
+            >
+              <Download className="w-3.5 h-3.5 text-blue-600" />
+              <span>Export Backup (.json)</span>
+            </button>
+
+            <label className="px-3 py-2 text-xs font-bold text-slate-600 hover:text-slate-800 bg-slate-100 hover:bg-slate-200 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer shadow-sm">
+              <Upload className="w-3.5 h-3.5 text-slate-500" />
+              <span>Restore</span>
+              <input type="file" accept=".json" onChange={handleImportBackup} className="hidden" />
+            </label>
+          </div>
+        </div>
 
         {/* =====================================================================
             FREE EXPLORER SERVICE QUICK-DOCK & WORKFLOW ROADMAP

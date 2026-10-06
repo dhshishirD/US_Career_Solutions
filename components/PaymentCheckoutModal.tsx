@@ -33,7 +33,9 @@ export default function PaymentCheckoutModal({
   initialCurrency = 'BDT',
   onSuccess
 }: PaymentCheckoutModalProps) {
-  const [plan, setPlan] = useState<'fast_track' | 'vip'>(initialPlan === 'vip' ? 'vip' : 'fast_track');
+  const [plan, setPlan] = useState<'starter' | 'fast_track' | 'vip'>(
+    initialPlan === 'vip' ? 'vip' : initialPlan === 'starter' ? 'starter' : 'fast_track'
+  );
   const [currency, setCurrency] = useState<'BDT' | 'USD'>(initialCurrency);
   const [bdtMethod, setBdtMethod] = useState<'bkash' | 'nagad' | 'rocket'>('bkash');
   
@@ -55,6 +57,8 @@ export default function PaymentCheckoutModal({
   useEffect(() => {
     if (initialPlan === 'vip') {
       setPlan('vip');
+    } else if (initialPlan === 'starter') {
+      setPlan('starter');
     } else {
       setPlan('fast_track');
     }
@@ -77,26 +81,37 @@ export default function PaymentCheckoutModal({
 
   if (!isOpen) return null;
 
-  const planPricing: Record<'fast_track' | 'vip', {
+  const planPricing: Record<'starter' | 'fast_track' | 'vip', {
     name: string;
     bdt: string;
     usd: string;
     apps: string;
     credits: number;
+    badge?: string;
   }> = {
+    starter: {
+      name: 'Starter Pass',
+      bdt: '৳1,000',
+      usd: '$10.00',
+      apps: '15 Direct Applications',
+      credits: 15,
+      badge: 'Starts from $10'
+    },
     fast_track: {
       name: 'Fast-Track Pack',
       bdt: '৳1,990',
       usd: '$19.99',
-      apps: '25 Direct Applications',
-      credits: 25
+      apps: '35 Direct Applications',
+      credits: 35,
+      badge: 'Most Popular'
     },
     vip: {
       name: 'VIP Concierge',
       bdt: '৳4,990',
       usd: '$49.99',
       apps: '100 Direct Applications',
-      credits: 100
+      credits: 100,
+      badge: 'Attorney Review'
     }
   };
 
@@ -127,7 +142,7 @@ export default function PaymentCheckoutModal({
         userId: user?.id,
         plan,
         currency: 'BDT',
-        amount: plan === 'fast_track' ? '৳1,990' : '৳4,990',
+        amount: planPricing[plan].bdt,
         method: bdtMethod,
         senderPhone: senderPhone.trim(),
         trxId: trxId.trim().toUpperCase(),
@@ -163,7 +178,7 @@ export default function PaymentCheckoutModal({
         userId: user?.id,
         plan,
         currency: 'USD',
-        amount: plan === 'fast_track' ? '$19.99' : '$49.99',
+        amount: planPricing[plan].usd,
         method: 'us_bank_wire',
         senderName: senderName.trim(),
         senderBank: senderBank.trim() || 'US Commercial Bank',
@@ -276,19 +291,37 @@ export default function PaymentCheckoutModal({
                 <label className="text-xs font-black uppercase tracking-wider text-slate-500">
                   Select Upgrade Tier
                 </label>
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                  <button
+                    type="button"
+                    onClick={() => setPlan('starter')}
+                    className={`p-3 rounded-2xl border-2 text-left transition-all ${
+                      plan === 'starter'
+                        ? 'border-blue-600 bg-blue-50/50 shadow-sm'
+                        : 'border-slate-200 hover:border-slate-300'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-black text-slate-900">Starter Pass</span>
+                      <span className="text-[9px] font-bold bg-emerald-100 text-emerald-800 px-1.5 py-0.2 rounded-full">15 Apps</span>
+                    </div>
+                    <div className="mt-1 text-sm font-black text-emerald-700">
+                      {currency === 'BDT' ? '৳1,000' : '$10.00'}
+                    </div>
+                  </button>
+
                   <button
                     type="button"
                     onClick={() => setPlan('fast_track')}
-                    className={`p-3.5 rounded-2xl border-2 text-left transition-all ${
+                    className={`p-3 rounded-2xl border-2 text-left transition-all ${
                       plan === 'fast_track'
                         ? 'border-blue-600 bg-blue-50/50 shadow-sm'
                         : 'border-slate-200 hover:border-slate-300'
                     }`}
                   >
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-black text-slate-900">Fast-Track Pack</span>
-                      <span className="text-[10px] font-bold bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full">25 Apps</span>
+                      <span className="text-xs font-black text-slate-900">Fast-Track</span>
+                      <span className="text-[9px] font-bold bg-blue-100 text-blue-800 px-1.5 py-0.2 rounded-full">35 Apps</span>
                     </div>
                     <div className="mt-1 text-sm font-black text-blue-600">
                       {currency === 'BDT' ? '৳1,990' : '$19.99'}
@@ -298,7 +331,7 @@ export default function PaymentCheckoutModal({
                   <button
                     type="button"
                     onClick={() => setPlan('vip')}
-                    className={`p-3.5 rounded-2xl border-2 text-left transition-all ${
+                    className={`p-3 rounded-2xl border-2 text-left transition-all ${
                       plan === 'vip'
                         ? 'border-blue-600 bg-blue-50/50 shadow-sm'
                         : 'border-slate-200 hover:border-slate-300'
@@ -306,7 +339,7 @@ export default function PaymentCheckoutModal({
                   >
                     <div className="flex items-center justify-between">
                       <span className="text-xs font-black text-slate-900">VIP Concierge</span>
-                      <span className="text-[10px] font-bold bg-purple-100 text-purple-800 px-2 py-0.5 rounded-full">100 Apps</span>
+                      <span className="text-[9px] font-bold bg-purple-100 text-purple-800 px-1.5 py-0.2 rounded-full">100 Apps</span>
                     </div>
                     <div className="mt-1 text-sm font-black text-purple-700">
                       {currency === 'BDT' ? '৳4,990' : '$49.99'}
