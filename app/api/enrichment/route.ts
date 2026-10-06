@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { deriveDecisionMakersForCompany, generateDecisionMakerOutreach } from '@/lib/enrichment-service';
+import { deriveDecisionMakersForCompany, generateDecisionMakerOutreach, fetchLiveApolloOrg } from '@/lib/enrichment-service';
 
 export async function GET(request: NextRequest) {
   try {
@@ -19,12 +19,19 @@ export async function GET(request: NextRequest) {
     }
 
     const skills = skillsParam ? skillsParam.split(',') : ['Industry Technologies', 'Project Delivery'];
-    const decisionMakers = deriveDecisionMakersForCompany(company, role, category);
+    
+    // Concurrently fetch live Apollo organization data and decision makers
+    const [liveOrg, rawDecisionMakers] = await Promise.all([
+      fetchLiveApolloOrg(company),
+      Promise.resolve(deriveDecisionMakersForCompany(company, role, category))
+    ]);
 
-    const enriched = decisionMakers.map(dm => {
+    const enriched = rawDecisionMakers.map(dm => {
       const outreach = generateDecisionMakerOutreach(dm, candidateName, role, visa, skills);
       return {
         ...dm,
+        companyDomain: liveOrg?.website_url ? liveOrg.website_url.replace(/^https?:\/\//, '').replace(/\/.*$/, '') : dm.companyDomain,
+        location: liveOrg?.city && liveOrg?.state ? `${liveOrg.city}, ${liveOrg.state}` : dm.location,
         outreach
       };
     });
@@ -33,6 +40,14 @@ export async function GET(request: NextRequest) {
       success: true,
       company,
       role,
+      apolloIntelligence: liveOrg ? {
+        connected: true,
+        employees: liveOrg.estimated_num_employees,
+        industry: liveOrg.industry,
+        headquarters: liveOrg.city && liveOrg.state ? `${liveOrg.city}, ${liveOrg.state}, ${liveOrg.country}` : 'United States',
+        website: liveOrg.website_url,
+        linkedin: liveOrg.linkedin_url
+      } : { connected: false },
       count: enriched.length,
       decisionMakers: enriched
     });

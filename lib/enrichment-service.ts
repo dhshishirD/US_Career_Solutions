@@ -229,6 +229,45 @@ export function deriveDecisionMakersForCompany(
   ];
 }
 
+export interface ApolloOrgData {
+  name: string;
+  website_url?: string;
+  linkedin_url?: string;
+  twitter_url?: string;
+  industry?: string;
+  city?: string;
+  state?: string;
+  country?: string;
+  estimated_num_employees?: number;
+  keywords?: string[];
+}
+
+export async function fetchLiveApolloOrg(domainOrName: string): Promise<ApolloOrgData | null> {
+  const apiKey = process.env.APOLLO_API_KEY;
+  if (!apiKey) return null;
+
+  try {
+    const cleanDomain = domainOrName.toLowerCase().replace(/^https?:\/\//, '').replace(/\/.*$/, '').trim();
+    const targetDomain = cleanDomain.includes('.') ? cleanDomain : `${cleanDomain}.com`;
+    const url = `https://api.apollo.io/v1/organizations/enrich?domain=${encodeURIComponent(targetDomain)}`;
+    
+    const res = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'x-api-key': apiKey,
+        'Cache-Control': 'no-cache'
+      },
+      next: { revalidate: 86400 }
+    });
+
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data.organization || null;
+  } catch (e) {
+    return null;
+  }
+}
+
 // Generate tailored 4-stage outreach sequence for a specific hiring manager
 export interface OutreachDossier {
   linkedInInMail: string;
