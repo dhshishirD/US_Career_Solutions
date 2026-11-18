@@ -105,13 +105,13 @@ export default function Navbar() {
             </a>
             <span className="hidden lg:inline text-slate-700">|</span>
             <a 
-              href="https://wa.me/8801627714636" 
+              href="https://wa.me/8801981505761" 
               target="_blank" 
               rel="noopener noreferrer"
               className="hidden lg:inline-flex items-center gap-1.5 font-bold text-emerald-400 hover:text-emerald-300 transition-colors"
             >
               <PhoneCall className="w-3.5 h-3.5" />
-              <span>WhatsApp: 01627714636</span>
+              <span>WhatsApp: +880 1981-505761</span>
             </a>
           </div>
         </div>
@@ -576,9 +576,9 @@ export default function Navbar() {
                       <MessageCircle className="w-3.5 h-3.5 text-slate-400" />
                       <span>Contact Helpdesk</span>
                     </Link>
-                    <a href="https://wa.me/8801627714636" target="_blank" rel="noopener noreferrer" className="text-emerald-700 hover:text-emerald-800 flex items-center gap-1 font-bold">
+                    <a href="https://wa.me/8801981505761" target="_blank" rel="noopener noreferrer" className="text-emerald-700 hover:text-emerald-800 flex items-center gap-1 font-bold">
                       <PhoneCall className="w-3.5 h-3.5" />
-                      <span>WhatsApp Direct: 01627714636</span>
+                      <span>WhatsApp Direct: +880 1981-505761</span>
                     </a>
                   </div>
                 </div>

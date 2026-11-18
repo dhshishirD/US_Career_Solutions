@@ -65,7 +65,7 @@ export async function POST(request: NextRequest) {
       `Please confirm my account status.`
     );
 
-    const whatsAppLink = `https://wa.me/8801627714636?text=${whatsAppMessage}`;
+    const whatsAppLink = `https://wa.me/8801981505761?text=${whatsAppMessage}`;
 
     return NextResponse.json({
       success: true,
