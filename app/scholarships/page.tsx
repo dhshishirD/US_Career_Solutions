@@ -82,7 +82,7 @@ function ScholarshipsContent() {
   });
 
   const handleCopyLink = (id: string, name: string, university: string) => {
-    const text = `🎓 100% Fully-Funded US Scholarship: ${name} at ${university} (Full Tuition Waiver + Living Salary) 👉 https://www.uscareersolutions.online/scholarships`;
+    const text = `🎓 US Scholarship / Assistantship: ${name} at ${university} (Full Tuition Waiver + Living Salary) 👉 https://www.uscareersolutions.online/scholarships`;
     navigator.clipboard.writeText(text);
     setCopiedId(id);
     setTimeout(() => setCopiedId(null), 2000);
@@ -95,16 +95,16 @@ function ScholarshipsContent() {
       <div className="text-center max-w-3xl mx-auto mb-10">
         <div className="inline-flex items-center gap-2 bg-indigo-50 border border-indigo-200 text-indigo-800 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold mb-4 shadow-sm">
           <GraduationCap className="w-4 h-4 text-indigo-600" />
-          100% Fully Funded Graduate Pathways
+          Funding for International Graduate Students
         </div>
         <h1 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight">
-          Top USA University Scholarships & <br />
+          Scholarships for International Students <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">
-            Graduate Assistantships (GRA/GTA)
+            Assistantships &amp; Fee Waivers in the USA
           </span>
         </h1>
         <p className="mt-4 text-sm sm:text-base text-slate-600 leading-relaxed">
-          The most legitimate, tuition-free gateway to enter the United States. US universities fund thousands of international students every year with <strong>100% full tuition waivers plus monthly living salaries ($2,000 – $3,800/mo)</strong>.
+          Many US universities fund international graduate students through <strong>assistantships, which can cover tuition and pay a monthly stipend</strong>, and through scholarships and fellowships. Funding varies by university, program and year, so always confirm the details in the official offer. Browse the listings below, then use the guides to plan your application.
         </p>
 
         {/* New Fall 2026 Fee Waiver Spotlight Banner */}
@@ -128,10 +128,10 @@ function ScholarshipsContent() {
         </div>
         <div className="flex-grow">
           <h3 className="text-base sm:text-lg font-bold text-slate-900">
-            Did you know? In the US, STEM PhDs and Research Masters are 100% Free!
+            How graduate assistantships work
           </h3>
           <p className="text-xs sm:text-sm text-slate-600 mt-1.5 leading-relaxed">
-            Unlike other countries where universities charge massive tuition, US departments hire international graduate students as <strong>Graduate Research Assistants (GRA)</strong> or <strong>Teaching Assistants (GTA)</strong>. The university pays 100% of your tuition and gives you a bi-weekly paycheck to cover housing, food, and living expenses.
+            Unlike other countries where universities charge massive tuition, US departments hire graduate students as <strong>Graduate Research Assistants (GRA)</strong> or <strong>Teaching Assistants (GTA)</strong>. Depending on the offer, the university may cover part or all of your tuition and pay a stipend. Funding is more common in research-based PhD programs and is not guaranteed in every program.
           </p>
         </div>
         <div className="shrink-0 flex flex-col sm:flex-row gap-2">
@@ -308,7 +308,7 @@ function ScholarshipsContent() {
                   <span className="font-bold text-slate-300">Share:</span>
                   <div className="flex items-center gap-2">
                     <a
-                      href={`https://api.whatsapp.com/send?text=${encodeURIComponent(`🎓 100% Fully-Funded US Scholarship: ${item.name} at ${item.university} 👉 https://www.uscareersolutions.online/scholarships`)}`}
+                      href={`https://api.whatsapp.com/send?text=${encodeURIComponent(`🎓 US Scholarship / Assistantship: ${item.name} at ${item.university} 👉 https://www.uscareersolutions.online/scholarships`)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="px-2.5 py-1 rounded bg-emerald-600 hover:bg-emerald-500 font-bold text-white"
@@ -458,7 +458,7 @@ function ScholarshipsContent() {
             US Higher Education Financial Intelligence
           </div>
           <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
-            How International Students Secure 100% Full Funding at US Universities
+            How International Students Find Funding at US Universities
           </h2>
           <p className="text-xs sm:text-sm text-slate-500 mt-1">
             Understanding Graduate Teaching Assistantships (GTA), Graduate Research Assistantships (GRA), full tuition remission, and living stipends.
@@ -491,7 +491,7 @@ function ScholarshipsContent() {
               Securing admission with a verified assistantship solves the most challenging hurdle of the US student visa process:
             </p>
             <ul className="list-disc pl-5 space-y-1.5 text-slate-600">
-              <li><strong>Form I-20 Financial Guarantee:</strong> When an assistantship covers 100% of tuition and living expenses, the university’s Designated School Official (DSO) notes the institutional scholarship directly on Form I-20. This satisfies the US Embassy consular officer's financial solvency requirement without requiring millions in personal bank loans.</li>
+              <li><strong>Form I-20 Financial Guarantee:</strong> When funding covers the cost of attendance, the university’s Designated School Official (DSO) notes the institutional scholarship directly on Form I-20. This can help document the financial support a consular officer asks for.</li>
               <li><strong>Application Fee Waivers (Save $1,500+):</strong> Many US graduate schools offer $0 application fee promo codes for attending virtual open houses, departmental webinars, or submitting diversity statements.</li>
               <li><strong>GRE Waivers:</strong> Over 70% of accredited US STEM graduate programs have made GRE general tests optional or permanently waived, significantly reducing application barriers.</li>
             </ul>
@@ -503,7 +503,7 @@ function ScholarshipsContent() {
             Authoritative Research & Educational References
           </h3>
           <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-            All scholarship opportunities, assistantship stipends, and university policies listed in our directory are audited directly from official university graduate school portals (.edu domains), the National Center for Education Statistics (NCES IPEDS), and the US Department of Homeland Security Student and Exchange Visitor Program (SEVP).
+            Listings link to official university pages (.edu) where available. Amounts and deadlines change, so check the university's own page before you apply.
           </p>
           <div className="flex flex-wrap gap-3 pt-2">
             <Link href="/scholarships/fee-waiver-directory" className="text-xs font-bold text-emerald-600 hover:underline flex items-center gap-1">
@@ -511,7 +511,15 @@ function ScholarshipsContent() {
             </Link>
             <span className="text-slate-300">•</span>
             <Link href="/guides/study-usa-zero-tuition-graduate-assistantship" className="text-xs font-bold text-indigo-600 hover:underline flex items-center gap-1">
-              Read GTA/GRA Cold Email Outreach Protocol →
+              Graduate Assistantships: How to Apply →
+            </Link>
+            <span className="text-slate-300">•</span>
+            <Link href="/guides/us-university-application-fee-waiver-list-2026" className="text-xs font-bold text-emerald-600 hover:underline flex items-center gap-1">
+              Application Fee Waiver Guide →
+            </Link>
+            <span className="text-slate-300">•</span>
+            <Link href="/guides/stem-opt-24-month-extension-form-i983-guide-2026" className="text-xs font-bold text-slate-700 hover:underline flex items-center gap-1">
+              STEM OPT After Graduation →
             </Link>
             <span className="text-slate-300">•</span>
             <Link href="/tools/scholarship-predictor" className="text-xs font-bold text-blue-600 hover:underline flex items-center gap-1">
