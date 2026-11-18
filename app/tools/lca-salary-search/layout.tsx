@@ -4,15 +4,6 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'H-1B LCA Salary Search Tool 2026 [Verified DOL Prevailing Wage Data]',
   description: 'Search official U.S. Department of Labor (DOL Form ETA-9035) certified H-1B salaries by company, job title, state, and wage level (I-IV). Filter cap-exempt employers and benchmark real tech compensation.',
-  keywords: [
-    'h1b salary search',
-    'lca database 2026',
-    'prevailing wage calculator',
-    'dol form eta 9035 search',
-    'h1b visa salaries',
-    'cap exempt h1b salaries',
-    'tech salary benchmark usa'
-  ],
   openGraph: {
     title: 'H-1B LCA Salary Search Tool 2026 [Verified DOL Prevailing Wage Data]',
     description: 'Explore certified base salaries and prevailing wages from official U.S. Department of Labor filings across top tech sponsors and universities.',

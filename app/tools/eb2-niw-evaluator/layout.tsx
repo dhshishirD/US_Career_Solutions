@@ -6,16 +6,6 @@ export const metadata: Metadata = {
   },
   title: 'EB-2 NIW Profile Evaluator & Citation Scorer [2026] | Matter of Dhanasar Test',
   description: 'Evaluate your EB-2 National Interest Waiver (NIW) Green Card approval odds. Free assessment based on USCIS Matter of Dhanasar 3-prong precedent, citation metrics, and critical tech endeavors.',
-  keywords: [
-    'eb2 niw evaluator',
-    'eb-2 niw profile evaluation',
-    'national interest waiver citation requirements',
-    'matter of dhanasar 3 prong test',
-    'eb2 niw approval calculator',
-    'eb2 niw self petition guide 2026',
-    'phd postdoc green card evaluation',
-    'uscis niw stem criteria'
-  ],
   openGraph: {
     title: 'EB-2 NIW Profile Evaluator & Citation Scorer [2026] | Matter of Dhanasar Test',
     description: 'Calculate your EB-2 National Interest Waiver self-petition approval probability based on degrees, citations, peer reviews, and federal priority endeavors.',

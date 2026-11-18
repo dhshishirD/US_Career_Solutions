@@ -4,14 +4,6 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Fall 2026 US University Application Fee Waiver & GRE Waiver Directory',
   description: 'Comprehensive directory of 30+ verified US universities offering $0 application fee waiver promo codes, webinar attendee waivers, and GRE exemption policies for Fall 2026 & Spring 2027.',
-  keywords: [
-    'university application fee waiver 2026',
-    'gre waiver universities usa',
-    'free us graduate application promo codes',
-    'fall 2026 application fee waiver',
-    'graduate application fee waiver list',
-    'full ride scholarships usa'
-  ],
   openGraph: {
     title: 'Fall 2026 US University Application Fee Waiver & GRE Waiver Directory',
     description: 'Save $1,500+ on graduate school applications with verified $0 promo codes, webinar fee waivers, and GRE exemption policies across top US universities.',

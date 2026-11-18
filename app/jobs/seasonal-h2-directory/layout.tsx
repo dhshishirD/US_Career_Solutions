@@ -3,16 +3,6 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "H-2A & H-2B Seasonal Employer & Harvest Calendar Directory (2026)",
   description: "Explore DOL certified H-2A agricultural and H-2B seasonal employers. Interactive harvest calendar by state, Adverse Effect Wage Rates (AEWR), free housing verification, and direct employer application links.",
-  keywords: [
-    "h2a visa agricultural jobs",
-    "h2b seasonal jobs usa",
-    "us farm harvest calendar by state",
-    "aewr wage rates 2026",
-    "certified h2a employers directory",
-    "alaska fish processing jobs h2b",
-    "colorado ski resort seasonal jobs",
-    "dol 20 cfr 655 anti scam rules"
-  ],
   alternates: {
     canonical: "https://www.uscareersolutions.online/jobs/seasonal-h2-directory"
   },

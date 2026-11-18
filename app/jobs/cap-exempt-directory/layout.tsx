@@ -6,15 +6,6 @@ export const metadata: Metadata = {
   },
   title: '100+ Cap-Exempt H-1B Employers & University Database [2026 Directory]',
   description: 'Search verified Cap-Exempt H-1B employers in the USA. Browse 100+ universities, non-profit research institutes, and hospital networks offering year-round H-1B sponsorship with NO annual lottery.',
-  keywords: [
-    'cap exempt h1b database 2026',
-    'list of cap exempt employers usa',
-    'cap exempt h1b companies',
-    'university h1b sponsorship no lottery',
-    'concurrent h1b cap exempt',
-    'non profit research institute h1b visa',
-    'f1 opt expiring cap exempt jobs'
-  ],
   openGraph: {
     title: '100+ Cap-Exempt H-1B Employers & University Database [2026 Directory]',
     description: 'Bypass the annual H-1B lottery. Explore 100+ verified US universities, medical centers, and research foundations with year-round visa filings under INA § 214(g)(5).',

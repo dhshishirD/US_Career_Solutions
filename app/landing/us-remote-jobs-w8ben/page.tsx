@@ -11,15 +11,6 @@ export const metadata: Metadata = {
   },
   title: "US Remote Jobs for Foreigners (W-8BEN) — Earn in USD from Home",
   description: "Explore verified daily US remote contractor jobs open to international applicants. Work from your home country, earn $45,000 - $80,000+ USD per year under IRS Form W-8BEN with no US work visa required.",
-  keywords: [
-    "us remote jobs for foreigners",
-    "work from home jobs in usa for foreigners",
-    "online jobs in usa for foreigners",
-    "remote jobs for non us citizens",
-    "w8ben remote contractor jobs",
-    "us companies hiring internationally",
-    "earn in usd from home"
-  ]
 };
 
 export default function USRemoteJobsLandingPage() {

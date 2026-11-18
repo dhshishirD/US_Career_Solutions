@@ -1,25 +1,14 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "USA Fully Funded Graduate Assistantships & Scholarships (2026) | Full Tuition + Living Stipends",
-  description: "Search 250+ verified USA graduate assistantships (GTA/GRA), 100% full tuition waivers, and $24,000–$38,000 annual living stipends for international students. Official Fall 2026 university portals.",
-  keywords: [
-    "fully funded graduate assistantship in usa for international students",
-    "graduate assistantship usa full tuition waiver",
-    "fully funded scholarships in usa for international students",
-    "usa university scholarships 2026",
-    "gta gra assistantship stipend usa",
-    "purdue graduate assistantship",
-    "uiuc fully funded master phd",
-    "zero tuition universities in usa",
-    "stanford university tuition waiver"
-  ],
+  title: "Graduate Assistantships & Funded Scholarships in the USA",
+  description: "Find US graduate assistantships and scholarships for international students: tuition waivers, stipends and how to apply. Updated for Fall 2026.",
   alternates: {
     canonical: "https://www.uscareersolutions.online/scholarships"
   },
   openGraph: {
-    title: "USA Fully Funded Graduate Assistantships & Scholarships (2026)",
-    description: "Search 250+ verified USA graduate assistantships (GTA/GRA), 100% full tuition waivers, and $24,000–$38,000 annual living stipends for international students.",
+    title: "Graduate Assistantships & Funded Scholarships in the USA",
+    description: "Find US graduate assistantships and scholarships for international students: tuition waivers, stipends and how to apply. Updated for Fall 2026.",
     url: "https://www.uscareersolutions.online/scholarships",
     siteName: "US Career Solutions",
     type: "website"
