@@ -149,7 +149,7 @@ export default function HomePage() {
           </div>
           <div className="flex items-center gap-2">
             <Zap className="w-4 h-4 text-blue-600 shrink-0" />
-            <span><strong>91.4%</strong> First-Pass ATS Compatibility</span>
+            <span><strong>Free</strong> ATS Resume Scanner</span>
           </div>
           <div className="flex items-center gap-2">
             <BookmarkCheck className="w-4 h-4 text-purple-600 shrink-0" />

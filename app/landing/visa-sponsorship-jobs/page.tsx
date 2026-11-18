@@ -52,7 +52,7 @@ export default function VisaSponsorshipJobsLandingPage() {
           </span>
           <h3 className="text-lg font-bold text-slate-900">Cap-Exempt H-1B</h3>
           <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-            Sponsored by universities, research laboratories, and non-profit hospital systems. Zero lottery limit, filed year-round with 99% approval.
+            Sponsored by universities, research laboratories, and non-profit hospital systems. Zero lottery limit, filed year-round.
           </p>
         </div>
 

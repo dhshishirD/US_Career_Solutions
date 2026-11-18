@@ -4,10 +4,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.uscareersolutions.online/tools/ats-scanner",
   },
-  title: 'Free AI ATS Resume Checker & Scanner [Score 90%+] | Workday & Greenhouse',
+  title: 'Free AI ATS Resume Checker & Scanner | Workday & Greenhouse',
   description: 'Test your CV against Fortune 500 Applicant Tracking Systems (ATS). Instant keyword density audits, formatting fixes, Google XYZ bullet formulation, and 100% free match score.',
   openGraph: {
-    title: 'Free AI ATS Resume Checker & Scanner [Score 90%+] | Workday & Greenhouse',
+    title: 'Free AI ATS Resume Checker & Scanner | Workday & Greenhouse',
     description: 'Test your CV against Fortune 500 Applicant Tracking Systems (ATS). Instant keyword density audits, formatting fixes, Google XYZ bullet formulation, and 100% free match score.',
     url: 'https://www.uscareersolutions.online/tools/ats-scanner',
     siteName: 'US Career Solutions',
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Free AI ATS Resume Checker & Scanner [Score 90%+] | Workday & Greenhouse',
+    title: 'Free AI ATS Resume Checker & Scanner | Workday & Greenhouse',
     description: 'Test your CV against Fortune 500 Applicant Tracking Systems (ATS). Instant keyword density audits, formatting fixes, Google XYZ bullet formulation, and 100% free match score.',
   },
 };
@@ -31,13 +31,6 @@ const jsonLd = {
     '@type': 'Offer',
     price: '0',
     priceCurrency: 'USD',
-  },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.9',
-    ratingCount: '230',
-    bestRating: '5',
-    worstRating: '1',
   },
   description: 'Instant ATS resume scanner and scoring engine compatible with Workday, Greenhouse, and Lever.',
 };

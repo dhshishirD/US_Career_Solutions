@@ -217,7 +217,7 @@ export default function ServicesPage() {
           <div className="space-y-6">
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-emerald-400 bg-emerald-950/60 border border-emerald-800/80 px-3 py-1 rounded-full">
-                Guaranteed Quality & Care
+                Chat With Us on WhatsApp
               </span>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-3">
                 Ready to Start? Talk to Us Instantly

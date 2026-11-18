@@ -81,7 +81,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     term: 'Cap-Exempt H-1B Visa',
     category: 'Visa & Immigration',
     plainEnglishExplanation: 'A special category of H-1B work visas for non-profit universities, research institutions, and academic hospitals that has NO annual lottery limits and can be applied for at any time of the year.',
-    whyItMattersToYou: 'While corporate H-1B visas have only a ~15-20% lottery win rate, Cap-Exempt H-1B visas have NO lottery and 99% approval for qualified researchers, data analysts, and healthcare workers!',
+    whyItMattersToYou: 'While corporate H-1B visas have only a ~15-20% lottery win rate, Cap-Exempt H-1B visas have NO lottery and are open year-round to qualified researchers, data analysts, and healthcare workers!',
     example: 'A research lab assistant role at Johns Hopkins University or Mayo Clinic.'
   },
   {

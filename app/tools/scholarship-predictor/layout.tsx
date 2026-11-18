@@ -32,13 +32,6 @@ const jsonLd = {
     price: '0',
     priceCurrency: 'USD',
   },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.95',
-    ratingCount: '189',
-    bestRating: '5',
-    worstRating: '1',
-  },
   description: 'AI-driven full tuition waiver probability meter and academic faculty cold outreach email generator.',
 };
 
