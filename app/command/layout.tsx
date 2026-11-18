@@ -3,7 +3,6 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Platform Command Center & Social Broadcast Console',
   description: 'Manage real-time job sync pipelines, verified scholarship audits, and automated multichannel social broadcasts.',
-  keywords: ['command center', 'platform automation', 'us career solutions command'],
   openGraph: {
     title: 'Platform Command Center & Social Broadcast Console',
     description: 'Manage real-time job sync pipelines, verified scholarship audits, and automated multichannel social broadcasts.',

@@ -7,15 +7,6 @@ import GuidesClient from './GuidesClient';
 export const metadata: Metadata = {
   title: 'US Career, Visa & Scholarship Intelligence Guides | US Career Solutions',
   description: 'In-depth, verified strategic guides on passing Fortune 500 ATS resume scanners, securing direct Schedule A hospital Green Cards, winning 100% fully funded USA scholarships, and prevailing wages.',
-  keywords: [
-    'ats resume checker guide',
-    'schedule a green card nurse',
-    'fully funded scholarships in usa',
-    'how to study in usa for free',
-    'workday ats resume format',
-    'us career solutions guides',
-    'prevailing wage intelligence'
-  ]
 };
 
 export default function GuidesPage() {

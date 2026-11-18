@@ -3,17 +3,6 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "Form W-8BEN Compliance Validator & Treaty Rate Calculator (2026)",
   description: "Interactive 4-step W-8BEN validator for non-US freelancers and remote contractors. Verify Foreign Tax ID (FTIN) formats, calculate withholding tax rates (0% vs 30%), cite IRS tax treaty articles, and generate a US client compliance packet.",
-  keywords: [
-    "w-8ben validator",
-    "w8ben foreign tax id format",
-    "w8ben treaty rate calculator",
-    "form w8ben remote contractor",
-    "w8ben line by line guide",
-    "us withholding tax remote freelancer",
-    "ftin validation",
-    "irc 1441 foreign contractor",
-    "article 7 business profits w8ben"
-  ],
   alternates: {
     canonical: "https://www.uscareersolutions.online/tools/w8ben-validator"
   },

@@ -6,7 +6,6 @@ export const metadata: Metadata = {
   },
   title: 'Free AI ATS Resume Checker & Scanner [Score 90%+] | Workday & Greenhouse',
   description: 'Test your CV against Fortune 500 Applicant Tracking Systems (ATS). Instant keyword density audits, formatting fixes, Google XYZ bullet formulation, and 100% free match score.',
-  keywords: ['ats resume checker', 'free ats resume checker', 'ats score checker', 'how to pass workday ats', 'greenhouse resume scanner', 'applicant tracking system checker', 'ats cv checker free'],
   openGraph: {
     title: 'Free AI ATS Resume Checker & Scanner [Score 90%+] | Workday & Greenhouse',
     description: 'Test your CV against Fortune 500 Applicant Tracking Systems (ATS). Instant keyword density audits, formatting fixes, Google XYZ bullet formulation, and 100% free match score.',

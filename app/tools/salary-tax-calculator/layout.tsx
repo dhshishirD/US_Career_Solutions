@@ -4,20 +4,19 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.uscareersolutions.online/tools/salary-tax-calculator",
   },
-  title: 'US Take-Home Pay & Paycheck Tax Calculator [2026 Free Tool] | W-2, F-1 OPT & Form W-8BEN',
-  description: 'Calculate your true net take-home pay after taxes across all 50 US states (TX, CA, NY, WA, FL). Includes F-1 STEM OPT FICA 7.65% tax exemption savings and remote W-8BEN treaty calculations.',
-  keywords: ['take home pay calculator', 'paycheck calculator', 'calculate salary after tax', 'calculate pay after tax', '1099 tax calculator', 'federal income tax calculator', 'net pay calculator', 'f1 opt fica tax exemption calculator', 'w8ben tax calculator'],
+  title: 'US Take-Home Pay Calculator: W-2, F-1 OPT & W-8BEN (2026)',
+  description: 'Estimate your US net pay after federal, state and FICA tax for all 50 states, including F-1 OPT and W-8BEN contractor modes. Free.',
   openGraph: {
-    title: 'US Take-Home Pay & Paycheck Tax Calculator [2026 Free Tool] | W-2, F-1 OPT & Form W-8BEN',
-    description: 'Calculate your true net take-home pay after taxes across all 50 US states (TX, CA, NY, WA, FL). Includes F-1 STEM OPT FICA 7.65% tax exemption savings and remote W-8BEN treaty calculations.',
+    title: 'US Take-Home Pay Calculator: W-2, F-1 OPT & W-8BEN (2026)',
+    description: 'Estimate your US net pay after federal, state and FICA tax for all 50 states, including F-1 OPT and W-8BEN contractor modes. Free.',
     url: 'https://www.uscareersolutions.online/tools/salary-tax-calculator',
     siteName: 'US Career Solutions',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'US Take-Home Pay & Paycheck Tax Calculator [2026 Free Tool] | W-2, F-1 OPT & Form W-8BEN',
-    description: 'Calculate your true net take-home pay after taxes across all 50 US states (TX, CA, NY, WA, FL). Includes F-1 STEM OPT FICA 7.65% tax exemption savings and remote W-8BEN treaty calculations.',
+    title: 'US Take-Home Pay Calculator: W-2, F-1 OPT & W-8BEN (2026)',
+    description: 'Estimate your US net pay after federal, state and FICA tax for all 50 states, including F-1 OPT and W-8BEN contractor modes. Free.',
   },
 };
 

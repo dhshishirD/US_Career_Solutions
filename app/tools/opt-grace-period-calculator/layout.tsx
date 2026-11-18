@@ -4,14 +4,6 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'F-1 OPT Grace Period & SEVIS Transfer Calculator [2026 USCIS Rules]',
   description: 'Calculate your exact 60-day USCIS departure deadline, 90/150-day unemployment allowance, SEVIS transfer release dates, Day 1 CPT windows, and H-1B Cap-Gap eligibility under 8 CFR § 214.2(f)(10).',
-  keywords: [
-    'opt grace period calculator',
-    'f1 60 day grace period calculator',
-    'stem opt unemployment days calculator',
-    'sevis transfer deadline opt',
-    'day 1 cpt deadline calculator',
-    'h1b cap gap extension calculator'
-  ],
   openGraph: {
     title: 'F-1 OPT Grace Period & SEVIS Transfer Calculator [2026 USCIS Rules]',
     description: 'Free interactive calculator for international students. Compute your 60-day grace period, remaining unemployment days, and download your 7-point RFE status maintenance checklist.',

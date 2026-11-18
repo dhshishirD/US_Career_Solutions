@@ -6,7 +6,6 @@ export const metadata: Metadata = {
   },
   title: 'AI Executive Recruiter Outreach & Cold Pitch Email Generator',
   description: 'Generate high-converting, professional cold outreach emails and LinkedIn messages tailored for US tech recruiters, hospital hiring managers, and university department chairs.',
-  keywords: ['recruiter outreach generator', 'cold email template for jobs', 'how to message recruiters on linkedin', 'visa sponsorship cold email', 'executive pitch generator'],
   openGraph: {
     title: 'AI Executive Recruiter Outreach & Cold Pitch Email Generator',
     description: 'Generate high-converting, professional cold outreach emails and LinkedIn messages tailored for US tech recruiters, hospital hiring managers, and university department chairs.',

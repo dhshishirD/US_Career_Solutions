@@ -3,7 +3,6 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'US Job Application Tracker & Career CRM Dashboard',
   description: 'Organize and track your US job applications, interview stages, follow-ups, and salary offers in one streamlined, private dashboard.',
-  keywords: ['job application tracker', 'career crm', 'job search organizer', 'track us visa applications'],
   openGraph: {
     title: 'US Job Application Tracker & Career CRM Dashboard',
     description: 'Organize and track your US job applications, interview stages, follow-ups, and salary offers in one streamlined, private dashboard.',

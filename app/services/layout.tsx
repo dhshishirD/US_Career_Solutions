@@ -4,20 +4,19 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.uscareersolutions.online/services",
   },
-  title: '1-on-1 VIP US Career, Visa Strategy & ATS Resume Makeover ($29 USD)',
-  description: 'Book a dedicated 1-on-1 strategy session with certified career advisors. Get your resume rewritten to score 90%+ on Workday ATS, build your Cap-Exempt strategy, and win interviews.',
-  keywords: ['us career consultation', 'ats resume rewrite service', 'h1b visa career coach', 'study in usa admission consultation', 'us career solutions 1 on 1'],
+  title: 'ATS Resume Rewrite & US Career Strategy Call ($29+)',
+  description: 'Get your resume rewritten for US ATS systems or book a 40-minute career and visa strategy call. Packages from $29 USD.',
   openGraph: {
-    title: '1-on-1 VIP US Career, Visa Strategy & ATS Resume Makeover ($29 USD)',
-    description: 'Book a dedicated 1-on-1 strategy session with certified career advisors. Get your resume rewritten to score 90%+ on Workday ATS, build your Cap-Exempt strategy, and win interviews.',
+    title: 'ATS Resume Rewrite & US Career Strategy Call ($29+)',
+    description: 'Get your resume rewritten for US ATS systems or book a 40-minute career and visa strategy call. Packages from $29 USD.',
     url: 'https://www.uscareersolutions.online',
     siteName: 'US Career Solutions',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: '1-on-1 VIP US Career, Visa Strategy & ATS Resume Makeover ($29 USD)',
-    description: 'Book a dedicated 1-on-1 strategy session with certified career advisors. Get your resume rewritten to score 90%+ on Workday ATS, build your Cap-Exempt strategy, and win interviews.',
+    title: 'ATS Resume Rewrite & US Career Strategy Call ($29+)',
+    description: 'Get your resume rewritten for US ATS systems or book a 40-minute career and visa strategy call. Packages from $29 USD.',
   },
 };
 

@@ -9,20 +9,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.uscareersolutions.online/landing/visa-sponsorship-jobs",
   },
-  title: "Companies Hiring H-1B in 2026: Verified Visa Sponsorship & Cap-Exempt Jobs | US Career Solutions",
-  description: "Search 500+ verified US companies sponsoring H-1B, Cap-Exempt (0% Lottery Quota), EB-3 Green Card, and H-2A/B seasonal visas. Direct-hire employer directory with certified prevailing wages.",
-  keywords: [
-    "companies hiring h-1b 2026",
-    "cap exempt companies",
-    "h1b cap exempt employers list",
-    "h1b cap exempt organizations list",
-    "jobs in usa with visa sponsorship",
-    "usa jobs with visa sponsorship",
-    "jobs in usa for foreigners with visa sponsorship",
-    "h1b visa sponsorship jobs in usa",
-    "eb3 visa sponsorship jobs usa",
-    "companies sponsoring work visa in usa"
-  ]
+  title: "Visa Sponsorship Jobs in the USA: H-1B & Cap-Exempt (2026)",
+  description: "Browse US jobs with visa sponsorship: H-1B, cap-exempt university roles and Schedule A nursing. Each listing links to the employer's own page.",
 };
 
 export default function VisaSponsorshipJobsLandingPage() {

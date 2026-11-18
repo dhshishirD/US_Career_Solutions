@@ -9,14 +9,6 @@ export const metadata: Metadata = {
   },
   title: "Free Jobscan & Resume.io Alternative — AI ATS Scanner & US Career Radar",
   description: "Looking for a 100% free alternative to Jobscan, Resume.io, and Teal? US Career Solutions provides free AI ATS resume match scoring, verified daily US remote jobs (W-8BEN), and fully-funded scholarships without expensive subscriptions.",
-  keywords: [
-    "free jobscan alternative",
-    "free ats resume scanner",
-    "jobscan alternative free",
-    "resume io alternative",
-    "ai resume match score free",
-    "ats resume checker without subscription"
-  ]
 };
 
 export default function JobscanAlternativePage() {

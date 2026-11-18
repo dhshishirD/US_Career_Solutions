@@ -3,18 +3,6 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "J-1 Visa 2-Year Rule (INA § 212e) Waiver & Advisory Engine 2026 | US Career Solutions",
   description: "Free interactive diagnostic for J-1 scholars, researchers, and physicians. Check Section 212(e) two-year home country rule subjectivity, explore 5 waiver pathways (No Objection, Conrad 30, IGA, Hardship, Persecution), and generate Form DS-3035 filing checklists.",
-  keywords: [
-    "j1 waiver 212e calculator",
-    "j1 visa two year home country physical presence requirement",
-    "section 212e waiver",
-    "conrad 30 j1 waiver",
-    "no objection statement j1",
-    "interested government agency waiver j1",
-    "j1 waiver processing time 2026",
-    "ds 3035 online application guide",
-    "j1 physician waiver conrad 30",
-    "advisory opinion j1 dos"
-  ],
   alternates: {
     canonical: "https://www.uscareersolutions.online/tools/j1-waiver-advisor",
   },
