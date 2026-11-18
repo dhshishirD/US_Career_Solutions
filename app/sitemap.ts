@@ -226,7 +226,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   ];
 
-  const guideRoutes: MetadataRoute.Sitemap = MASTER_GUIDES.map(guide => ({
+  const guideRoutes: MetadataRoute.Sitemap = MASTER_GUIDES.filter(guide => !guide.noindex).map(guide => ({
     url: `${baseUrl}/guides/${guide.slug}`,
     lastModified: guide.updatedDate || currentDate,
     changeFrequency: 'weekly',

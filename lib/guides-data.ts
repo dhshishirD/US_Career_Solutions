@@ -13,6 +13,7 @@ export interface GuideArticle {
     avatar: string;
   };
   keywords: string[];
+  noindex?: boolean;
   tableOfContents: { id: string; title: string }[];
   contentHtml: string;
   faqs?: {
@@ -1483,6 +1484,7 @@ export const MASTER_GUIDES: GuideArticle[] = [
   },
 {
     slug: 'day-1-cpt-universities-usa-legitimate-list-uscis-guide-2026',
+    noindex: true,
     subtitle: 'A compliance and accreditation roadmap for international students maintaining lawful F-1 status.',
     keywords: ['day 1 cpt universities list 2026', 'day 1 cpt colleges in usa', 'day 1 cpt rfe risk uscis', 'accredited day 1 cpt colleges', 'can you work full time on day 1 cpt', 'day 1 cpt f1 status maintenance'],
     title: 'Day 1 CPT Universities in USA [2026 Legitimate List, Accreditation & USCIS Compliance Guide]',
