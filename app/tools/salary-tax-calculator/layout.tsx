@@ -32,13 +32,6 @@ const jsonLd = {
     price: '0',
     priceCurrency: 'USD',
   },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.9',
-    ratingCount: '168',
-    bestRating: '5',
-    worstRating: '1',
-  },
   description: 'Instant US Take-Home Pay & Federal/State Tax Calculator with F-1 OPT FICA exemption & Remote W-8BEN treaty analysis.',
 };
 

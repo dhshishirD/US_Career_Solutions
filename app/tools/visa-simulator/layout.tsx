@@ -32,13 +32,6 @@ const jsonLd = {
     price: '0',
     priceCurrency: 'USD',
   },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.9',
-    ratingCount: '214',
-    bestRating: '5',
-    worstRating: '1',
-  },
   description: '60-Second AI Diagnostic scoring for Cap-Exempt H-1B, Schedule A Healthcare EB-3, and EB-2 National Interest Waiver.',
 };
 
