@@ -119,13 +119,13 @@ export default function PricingPage() {
 
             {/* Pre-Payment WhatsApp Clarification Link */}
             <a
-              href="https://wa.me/8801627714636?text=Hello%20US%20Career%20Solutions%2C%20I%20have%20a%20question%20regarding%20packages%20and%20payment%20options."
+              href="https://wa.me/8801981505761?text=Hello%20US%20Career%20Solutions%2C%20I%20have%20a%20question%20regarding%20packages%20and%20payment%20options."
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-800 text-xs font-bold transition-colors shadow-sm"
             >
               <Smartphone className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Need pre-payment clarification? Chat on WhatsApp: 01627714636</span>
+              <span>Need pre-payment clarification? Chat on WhatsApp: +880 1981-505761</span>
             </a>
           </div>
         </div>

@@ -811,7 +811,7 @@ export default function HomePage() {
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-purple-600 shrink-0" />
-                  <span>Priority WhatsApp Helpdesk (`01627714636`)</span>
+                  <span>Priority WhatsApp Helpdesk (+880 1981-505761)</span>
                 </li>
               </ul>
             </div>

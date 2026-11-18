@@ -482,13 +482,13 @@ export default function AdminPage() {
 
                 <div className="flex items-center gap-3 shrink-0">
                   <a
-                    href="https://wa.me/8801627714636"
+                    href="https://wa.me/8801981505761"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-md transition-all"
                   >
                     <MessageCircle className="w-4 h-4" />
-                    <span>WhatsApp Concierge (01627714636)</span>
+                    <span>WhatsApp Concierge (+880 1981-505761)</span>
                   </a>
                 </div>
               </div>
@@ -616,7 +616,7 @@ export default function AdminPage() {
 
                         <div className="flex items-center gap-2">
                           <a
-                            href={`https://wa.me/8801627714636?text=${encodeURIComponent(`Hello ${selectedIntake.userName || 'Candidate'}, your US Career Solutions concierge team has completed your targeted employer matches.`)}`}
+                            href={`https://wa.me/8801981505761?text=${encodeURIComponent(`Hello ${selectedIntake.userName || 'Candidate'}, your US Career Solutions concierge team has completed your targeted employer matches.`)}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center gap-1.5 shadow-xs"
@@ -1089,7 +1089,7 @@ export default function AdminPage() {
                   <strong>Official WhatsApp Concierge Number:</strong> +880 1627-714636
                 </div>
                 <a
-                  href="https://wa.me/8801627714636"
+                  href="https://wa.me/8801981505761"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-3 py-1.5 bg-emerald-600 text-white rounded-lg text-xs font-bold hover:bg-emerald-700"

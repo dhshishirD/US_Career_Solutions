@@ -303,7 +303,7 @@ export default function PaymentCheckoutModal({
 
               <div className="pt-3 flex flex-col sm:flex-row items-center justify-center gap-3">
                 <a
-                  href={`https://wa.me/8801627714636?text=${encodeURIComponent(`Hello US Career Solutions, I just submitted payment for ${activePricing.name}. TrxID/Ref: ${currency === 'BDT' ? trxId : wireRef}. Please confirm.`)}`}
+                  href={`https://wa.me/8801981505761?text=${encodeURIComponent(`Hello US Career Solutions, I just submitted payment for ${activePricing.name}. TrxID/Ref: ${currency === 'BDT' ? trxId : wireRef}. Please confirm.`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm flex items-center justify-center gap-2 transition-colors"
@@ -450,7 +450,7 @@ export default function PaymentCheckoutModal({
                       </p>
                     </div>
                     <a
-                      href={`https://wa.me/8801627714636?text=${encodeURIComponent(`Hello US Career Solutions, I would like clarification before purchasing the ${activePricing.name} package.`)}`}
+                      href={`https://wa.me/8801981505761?text=${encodeURIComponent(`Hello US Career Solutions, I would like clarification before purchasing the ${activePricing.name} package.`)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="shrink-0 px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-sm transition-colors"
