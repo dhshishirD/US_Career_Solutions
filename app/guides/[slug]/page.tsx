@@ -35,9 +35,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${guide.title} | US Career Solutions`,
+    title: guide.title,
     description: guide.excerpt,
-    keywords: guide.keywords,
     openGraph: {
       title: guide.title,
       description: guide.excerpt,
