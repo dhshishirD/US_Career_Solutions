@@ -491,7 +491,7 @@ function ScholarshipsContent() {
               Securing admission with a verified assistantship solves the most challenging hurdle of the US student visa process:
             </p>
             <ul className="list-disc pl-5 space-y-1.5 text-slate-600">
-              <li><strong>Form I-20 Financial Guarantee:</strong> When funding covers the cost of attendance, the university’s Designated School Official (DSO) notes the institutional scholarship directly on Form I-20. This can support the financial support evidence a consular officer asks for.</li>
+              <li><strong>Form I-20 Financial Guarantee:</strong> When funding covers the cost of attendance, the university’s Designated School Official (DSO) notes the institutional scholarship directly on Form I-20. This can help document the financial support a consular officer asks for.</li>
               <li><strong>Application Fee Waivers (Save $1,500+):</strong> Many US graduate schools offer $0 application fee promo codes for attending virtual open houses, departmental webinars, or submitting diversity statements.</li>
               <li><strong>GRE Waivers:</strong> Over 70% of accredited US STEM graduate programs have made GRE general tests optional or permanently waived, significantly reducing application barriers.</li>
             </ul>
