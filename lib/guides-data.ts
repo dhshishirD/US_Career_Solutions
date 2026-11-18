@@ -203,62 +203,115 @@ export const MASTER_GUIDES: GuideArticle[] = [
   },
   {
     slug: 'study-usa-zero-tuition-graduate-assistantship',
-    title: 'How to Study in USA for Free: 100% Tuition Waiver & $2,500/Mo Assistantships (GRA/TA) [2026]',
-    subtitle: 'The insider academic strategy international students use to earn Master’s and PhD degrees in America with zero debt.',
-    excerpt: 'US research universities allocate billions to fund international graduate scholars. Discover how to identify funded labs, cold-pitch faculty directors, and secure a 100% tuition waiver + monthly stipend.',
+    title: 'Graduate Assistantships in the USA: How to Apply',
+    subtitle: 'How GRA, GTA and GA positions work for international students, what the F-1 rules allow, and how to find and ask for funding.',
+    excerpt: 'How graduate assistantships work for international students: tuition and stipend, the F-1 20-hour limit, and how to find and ask for funding.',
 
     category: 'Scholarships & Education',
-    readTime: '9 min read',
+    readTime: '10 min read',
     publishedDate: '2026-09-05T00:00:00.000Z',
-    updatedDate: '2026-09-05T00:00:00.000Z',
+    updatedDate: '2026-11-19T00:00:00.000Z',
     author: {
-      name: 'US Career Solutions Academic Desk',
-      role: 'Former Admissions Committee & Research Advisors',
+      name: 'US Career Solutions Editorial Team',
+      role: 'Research and editorial',
       avatar: '/favicon.ico'
     },
     keywords: [
-      'fully funded scholarships usa',
+      'graduate assistantship',
       'graduate research assistantship',
       'graduate teaching assistantship',
-      'study in usa free tuition',
-      'how to get gra gta funding',
-      'professor cold email template'
+      'assistantship for international students',
+      'tuition waiver graduate school usa',
+      'how to email professors for funding'
     ],
     tableOfContents: [
-      { id: 'the-funding-mechanism', title: '1. The Real Funding Mechanism: GRA vs. GTA' },
-      { id: 'identifying-funded-labs', title: '2. How to Locate High-Grant Research Labs' },
-      { id: 'the-professor-pitch', title: '3. The High-Converting Faculty Outreach Blueprint' },
-      { id: 'stem-opt-benefits', title: '4. Post-Graduation 3-Year STEM OPT Work Rights' },
-      { id: 'common-pitfalls', title: '5. The #1 Mistake That Destroys Funding Chances' }
+      { id: 'what-is-an-assistantship', title: '1. What a graduate assistantship is' },
+      { id: 'what-is-not-guaranteed', title: '2. What is not guaranteed' },
+      { id: 'f1-work-rules', title: '3. F-1 work rules that apply to assistantships' },
+      { id: 'finding-funded-positions', title: '4. How to find funded positions' },
+      { id: 'emailing-professors', title: '5. How to email a professor' },
+      { id: 'taxes-and-pay', title: '6. Pay and taxes' },
+      { id: 'after-graduation', title: '7. After graduation: OPT and STEM OPT' },
+      { id: 'common-mistakes', title: '8. Common mistakes' },
+      { id: 'sources', title: 'Sources' }
     ],
     contentHtml: `
-      <h2 id="the-funding-mechanism">1. The Real Funding Mechanism: GRA vs. GTA</h2>
-      <p>Many international applicants mistakenly believe they need private family wealth or commercial student loans to study in the United States. In reality, the vast majority of international graduate students in STEM, Economics, and Social Sciences are funded directly by universities through two primary mechanisms:</p>
-      
+      <p><em>Information only, not legal or immigration advice. Funding rules differ by university and program, so confirm every detail with the department and your school's international student office (DSO).</em></p>
+
+      <h2 id="what-is-an-assistantship">1. What a graduate assistantship is</h2>
+      <p>An assistantship is a paid part-time job that comes with your graduate admission. In return for about 20 hours a week of work, many universities cover some or all of your tuition and pay a monthly stipend. The three common types are:</p>
       <ul>
-        <li><strong>Graduate Research Assistantship (GRA):</strong> You work 20 hours per week in a professor's laboratory conducting research funded by federal grants (e.g., National Science Foundation, NIH, or Department of Defense). The grant pays your university tuition in full and provides a monthly living salary.</li>
-        <li><strong>Graduate Teaching Assistantship (GTA):</strong> You assist faculty with undergraduate instruction, lab grading, and recitations. In return, the academic department waives 100% of your tuition fees and pays a bi-weekly stipend.</li>
+        <li><strong>Graduate Research Assistantship (GRA):</strong> you work in a professor's lab or project, usually paid from a research grant.</li>
+        <li><strong>Graduate Teaching Assistantship (GTA or TA):</strong> you help teach, grade or run lab and recitation sections, usually paid by the academic department.</li>
+        <li><strong>Graduate Assistantship (GA):</strong> administrative or support work for an office or program, such as a library or student services unit.</li>
+      </ul>
+      <p>What is included is set by each offer letter. Read it for the tuition benefit (full or partial), the stipend amount and pay period, the length of the appointment, the weekly hours, and whether health insurance fees are covered.</p>
+
+      <h2 id="what-is-not-guaranteed">2. What is not guaranteed</h2>
+      <p>No program funds every admitted student. Funding is usually more common for research-based PhD programs than for course-based master's programs, and it depends on the department's budget and on a professor's grants in that year. Some programs admit students with no funding at all. Treat any website or agent that promises a "100% tuition waiver" for everyone as unreliable, and look for the funding statement on the department's own pages.</p>
+
+      <h2 id="f1-work-rules">3. F-1 work rules that apply to assistantships</h2>
+      <ul>
+        <li>F-1 students may work on campus up to 20 hours per week while school is in session, and full time during official breaks, according to ICE.</li>
+        <li>An assistantship counts as on-campus employment, so it uses that same 20-hour limit. Several universities note that the hours written in your assistantship contract are what count, even if you work fewer.</li>
+        <li>That means a 20-hour assistantship leaves no room for a second on-campus job during the semester.</li>
+        <li>You need a Social Security number to be paid for on-campus work. Your international office will explain how to apply.</li>
       </ul>
 
-      <h2 id="identifying-funded-labs">2. How to Locate High-Grant Research Labs</h2>
-      <p>Instead of submitting blind applications to centralized university portals, top candidates research active research grants. Look for Principal Investigators (PIs) who have received major NSF or NIH awards within the last 18 months—these professors have unspent budget allocations specifically designated for incoming graduate assistant salaries.</p>
-
-      <h2 id="the-professor-pitch">3. The High-Converting Faculty Outreach Blueprint</h2>
-      <p>Your introductory outreach email must demonstrate specific alignment with the professor's published work. Follow this concise structure:</p>
+      <h2 id="finding-funded-positions">4. How to find funded positions</h2>
       <ol>
-        <li><strong>Paragraph 1:</strong> State your specific academic interest and reference their recent publication by title and core hypothesis.</li>
-        <li><strong>Paragraph 2:</strong> Highlight your relevant technical competencies (e.g., Python, PyTorch, LabVIEW, CAD) and tangible project results.</li>
-        <li><strong>Paragraph 3:</strong> Inquire if they are recruiting new graduate researchers for the upcoming academic intake and attach your ATS-optimized CV.</li>
+        <li><strong>Start with the department, not the university's main page.</strong> Look for "funding", "financial support" or "assistantships" on the graduate program page and in the graduate handbook.</li>
+        <li><strong>Note the funding deadline.</strong> It is often earlier than the general admission deadline, and some programs have a separate assistantship application or a box to tick on the main application.</li>
+        <li><strong>Read lab and faculty pages.</strong> Many labs state when they are recruiting students. Public grant databases such as the NSF award search and NIH RePORTER show which professors currently hold funded projects in your field.</li>
+        <li><strong>Ask the graduate program coordinator</strong> what share of admitted international students receive funding, and when offers are made.</li>
+        <li><strong>Check TA language requirements.</strong> Many universities require a spoken-English test or interview before an international student can be assigned teaching duties.</li>
       </ol>
 
-      <h2 id="stem-opt-benefits">4. Post-Graduation 3-Year STEM OPT Work Rights</h2>
-      <p>Graduating from a qualifying STEM degree program entitles you to <strong>3 full years of U.S. work authorization</strong> (12 months of initial Optional Practical Training + 24 months STEM extension) without needing immediate H-1B sponsorship, giving you ample time to transition to permanent residency.</p>
+      <h2 id="emailing-professors">5. How to email a professor</h2>
+      <p>A short, specific message works better than a long one. Send it to professors whose recent work genuinely matches your interests, and keep each message individual.</p>
+      <ol>
+        <li><strong>Subject line:</strong> state your purpose, for example "Prospective PhD applicant: interest in [specific topic]".</li>
+        <li><strong>First paragraph:</strong> name one recent paper of theirs and say what specifically interests you about it.</li>
+        <li><strong>Second paragraph:</strong> two or three relevant skills or results, such as methods, tools, a thesis or a publication.</li>
+        <li><strong>Close:</strong> ask whether they expect to take new students for the intake you are applying for, say that you will apply by the deadline, and attach a one-page CV.</li>
+      </ol>
+      <p>Professors often cannot promise funding before the admissions committee decides, so a polite reply that says "apply and we will see" is normal. Do not send the same message to dozens of people.</p>
+
+      <h2 id="taxes-and-pay">6. Pay and taxes</h2>
+      <p>Stipends are generally taxable income in the US, and how a tuition waiver is treated for tax can depend on your situation. Ask your university's international tax or payroll office what applies to you, and for what your first paycheck will look like, since you may need to cover costs before the first stipend arrives.</p>
+
+      <h2 id="after-graduation">7. After graduation: OPT and STEM OPT</h2>
+      <p>After finishing a degree, F-1 students can apply for up to 12 months of post-completion OPT. Graduates with a degree on the DHS STEM Designated Degree Program list may apply for a further 24-month STEM OPT extension, for a total of up to 36 months. The STEM extension requires an employer enrolled in E-Verify and a completed Form I-983 training plan. Your DSO recommends OPT and STEM OPT in SEVIS, and USCIS decides the work permit.</p>
+      <p>Note also that the well-known NSF Graduate Research Fellowship is for US citizens, nationals and permanent residents, so international students should look at university assistantships and other funding instead.</p>
+
+      <h2 id="common-mistakes">8. Common mistakes</h2>
+      <ul>
+        <li>Applying after the department's funding deadline.</li>
+        <li>Assuming that admission means funding without reading the offer letter.</li>
+        <li>Sending mass, copy-pasted emails to professors.</li>
+        <li>Paying an agent for a promised "guaranteed" scholarship. Universities do not sell assistantships.</li>
+        <li>Taking a second on-campus job that pushes you past the 20-hour weekly limit.</li>
+      </ul>
+
+      <h2 id="sources">Sources</h2>
+      <ul>
+        <li><a href="https://www.ice.gov/sevis/employment" target="_blank" rel="noopener noreferrer">ICE: F-1 student employment</a></li>
+        <li><a href="https://studyinthestates.dhs.gov/students/working" target="_blank" rel="noopener noreferrer">Study in the States (DHS): working in the US</a></li>
+        <li><a href="https://studyinthestates.dhs.gov/sevis-help-hub/student-records/fm-student-employment/f-1-stem-optional-practical-training-opt-extension" target="_blank" rel="noopener noreferrer">Study in the States (DHS): STEM OPT extension</a></li>
+        <li><a href="https://www.nsf.gov/funding/opportunities/grfp-nsf-graduate-research-fellowship-program/nsf26-526/solicitation" target="_blank" rel="noopener noreferrer">NSF GRFP solicitation (eligibility)</a></li>
+      </ul>
     `,
+    faqs: [
+      { question: 'Can international students get a graduate assistantship in the USA?', answer: 'Yes. Many universities award assistantships to international students, most often in research-based PhD programs. Funding depends on the program and its budget, and it is not guaranteed.' },
+      { question: 'How many hours can an F-1 student work on an assistantship?', answer: 'On-campus work, including assistantships, is limited to 20 hours per week while school is in session, and full time during official breaks, according to ICE.' },
+      { question: 'Does an assistantship always cover full tuition?', answer: 'No. Some offers cover full tuition, some cover part, and some include only a stipend. The offer letter states exactly what is covered.' },
+      { question: 'Can I work in the US after my degree?', answer: 'F-1 graduates can apply for up to 12 months of OPT. Graduates with a qualifying STEM degree may apply for a 24-month STEM OPT extension.' }
+    ],
     relatedTool: {
       name: 'Academic Outreach Pitch Generator',
-      description: 'Generate customized cold email pitches for U.S. University Lab Directors and Department Chairs.',
+      description: 'Draft a short, specific email to a professor or department about funding.',
       link: '/tools/outreach-gen',
-      buttonText: 'Generate Professor Pitch'
+      buttonText: 'Draft an Outreach Email'
     }
   },
   {
