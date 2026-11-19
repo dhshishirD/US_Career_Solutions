@@ -2,11 +2,11 @@ import React from 'react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Fall 2026 US University Application Fee Waiver & GRE Waiver Directory',
-  description: 'Comprehensive directory of 30+ verified US universities offering $0 application fee waiver promo codes, webinar attendee waivers, and GRE exemption policies for Fall 2026 & Spring 2027.',
+  title: 'US University Application Fee Waivers & GRE Policies',
+  description: 'Find US universities with application fee waiver options and GRE-optional policies for international graduate applicants. Links to official pages.',
   openGraph: {
-    title: 'Fall 2026 US University Application Fee Waiver & GRE Waiver Directory',
-    description: 'Save $1,500+ on graduate school applications with verified $0 promo codes, webinar fee waivers, and GRE exemption policies across top US universities.',
+    title: 'US University Application Fee Waivers & GRE Policies',
+    description: 'Find fee waiver options and GRE policies for US graduate programs, with links to each official university page.',
     url: 'https://www.uscareersolutions.online/scholarships/fee-waiver-directory',
     siteName: 'US Career Solutions',
     type: 'website',
@@ -27,8 +27,8 @@ export default function FeeWaiverDirectoryLayout({
       {
         '@type': 'Dataset',
         '@id': 'https://www.uscareersolutions.online/scholarships/fee-waiver-directory#dataset',
-        'name': 'Fall 2026 US Universities Graduate Application Fee Waiver & GRE Exemption Directory',
-        'description': 'Curated and verified database of application fee waiver codes, information session waiver mechanisms, and GRE test policies across top accredited U.S. graduate programs.',
+        'name': 'US Universities Graduate Application Fee Waiver & GRE Policy Directory',
+        'description': 'Directory of application fee waiver options and GRE policies at U.S. graduate programs, with links to official university pages.',
         'url': 'https://www.uscareersolutions.online/scholarships/fee-waiver-directory',
         'isAccessibleForFree': true,
         'creator': {
@@ -46,15 +46,15 @@ export default function FeeWaiverDirectoryLayout({
             'name': 'How do international students get application fee waivers for US universities?',
             'acceptedAnswer': {
               '@type': 'Answer',
-              'text': 'International applicants can secure $0 application fees by attending official departmental virtual open houses, emailing Graduate Admissions Coordinators with a strong academic CV, or applying during university Free Application Weeks.'
+              'text': 'Some universities waive the application fee for students who attend an official virtual open house, request a waiver from the admissions office, or apply during a free-application period. Options differ by university, so check each official admissions page.'
             }
           },
           {
             '@type': 'Question',
-            'name': 'Can the GRE be waived for STEM Masters and PhD programs in 2026?',
+            'name': 'Do US graduate programs require the GRE?',
             'acceptedAnswer': {
               '@type': 'Answer',
-              'text': 'Yes, over 60% of top US STEM graduate programs have adopted test-optional or test-blind policies for 2026-2027, allowing applicants to submit strong research portfolios and letters of recommendation without GRE scores.'
+              'text': 'Many programs have made the GRE optional or no longer consider it, but policies vary by program and year. Check the admissions page of the specific program.'
             }
           }
         ]
