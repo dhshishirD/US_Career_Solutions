@@ -122,8 +122,8 @@ Sincerely,
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'EducationalOccupationalProgram',
-    name: 'Fall 2026 US University Application Fee Waiver & GRE Waiver Directory',
-    description: 'Verified directory of US universities offering 100% application fee waivers, GRE waivers, and full tuition Graduate Assistantships (GTA/GRA) for Fall 2026 and Spring 2027.',
+    name: 'US University Application Fee Waivers & GRE Policies',
+    description: 'Directory of US universities with application fee waiver options and GRE policies for international graduate applicants. Always confirm on the official page.',
     provider: {
       '@type': 'Organization',
       name: 'US Career Solutions',
@@ -137,7 +137,7 @@ Sincerely,
     mainEntity: [
       {
         '@type': 'Question',
-        name: 'How do international students get US university application fee waivers for Fall 2026?',
+        name: 'How do international students get US university application fee waivers?',
         acceptedAnswer: {
           '@type': 'Answer',
           text: 'International applicants can secure $0 application fee waivers by: (1) Attending official virtual graduate info sessions or open houses, (2) Submitting promotional departmental codes, (3) Emailing graduate program directors directly with an academic CV, or (4) Applying to universities with permanent $0 application fees.'
@@ -148,7 +148,7 @@ Sincerely,
         name: 'Are GRE scores waived for US Master\'s and PhD programs in 2026?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Yes. Over 75% of top US STEM graduate programs have made GRE scores completely optional or permanently waived for Fall 2026 admissions, evaluating applicants on undergraduate GPA, research experience, and SOP strength.'
+          text: 'Many US graduate programs have made the GRE optional or no longer consider it, but policies vary by program and year. Check the admissions page of the specific program.'
         }
       },
       {
@@ -156,7 +156,7 @@ Sincerely,
         name: 'What is a Graduate Teaching or Research Assistantship (GTA/GRA)?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'A Graduate Assistantship provides 100% full tuition coverage (tuition remission) plus a monthly living stipend ($2,200 - $3,800/month) in exchange for 20 hours per week of teaching or laboratory research assistance.'
+          text: 'A graduate assistantship can cover part or all of your tuition and pay a monthly stipend in exchange for about 20 hours a week of teaching or research work. Terms differ by university and program, so check your offer letter.'
         }
       }
     ]
@@ -181,7 +181,7 @@ Sincerely,
           <span>/</span>
           <Link href="/scholarships" className="hover:text-emerald-400 transition-colors">Scholarships & Education</Link>
           <span>/</span>
-          <span className="text-emerald-400 font-medium">Fall 2026 Fee Waiver Directory</span>
+          <span className="text-emerald-400 font-medium">Fee Waiver Directory</span>
         </nav>
 
         {/* Hero Section */}
@@ -192,7 +192,7 @@ Sincerely,
           <div className="relative z-10 max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Fall 2026 & Spring 2027 Admissions Rush</span>
+              <span>Graduate Admissions Season</span>
             </div>
 
             <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight mb-4">
@@ -200,21 +200,21 @@ Sincerely,
             </h1>
 
             <p className="text-slate-300 text-base sm:text-lg leading-relaxed mb-6">
-              Stop paying <strong className="text-white">$75 to $120</strong> per application. Search verified US institutions offering <strong>100% Free Application Codes</strong>, <strong>GRE Waivers</strong>, and <strong>Full-Ride Graduate Assistantships (GTA/GRA)</strong> with $2,400+ monthly stipends.
+              Many US graduate applications cost <strong className="text-white">$75 to $120</strong>. Find universities that offer <strong>application fee waivers</strong> and <strong>GRE-optional or GRE-waived</strong> policies, with links to each official admissions page. Waiver codes and deadlines change, so confirm on the university's page before you apply.
             </p>
 
             <div className="flex flex-wrap items-center gap-4 text-xs font-semibold text-slate-300">
               <span className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-800/80 border border-slate-700">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                <span>Verified .EDU Admissions Portals</span>
+                <span>Links to Official .EDU Pages</span>
               </span>
               <span className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-800/80 border border-slate-700">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                <span>Fall 2026 Deadlines</span>
+                <span>Check Current Deadlines</span>
               </span>
               <span className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-800/80 border border-slate-700">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                <span>100% Free Access</span>
+                <span>Free to Use</span>
               </span>
             </div>
           </div>
@@ -228,7 +228,7 @@ Sincerely,
               <GraduationCap className="w-4 h-4 text-emerald-400" />
             </div>
             <div className="text-2xl sm:text-3xl font-black text-white">{stats.count} Universities</div>
-            <p className="text-xs text-slate-400 mt-1">Verified for Fall 2026</p>
+            <p className="text-xs text-slate-400 mt-1">Confirm on each official page</p>
           </div>
 
           <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 shadow-lg">
@@ -487,7 +487,7 @@ Sincerely,
           </div>
 
           <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
-            Over 85% of graduate research funding (GRA) is controlled directly by individual professors, not the general admissions committee. If a professor agrees to sponsor you, the department automatically waives your application fee and issues a 100% full-ride tuition waiver with living stipend.
+            Research assistantships are often funded from individual professors' grants, so a professor's interest can matter. Some departments waive the application fee or support funding for students a professor wants to recruit, but this is not automatic. Ask the program coordinator how it works.
           </p>
 
           <div className="bg-slate-950 border border-slate-800 rounded-2xl p-6 mb-6 font-mono text-xs sm:text-sm text-slate-300 leading-relaxed overflow-x-auto">
@@ -546,7 +546,7 @@ Sincerely,
             <div className="bg-slate-950 p-6 rounded-2xl border border-slate-800">
               <h3 className="text-base font-bold text-emerald-400 mb-2">4. Target STEM Graduate Assistantships (GTA/GRA)</h3>
               <p className="text-slate-400 text-xs sm:text-sm">
-                Securing a Teaching or Research Assistantship automatically covers 100% of out-of-state tuition plus provides a monthly living stipend ($2,200 - $3,800/mo), converting your degree into a fully funded education.
+                An assistantship offer states what is covered, which may include tuition and a monthly stipend. Read the offer letter for the exact terms.
               </p>
             </div>
           </div>
@@ -602,7 +602,7 @@ Sincerely,
 
           <div className="space-y-4">
             <div className="bg-slate-950 p-5 rounded-2xl border border-slate-800">
-              <h3 className="text-base font-bold text-white mb-2">How do international students get US university application fee waivers for Fall 2026?</h3>
+              <h3 className="text-base font-bold text-white mb-2">How do international students get US university application fee waivers?</h3>
               <p className="text-sm text-slate-400 leading-relaxed">
                 International applicants can secure $0 application fee waivers by: (1) Attending official virtual graduate info sessions or open houses, (2) Submitting promotional departmental codes, (3) Emailing graduate program directors directly with an academic CV, or (4) Applying to universities with permanent $0 application fees.
               </p>
@@ -611,14 +611,13 @@ Sincerely,
             <div className="bg-slate-950 p-5 rounded-2xl border border-slate-800">
               <h3 className="text-base font-bold text-white mb-2">Are GRE scores waived for US Master&apos;s and PhD programs in 2026?</h3>
               <p className="text-sm text-slate-400 leading-relaxed">
-                Yes. Over 75% of top US STEM graduate programs have made GRE scores completely optional or permanently waived for Fall 2026 admissions, evaluating applicants on undergraduate GPA, research experience, and SOP strength.
-              </p>
+                Many US graduate programs have made the GRE optional or no longer consider it, but policies vary by program and year. Check the admissions page of the specific program.</p>
             </div>
 
             <div className="bg-slate-950 p-5 rounded-2xl border border-slate-800">
               <h3 className="text-base font-bold text-white mb-2">What is a Graduate Teaching or Research Assistantship (GTA/GRA)?</h3>
               <p className="text-sm text-slate-400 leading-relaxed">
-                A Graduate Assistantship provides 100% full tuition coverage (tuition remission) plus a monthly living stipend ($2,200 - $3,800/month) in exchange for 20 hours per week of teaching or laboratory research assistance.
+                A graduate assistantship can cover part or all of your tuition and pay a monthly stipend in exchange for about 20 hours a week of teaching or research work. Terms differ by university and program, so check your offer letter.
               </p>
             </div>
           </div>
